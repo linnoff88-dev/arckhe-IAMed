@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.1: Prompt e receituario | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha blue) */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .border-blue-500\/20 { border-color: rgba(37, 99, 235, 0.15); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 2</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400 font-medium">Modulo 2.1</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 2.1
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">💊 Prompt e receituario: dose, via e frequencia importam</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        A analogia perfeita entre prescrever medicamentos e escrever prompts. Se voce sabe preencher uma receita, sabe construir um prompt eficaz.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">~50</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📋 Analogia receituario medico e prompt</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Voce ja sabe construir um prompt perfeito - so nao sabia disso. Toda vez que preenche uma prescricao medica, voce aplica os mesmos principios que fazem um prompt funcionar. A estrutura e <strong class="text-blue-400">identica</strong>.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Receita Medica vs Prompt para IA</h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span><strong>Nome do medicamento</strong> = Tarefa que voce quer que a IA execute</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span><strong>Dose</strong> = Nivel de detalhe e profundidade da resposta</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span><strong>Via de administracao</strong> = Formato de saida desejado</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span><strong>Posologia</strong> = Contexto e frequencia de uso</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span><strong>Observacoes</strong> = Restricoes e alertas</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Dica Pratica</h3>
+        <p class="text-neutral-300">
+          Na proxima vez que for escrever um prompt, pense: "Se isto fosse uma receita, estaria completa? Tem nome, dose, via, posologia e observacoes?" Se falta algum campo, seu prompt esta incompleto.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">⚖️ Prompt ruim vs prompt bom</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A melhor forma de entender o impacto de um bom prompt e ver a diferenca lado a lado. Mesmo caso clinico, dois prompts diferentes, resultados <strong class="text-blue-400">drasticamente</strong> distintos.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+          <h4 class="font-bold text-red-400 mb-4">✗ Prompt Ruim</h4>
+          <p class="text-neutral-300 text-sm italic">"Me fala sobre hipertensao"</p>
+          <p class="text-neutral-400 text-xs mt-3">Resultado: texto generico de Wikipedia, sem utilidade clinica, sem direcionamento para o caso especifico.</p>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+          <h4 class="font-bold text-blue-400 mb-4">✓ Prompt Bom</h4>
+          <p class="text-neutral-300 text-sm italic">"Voce e um cardiologista. Paciente masculino, 58 anos, HAS estagio 2, DM2, Cr 1.8. Sugira anti-hipertensivo em formato tabela com colunas: medicamento, dose, frequencia, contraindicacoes neste caso. Nao sugira IECA se Cr > 2.0."</p>
+          <p class="text-neutral-400 text-xs mt-3">Resultado: tabela personalizada, clinicamente relevante, com guardrails de seguranca.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Exercicio Pratico</h3>
+        <p class="text-neutral-300">
+          Pegue um caso clinico real (anonimizado) e escreva dois prompts: um vago e um estruturado. Compare as respostas. Voce vai perceber que a qualidade da saida reflete diretamente a qualidade da entrada.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🎯 Os 5 elementos do prompt eficaz</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Todo prompt medico eficaz contem 5 elementos essenciais. Pense neles como os campos obrigatorios de uma prescricao: se falta um, a receita esta <strong class="text-blue-400">incompleta</strong>.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Os 5 Elementos</h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+            <div><strong class="text-blue-400">Papel:</strong> <span class="text-neutral-300">Quem a IA deve ser (especialidade, experiencia)</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+            <div><strong class="text-blue-400">Contexto:</strong> <span class="text-neutral-300">Dados do paciente (idade, comorbidades, medicacoes)</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+            <div><strong class="text-blue-400">Comando:</strong> <span class="text-neutral-300">Tarefa especifica e mensuravel</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+            <div><strong class="text-blue-400">Formato:</strong> <span class="text-neutral-300">Como a resposta deve ser entregue</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+            <div><strong class="text-blue-400">Restricoes:</strong> <span class="text-neutral-300">O que evitar e limites de seguranca</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Checklist Mental</h3>
+        <p class="text-neutral-300">
+          Antes de enviar qualquer prompt, passe pelo checklist PCCFR: Papel definido? Contexto completo? Comando claro? Formato especificado? Restricoes incluidas? Se sim, envie com confianca.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🩺 Contexto e anamnese</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Quanto mais contexto voce fornece, melhor a IA responde. E o mesmo principio da anamnese: <strong class="text-blue-400">sem informacao adequada, nao ha diagnostico preciso</strong>. O prompt sem contexto e como pedir parecer por telefone dizendo apenas "paciente com dor".
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">O que incluir no contexto</h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Idade, sexo, peso (quando relevante)</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Comorbidades e historia medica relevante</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Medicacoes atuais e alergias</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Resultados de exames pertinentes</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Queixa principal e evolucao</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Regra de Ouro</h3>
+        <p class="text-neutral-300">
+          Pense assim: "Se eu passasse esse caso para um colega por WhatsApp, que informacoes ele precisaria para me ajudar?" Essas mesmas informacoes sao o contexto do seu prompt. Lembre-se: sempre anonimize os dados antes de colar na IA.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">📊 Formato de saida</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Definir o formato e tao importante quanto definir a tarefa. Um diagnostico diferencial em <strong class="text-blue-400">tabela</strong> e infinitamente mais util que em texto corrido. A IA entrega no formato que voce pedir.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Formatos mais uteis na pratica medica</h3>
+        <div class="space-y-4 text-neutral-300">
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 font-bold">Tabela:</span>
+            <span>Ideal para diagnostico diferencial, comparacao de farmacos, checklist de exames</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 font-bold">SOAP:</span>
+            <span>Perfeito para evolucoes, registros em prontuario, resumo de caso</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 font-bold">Lista numerada:</span>
+            <span>Otimo para passos de conduta, protocolo, plano de alta</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 font-bold">Texto corrido:</span>
+            <span>Para explicacoes ao paciente, laudos, relatorios</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Dica Pratica</h3>
+        <p class="text-neutral-300">
+          Adicione ao final do prompt: "Responda em formato tabela com colunas: [X], [Y], [Z]" ou "Formate como nota SOAP". A IA vai seguir exatamente o que voce pedir.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🚫 Restricoes: diga o que NAO quer</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        As restricoes sao os <strong class="text-blue-400">guardrails de seguranca</strong> do seu prompt. Assim como uma receita tem observacoes ("alergia a sulfa", "nefropata - ajustar dose"), o prompt precisa de limites claros.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Restricoes essenciais para prompts medicos</h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Nao invente referencias bibliograficas"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Cite apenas guidelines atualizados (ultimos 5 anos)"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Se nao tiver certeza, sinalize com 'incerteza'"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Nao sugira condutas off-label sem sinalizar explicitamente"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Limite a resposta a no maximo 5 opcoes"</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Regra de Seguranca</h3>
+        <p class="text-neutral-300">
+          Sempre inclua pelo menos estas duas restricoes em prompts clinicos: "Nao invente referencias" e "Sinalize quando houver incerteza". Isso reduz drasticamente o risco de alucinacoes perigosas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Resumo Final -->
+    <section class="mb-12">
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-8">
+        <h2 class="text-2xl font-bold mb-6">📋 Resumo do Modulo 2.1</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-blue-400 mb-4">O que aprendemos:</h3>
+            <ul class="space-y-2 text-neutral-300">
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Prompt segue a mesma logica de uma receita medica</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>A diferenca entre prompt ruim e bom e mensuravel</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>5 elementos: Papel, Contexto, Comando, Formato, Restricoes</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Contexto no prompt = anamnese na clinica</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Formato correto economiza tempo</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Restricoes sao guardrails de seguranca</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-blue-400 mb-4">Proximo modulo:</h3>
+            <div class="bg-dark-700/50 rounded-xl p-4 border border-dark-600">
+              <span class="text-blue-400 font-bold text-sm">2.2</span>
+              <h4 class="font-bold mt-1">📝 Framework RCCFR: o receituario do seu prompt</h4>
+              <p class="text-neutral-400 text-sm mt-2">
+                O framework estruturado com 5 componentes para nunca mais escrever um prompt incompleto.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Voltar para Trilha 2
+          </a>
+          <a href="modulo-2-2.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">
+            Proximo: Modulo 2.2 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 2.1: Prompt e receituario</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

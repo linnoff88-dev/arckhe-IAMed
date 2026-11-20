@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1.2: Alucinacao — o efeito colateral da IA | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha emerald) */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 1</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-emerald-400 font-medium">Modulo 1.2</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 1.2
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">💊 Alucinacao: o efeito colateral da IA</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Todo medicamento tem efeito colateral. Toda IA tem alucinacao. Voce nao para de prescrever — aprende a identificar e manejar. Com IA e igual.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">~50</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Teoria</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">💡 O que e alucinacao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Alucinacao e quando a IA <strong class="text-emerald-400">gera informacao estatisticamente provavel, mas factualmente incorreta</strong>. Ela nao "mente" de proposito — ela gera a proxima palavra mais provavel, e as vezes essa sequencia forma algo que parece real mas nao e. A analogia farmacologica e perfeita: todo medicamento tem efeito colateral, toda IA tem alucinacao.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> A analogia farmacologica
+        </h3>
+        <p class="text-neutral-300 mb-4">Voce nao para de prescrever por causa dos efeitos colaterais. Voce aprende a identifica-los e manejar. Com IA e igual.</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span>Voce conhece os efeitos colaterais antes de prescrever</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span>Voce monitora sinais de reacao adversa</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span>Voce ajusta dose ou troca se necessario</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span>Com IA: voce conhece o risco, monitora e ajusta</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📊 Tabela Medicamento vs IA</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Esta tabela traduz <strong class="text-emerald-400">conceitos de farmacologia para conceitos de IA</strong>. Voce ja domina a coluna da esquerda — agora so precisa fazer a ponte para a coluna da direita.
+      </p>
+
+      <!-- Tabela comparativa -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden mb-6">
+        <div class="grid grid-cols-2 bg-emerald-500/20 border-b border-dark-600">
+          <div class="p-4 font-bold text-emerald-400 text-sm">MEDICAMENTO</div>
+          <div class="p-4 font-bold text-emerald-400 text-sm">IA GENERATIVA</div>
+        </div>
+        <div class="divide-y divide-dark-600">
+          <div class="grid grid-cols-2">
+            <div class="p-4 text-neutral-300 text-sm">Principio ativo</div>
+            <div class="p-4 text-neutral-300 text-sm">Modelo (GPT, Claude)</div>
+          </div>
+          <div class="grid grid-cols-2">
+            <div class="p-4 text-neutral-300 text-sm">Dose</div>
+            <div class="p-4 text-neutral-300 text-sm">Tamanho do prompt</div>
+          </div>
+          <div class="grid grid-cols-2">
+            <div class="p-4 text-neutral-300 text-sm">Via de administracao</div>
+            <div class="p-4 text-neutral-300 text-sm">Forma de perguntar</div>
+          </div>
+          <div class="grid grid-cols-2">
+            <div class="p-4 text-neutral-300 text-sm">Efeito terapeutico</div>
+            <div class="p-4 text-neutral-300 text-sm">Resposta util e correta</div>
+          </div>
+          <div class="grid grid-cols-2">
+            <div class="p-4 text-neutral-300 text-sm font-semibold text-red-400">Efeito colateral</div>
+            <div class="p-4 text-neutral-300 text-sm font-semibold text-red-400">Alucinacao</div>
+          </div>
+          <div class="grid grid-cols-2">
+            <div class="p-4 text-neutral-300 text-sm">Contraindicacao</div>
+            <div class="p-4 text-neutral-300 text-sm">Dados sensiveis / vies</div>
+          </div>
+          <div class="grid grid-cols-2">
+            <div class="p-4 text-neutral-300 text-sm">Posologia</div>
+            <div class="p-4 text-neutral-300 text-sm">Contexto e instrucoes</div>
+          </div>
+          <div class="grid grid-cols-2">
+            <div class="p-4 text-neutral-300 text-sm">Bula</div>
+            <div class="p-4 text-neutral-300 text-sm">Model card / documentacao</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Assim como voce leria a bula antes de prescrever um medicamento novo, leia o model card (documentacao) de cada ferramenta de IA que usar. Saiba as limitacoes antes de "prescrever" a ferramenta para uma tarefa.</p>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🔍 Como detectar alucinacoes</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Detectar alucinacoes e a <strong class="text-emerald-400">habilidade numero 1 do medico que usa IA</strong>. Sem essa competencia, a ferramenta e perigosa. Com ela, voce extrai o maximo de valor com seguranca.
+      </p>
+
+      <!-- Timeline de deteccao -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">1</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Peca fontes e citacoes</h4>
+            <p class="text-sm text-neutral-400">Sempre peca a IA para citar de onde tirou a informacao. Se ela nao conseguir citar fontes verificaveis, desconfie.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">2</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Cheque dados especificos</h4>
+            <p class="text-sm text-neutral-400">Numeros, doses, porcentagens e datas sao os alvos mais comuns de alucinacao. Verifique sempre em fontes primarias.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">3</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Desconfie de certeza excessiva</h4>
+            <p class="text-sm text-neutral-400">Quando a IA responde com 100% de confianca em algo que deveria ter nuances, ligue o alerta. Certeza excessiva e sinal de alucinacao.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">4</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Cruze com bases confiaveis</h4>
+            <p class="text-sm text-neutral-400">PubMed, UpToDate, guidelines de sociedades. Se a informacao da IA contradiz fontes primarias, a IA esta errada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🔴 Quando e perigoso</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Existem situacoes em que uma alucinacao da IA pode ter <strong class="text-emerald-400">consequencias graves para o paciente</strong>. Conhecer essas situacoes e criar protocolos de verificacao e essencial.
+      </p>
+
+      <!-- Box de Alerta -->
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center">
+          <span class="mr-2">⚠️</span> Zona de alto risco — SEMPRE verificar
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Doses de medicamentos</strong> (especialmente pediatricos) — IA erra doses com frequencia</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Interacoes medicamentosas raras</strong> — IA pode inventar ou omitir interacoes</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Referencias bibliograficas</strong> — alta taxa de alucinacao (40-60% podem ser inventadas)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Guidelines mais recentes</strong> — cutoff de treinamento pode estar desatualizado</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Dados epidemiologicos especificos</strong> — numeros precisos sao frequentemente inventados</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Dados de Pesquisa
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>40-60%</strong> das referencias bibliograficas citadas por LLMs podem ser parcial ou totalmente inventadas</li>
+          <li><strong>Doses pediatricas</strong> sao particularmente vulneraveis — erros de 10x nao sao incomuns</li>
+          <li>A taxa de alucinacao varia por modelo e por tipo de tarefa — nao e constante</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🟢 Quando e aceitavel</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Nem toda tarefa exige 100% de precisao. Em contextos de <strong class="text-emerald-400">baixo risco onde voce vai revisar o resultado</strong>, pequenas imprecisoes sao aceitaveis e nao devem impedir o uso da ferramenta.
+      </p>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Uso seguro (alucinacao toleravel)</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Rascunhos de notas clinicas (voce revisa)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Brainstorming de diagnosticos diferenciais</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Organizacao de informacoes e ideias</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Explicacoes para pacientes (revisadas)</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Alto risco (alucinacao intoleravel)</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Doses de medicamentos sem verificar</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Interacoes medicamentosas aceitas sem checar</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Referencias citadas sem confirmar no PubMed</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Guidelines aceitos sem conferir a versao</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🧪 Exercicio: 5 artigos no PubMed</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Este e o exercicio mais revelador do curso. Ele vai <strong class="text-emerald-400">calibrar definitivamente sua confianca na IA</strong> e ensinar a importancia da verificacao em uma unica experiencia pratica.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Passo a passo do exercicio
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">1.</span>
+            <span>Escolha um tema da sua especialidade</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">2.</span>
+            <span>Peca a IA: "Cite 5 artigos recentes e relevantes sobre [tema]"</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">3.</span>
+            <span>Copie titulo, autores e journal de cada artigo</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">4.</span>
+            <span>Pesquise cada um no PubMed (pubmed.ncbi.nlm.nih.gov)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">5.</span>
+            <span>Anote: quantos existem? Quantos tem dados corretos? Quantos sao inventados?</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> O que esperar
+        </h3>
+        <p class="text-neutral-300">Provavelmente 2-3 de 5 artigos serao parcial ou totalmente inventados. A IA pode combinar autores reais com titulos falsos, ou criar DOIs que nao existem. Este exercicio vale mais que qualquer teoria sobre alucinacao — voce vai sentir na pratica.</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Alucinacao e o efeito colateral da IA</strong>
+              <span class="text-neutral-400"> - Inevitavel, mas manejavel</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Analogia farmacologica</strong>
+              <span class="text-neutral-400"> - Modelo = principio ativo, Prompt = dose, Alucinacao = efeito colateral</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Detectar alucinacoes</strong>
+              <span class="text-neutral-400"> - Pedir fontes, checar dados, desconfiar de certeza</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Classificar o risco</strong>
+              <span class="text-neutral-400"> - Saber onde tolerar e onde exigir 100% de verificacao</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">1.3 - Os 3 tipos de IA que voce vai usar</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Voltar para Trilha 1
+          </a>
+          <a href="modulo-1-3.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+            Proximo: Modulo 1.3 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 1.2: Alucinacao — o efeito colateral da IA</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

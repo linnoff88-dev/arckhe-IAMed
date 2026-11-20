@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 6: Segundo Cerebro Medico | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha rose) */
+    html:not(.dark) .text-rose-400 { color: #9f1239; }
+    html:not(.dark) .bg-rose-500\/20 { background-color: rgba(225, 29, 72, 0.12); }
+    html:not(.dark) .bg-rose-500\/10 { background-color: rgba(225, 29, 72, 0.08); }
+    html:not(.dark) .border-rose-500\/30 { border-color: rgba(225, 29, 72, 0.25); }
+    html:not(.dark) .hover\:bg-rose-500\/30:hover { background-color: rgba(225, 29, 72, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <!-- Linha 1 -->
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <!-- Linha 2 -->
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-rose-400 bg-rose-500/10">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300 text-sm">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-rose-400 text-sm font-medium">Trilha 6</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">
+        TRILHA 6 - SEGUNDO CEREBRO MEDICO
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🧠 Segundo Cerebro Medico</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Construa um sistema de conhecimento que cresce com voce — IA como compilador que transforma fontes brutas em wiki estruturado. Obsidian + LLM para nunca mais perder o que voce sabe.
+      </p>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">6</div>
+          <div class="text-xs text-neutral-400">Modulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">36</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">~6h</div>
+          <div class="text-xs text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modulos -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Divisor -->
+    <div class="flex items-center space-x-4 mb-8">
+      <div class="h-px flex-1 bg-dark-600"></div>
+      <span class="text-neutral-500 text-sm font-medium">Conteudo Detalhado</span>
+      <div class="h-px flex-1 bg-dark-600"></div>
+    </div>
+
+    <!-- Modulo 6.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.1</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🧩 Por que medicos precisam de um segundo cerebro</h3>
+        <p class="text-neutral-400 text-sm">O problema da memoria fragmentada na medicina. Guidelines mudam, artigos acumulam, anotacoes se perdem. A solucao: um sistema que captura, organiza e conecta.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🔄</span>
+            <div class="flex-1">
+              <span class="font-medium">O problema: conhecimento que se perde</span>
+              <span class="text-neutral-500 text-sm ml-2">- Guidelines mudam, artigos acumulam, anotacoes somem</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O medico moderno enfrenta uma crise silenciosa: guidelines mudam a cada 2-3 anos, artigos se acumulam em pastas nunca revisitadas, anotacoes de congressos viram papeis perdidos, e a residencia se transforma em memoria fragmentada que vai apagando com o tempo.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Reconhecer o problema e o primeiro passo. Voce ja sentiu a angustia de saber que leu algo sobre aquele caso — mas nao lembra onde, nem quando. Isso tem solucao.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Sobrecarga de informacao, memoria fragmentada, guidelines desatualizados, perda de conhecimento, crise silenciosa do medico.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">📋</span>
+            <div class="flex-1">
+              <span class="font-medium">Analogia: prontuario do SEU conhecimento</span>
+              <span class="text-neutral-500 text-sm ml-2">- Estruturado, buscavel, sempre atualizado</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Voce mantem um prontuario para cada paciente — estruturado, buscavel, com historico completo. Por que nao ter o mesmo para o SEU conhecimento? Um segundo cerebro e exatamente isso: o prontuario da sua vida intelectual como medico.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A analogia do prontuario torna o conceito intuitivo. Voce ja sabe organizar informacao de pacientes — agora vai aplicar a mesma logica ao seu proprio conhecimento.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Prontuario pessoal, organizacao estruturada, historico intelectual, buscabilidade, analogia clinica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📁</span>
+            <div class="flex-1">
+              <span class="font-medium">Pasta de PDFs vs sistema inteligente</span>
+              <span class="text-neutral-500 text-sm ml-2">- Por que salvar nao e organizar</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A maioria dos medicos "organiza" conhecimento salvando PDFs em pastas do Google Drive ou Dropbox. Isso e acumular, nao organizar. Voce nao consegue buscar dentro deles, nao sabe o que ja leu, e nao conecta ideias entre documentos diferentes.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Entender por que a abordagem atual falha motiva a busca por algo melhor. A pasta de PDFs e o equivalente digital do papel solto na gaveta.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Acumular vs organizar, PDFs isolados, falta de conexao, busca ineficiente, cemiterio de documentos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🧠</span>
+            <div class="flex-1">
+              <span class="font-medium">O que e um segundo cerebro</span>
+              <span class="text-neutral-500 text-sm ml-2">- Sistema que captura, organiza e conecta</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Um segundo cerebro e um sistema externo que captura tudo que voce aprende, organiza em formato buscavel e conecta ideias entre si automaticamente. Nao e uma pasta de arquivos — e uma rede de conhecimento viva que cresce com voce.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">O conceito muda sua relacao com o aprendizado. Em vez de decorar, voce armazena. Em vez de esquecer, voce recupera. Em vez de informacao solta, voce tem conexoes.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Segundo cerebro, captura de conhecimento, organizacao automatica, conexoes semanticas, rede de conhecimento.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">⚙️</span>
+            <div class="flex-1">
+              <span class="font-medium">LLM como compilador (nao chatbot)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Transforma fontes brutas em wiki estruturado</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Neste sistema, o LLM nao e um chatbot que voce pergunta coisas. Ele e um compilador: recebe fontes brutas (PDFs, artigos, anotacoes) e transforma em paginas wiki estruturadas, com links semanticos entre conceitos. E um processo de fabricacao, nao de conversa.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Essa mudanca de paradigma e central. A maioria usa LLM como Google glorificado. Aqui, voce usa como maquina de producao de conhecimento estruturado — e gasta 5% dos tokens que um RAG gastaria.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">LLM como compilador, nao chatbot, fontes brutas para wiki, economia de tokens, producao de conhecimento.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🎯</span>
+            <div class="flex-1">
+              <span class="font-medium">Beneficios praticos para o medico</span>
+              <span class="text-neutral-500 text-sm ml-2">- O que muda no dia a dia</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Beneficios concretos: encontrar qualquer informacao em segundos, nunca mais perder anotacao de congresso, ter guidelines sempre atualizados e conectados, construir um portfolio de conhecimento que valoriza com o tempo, e consultar seu proprio vault durante atendimentos.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Saber o que voce ganha motiva a construcao. Um segundo cerebro nao e projeto academico — e ferramenta pratica que melhora sua medicina todos os dias.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Busca instantanea, portfolio de conhecimento, guidelines conectados, uso clinico, retorno pratico imediato.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-6-1.html')" class="px-4 py-2 text-sm bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-6-1.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 6.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.2</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🏗️ Arquitetura: 3 camadas para organizar tudo</h3>
+        <p class="text-neutral-400 text-sm">Camada RAW (fontes brutas), Camada COMPILADOR (LLM transforma) e Camada WIKI (paginas Markdown interligadas). Comparacao com RAG e pasta de PDFs.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📦</span>
+            <div class="flex-1">
+              <span class="font-medium">Camada RAW: fontes brutas</span>
+              <span class="text-neutral-500 text-sm ml-2">- PDFs, artigos, anotacoes, fotos de quadro</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A camada RAW e o deposito de tudo que entra no sistema: PDFs de guidelines, artigos do PubMed, anotacoes de congresso, fotos de slides, aulas, resumos de colegas. Nada e editado aqui — e a materia-prima bruta do seu conhecimento.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Separar fonte bruta de conteudo compilado e essencial. A camada RAW preserva a fonte original para auditoria, enquanto o compilado e o que voce consulta no dia a dia.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Camada RAW, fontes brutas, materia-prima, PDFs, artigos, anotacoes, preservacao da fonte original.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">⚙️</span>
+            <div class="flex-1">
+              <span class="font-medium">Camada COMPILADOR: LLM le e transforma</span>
+              <span class="text-neutral-500 text-sm ml-2">- De caos para estrutura</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O LLM recebe a fonte bruta e compila em paginas wiki estruturadas: extrai conceitos principais, cria definicoes claras, adiciona [[links]] para conectar com paginas existentes, e formata em Markdown padronizado. Voce da o PDF, ele devolve conhecimento organizado.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Essa camada e onde a magica acontece. O LLM faz em minutos o que levaria horas: ler, extrair, estruturar e conectar. E voce supervisa o resultado.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Compilador LLM, extracao de conceitos, [[links]] semanticos, Markdown estruturado, supervisao humana.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📖</span>
+            <div class="flex-1">
+              <span class="font-medium">Camada WIKI: paginas Markdown com [[links]]</span>
+              <span class="text-neutral-500 text-sm ml-2">- O produto final buscavel e conectado</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O resultado final: paginas Markdown limpas, organizadas por tema, conectadas entre si por [[links]] bidirecionais. Uma pagina sobre fibrilacao atrial linka para anticoagulacao, que linka para CHA2DS2-VASc, que linka para o guideline ESC. E uma wikipedia pessoal da sua medicina.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A camada wiki e o que voce consulta no dia a dia. E legivel por humanos, buscavel por texto, e navegavel por links. Diferente de um RAG, voce le o conteudo diretamente.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Camada wiki, Markdown, [[links]] bidirecionais, wikipedia pessoal, navegacao por conceitos, legibilidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">📊</span>
+            <div class="flex-1">
+              <span class="font-medium">Comparacao: LLM Wiki vs RAG vs pasta de PDFs</span>
+              <span class="text-neutral-500 text-sm ml-2">- Custo, velocidade, legibilidade, tokens</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Tabela comparativa: pasta de PDFs (gratis, lento, ilegivel, busca ruim), RAG (caro, rapido, 100% dos tokens por consulta, respostas opacas), LLM Wiki (custo unico de compilacao, rapido, legivel, 5% dos tokens). A wiki compila uma vez e consulta infinitas vezes.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Entender as alternativas justifica a escolha. O RAG e popular mas caro e opaco. A wiki e transparente, auditavel e 95% mais eficiente em tokens.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">LLM Wiki vs RAG, economia de 95% de tokens, compilacao unica, consulta infinita, transparencia, auditabilidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🔀</span>
+            <div class="flex-1">
+              <span class="font-medium">Fluxo completo: da fonte ate a consulta</span>
+              <span class="text-neutral-500 text-sm ml-2">- PDF entra, resposta estruturada sai</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Fluxo ponta a ponta: (1) PDF de guideline entra na pasta /raw, (2) LLM compila em paginas wiki com [[links]], (3) paginas ficam no vault Obsidian, (4) voce busca por texto ou navega por links, (5) resposta vem da SUA base curada, nao da internet.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ver o fluxo completo elimina a abstracau e mostra que o sistema e simples: entrada → processamento → saida. Nada de magia — so engenharia de conhecimento.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Fluxo de ingestao, /raw para wiki, compilacao, consulta por texto, resposta baseada em fontes curadas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🏥</span>
+            <div class="flex-1">
+              <span class="font-medium">Exemplos medicos concretos</span>
+              <span class="text-neutral-500 text-sm ml-2">- Cardiologia, pediatria, emergencia</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exemplos reais: cardiologista compila guidelines ESC em wiki com [[links]] entre FA, anticoagulacao e escores; pediatra organiza protocolos de vacinacao conectados a faixas etarias; emergencista monta base de condutas por queixa principal, interligadas.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exemplos concretos da sua realidade tornam o conceito tangivel. Nao e teoria de produtividade — e solucao para problemas reais que voce enfrenta toda semana.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Casos por especialidade, guidelines compilados, protocolos conectados, base de condutas, aplicacao clinica real.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-6-2.html')" class="px-4 py-2 text-sm bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-6-2.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 6.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.3</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">💎 Setup: Obsidian + vault medico</h3>
+        <p class="text-neutral-400 text-sm">Instale o Obsidian, crie a estrutura do vault e configure os plugins essenciais. Resultado: vault funcional em 30 minutos.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📝</span>
+            <div class="flex-1">
+              <span class="font-medium">O que e Obsidian</span>
+              <span class="text-neutral-500 text-sm ml-2">- Gratuito, Markdown, links bidirecionais</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Obsidian e um editor de notas gratuito que usa arquivos Markdown puros (texto simples) e suporta [[links]] bidirecionais entre notas. Seus arquivos ficam no seu computador — nao na nuvem de terceiros. Funciona em Windows, Mac, Linux e celular.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Obsidian e a base do segundo cerebro. Gratuito, local (seus dados sao seus), e com ecossistema de plugins que permite integrar IA diretamente no vault.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Obsidian, Markdown, [[links]], armazenamento local, gratuito, multiplataforma, plugins.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">⬇️</span>
+            <div class="flex-1">
+              <span class="font-medium">Instalar e configurar</span>
+              <span class="text-neutral-500 text-sm ml-2">- Passo a passo em 5 minutos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Passo a passo: baixar em obsidian.md, instalar, criar novo vault (pasta no computador), ajustar configuracoes basicas (idioma, aparencia, atalhos). Em 5 minutos voce tem o Obsidian rodando e pronto para o proximo passo.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Eliminar a barreira de entrada. Quanto mais rapido voce comecar a usar, mais rapido percebe o valor. Sem configuracao perfeita — funcional primeiro, otimizado depois.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Instalacao, vault, configuracao basica, obsidian.md, inicio rapido, funcional primeiro.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📂</span>
+            <div class="flex-1">
+              <span class="font-medium">Criar estrutura: /raw, /wiki, /templates, /log</span>
+              <span class="text-neutral-500 text-sm ml-2">- As 4 pastas essenciais</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Estrutura de pastas do vault: /raw (fontes brutas — PDFs, artigos), /wiki (paginas compiladas pelo LLM), /templates (modelos de prompt e pagina), /log (registro de ingestoes e atualizacoes). Simples, funcional e escalavel.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A estrutura correta desde o inicio evita bagunca futura. Quatro pastas sao tudo que voce precisa — qualquer coisa a mais e complexidade desnecessaria.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">/raw, /wiki, /templates, /log, estrutura minima, escalabilidade, separacao de camadas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🔌</span>
+            <div class="flex-1">
+              <span class="font-medium">Plugins essenciais: Copilot, Dataview, Templates</span>
+              <span class="text-neutral-500 text-sm ml-2">- Os 3 que fazem diferenca</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Tres plugins que transformam o Obsidian: Copilot (chat com IA dentro do vault), Dataview (consultas dinamicas tipo banco de dados), e Templates (modelos reutilizaveis para padronizar paginas). Instalar cada um leva menos de 1 minuto.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Plugins sao o que torna o Obsidian um segundo cerebro de verdade. Sem Copilot, nao ha IA. Sem Dataview, nao ha consultas inteligentes. Sem Templates, cada pagina comeca do zero.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Copilot, Dataview, Templates, plugins comunitarios, instalacao, configuracao basica de cada um.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🏠</span>
+            <div class="flex-1">
+              <span class="font-medium">Criar index.md e primeiras paginas</span>
+              <span class="text-neutral-500 text-sm ml-2">- A pagina inicial do seu cerebro</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Criar a pagina index.md — a "home" do seu vault — com links para as areas principais da sua especialidade. Depois, criar 2-3 paginas iniciais manualmente para entender o formato antes de usar o LLM como compilador.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Comecar com paginas manuais ensina o formato. Voce precisa entender o que o LLM vai produzir para poder supervisar a qualidade depois.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">index.md, pagina inicial, estrutura de links, primeiras paginas, formato Markdown, supervisao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">✅</span>
+            <div class="flex-1">
+              <span class="font-medium">Resultado: vault funcional em 30 minutos</span>
+              <span class="text-neutral-500 text-sm ml-2">- Pronto para ingestao</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ao final deste modulo, voce tem: Obsidian instalado, vault criado com 4 pastas, 3 plugins configurados, index.md pronta e 2-3 paginas iniciais. Tudo funcionando e pronto para receber o primeiro guideline compilado pelo LLM no proximo modulo.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ter o ambiente pronto elimina desculpas. No proximo modulo voce ja vai ingerir conhecimento real — e o vault estara pronto para receber.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Vault funcional, setup completo, 30 minutos, pronto para ingestao, checkpoint do curso.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-6-3.html')" class="px-4 py-2 text-sm bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-6-3.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 6.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.4</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">📥 Ingerindo conhecimento: de PDF caotico a wiki organizado</h3>
+        <p class="text-neutral-400 text-sm">Workflow completo: arrastar PDF para /raw, compilar com LLM, gerar pagina wiki. Exercicio: ingerir o guideline mais importante da sua especialidade.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🔄</span>
+            <div class="flex-1">
+              <span class="font-medium">Workflow de ingestao</span>
+              <span class="text-neutral-500 text-sm ml-2">- PDF → /raw → prompt LLM → pagina wiki</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O workflow padrao: (1) arrastar PDF para /raw no vault, (2) copiar o texto relevante, (3) enviar ao LLM com prompt de compilacao, (4) colar a pagina wiki gerada na pasta /wiki, (5) revisar e ajustar [[links]]. Processo de 10-15 minutos por fonte.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ter um workflow padronizado torna a ingestao rotineira e previsivel. Sem workflow, cada ingestao e improvisada e inconsistente.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Workflow de ingestao, prompt de compilacao, copiar e colar, revisao de links, 10-15 minutos por fonte.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">📋</span>
+            <div class="flex-1">
+              <span class="font-medium">Ingerindo guideline da especialidade</span>
+              <span class="text-neutral-500 text-sm ml-2">- Passo a passo completo</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Demonstracao passo a passo: pegar um guideline (ex: ESC para FA, AHA para ICC, SBP para HAS), extrair secoes principais, enviar ao LLM com prompt que pede paginas wiki com [[links]], e montar a estrutura no vault. Resultado: guideline inteiro navegavel.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Guidelines sao a fonte mais valiosa do medico. Ter o guideline da sua especialidade compilado e navegavel e o primeiro "aha moment" do segundo cerebro.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Guideline compilado, extracao de secoes, prompt de compilacao, paginas interligadas, navegacao por topico.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📄</span>
+            <div class="flex-1">
+              <span class="font-medium">Ingerindo artigo cientifico</span>
+              <span class="text-neutral-500 text-sm ml-2">- Ficha estruturada automatica</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O LLM gera ficha estruturada do artigo: objetivo, metodo, populacao, resultados principais, limitacoes, implicacoes clinicas e [[links]] para conceitos relacionados no vault. Uma pagina por artigo, conectada ao restante do seu conhecimento.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Artigos sao a segunda fonte mais importante. Ter fichas padronizadas e conectadas transforma leitura isolada em conhecimento cumulativo.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ficha de artigo, campos padronizados, PICO, resultados, limitacoes, conexoes com vault existente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🎤</span>
+            <div class="flex-1">
+              <span class="font-medium">Ingerindo anotacao de congresso</span>
+              <span class="text-neutral-500 text-sm ml-2">- De rascunho para conhecimento permanente</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Anotacoes rapidas de congressos (texto, foto de slide, audio transcrito) entram no /raw e o LLM compila em paginas wiki limpas. O rascunho caotico vira conhecimento permanente e buscavel, conectado ao que ja existe no vault.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Congressos sao investimento caro em tempo e dinheiro. Sem um sistema, 90% do que voce aprendeu se perde em semanas. Com o segundo cerebro, fica para sempre.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Anotacoes de congresso, compilacao de rascunho, foto de slide, transcricao, conhecimento permanente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🔗</span>
+            <div class="flex-1">
+              <span class="font-medium">Conexoes automaticas: [[links]] entre paginas</span>
+              <span class="text-neutral-500 text-sm ml-2">- O poder da rede de conhecimento</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O LLM identifica conceitos que ja existem no vault e cria [[links]] automaticamente. Quando voce ingere um artigo sobre anticoagulacao, ele linka para a pagina de FA, de CHA2DS2-VASc, de sangramento. O conhecimento se conecta sozinho.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">As conexoes sao o que torna o segundo cerebro superior a uma pasta de arquivos. Cada nova ingestao fortalece a rede existente, criando valor exponencial.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">[[links]] automaticos, rede de conhecimento, conexoes semanticas, valor exponencial, grafo de conceitos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🏋️</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio: ingerir SEU guideline principal</span>
+              <span class="text-neutral-500 text-sm ml-2">- Pratica com sua especialidade</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico: pegue o guideline mais importante da sua especialidade (o que voce mais consulta), siga o workflow de ingestao e compile-o no vault. Ao final, voce tera seu primeiro guideline navegavel por [[links]] no Obsidian.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Praticar com material que voce realmente usa garante que o exercicio tenha valor real. O resultado nao e academico — e uma ferramenta que voce vai consultar amanha.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico, guideline da especialidade, primeiro projeto real, valor imediato, aprender fazendo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-6-4.html')" class="px-4 py-2 text-sm bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-6-4.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 6.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.5</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🔍 Consultando seu cerebro: perguntas em portugues</h3>
+        <p class="text-neutral-400 text-sm">Pergunte ao vault em linguagem natural e receba respostas com fonte exata — baseado no que VOCE curou, nao no que a internet diz.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">💬</span>
+            <div class="flex-1">
+              <span class="font-medium">Perguntar ao vault em linguagem natural</span>
+              <span class="text-neutral-500 text-sm ml-2">- Como se perguntasse a um colega</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Com o plugin Copilot, voce faz perguntas em portugues ao vault: "Qual a dose de ataque de amiodarona?", "Quais as contraindicacoes de NOACs?", "Resumo do guideline de ICC que salvei". A IA busca nas suas paginas wiki e responde com base no seu conteudo.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Consulta por linguagem natural e o que torna o segundo cerebro verdadeiramente util no dia a dia. Em vez de navegar por pastas, voce pergunta e recebe.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Consulta em linguagem natural, Copilot, busca semantica, pergunta e resposta, uso clinico diario.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">📌</span>
+            <div class="flex-1">
+              <span class="font-medium">Resposta com fonte EXATA (nao da internet)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Rastreavel ate o PDF original</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A resposta vem com referencia a pagina wiki especifica do vault, que por sua vez linka para o PDF original na pasta /raw. Voce sabe exatamente de onde veio a informacao — nao e "a internet disse", e "o guideline ESC 2024 pagina 47 que voce salvou disse".</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Rastreabilidade e tudo na medicina. Saber a fonte exata da informacao permite confiar na resposta e citar adequadamente em discussoes clinicas.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Rastreabilidade, fonte exata, referencia ao PDF, confiabilidade, auditoria de informacao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">⭐</span>
+            <div class="flex-1">
+              <span class="font-medium">Diferenca crucial: baseado no que VOCE curou</span>
+              <span class="text-neutral-500 text-sm ml-2">- Seu conhecimento, suas fontes</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Diferente do ChatGPT ou Google, que responde com base no treinamento generico, o segundo cerebro responde com base exclusivamente no que VOCE escolheu salvar e curar. Cada resposta reflete sua curadoria pessoal de conhecimento medico.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Essa e a proposta de valor central. Voce nao quer respostas genericas — quer respostas baseadas nos guidelines e artigos que voce selecionou como relevantes para sua pratica.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Curadoria pessoal, base propria vs internet, conhecimento selecionado, confianca na fonte, proposta de valor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🤖</span>
+            <div class="flex-1">
+              <span class="font-medium">Plugin Copilot para Obsidian</span>
+              <span class="text-neutral-500 text-sm ml-2">- Chat com IA dentro do vault</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O plugin Copilot adiciona um chat de IA dentro do Obsidian que tem acesso ao conteudo do vault. Voce configura a API key (OpenAI ou Anthropic), ativa o modo vault e a IA passa a responder com base nas suas paginas wiki.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Copilot e a interface que torna o segundo cerebro conversacional. Sem ele, voce busca por texto. Com ele, voce conversa com o seu conhecimento.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Copilot plugin, API key, modo vault, chat contextualizado, interface conversacional.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🏥</span>
+            <div class="flex-1">
+              <span class="font-medium">Exemplos de consultas medicas ao vault</span>
+              <span class="text-neutral-500 text-sm ml-2">- "Dose de amiodarona segundo ESC que salvei"</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exemplos reais de consultas: "Dose de amiodarona em FA aguda segundo guideline ESC que salvei", "Contraindicacoes de trombolise no AVC que compilei", "Esquema de antibiotico para pneumonia comunitaria do meu protocolo". Cada resposta cita a pagina wiki e a fonte original.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ver exemplos concretos mostra o poder pratico. Nao e teoria — e ferramenta que responde duvidas clinicas reais em segundos, com fonte rastreavel.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Consultas clinicas reais, respostas com fonte, uso durante atendimento, exemplos por especialidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">⚠️</span>
+            <div class="flex-1">
+              <span class="font-medium">Limitacoes e quando buscar fora do vault</span>
+              <span class="text-neutral-500 text-sm ml-2">- O que o segundo cerebro NAO faz</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O vault so sabe o que voce colocou nele. Se voce nao ingeriu um topico, ele nao tem a resposta. Alem disso, guidelines mudam — se voce nao atualizou, a informacao pode estar desatualizada. Saber quando buscar fora (PubMed, UpToDate) e essencial.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Conhecer os limites evita confianca excessiva. O segundo cerebro complementa suas fontes externas — nao substitui a necessidade de buscar informacao nova.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Limitacoes, vault incompleto, desatualizacao, complementar vs substituir, quando buscar fora.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-6-5.html')" class="px-4 py-2 text-sm bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-6-5.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 6.6 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.6</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🔄 Mantendo vivo: rotina de atualizacao</h3>
+        <p class="text-neutral-400 text-sm">Rotina semanal de 15 minutos, agente de atualizacao, auditoria periodica e integracao com pesquisa. Sistema que melhora com o tempo.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📅</span>
+            <div class="flex-1">
+              <span class="font-medium">Rotina semanal de 15 minutos</span>
+              <span class="text-neutral-500 text-sm ml-2">- Ingerir novos artigos e anotacoes</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Dedicar 15 minutos por semana (ex: domingo a noite) para ingerir o que acumulou: artigos lidos, anotacoes de reunioes, slides de aulas, novidades da especialidade. Processo rapido: arrastar para /raw, compilar com LLM, revisar links.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Sem rotina, o vault para de crescer e perde valor. Com 15 minutos semanais, voce mantem o sistema vivo e cada vez mais util. E o minimo investimento com maximo retorno.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Rotina semanal, 15 minutos, ingestao continua, habito, manutencao minima, crescimento constante.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🤖</span>
+            <div class="flex-1">
+              <span class="font-medium">Agente de atualizacao</span>
+              <span class="text-neutral-500 text-sm ml-2">- LLM verifica se novas fontes mudam paginas</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Quando voce ingere uma nova fonte, o LLM pode verificar se ela contradiz ou atualiza paginas wiki existentes. Ex: novo guideline muda dose de um medicamento — o agente identifica qual pagina precisa ser atualizada e sugere a alteracao.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">O agente de atualizacao evita que informacoes desatualizadas fiquem no vault sem correcao. E o mecanismo que mantém a confiabilidade do sistema ao longo do tempo.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Agente de atualizacao, verificacao cruzada, contradicoes, atualizacao automatica, confiabilidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">🔎</span>
+            <div class="flex-1">
+              <span class="font-medium">Auditoria periodica</span>
+              <span class="text-neutral-500 text-sm ml-2">- Links corretos, dados desatualizados</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Auditoria mensal ou trimestral: verificar links quebrados, paginas orfas (sem conexoes), informacoes desatualizadas (guidelines antigos), e areas do conhecimento com lacunas. O Dataview ajuda a identificar paginas nao atualizadas ha meses.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Sem auditoria, o vault deteriora silenciosamente. Uma verificacao rapida garante que tudo que voce consulta esta correto e atualizado.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Auditoria, links quebrados, paginas orfas, Dataview, desatualizacao, verificacao periodica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🏆</span>
+            <div class="flex-1">
+              <span class="font-medium">O vault como portfolio de conhecimento</span>
+              <span class="text-neutral-500 text-sm ml-2">- Valoriza com o tempo</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Com o tempo, seu vault se torna um portfolio intelectual: tudo que voce aprendeu, organizado e conectado. E mais valioso que um curriculo Lattes — mostra como voce pensa, o que estudou e como conecta ideias. Pode ser compartilhado com residentes ou colegas.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ver o vault como portfolio muda a motivacao. Nao e trabalho — e investimento cumulativo que diferencia voce de qualquer colega que depende so da memoria.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Portfolio intelectual, valor cumulativo, diferenciacao profissional, compartilhamento, legado de conhecimento.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🔬</span>
+            <div class="flex-1">
+              <span class="font-medium">Integrando com pesquisa (Trilha 3)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Artigos do Elicit direto para o vault</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Conectar o workflow de pesquisa da Trilha 3 com o segundo cerebro: artigos encontrados no Elicit, dados do Semantic Scholar e resultados do Consensus entram no vault como fontes compiladas. Pesquisa alimenta o cerebro, e o cerebro informa a pesquisa.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Integrar trilhas multiplica o valor de ambas. Em vez de pipelines isoladas (pesquisa num lugar, conhecimento em outro), tudo converge para o mesmo sistema.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Integracao com T3, Elicit, Semantic Scholar, pipeline unificada, pesquisa alimenta vault, sinergia entre trilhas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">📈</span>
+            <div class="flex-1">
+              <span class="font-medium">Resultado: sistema que melhora com o tempo</span>
+              <span class="text-neutral-500 text-sm ml-2">- Efeito bola de neve do conhecimento</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-rose-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Diferente de cursos e anotacoes que se degradam, o segundo cerebro melhora com cada nova ingestao. Mais paginas significam mais conexoes, mais conexoes significam respostas melhores. E um efeito bola de neve: quanto mais voce usa, mais valioso fica.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Entender o efeito cumulativo justifica o investimento inicial. O vault de 1 ano e incomparavelmente mais valioso que o de 1 mes — e o de 5 anos sera transformador.</p>
+              </div>
+              <div>
+                <span class="text-rose-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Efeito bola de neve, valor cumulativo, melhoria continua, sistema anti-fragil, investimento de longo prazo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-6-6.html')" class="px-4 py-2 text-sm bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-6-6.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Navegacao -->
+    <div class="mt-12 flex flex-col sm:flex-row gap-4">
+      <a href="../trilha5/index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Trilha 5: Vibe Code para Medicos
+      </a>
+      <a href="../trilha7/index.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">
+        Proxima: Trilha 7 - Marketing Etico →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Trilha 6: Segundo Cerebro Medico</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative flex items-start justify-center min-h-screen p-4 pt-8 overflow-y-auto">
+      <div class="relative bg-dark-800 rounded-2xl border border-dark-600 w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl">
+        <div class="sticky top-0 z-10 flex items-center justify-between p-4 bg-dark-800 border-b border-dark-600">
+          <h3 class="font-bold text-lg text-rose-400">Conteudo do Modulo</h3>
+          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors text-neutral-400 hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+          <div class="flex items-center justify-center py-12">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-rose-400"></div>
+            <span class="ml-3 text-neutral-400">Carregando...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) {
+          exp.classList.remove('active');
+        }
+      });
+
+      explanation.classList.toggle('active');
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+
+    function openModal(moduloUrl) {
+      const modal = document.getElementById('modal-overlay');
+      const content = document.getElementById('modal-content');
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      content.innerHTML = `
+        <div class="flex items-center justify-center py-12">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-rose-400"></div>
+          <span class="ml-3 text-neutral-400">Carregando...</span>
+        </div>
+      `;
+
+      fetch(moduloUrl)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const mainContent = doc.querySelector('main');
+
+          if (mainContent) {
+            content.innerHTML = mainContent.innerHTML;
+          } else {
+            content.innerHTML = '<p class="text-neutral-400">Conteudo nao encontrado.</p>';
+          }
+        })
+        .catch(err => {
+          content.innerHTML = '<p class="text-red-400">Erro ao carregar conteudo.</p>';
+        });
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal-overlay');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>

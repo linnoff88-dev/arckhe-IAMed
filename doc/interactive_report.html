@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatório de Pesquisa — c0065 Médicos & IA 2026 | INEMA</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ─── Brand Variables ─────────────────────────────────────────── */
+    :root {
+      --bg:           #080c14;
+      --bg-card:      rgba(255,255,255,0.04);
+      --bg-card-2:    rgba(255,255,255,0.07);
+      --primary:      #0099FF;
+      --accent:       #00FF88;
+      --accent-2:     #00ccff;
+      --text:         #e8edf5;
+      --text-muted:   #7a8a9e;
+      --border:       rgba(0,153,255,0.18);
+      --glow-blue:    0 0 40px rgba(0,153,255,0.15);
+      --glow-green:   0 0 30px rgba(0,255,136,0.10);
+      --radius:       16px;
+    }
+
+    /* ─── Scrollbar ───────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-card-2);
+      border-radius: 6px;
+      border: 2px solid var(--bg);
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+    /* ─── Reset & Base ────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Ambient gradient */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -30%;
+      left: -20%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(ellipse, rgba(0,153,255,0.08) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -20%;
+      right: -10%;
+      width: 50%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(0,255,136,0.06) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── Layout ──────────────────────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Header ──────────────────────────────────────────────────── */
+    header {
+      padding: 60px 0 48px;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 18px;
+      background: rgba(0,153,255,0.12);
+      border: 1px solid rgba(0,153,255,0.3);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-meta {
+      color: var(--text-muted);
+      font-size: 14px;
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .header-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    /* ─── KPI Strip ───────────────────────────────────────────────── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin: 40px 0;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--glow-blue);
+    }
+
+    .kpi-value {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .kpi-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── Section Headers ─────────────────────────────────────────── */
+    .section {
+      margin: 64px 0 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 28px;
+      color: var(--text);
+    }
+
+    /* ─── Cards ───────────────────────────────────────────────────── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 700px) { .card-2col { grid-template-columns: 1fr; } }
+
+    /* ─── Charts ──────────────────────────────────────────────────── */
+    .chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .chart-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .chart-wrap {
+      position: relative;
+      height: 260px;
+    }
+
+    /* ─── Pain Point Items ────────────────────────────────────────── */
+    .pain-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .pain-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .pain-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(0,153,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .pain-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .pain-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .pain-emotion {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(255,60,60,0.12);
+      color: #ff6b6b;
+      margin-bottom: 6px;
+    }
+
+    /* ─── Angle Cards ─────────────────────────────────────────────── */
+    .angle-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .angle-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--glow-blue);
+    }
+
+    .angle-num {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 48px;
+      font-weight: 900;
+      color: rgba(0,153,255,0.06);
+      line-height: 1;
+    }
+
+    .angle-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .angle-quote {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--text);
+      border-left: 3px solid var(--primary);
+      padding-left: 14px;
+      margin-bottom: 12px;
+    }
+
+    .angle-why {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ─── Hook List ───────────────────────────────────────────────── */
+    .hook-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .hook-item:last-child { border-bottom: none; }
+
+    .hook-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      color: #000;
+      flex-shrink: 0;
+    }
+
+    .hook-text {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.5;
+      padding-top: 3px;
+    }
+
+    /* ─── Product Cards ───────────────────────────────────────────── */
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover { transform: translateY(-3px); }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .product-name .accent { color: var(--accent); }
+    .product-name .primary { color: var(--primary); }
+
+    .product-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .product-cta {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #000;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── Competitor Table ────────────────────────────────────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td.gap-col {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ─── Video Concepts ──────────────────────────────────────────── */
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .video-tag {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 100px;
+      background: rgba(0,153,255,0.12);
+      border: 1px solid rgba(0,153,255,0.25);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-right: 8px;
+      margin-bottom: 12px;
+    }
+
+    .video-title {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .video-hook {
+      font-size: 13px;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .video-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ─── Footer ──────────────────────────────────────────────────── */
+    footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ─── Header ─────────────────────────────────────── -->
+  <header>
+    <div class="badge">Inteligência de Mercado · INEMA</div>
+    <h1>
+      <span class="gradient-text">IA para Médicos</span><br />
+      e Profissionais de Saúde — 2026
+    </h1>
+    <div class="header-meta">
+      <span><span class="dot"></span> Campanha c0065-medicos_ia_2026</span>
+      <span><span class="dot"></span> 12 de Abril de 2026</span>
+      <span><span class="dot"></span> Instagram · YouTube · Threads</span>
+    </div>
+  </header>
+
+  <!-- ─── KPIs ───────────────────────────────────────── -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value">85%</div>
+      <div class="kpi-label">dos profissionais de saúde BR otimistas com IA</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">52%</div>
+      <div class="kpi-label">dos médicos brasileiros com burnout (CFM 2025)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">2-3h</div>
+      <div class="kpi-label">gastas por dia apenas com documentação clínica</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">67%</div>
+      <div class="kpi-label">crescimento ao ano — IA diagnóstica no Brasil</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">70%</div>
+      <div class="kpi-label">dos pacientes aprovam IA como suporte médico</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">$187bi</div>
+      <div class="kpi-label">mercado global de IA na saúde até 2030</div>
+    </div>
+  </div>
+
+  <!-- ─── Charts Row ─────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">Análise Quantitativa</div>
+    <div class="section-title">Mercado e Impacto em Números</div>
+    <div class="card-2col">
+
+      <div class="chart-card">
+        <div class="chart-title">Mercado Global de IA na Saúde (US$ bilhões)</div>
+        <div class="chart-wrap">
+          <canvas id="chartMarket"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Distribuição das Dores Médicas Pesquisadas</div>
+        <div class="chart-wrap">
+          <canvas id="chartDores"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 20px;">
+      <div class="chart-card">
+        <div class="chart-title">Sentimento dos Profissionais de Saúde em Relação à IA — Brasil 2025/2026</div>
+        <div class="chart-wrap" style="height: 200px;">
+          <canvas id="chartSentimento"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Dores do Público ───────────────────────────── -->
+  <div class="section">
+    <div class="section-label">Motivações do Público</div>
+    <div class="section-title">As 6 Dores Centrais do Médico</div>
+    <div class="card">
+      <div class="pain-item">
+        <div class="pain-icon">📋</div>
+        <div>
+          <div class="pain-emotion">Frustração + Culpa</div>
+          <div class="pain-title">Agenda lotada — pouco tempo por paciente</div>
+          <div class="pain-desc">O médico quer dar atenção ao paciente mas a burocracia come o tempo. A IA que libera tempo toca na motivação mais profunda da vocação médica.</div>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">😤</div>
+        <div>
+          <div class="pain-emotion">Esgotamento + Ressentimento</div>
+          <div class="pain-title">Prontuários consomem 2-3h diárias</div>
+          <div class="pain-desc">Médicos relatam gastar horas por dia preenchendo prontuários — tempo que "deveria ser" com pacientes. Qualquer solução que reduza isso é percebida como resgate da vocação.</div>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">😰</div>
+        <div>
+          <div class="pain-emotion">Ansiedade + Obsolescência</div>
+          <div class="pain-title">Pressão por atualização sem tempo para aprender</div>
+          <div class="pain-desc">O médico sente que precisa se atualizar em IA mas não tem tempo para "aprender tecnologia". A proposta INEMA — "não aprenda tecnologia, trabalhe melhor" — endereça diretamente essa dor.</div>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">⚖️</div>
+        <div>
+          <div class="pain-emotion">Medo + Responsabilidade</div>
+          <div class="pain-title">Medo de errar — pressão por precisão diagnóstica</div>
+          <div class="pain-desc">A IA como "segunda opinião" ressoa porque endereça o medo do erro médico sem ameaçar a autonomia do profissional.</div>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">🏥</div>
+        <div>
+          <div class="pain-emotion">Raiva + Desgaste</div>
+          <div class="pain-title">Burocracia de convênios e autorizações</div>
+          <div class="pain-desc">Autorizações negadas, guias mal preenchidos e retrabalho com convênios são fontes crônicas de desgaste. IA que automatiza esse processo tem apelo imediato.</div>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">🤝</div>
+        <div>
+          <div class="pain-emotion">Solidão + Falta de pertencimento</div>
+          <div class="pain-title">Isolamento profissional</div>
+          <div class="pain-desc">Médicos buscam comunidades de profissionais que evoluem juntos. O INEMA.VIP como "comunidade de médicos em evolução contínua" atende a essa necessidade social.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Ângulos de Marketing ───────────────────────── -->
+  <div class="section">
+    <div class="section-label">Posicionamento</div>
+    <div class="section-title">Ângulos de Marketing</div>
+    <div class="card-grid">
+
+      <div class="angle-card">
+        <div class="angle-num">01</div>
+        <div class="angle-title">⭐ Principal — Aliada, não substituta</div>
+        <div class="angle-quote">"A IA não vai substituir o médico. Mas o médico que usa IA vai substituir o que não usa."</div>
+        <div class="angle-why">Reframeia o medo de substituição em vantagem competitiva. O médico para de sentir ameaça e começa a sentir urgência positiva.</div>
+      </div>
+
+      <div class="angle-card">
+        <div class="angle-num">02</div>
+        <div class="angle-title">❤️ Mais Emocional — Tempo para o que importa</div>
+        <div class="angle-quote">"Cada hora gasta com prontuário é uma hora a menos com o paciente. A IA devolve esse tempo."</div>
+        <div class="angle-why">Toca na vocação médica — o desejo profundo de estar com o paciente, não com papelada. Dor mais universal e ressonante.</div>
+      </div>
+
+      <div class="angle-card">
+        <div class="angle-num">03</div>
+        <div class="angle-title">🛡️ Segurança nas decisões</div>
+        <div class="angle-quote">"Tome decisões com mais segurança — a IA como segunda opinião que nunca está ocupada."</div>
+        <div class="angle-why">Endereça o medo de errar com solução prática. Posiciona IA como aliada confiável, não como substituta do julgamento clínico.</div>
+      </div>
+
+      <div class="angle-card">
+        <div class="angle-num">04</div>
+        <div class="angle-title">⚡ Menos burocracia, mais medicina</div>
+        <div class="angle-quote">"Você estudou anos para praticar medicina. Não para preencher formulários."</div>
+        <div class="angle-why">Valida a frustração do médico e posiciona a IA como restabelecimento da dignidade profissional.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── Hooks ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">Criativo</div>
+    <div class="section-title">Hooks de Alta Performance</div>
+    <div class="card">
+      <div class="hook-item">
+        <div class="hook-num">1</div>
+        <div class="hook-text">"Você virou médico para curar pessoas. Não para preencher formulários."</div>
+      </div>
+      <div class="hook-item">
+        <div class="hook-num">2</div>
+        <div class="hook-text">"52% dos médicos têm burnout. A burocracia é a causa. A IA é parte da solução."</div>
+      </div>
+      <div class="hook-item">
+        <div class="hook-num">3</div>
+        <div class="hook-text">"A IA não vai te substituir. Mas pode te dar tempo de volta para o que você ama."</div>
+      </div>
+      <div class="hook-item">
+        <div class="hook-num">4</div>
+        <div class="hook-text">"2 horas por dia perdidas com prontuário. A IA pode devolver esse tempo."</div>
+      </div>
+      <div class="hook-item">
+        <div class="hook-num">5</div>
+        <div class="hook-text">"Não aprenda tecnologia. Aprenda a trabalhar melhor com ela."</div>
+      </div>
+      <div class="hook-item">
+        <div class="hook-num">6</div>
+        <div class="hook-text">"Seu paciente espera mais atenção. A IA pode te dar isso — sem precisar aprender programação."</div>
+      </div>
+      <div class="hook-item">
+        <div class="hook-num">7</div>
+        <div class="hook-text">"Enquanto você preenche prontuário, a IA poderia estar fazendo isso por você."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Concorrentes ───────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">Análise Competitiva</div>
+    <div class="section-title">Gap de Mercado</div>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Concorrente</th>
+            <th>Ângulo</th>
+            <th>Fraqueza Explorável</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Nilo Saúde</strong></td>
+            <td>Prontuário eletrônico com IA</td>
+            <td class="gap-col">Só software — sem educação ou comunidade</td>
+          </tr>
+          <tr>
+            <td><strong>Einstein AI</strong></td>
+            <td>IA hospitalar de alta precisão</td>
+            <td class="gap-col">Inacessível para médico individual ou clínica pequena</td>
+          </tr>
+          <tr>
+            <td><strong>Udemy / Coursera</strong></td>
+            <td>Cursos de IA na saúde</td>
+            <td class="gap-col">Teoria sem prática, sem comunidade, sem suporte</td>
+          </tr>
+          <tr>
+            <td><strong>iClinic / Doctoralia</strong></td>
+            <td>Gestão de agenda e clínica</td>
+            <td class="gap-col">Software de gestão — não evolução profissional</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 20px; padding: 16px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.2); border-radius: 10px;">
+        <div style="font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px;">Gap de Mercado INEMA</div>
+        <div style="font-size: 14px; color: var(--text); line-height: 1.5;">Não existe no Brasil uma oferta que combine <strong>educação prática em IA + comunidade de médicos + conteúdo gratuito de entrada + suporte contínuo</strong> — tudo junto, no idioma do médico, a um preço acessível.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Vídeos ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">Produção</div>
+    <div class="section-title">Conceitos de Vídeo</div>
+    <div class="card-grid">
+
+      <div class="video-card">
+        <div>
+          <span class="video-tag">data_story</span>
+          <span class="video-tag">YouTube</span>
+          <span class="video-tag">60-90s</span>
+        </div>
+        <div class="video-title">O Médico que Recuperou 2 Horas por Dia</div>
+        <div class="video-hook">"E se você pudesse atender mais pacientes sem trabalhar mais horas?"</div>
+        <div class="video-desc">Dado de burnout (52%) → burocracia consome 35-40% do tempo → IA como solução prática → INEMA como caminho → CTA inema.club. Template data_story: ~60% gráficos, ~20% text cards, ~20% imagem.</div>
+      </div>
+
+      <div class="video-card">
+        <div>
+          <span class="video-tag">explainer</span>
+          <span class="video-tag">Instagram</span>
+          <span class="video-tag">30-45s</span>
+        </div>
+        <div class="video-title">IA não substitui o médico — ela substitui a papelada</div>
+        <div class="video-hook">"Você não precisa aprender tecnologia. Você precisa de tempo para seus pacientes."</div>
+        <div class="video-desc">3 tarefas burocráticas que IA já faz automaticamente: prontuário, contestação de convênio, resumo de consulta. Demonstração prática, sem jargão técnico. CTA para INEMA.VIP.</div>
+      </div>
+
+      <div class="video-card">
+        <div>
+          <span class="video-tag">data_story</span>
+          <span class="video-tag">YouTube</span>
+          <span class="video-tag">90-120s</span>
+        </div>
+        <div class="video-title">52% dos Médicos Têm Burnout — Isso Não é Normal</div>
+        <div class="video-hook">"52% dos médicos brasileiros têm burnout. E a burocracia é a principal causa."</div>
+        <div class="video-desc">Dados de burnout como gancho → causa: burocracia e documentação → solução: IA que automatiza → INEMA como caminho de aprendizado prático → CTA para comunidade VIP.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── Produtos ────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">Oferta INEMA</div>
+    <div class="section-title">Produtos para esta Campanha</div>
+    <div class="card-grid">
+
+      <div class="product-card">
+        <div class="product-name">INEMA<span class="accent">.CLUB</span></div>
+        <div class="product-desc">Conteúdo gratuito e aplicável para médicos que querem começar com IA sem investir em tecnologia. Trilhas práticas, sem jargão técnico. Entrada sem fricção.</div>
+        <span class="product-cta">Comece grátis: inema.club</span>
+      </div>
+
+      <div class="product-card">
+        <div class="product-name">INEMA <span class="accent">Imersões</span></div>
+        <div class="product-desc">Para médicos que querem aplicação prática com casos clínicos reais — não teoria. Imersão intensiva com resultados imediatos na rotina médica.</div>
+        <span class="product-cta">Próxima imersão: inema.club</span>
+      </div>
+
+      <div class="product-card">
+        <div class="product-name">INEMA<span class="primary">.VIP</span></div>
+        <div class="product-desc">Comunidade de profissionais de saúde em evolução contínua. Médicos que usam IA aprendem melhor juntos — troca de casos, suporte, atualização. R$ 35/mês.</div>
+        <span class="product-cta">Entre para a comunidade: inema.vip</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── Footer ─────────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">INEMA</div>
+    <p>Relatório gerado pelo Marketing Research Agent · Campanha c0065-medicos_ia_2026 · 12/04/2026</p>
+    <p style="margin-top: 6px;">Dados via Tavily AI SDK · Fontes: Philips Future Health Index 2025, CFM 2025, AMA 2025, ABIMED 2025, Grand View Research 2025</p>
+  </footer>
+
+</div>
+
+<!-- ─── Charts JS ─────────────────────────────────────── -->
+<script>
+  const blue = '#0099FF';
+  const green = '#00FF88';
+  const cyan  = '#00ccff';
+  const muted = 'rgba(255,255,255,0.12)';
+
+  Chart.defaults.color = '#7a8a9e';
+  Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+
+  // 1. Market Growth Bar
+  new Chart(document.getElementById('chartMarket'), {
+    type: 'bar',
+    data: {
+      labels: ['2022','2023','2024','2025','2026','2028','2030'],
+      datasets: [{
+        label: 'Mercado de IA na Saúde (US$ bi)',
+        data: [14.6, 22.4, 38.9, 67.2, 89.4, 134.8, 187.7],
+        backgroundColor: [
+          'rgba(0,153,255,0.25)',
+          'rgba(0,153,255,0.35)',
+          'rgba(0,153,255,0.45)',
+          'rgba(0,153,255,0.55)',
+          'rgba(0,255,136,0.55)',
+          'rgba(0,255,136,0.65)',
+          'rgba(0,255,136,0.75)',
+        ],
+        borderColor: [
+          blue, blue, blue, blue, green, green, green
+        ],
+        borderWidth: 1.5,
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { callback: v => '$' + v + 'bi' }
+        },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // 2. Dores Pie
+  new Chart(document.getElementById('chartDores'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Burocracia/documentação','Falta de tempo','Burnout/Esgotamento','Medo de errar','Isolamento'],
+      datasets: [{
+        data: [35, 28, 22, 10, 5],
+        backgroundColor: [
+          'rgba(0,153,255,0.7)',
+          'rgba(0,255,136,0.65)',
+          'rgba(0,204,255,0.6)',
+          'rgba(0,153,255,0.35)',
+          'rgba(0,255,136,0.3)',
+        ],
+        borderColor: [blue, green, cyan, blue, green],
+        borderWidth: 1.5,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { font: { size: 11 }, padding: 14, boxWidth: 12 }
+        }
+      },
+      cutout: '60%'
+    }
+  });
+
+  // 3. Sentimento Horizontal Bar
+  new Chart(document.getElementById('chartSentimento'), {
+    type: 'bar',
+    data: {
+      labels: ['Otimistas com IA na saúde','Pacientes aprovam IA como suporte','Querem capacitação prática','Com sintomas de burnout'],
+      datasets: [{
+        data: [85, 70, 78, 52],
+        backgroundColor: [
+          'rgba(0,255,136,0.6)',
+          'rgba(0,153,255,0.6)',
+          'rgba(0,204,255,0.5)',
+          'rgba(255,80,80,0.5)',
+        ],
+        borderColor: [green, blue, cyan, '#ff5050'],
+        borderWidth: 1.5,
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          max: 100,
+          ticks: { callback: v => v + '%' }
+        },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 5.6: Seguranca, limites e ANVISA | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha teal) */
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13, 148, 136, 0.12); }
+    html:not(.dark) .bg-teal-500\/10 { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13, 148, 136, 0.25); }
+    html:not(.dark) .hover\:bg-teal-500\/30:hover { background-color: rgba(13, 148, 136, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-teal-400 bg-teal-500/10">
+            <span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 5</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-teal-400 font-medium">Modulo 5.6</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 5.6
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🛡️ Seguranca, limites e ANVISA</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        O que pode construir sem registro, o que NAO pode, shadow AI, e a responsabilidade legal do medico-construtor.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">Critico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">Legal</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📋 ANVISA RDC 657 — o que pode sem registro</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A RDC 657 classifica software como dispositivo medico. A boa noticia: <strong class="text-teal-400">Classe I e II (baixo risco, uso interno) sao isentas de registro</strong>. Isso inclui a maioria das ferramentas que voce vai construir.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Classificacao ANVISA
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-teal-400">Classe I (isenta):</strong> Software para apoio administrativo, organizacao de dados, calculadoras baseadas em formulas publicadas, checklists, material educativo.</p>
+          <p><strong class="text-teal-400">Classe II (isenta para uso interno):</strong> Software que auxilia o profissional na avaliacao, sem tomar decisao autonoma. Inclui apoio a decisao clinica com supervisao humana.</p>
+          <p><strong class="text-red-400">Classe III/IV (registro obrigatorio):</strong> Software que faz diagnostico autonomo, define dosagem de alto risco ou toma decisao sem supervisao humana.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Regra pratica
+        </h3>
+        <p class="text-neutral-300">Se a ferramenta AUXILIA voce a decidir (voce valida), esta provavelmente na zona segura. Se a ferramenta DECIDE sem voce (autonoma), precisa de registro.</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🚫 O que NAO pode (diagnostico autonomo, dosagem alto risco)</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A empolgacao com vibe coding nao pode cegar para os riscos. Algumas ferramentas <strong class="text-teal-400">simplesmente nao devem ser construidas com vibe coding</strong>.
+      </p>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center">
+          <span class="mr-2">🚨</span> Linhas vermelhas — NUNCA cruzar
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">1.</span>
+            <span><strong>Diagnostico autonomo:</strong> Ferramenta que diz "o paciente tem X" sem medico validar. Ex: "app que diagnostica melanoma por foto".</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">2.</span>
+            <span><strong>Dosagem de alto risco:</strong> Calculo de quimioterapicos, anticoagulantes, insulina sem validacao por farmaceutico/medico.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">3.</span>
+            <span><strong>Triagem autonoma:</strong> Ferramenta que decide sozinha se o paciente precisa de emergencia ou pode esperar.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">4.</span>
+            <span><strong>Distribuicao sem supervisao:</strong> Disponibilizar para outros profissionais ou pacientes sem validacao e documentacao.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🏚️ O "problema da ultima milha"</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Eugene Vestel documentou o fenomeno: <strong class="text-teal-400">21 repositorios criados, $2800 gastos, zero usuarios</strong>. Construir e facil. Fazer alguem usar e o desafio real.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> O que mata projetos vibe-coded
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-teal-400">UX ruim:</strong> Funciona, mas e confuso de usar. Ninguem quer aprender uma ferramenta mal feita.</p>
+          <p><strong class="text-teal-400">Sem problema real:</strong> Voce construiu porque podia, nao porque precisava. A ferramenta resolve um problema que ninguem tem.</p>
+          <p><strong class="text-teal-400">Manutencao zero:</strong> Bugs aparecem, APIs mudam, dados desatualizam. Sem manutencao, a ferramenta morre em semanas.</p>
+          <p><strong class="text-teal-400">Escopo demais:</strong> Comecou simples, foi adicionando features, ficou complexo demais para manter.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Antidoto
+        </h3>
+        <p class="text-neutral-300">Comece com um problema SEU. Construa para VOCE usar. Se funcionar para voce por 30 dias, considere compartilhar. A maioria das ferramentas uteis nunca precisa ir alem do seu consultorio — e tudo bem.</p>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">👻 Shadow AI em hospitais (riscos)</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Shadow AI ja acontece em todo hospital: medicos colando dados de pacientes no ChatGPT, usando apps nao validados, criando planilhas com logica nao auditada. <strong class="text-teal-400">O risco e real e crescente</strong>.
+      </p>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center">
+          <span class="mr-2">🚨</span> Riscos do shadow AI
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">1.</span>
+            <span><strong>Vazamento de dados:</strong> Dados de pacientes colados em IAs publicas podem ser usados no treinamento do modelo.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">2.</span>
+            <span><strong>Decisao nao auditavel:</strong> Se algo da errado, nao ha registro de que IA foi usada ou como.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">3.</span>
+            <span><strong>Inconsistencia:</strong> Cada medico usa IA de um jeito. Sem padrao, sem qualidade.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">4.</span>
+            <span><strong>Responsabilidade legal:</strong> Se a instituicao nao sabe que IA esta sendo usada, quem responde?</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> O que voce pode fazer
+        </h3>
+        <p class="text-neutral-300">Use IA de forma documentada e transparente. Anonimize dados. Use ferramentas com politica de privacidade clara (Claude e ChatGPT Team/Enterprise nao treinam com seus dados). Proponha ao hospital uma politica oficial de uso de IA.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">✅ Checklist de seguranca para ferramentas vibe-coded</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Antes de usar qualquer ferramenta que voce construiu na pratica clinica, passe por estas <strong class="text-teal-400">10 perguntas</strong>.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Checklist — 10 perguntas antes de usar
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1.</strong> A logica de calculo/decisao esta correta? (Validou com casos conhecidos?)</p>
+          <p><strong>2.</strong> A ferramenta lida com dados sensiveis de pacientes?</p>
+          <p><strong>3.</strong> Os dados sao anonimizados antes de chegar na IA?</p>
+          <p><strong>4.</strong> Quem tem acesso a ferramenta e aos dados?</p>
+          <p><strong>5.</strong> O que acontece se a ferramenta errar? O dano e reversivel?</p>
+          <p><strong>6.</strong> Tem um humano validando antes da decisao final?</p>
+          <p><strong>7.</strong> A ferramenta esta documentada (o que faz, como, por quem)?</p>
+          <p><strong>8.</strong> Tem plano de manutencao (quem atualiza, quando)?</p>
+          <p><strong>9.</strong> Esta na zona verde/amarela regulatoria (nao vermelha)?</p>
+          <p><strong>10.</strong> Voce usaria com confianca no SEU paciente?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">⚖️ Responsabilidade legal do medico-construtor</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Se voce constroi uma ferramenta e ela gera dano ao paciente, a responsabilidade e sua. <strong class="text-teal-400">O medico-construtor e o medico-responsavel</strong> — mesmo que a IA tenha gerado o codigo.
+      </p>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center">
+          <span class="mr-2">🚨</span> Cenarios de risco
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">1.</span>
+            <span><strong>Calculo errado:</strong> Calculadora de escore com logica errada → conduta inadequada → dano ao paciente</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">2.</span>
+            <span><strong>Alerta que nao dispara:</strong> Follow-up com alerta configurado errado → crise hipertensiva nao detectada</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">3.</span>
+            <span><strong>Informacao desatualizada:</strong> Material educativo com guideline antigo → orientacao errada ao paciente</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Como se proteger
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1. Valide exaustivamente:</strong> Teste com no minimo 10 casos conhecidos antes de usar clinicamente.</p>
+          <p><strong>2. Documente tudo:</strong> O que a ferramenta faz, como foi validada, quem e responsavel.</p>
+          <p><strong>3. Inclua disclaimer:</strong> "Ferramenta de apoio. Nao substitui julgamento clinico."</p>
+          <p><strong>4. Mantenha atualizado:</strong> Revise periodicamente se a logica e as fontes continuam corretas.</p>
+          <p><strong>5. Use para apoio, nao para decisao:</strong> A ferramenta auxilia. Voce decide.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Mensagem final
+        </h3>
+        <p class="text-neutral-300">Com o poder de construir vem a obrigacao de validar, testar e manter. Vibe coding e uma ferramenta extraordinaria — mas a responsabilidade clinica continua sendo sua. Use com sabedoria.</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">ANVISA RDC 657</strong>
+              <span class="text-neutral-400"> - Classe I/II isentas para uso interno</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Linhas vermelhas claras</strong>
+              <span class="text-neutral-400"> - Diagnostico autonomo e dosagem alto risco: NUNCA com vibe coding</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Problema da ultima milha</strong>
+              <span class="text-neutral-400"> - Construir e facil, fazer usar e o desafio</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Checklist de 10 perguntas</strong>
+              <span class="text-neutral-400"> - Passe por todas antes de usar clinicamente</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-teal-400 mb-2">Proxima Trilha:</h3>
+          <p class="text-neutral-300">Trilha 6 - Segundo Cerebro Medico</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-5-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo 5.5
+          </a>
+          <a href="../trilha6/index.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">
+            Proxima: Trilha 6 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 5.6: Seguranca, limites e ANVISA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

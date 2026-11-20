@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 6.6: Mantendo vivo - rotina de atualizacao | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha rose) */
+    html:not(.dark) .text-rose-400 { color: #9f1239; }
+    html:not(.dark) .bg-rose-500\/20 { background-color: rgba(225, 29, 72, 0.12); }
+    html:not(.dark) .bg-rose-500\/10 { background-color: rgba(225, 29, 72, 0.08); }
+    html:not(.dark) .border-rose-500\/30 { border-color: rgba(225, 29, 72, 0.25); }
+    html:not(.dark) .hover\:bg-rose-500\/30:hover { background-color: rgba(225, 29, 72, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span></a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span></a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span></a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span></a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span></a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span></a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span></a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span></a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span></a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1"><span id="theme-icon" class="text-lg">🌙</span></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 6</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-rose-400 font-medium">Modulo 6.6</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.6</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔄 Mantendo vivo: rotina de atualizacao</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Rotina semanal, agente de atualizacao, auditoria e integracao com pesquisa. Sistema que melhora com o tempo.</p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">Rotina</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📅 Rotina semanal de 15 minutos</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Dedique <strong class="text-rose-400">15 minutos por semana</strong> — domingo a noite, por exemplo — para ingerir o que acumulou. E o minimo investimento com maximo retorno.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Checklist semanal (15 min)
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">1.</span><span><strong>Revisar acumulados</strong> (2 min): O que voce leu, ouviu ou anotou nesta semana?</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">2.</span><span><strong>Arrastar para /raw</strong> (1 min): PDFs, notas, fotos — tudo para a pasta</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">3.</span><span><strong>Compilar com LLM</strong> (8 min): 1-2 fontes → paginas wiki com [[links]]</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">4.</span><span><strong>Revisar links</strong> (2 min): Verificar conexoes, adicionar links faltantes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">5.</span><span><strong>Atualizar index.md</strong> (2 min): Registrar ingestao no log</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Habito > perfeicao
+        </h3>
+        <p class="text-neutral-300">Melhor ingerir 1 artigo toda semana do que planejar ingerir 10 e nunca fazer. Consistencia supera volume. Em 1 ano de 15 min/semana, voce tera ~50 fontes compiladas — mais que a maioria dos colegas organiza na vida inteira.</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🤖 Agente de atualizacao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Quando voce ingere uma nova fonte, o LLM pode <strong class="text-rose-400">verificar se ela contradiz ou atualiza paginas existentes</strong>. Isso mantém a confiabilidade do vault ao longo do tempo.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">🔄</span> Como funciona
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1. Nova fonte entra:</strong> Voce ingere o guideline ESC 2026 (novo).</p>
+          <p><strong>2. LLM compara:</strong> Voce pede: "Compare com a pagina [[FA]] existente e identifique o que mudou."</p>
+          <p><strong>3. Sugestao de atualizacao:</strong> LLM responde: "A dose de dronedarona mudou de X para Y. A pagina [[Dronedarona]] precisa ser atualizada."</p>
+          <p><strong>4. Voce decide:</strong> Aceita a sugestao, edita a pagina e registra no log.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Prompt sugerido
+        </h3>
+        <p class="text-neutral-300 text-sm italic">"Compare o texto abaixo com as paginas wiki existentes no vault. Identifique: (1) informacoes que mudaram, (2) novos conceitos a adicionar, (3) links que precisam ser criados. Liste as paginas que precisam de atualizacao."</p>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🔎 Auditoria periodica</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Uma verificacao <strong class="text-rose-400">mensal ou trimestral</strong> garante que tudo que voce consulta esta correto e atualizado. O Dataview ajuda a automatizar.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> O que verificar
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span><strong>Links quebrados:</strong> Paginas referenciadas que nao existem</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span><strong>Paginas orfas:</strong> Notas sem nenhum link apontando para elas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span><strong>Desatualizacao:</strong> Paginas baseadas em guidelines antigos (>2 anos)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span><strong>Lacunas:</strong> Areas da especialidade sem cobertura no vault</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h4 class="font-semibold text-rose-400 mb-2">Consulta Dataview para auditoria</h4>
+        <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300">
+          <p>```dataview</p>
+          <p>TABLE file.mtime as "Ultima edicao"</p>
+          <p>FROM "wiki"</p>
+          <p>WHERE file.mtime &lt; date(now) - dur(90 days)</p>
+          <p>SORT file.mtime ASC</p>
+          <p>```</p>
+        </div>
+        <p class="text-neutral-500 text-xs mt-2">Lista todas as paginas wiki nao editadas ha mais de 90 dias.</p>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🏆 O vault como portfolio de conhecimento</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Com o tempo, seu vault se torna um <strong class="text-rose-400">portfolio intelectual</strong>: tudo que voce aprendeu, organizado e conectado. Mais valioso que curriculo Lattes.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">📈</span> O vault ao longo do tempo
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1 mes:</strong> 5-10 paginas, guideline principal compilado. Ja util no dia a dia.</p>
+          <p><strong>6 meses:</strong> 30-50 paginas, rede densa de conexoes. Consultas retornam respostas ricas.</p>
+          <p><strong>1 ano:</strong> 50-100 paginas, portfolio completo da especialidade. Diferencial profissional.</p>
+          <p><strong>3 anos:</strong> 150+ paginas, segunda memoria funcional. Impossivel perder conhecimento.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Compartilhamento
+        </h3>
+        <p class="text-neutral-300">Seu vault pode ser compartilhado com residentes, colegas de equipe ou servico. E um legado de conhecimento que beneficia alem de voce — e diferencia voce como preceptor ou lider clinico.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🔬 Integrando com pesquisa (Trilha 3)</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Conecte o workflow de pesquisa da Trilha 3 com o segundo cerebro. <strong class="text-rose-400">Pesquisa alimenta o cerebro, cerebro informa a pesquisa.</strong>
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">🔗</span> Pipeline integrada
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>Elicit → Vault:</strong> Artigos encontrados na revisao de literatura entram como fichas compiladas no vault.</p>
+          <p><strong>Semantic Scholar → Vault:</strong> Grafos de citacao viram paginas de contexto e conexoes.</p>
+          <p><strong>Consensus → Vault:</strong> Respostas clinicas baseadas em evidencia alimentam paginas wiki.</p>
+          <p><strong>Vault → Pesquisa:</strong> Gaps identificados no vault viram perguntas de pesquisa para novos projetos.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Sinergia entre trilhas
+        </h3>
+        <p class="text-neutral-300">Em vez de pipelines isoladas (pesquisa num lugar, conhecimento em outro), tudo converge para o mesmo sistema. A Trilha 3 alimenta a Trilha 6, e a Trilha 6 orienta a Trilha 3. Integracao multiplica valor.</p>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📈 Resultado: sistema que melhora com o tempo</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Diferente de cursos e anotacoes que se degradam, o segundo cerebro <strong class="text-rose-400">melhora com cada nova ingestao</strong>. E o efeito bola de neve do conhecimento.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> O que voce construiu nesta trilha
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Entende por que medicos precisam de um segundo cerebro</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Conhece a arquitetura de 3 camadas (RAW, Compilador, Wiki)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Tem Obsidian instalado com vault funcional</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Ingeriu o guideline principal da especialidade</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Sabe consultar o vault com Copilot</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Tem rotina de manutencao de 15 min/semana</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">🚀</span> Proximo passo
+        </h3>
+        <p class="text-neutral-300">Seu segundo cerebro esta vivo. Agora, mantenha a rotina semanal e veja como cada nova ingestao torna o sistema mais valioso. Na proxima trilha, voce vai aprender a usar IA para marketing medico etico — e tudo que aprender pode ser ingerido no vault.</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div><strong class="text-white">Rotina semanal</strong><span class="text-neutral-400"> - 15 minutos que mantém o vault vivo</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div><strong class="text-white">Agente de atualizacao</strong><span class="text-neutral-400"> - LLM verifica contradicoes e sugere mudancas</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div><strong class="text-white">Auditoria periodica</strong><span class="text-neutral-400"> - Dataview identifica desatualizacoes</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div><strong class="text-white">Sistema anti-fragil</strong><span class="text-neutral-400"> - Melhora com o tempo, nao deteriora</span></div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-rose-400 mb-2">Proxima Trilha:</h3>
+          <p class="text-neutral-300">Trilha 7 - Marketing Medico Etico: seja encontrado por quem precisa de voce</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-6-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo 6.5</a>
+          <a href="../trilha7/index.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proxima: Trilha 7 →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 6.6: Mantendo vivo - rotina de atualizacao</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) { html.classList.remove('dark'); icon.textContent = '☀️'; localStorage.setItem('theme', 'light'); }
+      else { html.classList.add('dark'); icon.textContent = '🌙'; localStorage.setItem('theme', 'dark'); }
+    }
+    if (localStorage.getItem('theme') === 'light') { document.documentElement.classList.remove('dark'); document.getElementById('theme-icon').textContent = '☀️'; }
+  </script>
+
+</body>
+</html>

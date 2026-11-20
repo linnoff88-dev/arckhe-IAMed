@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 7: Marketing Medico Etico | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha emerald) */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <!-- Linha 1 -->
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <!-- Linha 2 -->
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300 text-sm">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-emerald-400 text-sm font-medium">Trilha 7</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        TRILHA 7 - MARKETING MEDICO ETICO
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📢 Marketing Medico Etico</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Seja encontrado por quem precisa de voce — sem ferir etica, CFM ou CRM. 72% dos pacientes pesquisam online antes de escolher medico. Marketing medico NAO e propaganda — e educacao em saude + presenca digital profissional.
+      </p>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Modulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">36</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">~6h</div>
+          <div class="text-xs text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modulos -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Divisor -->
+    <div class="flex items-center space-x-4 mb-8">
+      <div class="h-px flex-1 bg-dark-600"></div>
+      <span class="text-neutral-500 text-sm font-medium">Conteudo Detalhado</span>
+      <div class="h-px flex-1 bg-dark-600"></div>
+    </div>
+
+    <!-- Modulo 7.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">7.1</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⚖️ O que o CFM permite (e proibe) sobre presenca digital</h3>
+        <p class="text-neutral-400 text-sm">Resolucao CFM 2.336/2023 decodificada. O que pode e o que nao pode. Casos reais de medicos punidos. Diferenca entre marketing e publicidade medica.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📜</span>
+            <div class="flex-1">
+              <span class="font-medium">Resolucao CFM 2.336/2023 decodificada</span>
+              <span class="text-neutral-500 text-sm ml-2">- O que diz a resolucao em linguagem simples</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A Resolucao CFM 2.336/2023 e o documento que regulamenta a publicidade medica no Brasil. Ela define o que medicos podem e nao podem fazer em redes sociais, sites, videos e qualquer meio de comunicacao publica. Entender essa resolucao e a base de tudo.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Medicos sao punidos todo ano por desconhecer as regras. A resolucao e extensa e juridica — aqui voce aprende os pontos praticos que afetam o dia a dia digital.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">CFM 2.336/2023, publicidade medica, regulamentacao digital, CRM, limites legais, resolucao decodificada.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">✅</span>
+            <div class="flex-1">
+              <span class="font-medium">O que PODE: educacao, especialidade, estrutura</span>
+              <span class="text-neutral-500 text-sm ml-2">- Tudo que o CFM permite</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O CFM permite: publicar conteudo educativo em saude, informar sua especialidade e titulacao, mostrar a estrutura do consultorio/clinica, divulgar equipamentos e tecnicas disponiveis, e participar de entrevistas como fonte especializada.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Muitos medicos evitam presenca digital por medo de errar. Saber exatamente o que PODE fazer libera voce para agir com confianca e construir autoridade dentro das regras.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Educacao em saude, informacao de especialidade, estrutura do consultorio, conteudo permitido, autoridade medica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">🚫</span>
+            <div class="flex-1">
+              <span class="font-medium">O que NAO PODE: antes/depois, preco, garantia</span>
+              <span class="text-neutral-500 text-sm ml-2">- As linhas vermelhas do CFM</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">O CFM proibe: fotos antes/depois de procedimentos, divulgar precos de consultas ou procedimentos, garantir resultados ("eu curo", "resultado garantido"), sensacionalismo, autopromo como "o melhor", e depoimentos de pacientes como propaganda.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Muitos medicos sao denunciados por colegas ou pacientes justamente nesses pontos. Conhecer as proibicoes e tao importante quanto conhecer as permissoes.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Antes/depois proibido, preco proibido, garantia proibida, sensacionalismo, autopromo vedada, depoimentos como propaganda.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">⚠️</span>
+            <div class="flex-1">
+              <span class="font-medium">Casos reais de medicos punidos (e por que)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Aprender com erros alheios</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Analise de casos reais documentados em que medicos receberam advertencia, censura ou suspensao por infracoes na publicidade: cirurgiao plastico com antes/depois no Instagram, dermato divulgando preco de Botox, clinico garantindo cura.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cases reais transformam regras abstratas em licoes concretas. Cada caso mostra exatamente o que deu errado e como evitar o mesmo destino.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Punicoes do CRM, advertencia, censura, suspensao, casos reais, erros comuns, licoes praticas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🔍</span>
+            <div class="flex-1">
+              <span class="font-medium">Diferenca marketing vs publicidade medica</span>
+              <span class="text-neutral-500 text-sm ml-2">- Conceitos distintos com consequencias diferentes</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Marketing medico e posicionamento profissional: presenca digital, conteudo educativo, reputacao. Publicidade medica e propaganda direta: anuncio pago, promocao de servico. O CFM regula a publicidade, mas o marketing etico esta dentro das regras.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Confundir marketing com publicidade leva a dois extremos: ou o medico faz tudo errado (publicidade disfarçada) ou nao faz nada (medo paralisante). Entender a diferenca e o ponto de partida.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Marketing vs publicidade, posicionamento profissional, propaganda direta, zona segura, zona de risco, estrategia etica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">📊</span>
+            <div class="flex-1">
+              <span class="font-medium">Oportunidade: 72% pesquisam online</span>
+              <span class="text-neutral-500 text-sm ml-2">- O paciente ja esta te procurando</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Dados mostram que 72% dos pacientes pesquisam online antes de escolher um medico. Se voce nao tem presenca digital profissional, esta invisivel para a maioria dos pacientes que poderiam te escolher. A questao nao e SE deve estar online, mas COMO.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A presenca digital nao e vaidade — e necessidade profissional. O medico que nao aparece no Google perde pacientes para quem aparece, independente da qualidade clinica.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">72% pesquisam online, presenca digital obrigatoria, visibilidade profissional, Google como porta de entrada, paciente digital.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-7-1.html')" class="px-4 py-2 text-sm bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-7-1.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 7.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">7.2</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🌐 Sua presenca digital profissional</h3>
+        <p class="text-neutral-400 text-sm">Google Meu Negocio, Doctoralia, LinkedIn e Instagram medico. Configure perfis completos com ajuda de IA e posicione-se como especialista.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📍</span>
+            <div class="flex-1">
+              <span class="font-medium">Google Meu Negocio: perfil medico gratuito</span>
+              <span class="text-neutral-500 text-sm ml-2">- Ser encontrado no Google Maps</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Google Meu Negocio e a ficha gratuita que aparece quando alguem pesquisa seu nome ou "medico + especialidade + cidade" no Google. Inclui endereco, telefone, horarios, fotos, avaliacoes e perguntas frequentes.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">E a ferramenta mais importante e mais negligenciada do marketing medico. Gratuita, com alcance enorme e controle total. Quem nao tem perfil otimizado perde pacientes todo dia.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Google Meu Negocio, Google Maps, ficha de medico, perfil gratuito, busca local, visibilidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🩺</span>
+            <div class="flex-1">
+              <span class="font-medium">Doctoralia/BoaConsulta: otimizar perfil com IA</span>
+              <span class="text-neutral-500 text-sm ml-2">- Plataformas de saude</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Doctoralia e BoaConsulta sao plataformas onde pacientes buscam medicos por especialidade. Ter perfil completo (bio, formacao, foto profissional, areas de atuacao) aumenta drasticamente os agendamentos. IA ajuda a escrever textos persuasivos e eticos.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Essas plataformas ja tem o trafego — o paciente ja esta la buscando. Perfil completo vs perfil vazio e a diferenca entre receber 10 ou zero agendamentos por mes.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Doctoralia, BoaConsulta, perfil otimizado, bio profissional, agendamento online, IA para textos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">💼</span>
+            <div class="flex-1">
+              <span class="font-medium">LinkedIn: posicionamento como especialista</span>
+              <span class="text-neutral-500 text-sm ml-2">- Autoridade profissional</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">LinkedIn e a rede profissional onde voce constroi autoridade entre pares, instituicoes e potenciais parceiros. Perfil otimizado, publicacoes sobre sua area e networking geram oportunidades de palestras, parcerias e indicacoes.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Enquanto Instagram alcanca pacientes, LinkedIn alcanca colegas, hospitais e oportunidades de carreira. Os dois se complementam e devem ser trabalhados juntos.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">LinkedIn medico, posicionamento profissional, autoridade entre pares, networking, headline otimizada, publicacoes estrategicas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">📸</span>
+            <div class="flex-1">
+              <span class="font-medium">Instagram medico: o que postar, frequencia, tom</span>
+              <span class="text-neutral-500 text-sm ml-2">- Estrategia para pacientes</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Estrategia para Instagram medico: conteudo educativo (70%), bastidores do consultorio (20%) e pessoal profissional (10%). Frequencia ideal de 3-4 posts por semana. Tom acessivel mas cientifico, sem sensacionalismo.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Instagram e onde a maioria dos pacientes consome conteudo de saude. Com estrategia certa, voce educa, gera confianca e atrai pacientes que ja chegam informados ao consultorio.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Instagram medico, mix de conteudo 70/20/10, frequencia de posts, tom profissional, Reels educativos, carrosseis.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🤖</span>
+            <div class="flex-1">
+              <span class="font-medium">IA para criar bio/descricoes/textos</span>
+              <span class="text-neutral-500 text-sm ml-2">- Escrita profissional com IA</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para gerar biografias profissionais, descricoes de servicos, textos de apresentacao e headlines otimizadas para cada plataforma. Prompts especificos para contexto medico geram resultados eticos e persuasivos.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A maioria dos medicos tem bio generica ou incompleta. IA gera em minutos textos profissionais que levariam horas para escrever — e otimizados para cada plataforma.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Bio com IA, descricao de servicos, headline otimizada, prompt para bio medica, personalizacao por plataforma.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🎯</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio: configurar perfil completo</span>
+              <span class="text-neutral-500 text-sm ml-2">- Google + Doctoralia + LinkedIn</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico guiado: configurar Google Meu Negocio completo, otimizar perfil Doctoralia com textos gerados por IA, e atualizar LinkedIn com headline e resumo profissional. Resultado: 3 perfis profissionais funcionais em 1 hora.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Teoria sem pratica nao gera resultado. Ao final deste modulo, voce tera 3 perfis profissionais otimizados e funcionais — impacto imediato na sua visibilidade.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico, perfil Google, perfil Doctoralia, perfil LinkedIn, resultado tangivel, 1 hora de trabalho.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-7-2.html')" class="px-4 py-2 text-sm bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-7-2.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 7.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">7.3</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">✍️ Conteudo educativo com IA: de zero a consistente</h3>
+        <p class="text-neutral-400 text-sm">Use IA para gerar ideias, roteiros, legendas e calendarios editoriais. Crie conteudo educativo de qualidade sem perder horas por semana.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">💡</span>
+            <div class="flex-1">
+              <span class="font-medium">IA para gerar ideias de posts por especialidade</span>
+              <span class="text-neutral-500 text-sm ml-2">- Nunca mais fique sem assunto</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para gerar listas de temas relevantes para sua especialidade: duvidas frequentes dos pacientes, mitos a desmentir, novidades em guidelines, datas de saude, e temas sazonais. Prompt: "Gere 30 ideias de posts educativos para [especialidade]".</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">O maior obstáculo para consistencia e nao saber o que publicar. IA resolve isso em 5 minutos — voce nunca mais fica sem ideias.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Geracao de ideias, temas por especialidade, duvidas de pacientes, mitos vs fatos, sazonalidade, brainstorm com IA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🎬</span>
+            <div class="flex-1">
+              <span class="font-medium">Criar roteiros de video curto</span>
+              <span class="text-neutral-500 text-sm ml-2">- Reels e TikTok educativos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">IA gera roteiros estruturados para videos de 30-60 segundos: gancho (frase de impacto nos primeiros 3s), desenvolvimento (informacao util), e CTA (chamada para acao). Formato otimizado para Reels e TikTok medico.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Video curto e o formato com maior alcance organico. Com roteiro pronto, gravar leva 5 minutos — o que antes paralisava por horas vira processo simples.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Roteiro de Reels, gancho de 3 segundos, CTA, video curto, estrutura de roteiro, TikTok medico.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📝</span>
+            <div class="flex-1">
+              <span class="font-medium">Escrever legendas educativas</span>
+              <span class="text-neutral-500 text-sm ml-2">- Informar sem ser chato</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">IA gera legendas para Instagram com estrutura: abertura curiosa, informacao clinica em linguagem leiga, dica pratica acionavel e CTA (salve, compartilhe, comente). Tom profissional mas acessivel, sem jargao excessivo.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Legendas bem escritas aumentam engajamento e salvamentos — os dois sinais que o Instagram mais valoriza. IA gera em segundos o que levaria 30 minutos para escrever.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Legendas educativas, estrutura de legenda, linguagem leiga, CTA, engajamento, salvamentos, tom profissional.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🔬</span>
+            <div class="flex-1">
+              <span class="font-medium">Adaptar artigo cientifico para linguagem leiga</span>
+              <span class="text-neutral-500 text-sm ml-2">- De paper a post acessivel</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para transformar artigos cientificos em conteudo acessivel: colar o abstract, pedir resumo em linguagem leiga, gerar post educativo baseado nas conclusoes. Sempre citando a fonte e evitando exageros nas conclusoes.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Conteudo baseado em evidencia e o que diferencia o medico do influencer. IA acelera a traducao de ciencia para linguagem do paciente sem perder a precisao.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Traducao cientifica, linguagem leiga, abstract para post, evidencia como conteudo, citacao de fonte, precisao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">📅</span>
+            <div class="flex-1">
+              <span class="font-medium">Calendario editorial de 30 dias com IA</span>
+              <span class="text-neutral-500 text-sm ml-2">- Planejamento completo em minutos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Gerar com IA um calendario editorial completo de 30 dias: 3-4 posts por semana, alternando formatos (carrossel, Reel, post estático), temas variados, datas de saude incluidas. Resultado: planilha pronta para executar.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Consistencia mata perfeicao. Um calendario pronto elimina a decisao diaria "o que eu publico hoje?" — que e onde a maioria desiste.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Calendario editorial, 30 dias, consistencia, mix de formatos, datas de saude, planejamento com IA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">⚠️</span>
+            <div class="flex-1">
+              <span class="font-medium">IMPORTANTE: sempre revisar (IA pode errar)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Informacao medica imprecisa e perigosa</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">IA pode gerar informacao medica incorreta, desatualizada ou imprecisa. TODO conteudo gerado por IA deve ser revisado pelo medico antes de publicar. Voce e o responsavel pelo que publica — nao a IA. Checklist: dados corretos, fonte valida, tom adequado, CFM ok.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Publicar informacao medica errada gera dano ao paciente e risco ao medico. IA e assistente, nao autora. A revisao final e inegociavel.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Revisao obrigatoria, alucinacao de IA, informacao medica imprecisa, responsabilidade do medico, checklist pre-publicacao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-7-3.html')" class="px-4 py-2 text-sm bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-7-3.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 7.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">7.4</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🔎 SEO e Google: ser encontrado por quem te procura</h3>
+        <p class="text-neutral-400 text-sm">Como pacientes buscam medicos no Google, palavras-chave da especialidade, Google Meu Negocio otimizado e site simples com IA.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🔍</span>
+            <div class="flex-1">
+              <span class="font-medium">Como pacientes buscam medicos no Google</span>
+              <span class="text-neutral-500 text-sm ml-2">- A jornada de busca do paciente</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Pacientes buscam de 3 formas: por sintoma ("dor no peito o que pode ser"), por especialidade + local ("cardiologista em Curitiba"), e por nome do medico. Entender cada jornada permite otimizar sua presenca para ser encontrado em todas.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Se voce nao aparece quando o paciente busca, outro medico aparece. Entender como o paciente busca e o primeiro passo para ser encontrado.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Busca por sintoma, busca por especialidade, busca por nome, jornada do paciente, intencao de busca, Google como porta.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🔑</span>
+            <div class="flex-1">
+              <span class="font-medium">Palavras-chave da especialidade com IA</span>
+              <span class="text-neutral-500 text-sm ml-2">- Descobrir o que seus pacientes buscam</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para pesquisar e listar as palavras-chave que pacientes usam ao buscar sua especialidade: termos populares, perguntas frequentes, variacoes regionais. Prompt: "Liste 30 termos que pacientes buscam no Google sobre [especialidade]".</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Palavras-chave sao a base do SEO. Se voce nao usa os termos que o paciente digita, seu conteudo e invisivel mesmo que seja excelente.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Palavras-chave, SEO medico, pesquisa de termos, intencao de busca, volume de busca, long tail keywords.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📍</span>
+            <div class="flex-1">
+              <span class="font-medium">Google Meu Negocio: reviews, fotos, FAQ</span>
+              <span class="text-neutral-500 text-sm ml-2">- Otimizacao avancada do perfil</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Otimizacao avancada do Google Meu Negocio: solicitar e responder avaliacoes, adicionar fotos profissionais do consultorio, criar FAQ com perguntas frequentes dos pacientes, manter horarios atualizados e usar posts do Google.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Perfil otimizado aparece acima dos concorrentes nas buscas locais. Reviews, fotos e FAQ sao os tres fatores que mais influenciam a decisao do paciente.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Google Meu Negocio avancado, reviews, fotos profissionais, FAQ, posts Google, busca local, ranking.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🖥️</span>
+            <div class="flex-1">
+              <span class="font-medium">Site simples: o que ter</span>
+              <span class="text-neutral-500 text-sm ml-2">- Nao precisa ser caro</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Um site medico simples precisa ter: nome, especialidade, CRM, endereco, telefone, WhatsApp, areas de atuacao, breve bio e formulario de contato. Pode ser feito com Carrd, Google Sites ou Wix em menos de 2 horas.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Site proprio gera credibilidade e serve como "cartao de visitas digital" que aparece nas buscas. Nao precisa ser complexo — precisa existir e estar correto.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Site medico simples, informacoes essenciais, Carrd, Google Sites, Wix, credibilidade digital, custo baixo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🤖</span>
+            <div class="flex-1">
+              <span class="font-medium">IA para gerar FAQ/textos/meta descriptions</span>
+              <span class="text-neutral-500 text-sm ml-2">- Conteudo do site com IA</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para gerar o conteudo do site: FAQ com perguntas reais dos pacientes, textos de servicos por area de atuacao, e meta descriptions otimizadas para Google (o texto que aparece nos resultados de busca).</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Gerar conteudo de site e a tarefa que mais paralisa medicos. IA produz textos profissionais em minutos — voce so revisa e publica.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">FAQ com IA, textos de servico, meta description, SEO on-page, conteudo otimizado, resultado de busca.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🎯</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio: otimizar presenca para 3 termos</span>
+              <span class="text-neutral-500 text-sm ml-2">- Resultado pratico imediato</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico: escolher 3 termos-chave da sua especialidade, otimizar Google Meu Negocio com esses termos, criar 3 posts/FAQ usando esses termos, e verificar se voce aparece quando busca por eles. Resultado mensuravel.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">SEO nao e teoria — e pratica. Ao otimizar para 3 termos especificos, voce ve resultados em semanas e entende o processo para expandir depois.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico SEO, 3 termos-chave, otimizacao mensuravel, resultado em semanas, processo replicavel.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-7-4.html')" class="px-4 py-2 text-sm bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-7-4.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 7.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">7.5</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⭐ Reputacao online e gestao de reviews</h3>
+        <p class="text-neutral-400 text-sm">Por que reviews importam, como pedir e responder eticamente, monitoramento e gestao de crise. 92% dos pacientes leem avaliacoes.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📊</span>
+            <div class="flex-1">
+              <span class="font-medium">Por que reviews importam (92% leem)</span>
+              <span class="text-neutral-500 text-sm ml-2">- A prova social do medico</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">92% dos pacientes leem avaliacoes online antes de agendar consulta. Reviews funcionam como prova social — a opiniao de outros pacientes pesa mais que qualquer propaganda. Medicos com mais de 20 reviews e nota acima de 4.5 recebem significativamente mais agendamentos.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ignorar reviews e ignorar o fator mais importante na decisao do paciente. Gerenciar ativamente sua reputacao online e tao essencial quanto manter o CRM em dia.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">92% leem reviews, prova social, nota minima 4.5, volume de reviews, decisao do paciente, reputacao digital.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🤝</span>
+            <div class="flex-1">
+              <span class="font-medium">Como pedir reviews eticamente (pos-consulta)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Sem pressao, com resultado</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Tecnicas eticas para solicitar avaliacoes: mensagem pos-consulta via WhatsApp com link direto, QR code na recepcao, e-mail de acompanhamento, ou pedido verbal ao final da consulta. Sempre opcional, nunca condicionado a algum beneficio.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Pacientes satisfeitos raramente avaliam espontaneamente — mas fazem quando pedidos educadamente. Um simples sistema pos-consulta pode gerar 5-10 reviews por mes.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Pedido etico, pos-consulta, link direto Google, QR code, WhatsApp, e-mail follow-up, sistema automatizado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">💬</span>
+            <div class="flex-1">
+              <span class="font-medium">Como responder reviews negativas (modelo com IA)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Transformar critica em oportunidade</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Framework para responder reviews negativas: agradecer o feedback, nao discutir detalhes clinicos publicamente (sigilo), oferecer canal privado para resolucao, manter tom profissional. IA gera respostas modelo que voce adapta para cada caso.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Uma resposta bem dada a review negativa gera mais credibilidade que 10 reviews positivas. Pacientes observam como voce lida com criticas — isso define confianca.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Resposta a critica, sigilo medico, canal privado, tom profissional, IA para respostas, credibilidade na adversidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🔔</span>
+            <div class="flex-1">
+              <span class="font-medium">Monitoramento: Google Alerts + IA</span>
+              <span class="text-neutral-500 text-sm ml-2">- Saber o que falam de voce</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Configurar Google Alerts com seu nome e nome da clinica para receber notificacoes quando alguem mencionar voce online. Usar IA para resumir mencoes e identificar sentimento (positivo, neutro, negativo). Monitoramento passivo que nao consome tempo.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Voce nao pode gerenciar o que nao sabe que existe. Monitoramento automatico permite agir rapido quando algo relevante acontece — positivo ou negativo.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Google Alerts, monitoramento de mencoes, analise de sentimento, reputacao proativa, alerta automatico.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🚨</span>
+            <div class="flex-1">
+              <span class="font-medium">Gestao de crise (viral negativo)</span>
+              <span class="text-neutral-500 text-sm ml-2">- O que fazer quando algo viraliza</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Protocolo para quando algo negativo viraliza: nao responder por impulso, consultar assessoria juridica, preparar nota curta e factual, mobilizar reviews positivos, e aguardar o ciclo de atencao (24-72h). Prevenir e melhor: conduta impecavel + presenca digital forte.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Crises digitais acontecem — ate com medicos eticos. Ter um protocolo pronto evita que o panico leve a decisoes que pioram a situacao.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Gestao de crise, viral negativo, protocolo de resposta, assessoria juridica, ciclo de atencao, prevencao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🎯</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio: responder 3 reviews ficticias</span>
+              <span class="text-neutral-500 text-sm ml-2">- Praticar com seguranca</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico: 3 reviews ficticias (positiva, negativa justa, e negativa injusta/falsa) para voce praticar respostas usando IA como assistente. Resultado: modelo de resposta para cada tipo que voce pode adaptar para reviews reais.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Praticar com reviews ficticias elimina o panico de lidar com critica real. Quando a review negativa chegar, voce ja tem o processo e o tom internalizados.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico, review positiva, negativa justa, negativa falsa, modelo de resposta, pratica segura.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-7-5.html')" class="px-4 py-2 text-sm bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-7-5.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 7.6 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">7.6</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">📈 Metricas que importam (sem ser guru digital)</h3>
+        <p class="text-neutral-400 text-sm">O que medir, o que NAO medir, dashboard simples, IA para analisar dados e ROI do marketing medico.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📊</span>
+            <div class="flex-1">
+              <span class="font-medium">O que medir: agendamentos, origem, engajamento</span>
+              <span class="text-neutral-500 text-sm ml-2">- Metricas que geram pacientes</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">As 3 metricas que realmente importam: quantos agendamentos vieram do digital, de onde vieram (Google, Instagram, indicacao online), e qual conteudo gera mais engajamento relevante (salvamentos, compartilhamentos, mensagens diretas).</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Sem metricas, voce nao sabe se o esforco esta funcionando. Com as metricas certas, voce duplica o que funciona e para de perder tempo com o que nao funciona.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Agendamentos digitais, origem do paciente, engajamento relevante, salvamentos, compartilhamentos, metricas de conversao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🚫</span>
+            <div class="flex-1">
+              <span class="font-medium">O que NAO medir: likes, seguidores = vaidade</span>
+              <span class="text-neutral-500 text-sm ml-2">- Metricas que enganam</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Likes e numero de seguidores sao metricas de vaidade — nao geram pacientes. Um medico com 500 seguidores engajados pode ter mais agendamentos que um com 50.000 seguidores passivos. Foco no resultado (pacientes), nao na aparencia (seguidores).</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A obsessao com seguidores leva a comportamentos antiéticos (compra de seguidores, sensacionalismo para viralizar). Entender que seguidores NAO sao a metrica evita armadilhas.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Metricas de vaidade, likes vs agendamentos, seguidores passivos, engajamento real, qualidade vs quantidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📋</span>
+            <div class="flex-1">
+              <span class="font-medium">Dashboard simples: Google Analytics + planilha</span>
+              <span class="text-neutral-500 text-sm ml-2">- Controle sem complicacao</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Montar um dashboard simples em Google Sheets que consolida: agendamentos por semana (e origem), metricas do Instagram (salvamentos, DMs), visualizacoes do Google Meu Negocio. Google Analytics no site para rastrear visitas e cliques no WhatsApp.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Dashboard nao precisa ser software caro. Uma planilha atualizada semanalmente em 5 minutos da toda visibilidade que voce precisa para tomar decisoes.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Dashboard simples, Google Sheets, Google Analytics, metricas consolidadas, atualizacao semanal, 5 minutos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🤖</span>
+            <div class="flex-1">
+              <span class="font-medium">IA para analisar dados e sugerir ajustes</span>
+              <span class="text-neutral-500 text-sm ml-2">- Analista de marketing pessoal</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Colar seus dados de metricas na IA e pedir analise: "Aqui estao meus dados de 4 semanas. O que esta funcionando? O que devo mudar?". IA identifica padroes, sugere ajustes de conteudo e frequencia, e prioriza acoes de maior impacto.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Medicos nao sao analistas de marketing — nem precisam ser. IA faz a analise que um consultor cobraria R$ 2.000/mes, de graca, em 30 segundos.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Analise com IA, identificacao de padroes, sugestao de ajustes, priorizacao de acoes, consultor digital gratuito.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">💰</span>
+            <div class="flex-1">
+              <span class="font-medium">ROI do marketing: investimento vs retorno</span>
+              <span class="text-neutral-500 text-sm ml-2">- Quanto vale em pacientes</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Calcular o retorno do marketing: quanto tempo/dinheiro voce investe vs quantos pacientes novos gera. Se cada paciente novo vale R$ 300 em media e voce investe 4h/mes + R$ 0 (organico), o ROI e infinito. Se paga assessoria de R$ 1.500/mes, precisa de 5 pacientes novos para empatar.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">ROI transforma marketing de "gasto" em "investimento mensuravel". Quando voce sabe que cada real gera X reais em retorno, a decisao de investir fica obvia.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">ROI, retorno sobre investimento, valor medio do paciente, custo de aquisicao, investimento vs retorno, break-even.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🎯</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio: criar dashboard de 3 metricas</span>
+              <span class="text-neutral-500 text-sm ml-2">- Seu painel de controle</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-emerald-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico: criar planilha Google Sheets com 3 metricas (agendamentos/semana, origem do paciente, melhor conteudo do mes). Configurar atualizacao semanal de 5 minutos. Resultado: dashboard funcional que voce usa a partir de hoje.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">O dashboard so funciona se for simples o suficiente para manter. 3 metricas e o numero magico — informativo sem ser trabalhoso.</p>
+              </div>
+              <div>
+                <span class="text-emerald-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico, dashboard 3 metricas, Google Sheets, atualizacao semanal, simplicidade, resultado imediato.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-7-6.html')" class="px-4 py-2 text-sm bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-7-6.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Navegacao -->
+    <div class="mt-12 flex flex-col sm:flex-row gap-4">
+      <a href="../trilha6/index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Trilha 6: 2o Cerebro Medico
+      </a>
+      <a href="../trilha8/index.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+        Proxima: Trilha 8 - Escala →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Trilha 7: Marketing Medico Etico</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative flex items-start justify-center min-h-screen p-4 pt-8 overflow-y-auto">
+      <div class="relative bg-dark-800 rounded-2xl border border-dark-600 w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl">
+        <div class="sticky top-0 z-10 flex items-center justify-between p-4 bg-dark-800 border-b border-dark-600">
+          <h3 class="font-bold text-lg text-emerald-400">Conteudo do Modulo</h3>
+          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors text-neutral-400 hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+          <div class="flex items-center justify-center py-12">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-400"></div>
+            <span class="ml-3 text-neutral-400">Carregando...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) {
+          exp.classList.remove('active');
+        }
+      });
+
+      explanation.classList.toggle('active');
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+
+    function openModal(moduloUrl) {
+      const modal = document.getElementById('modal-overlay');
+      const content = document.getElementById('modal-content');
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      content.innerHTML = `
+        <div class="flex items-center justify-center py-12">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-400"></div>
+          <span class="ml-3 text-neutral-400">Carregando...</span>
+        </div>
+      `;
+
+      fetch(moduloUrl)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const mainContent = doc.querySelector('main');
+
+          if (mainContent) {
+            content.innerHTML = mainContent.innerHTML;
+          } else {
+            content.innerHTML = '<p class="text-neutral-400">Conteudo nao encontrado.</p>';
+          }
+        })
+        .catch(err => {
+          content.innerHTML = '<p class="text-red-400">Erro ao carregar conteudo.</p>';
+        });
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal-overlay');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>

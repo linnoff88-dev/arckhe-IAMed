@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 3: Etica e Regulamentacao | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha purple) */
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300 text-sm">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-purple-400 text-sm font-medium">Trilha 3</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">
+        TRILHA 3 - ETICA E REGULAMENTACAO
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">⚖️ Etica e Regulamentacao</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Use IA com seguranca juridica e etica. Resolucao CFM, LGPD, consentimento informado e caso integrador para consolidar tudo.
+      </p>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">4</div>
+          <div class="text-xs text-neutral-400">Modulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">24</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">~3h</div>
+          <div class="text-xs text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modulos -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Modulo 3.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.1</span>
+          <span class="text-xs text-neutral-500">~45 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">📋 Resolucao CFM 2.454/2026: o que voce precisa saber</h3>
+        <p class="text-neutral-400 text-sm">Entenda a regulamentacao do CFM sobre uso de IA na medicina. O que deve fazer, o que nao pode, e como documentar.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📜</span>
+            <div class="flex-1">
+              <span class="font-medium">O que e a Resolucao CFM 2.454/2026</span>
+              <span class="text-neutral-500 text-sm ml-2">- Publicada fev/2026, vigor ago/2026</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A Resolucao CFM 2.454/2026 e o primeiro marco regulatorio do Conselho Federal de Medicina sobre uso de Inteligencia Artificial na pratica medica brasileira. Publicada em fevereiro de 2026, entra em vigor em agosto de 2026.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Todo medico que usa IA precisa conhecer as regras do jogo. Descumprir a resolucao pode gerar processo etico. Conhece-la te protege e te da seguranca para usar IA com confianca.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Marco regulatorio, CFM, vigencia agosto/2026, responsabilidade medica, supervisao humana obrigatoria, registro em prontuario.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">✅</span>
+            <div class="flex-1">
+              <span class="font-medium">O que DEVE fazer</span>
+              <span class="text-neutral-500 text-sm ml-2">- 6 obrigacoes do medico</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Sao as 6 obrigacoes que a resolucao impoe ao medico: decisao final e sempre sua, registrar uso de IA no prontuario, informar o paciente, manter-se atualizado, usar ferramentas validadas e supervisionar sempre.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cumprir estas obrigacoes te protege juridicamente e garante que a IA seja uma aliada, nao um risco. Sao regras simples que se tornam habito rapidamente.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Decisao final humana, registro no prontuario, informar paciente, atualizacao continua, validacao de ferramentas, supervisao permanente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">🚫</span>
+            <div class="flex-1">
+              <span class="font-medium">O que NAO pode fazer</span>
+              <span class="text-neutral-500 text-sm ml-2">- 5 proibicoes claras</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">As 5 proibicoes da resolucao: delegar decisao clinica a IA, usar IA sem supervisao humana, ignorar vieses da ferramenta, usar dados sem conformidade LGPD, e omitir uso de IA ao paciente.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Saber o que nao pode evita erros graves. Cada proibicao existe para proteger o paciente e o medico. Violar qualquer uma pode resultar em processo etico-disciplinar.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Delegacao proibida, supervisao obrigatoria, vieses algoritmicos, LGPD, transparencia com paciente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">📝</span>
+            <div class="flex-1">
+              <span class="font-medium">Modelo de registro no prontuario</span>
+              <span class="text-neutral-500 text-sm ml-2">- Template pronto para usar</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Modelo padronizado para registrar uso de IA no prontuario: "Utilizei ferramenta de IA [tipo] para apoio em [tarefa]. Resultado revisado e validado pelo medico assistente."</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">O registro adequado e obrigatorio pela resolucao e protege o medico juridicamente. Ter um modelo pronto economiza tempo e garante padronizacao.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Registro padronizado, prontuario eletronico, rastreabilidade, documentacao legal, template CFM.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">💡</span>
+            <div class="flex-1">
+              <span class="font-medium">O que a resolucao NAO faz</span>
+              <span class="text-neutral-500 text-sm ml-2">- Desmistificando medos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A resolucao NAO proibe o uso de IA, NAO cria certificacao obrigatoria, NAO define quais ferramentas usar, e NAO impede a inovacao. Ela regulamenta, nao proibe.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Muitos medicos tem medo de usar IA por interpretar a resolucao como proibitiva. Entender o que ela NAO faz elimina barreiras desnecessarias e encoraja o uso responsavel.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Regulamentacao vs proibicao, liberdade de inovacao, ausencia de certificacao, autonomia na escolha de ferramentas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">⚠️</span>
+            <div class="flex-1">
+              <span class="font-medium">Classificacao de risco institucional</span>
+              <span class="text-neutral-500 text-sm ml-2">- Baixo, medio, alto, inaceitavel</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Sistema de classificacao de risco para uso de IA em instituicoes de saude. Risco baixo: ferramentas administrativas. Medio: apoio diagnostico com supervisao. Alto: IA em decisoes clinicas criticas. Inaceitavel: IA autonoma sem supervisao.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Permite avaliar cada ferramenta de IA que voce usa e adequar o nivel de supervisao. Quanto maior o risco, maior deve ser a vigilancia humana.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Risco baixo, medio, alto, inaceitavel, matriz de risco, supervisao proporcional, governanca de IA em saude.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-3-1.html')" class="px-4 py-2 text-sm bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 border border-purple-500/30 rounded-lg font-medium transition-colors">
+          📖 Ver em Modal
+        </button>
+        <a href="modulo-3-1.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-medium transition-colors">
+          📄 Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 3.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.2</span>
+          <span class="text-xs text-neutral-500">~45 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🔒 LGPD no consultorio: como usar IA sem violar a lei</h3>
+        <p class="text-neutral-400 text-sm">Aprenda a anonimizar dados, usar ferramentas com compliance e proteger seu paciente e sua carreira.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🛗</span>
+            <div class="flex-1">
+              <span class="font-medium">Analogia: elevador vs staffing</span>
+              <span class="text-neutral-500 text-sm ml-2">- Dados identificaveis = risco</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Colocar dados identificaveis do paciente numa IA generativa e como discutir o caso no elevador do hospital: qualquer pessoa pode ouvir. Na staffing (sessao clinica fechada), voce controla quem ouve. A IA publica e o elevador.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A analogia torna intuitivo o que a LGPD exige. Voce ja sabe que nao deve discutir caso no elevador. Com a IA e a mesma logica, aplicada ao ambiente digital.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Dados identificaveis, ambiente controlado vs publico, LGPD, privacidade digital, analogia elevador/staffing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🚫</span>
+            <div class="flex-1">
+              <span class="font-medium">O que NUNCA colocar na IA</span>
+              <span class="text-neutral-500 text-sm ml-2">- Dados proibidos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Lista de dados que NUNCA devem ser inseridos em ferramentas de IA: nome completo, CPF, RG, endereco, telefone, numero de prontuario, e qualquer dado que identifique diretamente o paciente.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Um unico deslize com dados identificaveis pode gerar processo por violacao da LGPD. Memorizar esta lista e tao importante quanto saber contraindicacoes de medicamentos.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Nome, CPF, RG, endereco, telefone, numero de prontuario, dados sensiveis, identificacao direta.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">✅</span>
+            <div class="flex-1">
+              <span class="font-medium">O que PODE usar</span>
+              <span class="text-neutral-500 text-sm ml-2">- Dados anonimizados permitidos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Dados que podem ser usados com seguranca: idade (nao data de nascimento), sexo, comorbidades, lista de medicacoes, resultados de exames anonimizados, sinais e sintomas.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Saber o que PODE usar e tao importante quanto saber o que nao pode. Isso evita a paralisia de "nao posso usar nada" e mostra que e perfeitamente possivel usar IA com dados clinicos de forma segura.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Idade, sexo, comorbidades, medicacoes, resultados anonimizados, dados desidentificados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🔄</span>
+            <div class="flex-1">
+              <span class="font-medium">Antes vs depois da anonimizacao</span>
+              <span class="text-neutral-500 text-sm ml-2">- Exemplos praticos completos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Comparacao lado a lado de dados antes e depois da anonimizacao. Antes: "Maria Silva, 62 anos, CPF 123.456.789-00, mora na Rua X". Depois: "Paciente feminina, 62 anos, com HAS e DM2".</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exemplos concretos tornam o processo de anonimizacao automatico. Depois de ver 3-4 exemplos, voce faz mentalmente em segundos antes de colar qualquer dado na IA.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Anonimizacao pratica, antes vs depois, desidentificacao, dados clinicos seguros, processo mental rapido.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🛡️</span>
+            <div class="flex-1">
+              <span class="font-medium">Ferramentas com melhor compliance</span>
+              <span class="text-neutral-500 text-sm ml-2">- Claude, ChatGPT Team, Perplexity Pro</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ferramentas que oferecem melhor compliance com privacidade de dados: Claude (Anthropic), ChatGPT Team/Enterprise (OpenAI), Perplexity Pro. Estas versoes nao usam seus dados para treinar modelos. NOS NAO FORNECEMOS estas ferramentas.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Nem toda ferramenta de IA trata dados da mesma forma. Escolher a ferramenta certa e tao importante quanto anonimizar. A versao gratuita do ChatGPT, por exemplo, pode usar seus dados para treinamento.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Compliance, politica de dados, versoes pagas vs gratuitas, treinamento de modelos, Claude, ChatGPT Team, Perplexity Pro.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">📋</span>
+            <div class="flex-1">
+              <span class="font-medium">Checklist rapido de anonimizacao</span>
+              <span class="text-neutral-500 text-sm ml-2">- 5 passos antes de colar dados</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Checklist de 5 passos obrigatorios antes de colar dados na IA: 1) Remover nome e iniciais, 2) Remover CPF/RG/documentos, 3) Remover endereco e telefone, 4) Remover numero de prontuario, 5) Substituir data de nascimento por idade.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Um checklist simples e memorizavel torna o processo automatico. Em 10 segundos voce garante conformidade com a LGPD. Imprima e cole ao lado do computador.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Checklist de 5 passos, anonimizacao rapida, rotina de seguranca, habito de privacidade, LGPD pratica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-3-2.html')" class="px-4 py-2 text-sm bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 border border-purple-500/30 rounded-lg font-medium transition-colors">
+          📖 Ver em Modal
+        </button>
+        <a href="modulo-3-2.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-medium transition-colors">
+          📄 Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 3.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.3</span>
+          <span class="text-xs text-neutral-500">~45 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🤝 Consentimento informado na era da IA</h3>
+        <p class="text-neutral-400 text-sm">Quando e como informar o paciente sobre o uso de IA. Modelos de frases, FAQ e adaptacao por contexto.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🔔</span>
+            <div class="flex-1">
+              <span class="font-medium">Quando informar o paciente</span>
+              <span class="text-neutral-500 text-sm ml-2">- Situacoes obrigatorias</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Situacoes em que informar o paciente e obrigatorio: quando a IA influenciou o diagnostico ou tratamento, quando gerou parte do laudo, quando foi usada na triagem, ou quando dados do paciente foram processados por IA.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">O consentimento informado e pilar da etica medica. Na era da IA, ele ganha novas dimensoes. Saber quando informar protege a relacao medico-paciente e cumpre a resolucao CFM.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Consentimento informado, transparencia, influencia no diagnostico, geracao de laudo, triagem com IA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🟢</span>
+            <div class="flex-1">
+              <span class="font-medium">Quando NAO e necessario</span>
+              <span class="text-neutral-500 text-sm ml-2">- Uso pessoal e administrativo</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Situacoes que nao exigem informar o paciente: uso pessoal da IA para estudo, rascunho que sera completamente reescrito pelo medico, ferramentas administrativas como agendamento ou organizacao.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Evita o excesso de cautela que paralisa o uso de IA. Nem todo uso exige comunicacao ao paciente. Saber diferenciar traz fluidez a pratica.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Uso pessoal, estudo proprio, rascunho reescrito, ferramentas administrativas, proporcionalidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">💬</span>
+            <div class="flex-1">
+              <span class="font-medium">Modelo de frase 1: apoio diagnostico</span>
+              <span class="text-neutral-500 text-sm ml-2">- Template pronto</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Modelo de frase para comunicar uso de IA em apoio diagnostico: "Utilizei ferramenta de IA como apoio para analisar seus exames. A decisao clinica e inteiramente minha, e todos os resultados foram por mim revisados."</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ter uma frase pronta elimina o constrangimento do momento. O paciente recebe a informacao de forma natural, transparente e tranquilizadora.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Comunicacao transparente, modelo padronizado, confianca do paciente, apoio diagnostico, revisao medica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">📝</span>
+            <div class="flex-1">
+              <span class="font-medium">Modelo de frase 2: documentacao</span>
+              <span class="text-neutral-500 text-sm ml-2">- Transcricao e registros</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Modelo de frase para uso de IA em documentacao: "Para agilizar a documentacao, usamos ferramenta de transcricao assistida por IA. Toda informacao registrada e revisada e validada por mim antes de ser incluida no seu prontuario."</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ferramentas de ambient scribing estao se tornando comuns. Ter uma frase pronta para explicar ao paciente que a consulta sera transcrita por IA e essencial para a confianca.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Transcricao por IA, ambient scribing, documentacao assistida, revisao e validacao, transparencia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">❓</span>
+            <div class="flex-1">
+              <span class="font-medium">FAQ do paciente</span>
+              <span class="text-neutral-500 text-sm ml-2">- Respostas para duvidas comuns</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Respostas prontas para as perguntas mais comuns dos pacientes: "A maquina vai me diagnosticar?" (Nao, a decisao e sempre do medico), "Meus dados estao seguros?" (Sim, sao anonimizados antes de qualquer uso).</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Pacientes vao perguntar. Ter respostas claras e empticas prontas transmite confianca e profissionalismo. Evita improvisacao em momentos delicados.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">FAQ, duvidas do paciente, comunicacao empatica, seguranca de dados, papel do medico vs IA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🏥</span>
+            <div class="flex-1">
+              <span class="font-medium">Adaptando a comunicacao por contexto</span>
+              <span class="text-neutral-500 text-sm ml-2">- Consultorio, emergencia, teleconsulta</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Como adaptar a comunicacao sobre IA conforme o contexto: no consultorio ha tempo para explicar, na emergencia a comunicacao e breve e objetiva, na teleconsulta pode ser incluida no termo de consentimento digital.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A forma de comunicar importa tanto quanto o conteudo. Uma explicacao longa na emergencia atrapalha. Uma comunicacao fria no consultorio gera desconfianca. Adaptar e essencial.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Contexto de comunicacao, consultorio, emergencia, teleconsulta, termo digital, proporcionalidade, timing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-3-3.html')" class="px-4 py-2 text-sm bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 border border-purple-500/30 rounded-lg font-medium transition-colors">
+          📖 Ver em Modal
+        </button>
+        <a href="modulo-3-3.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-medium transition-colors">
+          📄 Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 3.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.4</span>
+          <span class="text-xs text-neutral-500">~45 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🩺 Caso integrador: usando IA com seguranca</h3>
+        <p class="text-neutral-400 text-sm">Caso clinico completo da Dra. Marina integrando etica, LGPD, consentimento e boas praticas das 3 trilhas.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">👩‍⚕️</span>
+            <div class="flex-1">
+              <span class="font-medium">Cenario: Dra. Marina na UBS</span>
+              <span class="text-neutral-500 text-sm ml-2">- Sexta 16h30, dor toracica</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Dra. Marina, 34 anos, clinica geral, trabalha numa UBS. Sexta-feira, 16h30. Paciente de 62 anos chega com dor toracica. Ela quer usar IA para apoiar sua decisao clinica. Como fazer corretamente?</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Casos integradores consolidam o aprendizado de todos os modulos anteriores. Voce pratica a tomada de decisao em cenario realista, aplicando etica, LGPD e boas praticas de uma so vez.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Caso clinico realista, UBS, clinica geral, dor toracica, pressao do tempo, decisao clinica com apoio de IA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🔍</span>
+            <div class="flex-1">
+              <span class="font-medium">Decisao 1: apoio diagnostico correto</span>
+              <span class="text-neutral-500 text-sm ml-2">- Anonimizar + RCCFR</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Dra. Marina anonimiza os dados (remove nome, CPF, prontuario) e usa o framework RCCFR para consultar a IA: Role (clinica geral), Contexto (62 anos, dor toracica, fatores de risco), Comando, Formato, Restricoes. Esse e o caminho correto.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Integra na pratica a anonimizacao (Modulo 3.2) com o prompt engineering (Trilha 2). Mostra que usar IA corretamente e um fluxo natural, nao um obstaculo burocrático.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Anonimizacao pratica, RCCFR aplicado, fluxo correto, integracao trilha 2 + trilha 3.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">🔴</span>
+            <div class="flex-1">
+              <span class="font-medium">Decisao 2: IA sugere errado — zona vermelha!</span>
+              <span class="text-neutral-500 text-sm ml-2">- SCA deve ser prioridade</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A IA sugere "observacao com IBP" para a dor toracica, mas Dra. Marina reconhece que SCA (Sindrome Coronariana Aguda) deve ser prioridade. A IA errou — zona vermelha! A decisao final e SEMPRE do medico.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Esse e o cenario que justifica toda a Trilha 3. A IA pode errar de forma perigosa. O medico que confia cegamente coloca o paciente em risco. Saber quando discordar da IA salva vidas.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Zona vermelha, erro da IA, SCA vs DRGE, decisao final do medico, supervisao critica, alucinacao perigosa.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">📝</span>
+            <div class="flex-1">
+              <span class="font-medium">Decisao 3: documentacao no prontuario</span>
+              <span class="text-neutral-500 text-sm ml-2">- Modelo CFM aplicado</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Dra. Marina registra no prontuario: "Utilizei ferramenta de IA generativa para apoio em diagnostico diferencial de dor toracica. A IA sugeriu DRGE como hipotese principal. Discordei da sugestao e priorizei investigacao de SCA conforme protocolo institucional."</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">O registro mostra que o medico usou a IA, avaliou criticamente, e tomou decisao autonoma. Isso e exatamente o que a resolucao CFM exige. E protecao juridica maxima.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Registro no prontuario, modelo CFM, discordancia documentada, autonomia medica, protecao juridica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">📚</span>
+            <div class="flex-1">
+              <span class="font-medium">Decisao 4: revisao posterior com pesquisa</span>
+              <span class="text-neutral-500 text-sm ml-2">- Elicit e Consensus</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Apos o atendimento, Dra. Marina usa Elicit e Consensus para revisar a literatura sobre dor toracica em UBS. Valida sua decisao com evidencias e identifica pontos de melhoria para casos futuros.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A IA de pesquisa complementa a IA generativa. Apos o caso, voce pode aprofundar com ferramentas baseadas em evidencias. Isso fecha o ciclo de aprendizado continuo.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Elicit, Consensus, revisao de literatura, aprendizado pos-caso, IA de pesquisa, ciclo de melhoria.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🏁</span>
+            <div class="flex-1">
+              <span class="font-medium">Checklist final das 3 trilhas</span>
+              <span class="text-neutral-500 text-sm ml-2">- Integracao completa + proximos passos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div>
+                <span class="text-purple-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Checklist que integra as 3 trilhas: Trilha 1 (entender IA), Trilha 2 (usar ferramentas com RCCFR), Trilha 3 (etica, LGPD e consentimento). Inclui CTA para Material de Apoio e para INEMA.VIP (nivel avancado).</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Consolidar tudo em um checklist pratico transforma conhecimento em acao. Voce sai com um guia que cabe num post-it e cobre 90% dos cenarios do dia a dia.</p>
+              </div>
+              <div>
+                <span class="text-purple-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Checklist integrado, 3 trilhas consolidadas, Material de Apoio, INEMA.VIP, proximo nivel, acao pratica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-3-4.html')" class="px-4 py-2 text-sm bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 border border-purple-500/30 rounded-lg font-medium transition-colors">
+          📖 Ver em Modal
+        </button>
+        <a href="modulo-3-4.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-medium transition-colors">
+          📄 Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Navegacao -->
+    <div class="mt-12 flex flex-col sm:flex-row gap-4">
+      <a href="../trilha2/index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Trilha 2: Ferramentas
+      </a>
+      <a href="../../index.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">
+        Voltar ao Inicio
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Trilha 3: Etica e Regulamentacao</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative flex items-start justify-center min-h-screen p-4 pt-8 overflow-y-auto">
+      <div class="relative bg-dark-800 rounded-2xl border border-dark-600 w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl">
+        <div class="sticky top-0 z-10 flex items-center justify-between p-4 bg-dark-800 border-b border-dark-600">
+          <h3 class="font-bold text-lg text-purple-400">Conteudo do Modulo</h3>
+          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors text-neutral-400 hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+          <div class="flex items-center justify-center py-12">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-400"></div>
+            <span class="ml-3 text-neutral-400">Carregando...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) {
+          exp.classList.remove('active');
+        }
+      });
+
+      explanation.classList.toggle('active');
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '\u2600\uFE0F';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '\uD83C\uDF19';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '\u2600\uFE0F';
+    }
+
+    function openModal(moduloUrl) {
+      const modal = document.getElementById('modal-overlay');
+      const content = document.getElementById('modal-content');
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      content.innerHTML = `
+        <div class="flex items-center justify-center py-12">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-400"></div>
+          <span class="ml-3 text-neutral-400">Carregando...</span>
+        </div>
+      `;
+
+      fetch(moduloUrl)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const mainContent = doc.querySelector('main');
+
+          if (mainContent) {
+            content.innerHTML = mainContent.innerHTML;
+          } else {
+            content.innerHTML = '<p class="text-neutral-400">Conteudo nao encontrado.</p>';
+          }
+        })
+        .catch(err => {
+          content.innerHTML = '<p class="text-red-400">Erro ao carregar conteudo.</p>';
+        });
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal-overlay');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 9.4: Desafio Semana 1-2 (Dias 1-10) | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span></a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span></a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span></a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span></a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span></a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span></a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span></a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span></a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-purple-400 bg-purple-500/10"><span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span></a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1"><span id="theme-icon" class="text-lg">🌙</span></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 9</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-purple-400 font-medium">Modulo 9.4</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MODULO 9.4</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🏁 Desafio: Semana 1-2 (Dias 1-10)</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">10 desafios praticos de diagnostico e documentacao com IA. Cada dia, um caso real. Cada caso, uma habilidade consolidada.</p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">Desafio</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🩺 Dias 1-2: Diagnostico diferencial + dados conflitantes</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Os dois primeiros dias focam no uso mais <strong class="text-purple-400">poderoso e mais perigoso</strong> da IA: o diagnostico diferencial.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Dia 1: Diagnostico diferencial</h3>
+          <ol class="space-y-2 text-neutral-300 text-sm list-decimal list-inside">
+            <li>Escolha um caso real do seu consultorio (anonimizado)</li>
+            <li>Faca SEU diagnostico diferencial primeiro</li>
+            <li>Agora envie para a IA com prompt estruturado (RCCFR da Trilha 2)</li>
+            <li>Compare: a IA trouxe hipoteses que voce nao considerou?</li>
+            <li>Avalie: as hipoteses extras fazem sentido clinico?</li>
+          </ol>
+        </div>
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Dia 2: Dados conflitantes</h3>
+          <ol class="space-y-2 text-neutral-300 text-sm list-decimal list-inside">
+            <li>Escolha caso com dados contraditorios (exame normal + sintoma sugestivo)</li>
+            <li>Apresente a ambiguidade para a IA</li>
+            <li>Avalie: a IA reconheceu a incerteza ou deu resposta confiante demais?</li>
+            <li>Identifique o vies de confirmacao — a IA tende a reforcar a primeira hipotese?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🚨 Dias 3-4: Emergencia + caso pediatrico</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Cenarios de <strong class="text-purple-400">alta pressao e populacao especial</strong>. Teste os limites da IA onde erros custam mais caro.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Dia 3: Cenario de emergencia</h3>
+          <p class="text-neutral-300 text-sm mb-3">Simule emergencia: dor toracica aguda, crise hipertensiva, anafilaxia. Use IA para checar dose, protocolo ou diagnostico rapido. Cronometre: a IA ajudou ou atrasou?</p>
+          <p class="text-primary text-sm"><strong>Alerta:</strong> Em emergencia real, NUNCA dependa da IA. Use como double-check, nao como guia primario.</p>
+        </div>
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Dia 4: Caso pediatrico</h3>
+          <p class="text-neutral-300 text-sm">Adapte prompt para pediatria: inclua peso, idade em meses, particularidades. Peca dose por kg. Valide CADA dose — IA erra mais em pediatria porque dados sao mais escassos no treino.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🧠 Dia 5: Caso psiquiatrico</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Psiquiatria e onde a IA mais falha em captar <strong class="text-purple-400">nuances humanas</strong>. Use este dia para calibrar sua confianca.
+      </p>
+
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-purple-400 mb-4">O desafio</h3>
+        <ol class="space-y-2 text-neutral-300 text-sm list-decimal list-inside">
+          <li>Escolha caso psiquiatrico real (depressao vs bipolar, ansiedade vs organico)</li>
+          <li>Descreva para IA: sintomas, historia, contexto social</li>
+          <li>Avalie criticamente: a IA captou nuances como risco suicida, ganho secundario, dinamica familiar?</li>
+          <li>Identifique o que a IA nao pode captar: linguagem corporal, tom de voz, silêncios</li>
+          <li>Documente: para que a IA e util (informacao) e para que e limitada (julgamento)</li>
+        </ol>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Em psiquiatria, use IA para buscar interacoes medicamentosas e revisar literatura, NAO para diagnostico primario. O olho clinico do psiquiatra e insubstituivel.</p>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">📝 Dias 6-7: SOAP primeira vez + retorno</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Documentacao e o uso mais <strong class="text-purple-400">frequente e de menor risco</strong> da IA. Se funcionar bem, voce economiza 2h por dia.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-purple-500/10 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Dia 6: SOAP primeira vez</h3>
+          <p class="text-neutral-300 text-sm">Gere nota SOAP completa para primeira consulta. Revise: S (queixa correta?), O (exame coerente?), A (hipotese plausivel?), P (plano adequado?). Cronometre: quanto tempo com IA vs sem.</p>
+        </div>
+        <div class="bg-purple-500/10 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Dia 7: SOAP retorno</h3>
+          <p class="text-neutral-300 text-sm">Gere SOAP de retorno: evolucao desde ultima consulta, resultados de exames, ajustes no plano. A IA consegue manter contexto entre consultas? Teste com dados da consulta anterior.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">📄 Dias 8-9: Contestacao + encaminhamento</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Documentos administrativos que consomem <strong class="text-purple-400">tempo desproporcional</strong>. IA gera rascunho em segundos — mas cuidado com alucinacoes.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Dia 8: Contestacao de convenio</h3>
+          <p class="text-neutral-300 text-sm mb-2">Gere carta de contestacao para caso real. Revisao critica OBRIGATORIA: a IA inventa resolucoes da ANS com frequencia. Verifique CADA normativa citada.</p>
+          <p class="text-red-400 text-xs"><strong>Armadilha classica:</strong> IA cita "Resolucao ANS 999/2024" que nao existe. Sempre confira no site da ANS.</p>
+        </div>
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Dia 9: Carta de encaminhamento</h3>
+          <p class="text-neutral-300 text-sm">Gere encaminhamento completo: resumo clinico, hipotese, exames realizados e pergunta especifica ao especialista. Avalie: a carta comunica com clareza o que o especialista precisa saber?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📑 Dia 10: Laudo pericial</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O documento de <strong class="text-purple-400">maior responsabilidade legal</strong> que um medico produz. Nivel maximo de supervisao.
+      </p>
+
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-purple-400 mb-4">O desafio</h3>
+        <ol class="space-y-2 text-neutral-300 text-sm list-decimal list-inside">
+          <li>Escolha caso para laudo pericial ou relatorio INSS</li>
+          <li>Inclua no prompt: historia clinica, exame fisico, exames complementares</li>
+          <li>Peca: diagnostico, prognostico, incapacidade, conclusao</li>
+          <li>Revise CADA PALAVRA — laudos periciais tem implicacoes legais diretas</li>
+          <li>Documente uso de IA no registro (obrigatorio pela Resolucao CFM)</li>
+        </ol>
+      </div>
+
+      <div class="bg-red-500/10 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center">
+          <span class="mr-2">⚠️</span> Alerta
+        </h3>
+        <p class="text-neutral-300 text-sm">Laudo pericial e zona vermelha de risco. A IA pode gerar texto coerente mas clinicamente errado. Neste tipo de documento, a revisao nao e opcional — e a parte mais importante do trabalho.</p>
+      </div>
+    </section>
+
+    <!-- Resumo Final -->
+    <section class="mb-12">
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-8">
+        <h2 class="text-2xl font-bold mb-6 text-purple-400">Resumo do Modulo 9.4</h2>
+
+        <div class="space-y-3 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Dias 1-2: Diagnostico</strong>
+              <span class="text-neutral-400"> - Diferencial expandido + teste com dados conflitantes</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Dias 3-5: Cenarios especiais</strong>
+              <span class="text-neutral-400"> - Emergencia, pediatria, psiquiatria</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Dias 6-7: Documentacao SOAP</strong>
+              <span class="text-neutral-400"> - Primeira vez + retorno, medindo tempo economizado</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Dias 8-10: Documentos administrativos</strong>
+              <span class="text-neutral-400"> - Contestacao, encaminhamento e laudo pericial</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-purple-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">9.5 - Desafio: Semana 3-4 (Dias 11-20)</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-9-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo 9.3
+          </a>
+          <a href="modulo-9-5.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">
+            Proximo: Modulo 9.5 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 9.4: Desafio Dias 1-10</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) { html.classList.remove('dark'); icon.textContent = '☀️'; localStorage.setItem('theme', 'light'); }
+      else { html.classList.add('dark'); icon.textContent = '🌙'; localStorage.setItem('theme', 'dark'); }
+    }
+    if (localStorage.getItem('theme') === 'light') { document.documentElement.classList.remove('dark'); document.getElementById('theme-icon').textContent = '☀️'; }
+  </script>
+</body>
+</html>

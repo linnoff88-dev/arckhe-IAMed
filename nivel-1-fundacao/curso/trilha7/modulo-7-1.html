@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 7.1: O que o CFM permite (e proibe) | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha emerald) */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 7</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-emerald-400 font-medium">Modulo 7.1</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 7.1
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">⚖️ O que o CFM permite (e proibe) sobre presenca digital</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Resolucao CFM 2.336/2023 decodificada. O que pode e o que nao pode na presenca digital medica. Casos reais e a oportunidade dos 72%.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Teoria</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📜 Resolucao CFM 2.336/2023 decodificada</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A Resolucao <strong class="text-emerald-400">CFM 2.336/2023</strong> substituiu as regras anteriores e modernizou a regulamentacao da publicidade medica no Brasil. Ela reconhece que medicos podem e devem ter presenca digital — mas com limites claros.
+      </p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Pontos centrais da resolucao
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span>Medicos podem usar redes sociais para <strong>educacao em saude</strong></span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span>Divulgacao de <strong>equipamentos e tecnicas</strong> e permitida</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span>Selfies com pacientes sao permitidas <strong>com autorizacao por escrito</strong></span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span>Antes/depois continua <strong>proibido</strong> para fins publicitarios</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span>Garantia de resultado e sensacionalismo permanecem <strong>vedados</strong></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Leia a resolucao original uma vez, mas use este modulo como guia rapido. O importante nao e decorar artigos — e internalizar os principios para tomar decisoes seguras no dia a dia digital.</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">✅ O que PODE: educacao, especialidade, estrutura</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A boa noticia: o CFM permite <strong class="text-emerald-400">muito mais do que a maioria dos medicos imagina</strong>. O medo excessivo faz medicos ficarem invisiveis online — quando poderiam estar educando e atraindo pacientes dentro das regras.
+      </p>
+
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h4 class="font-bold text-emerald-400 mb-4">✓ O que o CFM PERMITE</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Educacao em saude:</strong> posts, videos, artigos explicando doencas, tratamentos e prevencao</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Informar especialidade e titulacao:</strong> CRM, RQE, titulos academicos</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Mostrar estrutura:</strong> fotos do consultorio, equipamentos, equipe</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Participar de entrevistas:</strong> como fonte especializada em midia</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Divulgar tecnicas e equipamentos:</strong> informar o que esta disponivel no consultorio</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🚫 O que NAO PODE: antes/depois, preco, garantia</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        As proibicoes existem para <strong class="text-emerald-400">proteger o paciente</strong> de expectativas irreais e comercializacao excessiva da medicina. Conhecer as linhas vermelhas e tao importante quanto conhecer as permissoes.
+      </p>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h4 class="font-bold text-red-400 mb-4">✗ O que o CFM PROIBE</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Antes/depois:</strong> fotos comparativas de pacientes com fins publicitarios</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Precos:</strong> divulgar valores de consultas, cirurgias ou procedimentos</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Garantia de resultado:</strong> "eu curo", "resultado garantido", "100% de sucesso"</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Sensacionalismo:</strong> titulos alarmistas, promessas milagrosas, clickbait</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Autopromo como "o melhor":</strong> superlativos e comparacao com colegas</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Depoimentos como propaganda:</strong> usar fala de paciente como publicidade</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">⚠️ Casos reais de medicos punidos (e por que)</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Aprender com erros alheios e mais barato que cometer os proprios. Estes casos sao <strong class="text-emerald-400">documentados em processos etico-profissionais</strong> e mostram exatamente onde medicos erraram.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-red-400 mb-2">Caso 1: Cirurgiao plastico — antes/depois no Instagram</h3>
+          <p class="text-neutral-300 text-sm">Publicou dezenas de fotos antes/depois de rinoplastias. Denunciado por colega ao CRM. Resultado: censura publica + obrigacao de remover todo conteudo. Perdeu meses de trabalho de conteudo e credibilidade entre pares.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-red-400 mb-2">Caso 2: Dermatologista — precos no stories</h3>
+          <p class="text-neutral-300 text-sm">Divulgou "Botox a partir de R$ 800" nos stories do Instagram. Denunciada por paciente. Resultado: advertencia confidencial + multa. O valor economizado na "divulgacao" custou muito mais em processo e assessoria juridica.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-red-400 mb-2">Caso 3: Clinico geral — garantia de cura</h3>
+          <p class="text-neutral-300 text-sm">Publicou video dizendo "eu curo ansiedade em 3 sessoes". Viralização atraiu denuncia e processo. Resultado: censura publica + suspensão temporaria. O sensacionalismo que atraiu seguidores destruiu a reputacao profissional.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Licao principal
+        </h3>
+        <p class="text-neutral-300">Em todos os casos, o medico sabia que estava "no limite" mas achou que nao seria pego. O CRM recebe denuncias de colegas, pacientes e ate seguidores anonimos. A unica protecao real e seguir as regras.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🔍 Diferenca marketing vs publicidade medica</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Marketing e publicidade sao coisas diferentes</strong> — e o CFM regula principalmente a publicidade. Entender essa distincao e o que separa o medico paralisado do medico etico e visivel.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">📢 Marketing Medico</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Posicionamento profissional</li>
+            <li>• Conteudo educativo</li>
+            <li>• Reputacao e autoridade</li>
+            <li>• Presenca digital organica</li>
+            <li>• Relacionamento com pacientes</li>
+            <li>• <strong>Dentro das regras do CFM</strong></li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">📺 Publicidade Medica</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Propaganda direta de servicos</li>
+            <li>• Anuncios pagos sem criterio</li>
+            <li>• Promocoes e descontos</li>
+            <li>• Antes/depois como venda</li>
+            <li>• Sensacionalismo para atrair</li>
+            <li>• <strong>Regulada rigidamente pelo CFM</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📊 Oportunidade: 72% pesquisam online</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Os dados sao claros: <strong class="text-emerald-400">72% dos pacientes pesquisam online antes de escolher um medico</strong>. Isso nao e tendencia — e realidade consolidada. A questao nao e SE voce deve estar online, mas COMO.
+      </p>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Dados de Pesquisa
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>72%</strong> pesquisam online antes de agendar</li>
+          <li><strong>92%</strong> leem avaliacoes de outros pacientes</li>
+          <li><strong>60%</strong> escolhem o medico que aparece primeiro no Google</li>
+          <li><strong>47%</strong> descartam medicos sem presenca digital</li>
+          <li><strong>3x</strong> mais agendamentos para perfis completos vs incompletos</li>
+        </ul>
+      </div>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> O que isso significa para voce
+        </h3>
+        <p class="text-neutral-300">Se voce nao tem presenca digital profissional, esta invisivel para a maioria dos pacientes que poderiam te escolher. Nao e vaidade — e necessidade profissional. O medico que nao aparece perde pacientes para quem aparece, independente da qualidade clinica.</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">CFM 2.336/2023 decodificada</strong>
+              <span class="text-neutral-400"> - As regras da presenca digital medica em linguagem pratica</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Pode vs nao pode</strong>
+              <span class="text-neutral-400"> - Educacao em saude sim, antes/depois e precos nao</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Casos reais</strong>
+              <span class="text-neutral-400"> - Medicos punidos por infrações evitaveis</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">72% pesquisam online</strong>
+              <span class="text-neutral-400"> - A presenca digital e necessidade, nao vaidade</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">7.2 - Sua presenca digital profissional</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Voltar para Trilha 7
+          </a>
+          <a href="modulo-7-2.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+            Proximo: Modulo 7.2 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 7.1: O que o CFM permite (e proibe)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

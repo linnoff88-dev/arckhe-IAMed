@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 7.2: Sua presenca digital profissional | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha emerald) */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span></a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span></a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span></a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span></a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span></a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span></a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-emerald-400 bg-emerald-500/10"><span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span></a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span></a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span></a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1"><span id="theme-icon" class="text-lg">🌙</span></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 7</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-emerald-400 font-medium">Modulo 7.2</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MODULO 7.2</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🌐 Sua presenca digital profissional</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Google Meu Negocio, Doctoralia, LinkedIn e Instagram medico. Configure perfis completos com ajuda de IA e posicione-se como especialista.</p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Hands-on</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📍 Google Meu Negocio: perfil medico gratuito</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-emerald-400">Google Meu Negocio</strong> e a ferramenta mais importante e mais negligenciada do marketing medico. Gratuita, com alcance enorme e controle total. E a ficha que aparece quando alguem pesquisa "medico + especialidade + cidade".
+      </p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Passo a passo para configurar
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1.</strong> Acesse business.google.com e crie ou reivindique seu perfil</p>
+          <p><strong>2.</strong> Preencha: nome completo + CRM, especialidade, endereco exato, telefone, WhatsApp</p>
+          <p><strong>3.</strong> Adicione fotos profissionais: fachada, recepcao, consultorio, equipamentos</p>
+          <p><strong>4.</strong> Configure horarios de atendimento atualizados</p>
+          <p><strong>5.</strong> Adicione FAQ: perguntas frequentes dos pacientes sobre sua especialidade</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Use IA para gerar a descricao do seu perfil: "Escreva uma descricao profissional de 150 palavras para Google Meu Negocio de um [especialidade] em [cidade], CRM [numero], especializado em [areas]". Revise e publique.</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🩺 Doctoralia/BoaConsulta: otimizar perfil com IA</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Doctoralia e BoaConsulta sao plataformas onde <strong class="text-emerald-400">pacientes ja estao buscando medicos</strong>. O trafego ja existe — voce so precisa de um perfil completo para captura-lo.
+      </p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> O que otimizar com IA
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Bio profissional:</strong> resumo da formacao, experiencia e abordagem clinica</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Areas de atuacao:</strong> listar todas as condicoes que voce trata</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>FAQ:</strong> perguntas frequentes respondidas na plataforma</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Foto profissional:</strong> rosto visivel, fundo neutro, jaleco opcional</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">💼 LinkedIn: posicionamento como especialista</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Enquanto Instagram alcanca pacientes, <strong class="text-emerald-400">LinkedIn alcanca oportunidades profissionais</strong>: parcerias com hospitais, convites para palestras, networking com colegas e visibilidade entre pares.
+      </p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Checklist do perfil LinkedIn medico
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Headline:</strong> "Cardiologista | Especialista em Insuficiencia Cardiaca | CRM-XX 00000"</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Resumo:</strong> 3-4 paragrafos sobre sua trajetoria, abordagem e interesse em inovacao</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Experiencia:</strong> hospitais, clinicas, residencia detalhados</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Publicacoes:</strong> 1-2 posts por semana sobre sua area de atuacao</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">📸 Instagram medico: o que postar, frequencia, tom</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Instagram e onde a maioria dos pacientes consome conteudo de saude. Com a <strong class="text-emerald-400">estrategia certa</strong>, voce educa, gera confianca e atrai pacientes que ja chegam informados ao consultorio.
+      </p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Mix de conteudo ideal
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-emerald-400">70% Educativo:</strong> explicacoes de doencas, desmistificacao, dicas de saude, novidades em guidelines</p>
+          <p><strong class="text-emerald-400">20% Bastidores:</strong> dia a dia do consultorio, equipe, rotina medica (humaniza)</p>
+          <p><strong class="text-emerald-400">10% Pessoal profissional:</strong> congressos, titulacoes, marcos de carreira (gera conexao)</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Frequencia e tom
+        </h3>
+        <p class="text-neutral-300"><strong>Frequencia:</strong> 3-4 posts por semana e o ideal. Menos de 2 perde relevancia, mais de 5 cansa. <strong>Tom:</strong> acessivel mas cientifico. Nem linguajar academico, nem linguagem de influencer. Equilibrio entre didatico e profissional.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🤖 IA para criar bio/descricoes/textos</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A maioria dos medicos tem bio generica ou incompleta. <strong class="text-emerald-400">IA gera em minutos textos profissionais</strong> que levariam horas para escrever — e otimizados para cada plataforma.
+      </p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Prompts prontos
+        </h3>
+        <div class="space-y-4 text-neutral-300 text-sm">
+          <div class="bg-dark-800/50 rounded-lg p-4">
+            <p class="text-emerald-400 font-semibold mb-1">Bio para Instagram:</p>
+            <p>"Escreva uma bio de Instagram para medico [especialidade], CRM [numero], em [cidade]. Foco: educacao em saude, acolhimento, [2-3 areas]. Maximo 150 caracteres."</p>
+          </div>
+          <div class="bg-dark-800/50 rounded-lg p-4">
+            <p class="text-emerald-400 font-semibold mb-1">Descricao Google Meu Negocio:</p>
+            <p>"Escreva descricao de 150 palavras para perfil de Google Meu Negocio de [especialidade] em [cidade]. Inclua: formacao, abordagem, diferenciais, horarios."</p>
+          </div>
+          <div class="bg-dark-800/50 rounded-lg p-4">
+            <p class="text-emerald-400 font-semibold mb-1">Headline LinkedIn:</p>
+            <p>"Crie 5 opcoes de headline para LinkedIn de medico [especialidade] com foco em [area]. Inclua CRM. Maximo 120 caracteres cada."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🎯 Exercicio: configurar perfil completo</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Exercicio pratico guiado: ao final, voce tera <strong class="text-emerald-400">3 perfis profissionais otimizados e funcionais</strong> — impacto imediato na sua visibilidade.
+      </p>
+
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">1</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Google Meu Negocio (20 min)</h4>
+            <p class="text-sm text-neutral-400">Criar ou reivindicar perfil. Preencher todos os campos. Adicionar fotos. Gerar descricao com IA.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">2</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Doctoralia/BoaConsulta (20 min)</h4>
+            <p class="text-sm text-neutral-400">Otimizar bio, areas de atuacao, FAQ e foto profissional. Usar IA para textos.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">3</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">LinkedIn (20 min)</h4>
+            <p class="text-sm text-neutral-400">Atualizar headline, resumo e experiencia. Gerar textos com IA. Publicar primeiro post.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Google Meu Negocio configurado</strong><span class="text-neutral-400"> - Perfil completo e otimizado</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Doctoralia/BoaConsulta otimizados</strong><span class="text-neutral-400"> - Bio e areas com IA</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">LinkedIn profissional</strong><span class="text-neutral-400"> - Headline e resumo atualizados</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Instagram com estrategia</strong><span class="text-neutral-400"> - Mix 70/20/10 e frequencia definida</span></div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">7.3 - Conteudo educativo com IA: de zero a consistente</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Voltar para Trilha 7</a>
+          <a href="modulo-7-3.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">Proximo: Modulo 7.3 →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 7.2: Sua presenca digital profissional</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) { html.classList.remove('dark'); icon.textContent = '☀️'; localStorage.setItem('theme', 'light'); }
+      else { html.classList.add('dark'); icon.textContent = '🌙'; localStorage.setItem('theme', 'dark'); }
+    }
+    if (localStorage.getItem('theme') === 'light') { document.documentElement.classList.remove('dark'); document.getElementById('theme-icon').textContent = '☀️'; }
+  </script>
+
+</body>
+</html>

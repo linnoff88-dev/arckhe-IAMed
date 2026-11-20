@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 5.1: O que e vibe coding | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha teal) */
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13, 148, 136, 0.12); }
+    html:not(.dark) .bg-teal-500\/10 { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13, 148, 136, 0.25); }
+    html:not(.dark) .hover\:bg-teal-500\/30:hover { background-color: rgba(13, 148, 136, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-teal-400 bg-teal-500/10">
+            <span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 5</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-teal-400 font-medium">Modulo 5.1</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 5.1
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🚀 O que e vibe coding (e por que medicos estao construindo)</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Entenda o fenomeno que permite medicos construirem ferramentas proprias sem programar. Cases reais, ferramentas e limites.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">Teoria</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🧬 O que e vibe coding (Karpathy 2025)</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Em fevereiro de 2025, Andrej Karpathy — ex-diretor de IA da Tesla e cofundador da OpenAI — cunhou o termo <strong class="text-teal-400">vibe coding</strong>: voce descreve o que quer em linguagem natural e a IA gera o codigo funcional.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Definicao
+        </h3>
+        <p class="text-neutral-300">
+          <strong>Vibe coding</strong> = descrever em portugues o que voce quer que o software faca, e a IA gera o codigo. Voce nao precisa saber programar — precisa saber descrever o problema com clareza. E exatamente o que medicos fazem na anamnese: extrair informacao relevante e estruturar.
+        </p>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">A habilidade numero 1 do vibe coding nao e tecnica — e comunicacao. Quanto melhor voce descreve o que quer (com detalhes, exemplos e limites), melhor o resultado. Medicos treinados em anamnese tem vantagem natural.</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🔊 Analogia POCUS do software</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O POCUS nao substitui o radiologista. Ele deu ao clinico uma ferramenta de imagem a beira-leito para decisoes rapidas. <strong class="text-teal-400">Vibe coding e o POCUS do software</strong>: nao substitui o engenheiro, mas permite ao medico criar ferramentas simples para o proprio uso.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-teal-500/10 rounded-xl border border-teal-500/30 p-6">
+          <h3 class="text-lg font-semibold text-teal-400 mb-3">✅ O que vibe coding faz</h3>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Calculadoras clinicas personalizadas</li>
+            <li>• Automacoes de documentacao</li>
+            <li>• Material educativo para pacientes</li>
+            <li>• Ferramentas de organizacao pessoal</li>
+            <li>• Prototipos rapidos para testar ideias</li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h3 class="text-lg font-semibold text-red-400 mb-3">❌ O que vibe coding NAO faz</h3>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Prontuario eletronico completo</li>
+            <li>• Sistema de diagnostico autonomo</li>
+            <li>• App com milhoes de usuarios</li>
+            <li>• Integracao com sistemas hospitalares</li>
+            <li>• Software que precisa certificacao ANVISA</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🏆 Cases reais de medicos construtores</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Nao e teoria. Medicos comuns, sem formacao em TI, ja estao construindo ferramentas que resolvem problemas reais do dia a dia clinico.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">🇬🇧 GP britanico — £175 vs £75.000</h3>
+          <p class="text-neutral-300 text-sm">Um clinico geral no Reino Unido construiu em 4 dias, gastando £175 em tokens de IA, uma ferramenta que empresas de software orcaram por £75.000. A ferramenta organiza dados de pacientes e gera relatorios automaticos para o NHS.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">🇹🇷 Neurocirurgiao turco — app de triagem</h3>
+          <p class="text-neutral-300 text-sm">Criou um app que ajuda na triagem de pacientes com dor de cabeca, classificando urgencia e sugerindo proximos passos. Usou Bolt.new e Claude para gerar a logica clinica e a interface.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">🇺🇸 Almanac / Stanford — automacao clinica</h3>
+          <p class="text-neutral-300 text-sm">Nasceu de medicos de Stanford que usaram IA para automatizar burocracia clinica (cartas, pre-autorizacoes, resumos). Hoje e uma empresa, mas comecou como ferramenta interna feita por medicos para medicos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🛠️ Ferramentas: Replit, Bolt.new, Claude, Cursor</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Cada ferramenta tem forca em um tipo de projeto. Saber <strong class="text-teal-400">escolher a certa</strong> economiza horas e evita frustracoes.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Mapa de Ferramentas
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-teal-400">Replit:</strong> Ambiente completo no navegador. Ideal para comecar. Escreva o que quer, a IA gera, voce testa e publica — tudo no mesmo lugar.</p>
+          <p><strong class="text-teal-400">Bolt.new:</strong> Cria apps completos por descricao. Otimo para prototipos rapidos e interfaces visuais.</p>
+          <p><strong class="text-teal-400">Claude / ChatGPT:</strong> Geram codigo sob demanda. Voce copia e cola no ambiente de execucao. Bom para pecas especificas.</p>
+          <p><strong class="text-teal-400">Cursor:</strong> IDE com IA integrada. Para quem quer ir mais fundo e ter mais controle sobre o codigo.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Recomendacao para iniciantes
+        </h3>
+        <p class="text-neutral-300">Comece pelo Replit. Sem instalacao, sem configuracao, gratuito. Quando se sentir confortavel, explore Bolt.new para apps mais visuais e Cursor para projetos maiores.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">📊 O que da para construir (baixo/medio/alto risco)</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Nem tudo que voce pode construir voce deve construir. A classificacao de risco ajuda a saber <strong class="text-teal-400">onde esta a linha segura</strong>.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-teal-500/10 rounded-xl border border-teal-500/30 p-6">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">🟢 Baixo risco — construa livremente</h3>
+          <p class="text-neutral-300 text-sm">Calculadoras de escores validados, checklists, material educativo, organizadores de agenda, templates de documentos, ferramentas de estudo.</p>
+        </div>
+        <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+          <h3 class="text-lg font-semibold text-primary mb-2">🟡 Medio risco — construa com cuidado</h3>
+          <p class="text-neutral-300 text-sm">Automacoes de documentacao (SOAP, contestacao), RAG pessoal com guidelines, apps de follow-up com alertas. Valide a logica, teste exaustivamente, use para apoio — nao para decisao autonoma.</p>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h3 class="text-lg font-semibold text-red-400 mb-2">🔴 Alto risco — NAO construa com vibe coding</h3>
+          <p class="text-neutral-300 text-sm">Diagnostico autonomo, calculo de dosagem de quimioterapicos/anticoagulantes, decisoes clinicas sem supervisao humana, qualquer ferramenta que sera usada por terceiros para tomar decisoes de saude.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">⏰ Por que AGORA e o momento</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Tres fatores convergiram pela primeira vez na historia: IAs que geram codigo bom o suficiente, ferramentas no-code amadurecidas, e uma <strong class="text-teal-400">medicina carente de solucoes personalizadas</strong>.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> A convergencia
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1. IA boa o suficiente:</strong> Claude, GPT-4 e Gemini geram codigo funcional em segundos. Ha 2 anos, isso era impossivel.</p>
+          <p><strong>2. Ferramentas acessiveis:</strong> Replit, Bolt.new e Glide democratizaram a construcao de software. Tudo roda no navegador.</p>
+          <p><strong>3. Nichos ignorados:</strong> Empresas grandes constroem para hospitais gigantes. Ninguem constroi a calculadora especifica da sua especialidade ou o formulario de follow-up que voce precisa.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Visao de futuro
+        </h3>
+        <p class="text-neutral-300">Em 2-3 anos, medicos que dominam vibe coding terao vantagem enorme: autonomia para resolver problemas, credibilidade como inovadores e ferramentas personalizadas que nenhum colega tem. A janela e agora.</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Vibe coding definido</strong>
+              <span class="text-neutral-400"> - Descrever em portugues, IA constroi o codigo</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Analogia POCUS</strong>
+              <span class="text-neutral-400"> - Nao substitui o engenheiro, complementa o medico</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Cases reais documentados</strong>
+              <span class="text-neutral-400"> - GP britanico, neurocirurgiao turco, Almanac/Stanford</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Mapa de ferramentas</strong>
+              <span class="text-neutral-400"> - Replit, Bolt.new, Claude, Cursor — quando usar cada uma</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-teal-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">5.2 - Sua primeira ferramenta: calculadora clinica</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Voltar para Trilha 5
+          </a>
+          <a href="modulo-5-2.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">
+            Proximo: Modulo 5.2 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 5.1: O que e vibe coding</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

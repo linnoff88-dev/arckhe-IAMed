@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 6.2: Arquitetura - 3 camadas para organizar tudo | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha rose) */
+    html:not(.dark) .text-rose-400 { color: #9f1239; }
+    html:not(.dark) .bg-rose-500\/20 { background-color: rgba(225, 29, 72, 0.12); }
+    html:not(.dark) .bg-rose-500\/10 { background-color: rgba(225, 29, 72, 0.08); }
+    html:not(.dark) .border-rose-500\/30 { border-color: rgba(225, 29, 72, 0.25); }
+    html:not(.dark) .hover\:bg-rose-500\/30:hover { background-color: rgba(225, 29, 72, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-rose-400 bg-rose-500/10">
+            <span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 6</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-rose-400 font-medium">Modulo 6.2</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 6.2
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🏗️ Arquitetura: 3 camadas para organizar tudo</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        RAW, COMPILADOR e WIKI — as tres camadas que transformam caos em conhecimento estruturado. Comparacao com RAG e pasta de PDFs.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">Teoria</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📦 Camada RAW: fontes brutas</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A camada RAW e o <strong class="text-rose-400">deposito de tudo que entra no sistema</strong>: PDFs de guidelines, artigos do PubMed, anotacoes de congresso, fotos de slides. Nada e editado aqui — e a materia-prima bruta do seu conhecimento.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">📂</span> O que entra na /raw
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span>PDFs de guidelines (ESC, AHA, SBC, etc.)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span>Artigos do PubMed (texto completo ou abstract)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span>Anotacoes de congressos e aulas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span>Fotos de slides e quadros</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">•</span><span>Resumos de colegas e residentes</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Regra de ouro
+        </h3>
+        <p class="text-neutral-300">Nunca edite nada na /raw. Ela preserva a fonte original para auditoria. Se precisar verificar de onde veio uma informacao, a fonte bruta estara la, intocada.</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">⚙️ Camada COMPILADOR: LLM le e transforma</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O LLM recebe a fonte bruta e <strong class="text-rose-400">compila em paginas wiki estruturadas</strong>: extrai conceitos, cria definicoes, adiciona [[links]] para conectar com paginas existentes e formata em Markdown padronizado.
+      </p>
+
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center">
+            <span class="text-rose-400 font-bold">1</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Receber a fonte</h4>
+            <p class="text-sm text-neutral-400 mb-1">Input</p>
+            <p class="text-neutral-300 text-sm">Copie o texto do PDF/artigo e cole no prompt do LLM junto com instrucoes de compilacao.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center">
+            <span class="text-rose-400 font-bold">2</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Extrair e estruturar</h4>
+            <p class="text-sm text-neutral-400 mb-1">Processamento</p>
+            <p class="text-neutral-300 text-sm">O LLM identifica conceitos-chave, cria definicoes, organiza por topico e adiciona [[links]] semanticos.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center">
+            <span class="text-rose-400 font-bold">3</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Gerar pagina wiki</h4>
+            <p class="text-sm text-neutral-400 mb-1">Output</p>
+            <p class="text-neutral-300 text-sm">O resultado e uma pagina Markdown limpa, com links para outros conceitos, pronta para colar no Obsidian.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">📖 Camada WIKI: paginas Markdown com [[links]]</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O resultado final: <strong class="text-rose-400">paginas Markdown limpas, organizadas por tema, conectadas por [[links]] bidirecionais</strong>. Uma pagina sobre fibrilacao atrial linka para anticoagulacao, que linka para CHA2DS2-VASc, que linka para o guideline ESC.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">🔗</span> Exemplo de pagina wiki
+        </h3>
+        <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300">
+          <p class="text-rose-400"># Fibrilacao Atrial</p>
+          <p class="mt-2">Arritmia supraventricular mais comum. Prevalencia de ~2% na populacao geral.</p>
+          <p class="mt-2">## Classificacao</p>
+          <p>- Paroxistica (&lt;7 dias)</p>
+          <p>- Persistente (>7 dias)</p>
+          <p>- Permanente (aceita)</p>
+          <p class="mt-2">## Anticoagulacao</p>
+          <p>Avaliar com [[CHA2DS2-VASc]]. Se >= 2 (homem) ou >= 3 (mulher): [[NOACs]] ou [[Varfarina]].</p>
+          <p class="mt-2">## Fonte</p>
+          <p>[[ESC Guidelines FA 2024]] — raw/esc-fa-2024.pdf</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">📊 Comparacao: LLM Wiki vs RAG vs pasta de PDFs</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Tres abordagens para organizar conhecimento. A <strong class="text-rose-400">LLM Wiki economiza 95% dos tokens</strong> em relacao ao RAG e e infinitamente superior a pasta de PDFs.
+      </p>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden mb-6">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-dark-600">
+              <th class="text-left p-4 text-rose-400">Criterio</th>
+              <th class="text-left p-4 text-neutral-400">Pasta PDFs</th>
+              <th class="text-left p-4 text-neutral-400">RAG</th>
+              <th class="text-left p-4 text-rose-400 font-bold">LLM Wiki</th>
+            </tr>
+          </thead>
+          <tbody class="text-neutral-300">
+            <tr class="border-b border-dark-700">
+              <td class="p-4 font-medium">Custo</td>
+              <td class="p-4">Gratis</td>
+              <td class="p-4">Alto (tokens a cada consulta)</td>
+              <td class="p-4 text-rose-400">Baixo (compila 1x)</td>
+            </tr>
+            <tr class="border-b border-dark-700">
+              <td class="p-4 font-medium">Velocidade</td>
+              <td class="p-4">Lento (busca manual)</td>
+              <td class="p-4">Rapido</td>
+              <td class="p-4 text-rose-400">Rapido</td>
+            </tr>
+            <tr class="border-b border-dark-700">
+              <td class="p-4 font-medium">Legibilidade</td>
+              <td class="p-4">PDF bruto</td>
+              <td class="p-4">Resposta opaca</td>
+              <td class="p-4 text-rose-400">Wiki legivel</td>
+            </tr>
+            <tr class="border-b border-dark-700">
+              <td class="p-4 font-medium">Tokens/consulta</td>
+              <td class="p-4">N/A</td>
+              <td class="p-4">100% (todo contexto)</td>
+              <td class="p-4 text-rose-400">~5% (wiki compilada)</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium">Auditabilidade</td>
+              <td class="p-4">Sim (PDF)</td>
+              <td class="p-4">Baixa</td>
+              <td class="p-4 text-rose-400">Alta (fonte + wiki)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🔀 Fluxo completo: da fonte ate a consulta</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O fluxo ponta a ponta e simples: <strong class="text-rose-400">entrada → processamento → saida</strong>. Nada de magia — so engenharia de conhecimento bem feita.
+      </p>
+
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">1</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">PDF de guideline entra na /raw</h4>
+            <p class="text-neutral-300 text-sm">Arrastar o arquivo para a pasta /raw no vault. Fonte preservada.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">2</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">LLM compila em paginas wiki</h4>
+            <p class="text-neutral-300 text-sm">Copiar texto → prompt de compilacao → paginas Markdown com [[links]].</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">3</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Paginas ficam no vault Obsidian</h4>
+            <p class="text-neutral-300 text-sm">Colar na pasta /wiki. Revisar links e ajustar se necessario.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">4</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Consultar por texto ou linguagem natural</h4>
+            <p class="text-neutral-300 text-sm">Buscar por texto, navegar por links ou perguntar ao Copilot. Resposta vem da SUA base.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🏥 Exemplos medicos concretos</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Como a arquitetura de 3 camadas funciona em <strong class="text-rose-400">especialidades reais</strong>. Cada medico adapta a mesma estrutura para seu contexto.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-rose-400 mb-2">❤️ Cardiologista</h4>
+          <p class="text-neutral-300 text-sm"><strong>/raw:</strong> Guidelines ESC (FA, ICC, SCA), artigos do NEJM. <strong>/wiki:</strong> Paginas interligadas — FA → anticoagulacao → CHA2DS2-VASc → NOACs → sangramento. Resultado: consultar "dose de rivaroxabana em FA" e ter resposta com fonte exata.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-rose-400 mb-2">👶 Pediatra</h4>
+          <p class="text-neutral-300 text-sm"><strong>/raw:</strong> Calendario vacinal SBP, protocolos de febre, manuais de crescimento. <strong>/wiki:</strong> Paginas por faixa etaria → vacinas → reacoes → contraindicacoes. Resultado: "qual vacina falta para crianca de 6 meses" com resposta baseada no protocolo que voce salvou.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-semibold text-rose-400 mb-2">🚑 Emergencista</h4>
+          <p class="text-neutral-300 text-sm"><strong>/raw:</strong> Protocolos ACLS, ATLS, guidelines de sepse. <strong>/wiki:</strong> Base por queixa principal → dor toracica → diagnosticos diferenciais → conduta por diagnostico. Resultado: consulta rapida durante plantao com fonte rastreavel.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Camada RAW</strong>
+              <span class="text-neutral-400"> - Fontes brutas preservadas intactas</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Camada COMPILADOR</strong>
+              <span class="text-neutral-400"> - LLM transforma em wiki estruturado</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Camada WIKI</strong>
+              <span class="text-neutral-400"> - Paginas Markdown conectadas por [[links]]</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">LLM Wiki > RAG</strong>
+              <span class="text-neutral-400"> - 95% menos tokens, mais legivel, auditavel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-rose-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">6.3 - Setup: Obsidian + vault medico</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-6-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo 6.1
+          </a>
+          <a href="modulo-6-3.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">
+            Proximo: Modulo 6.3 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 6.2: Arquitetura - 3 camadas</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

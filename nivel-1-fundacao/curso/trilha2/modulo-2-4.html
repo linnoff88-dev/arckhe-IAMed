@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.4: Os 7 erros que todo medico comete com IA | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha blue) */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .border-blue-500\/20 { border-color: rgba(37, 99, 235, 0.15); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 2</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400 font-medium">Modulo 2.4</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 2.4
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🚨 Os 7 erros que todo medico comete com IA</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Erros comuns na interacao medico-IA traduzidos em analogias clinicas que voce ja conhece. Identifique, corrija e nunca mais repita.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">~55</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🔍 Erros 1-2: Prompt generico + sem contexto</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Os dois erros mais comuns e mais faceis de corrigir. <strong class="text-blue-400">Erro 1:</strong> prompt generico e como pedir exame sem indicacao clinica. <strong class="text-blue-400">Erro 2:</strong> sem contexto e como solicitar parecer sem enviar prontuario.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+          <h4 class="font-bold text-red-400 mb-4">✗ Erro 1: Prompt Generico</h4>
+          <p class="text-neutral-300 text-sm italic mb-3">"Me fala sobre diabetes"</p>
+          <p class="text-neutral-400 text-sm">Analogia: pedir "um exame de sangue" sem especificar qual. Voce recebe resultado, mas nao sabe o que fazer com ele.</p>
+        </div>
+        <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+          <h4 class="font-bold text-red-400 mb-4">✗ Erro 2: Sem Contexto</h4>
+          <p class="text-neutral-300 text-sm italic mb-3">"Qual o melhor anti-hipertensivo?"</p>
+          <p class="text-neutral-400 text-sm">Analogia: pedir parecer da nefro sem mandar prontuario, exames ou historia. O especialista nao consegue ajudar de verdade.</p>
+        </div>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30 mb-6">
+        <h4 class="font-bold text-blue-400 mb-4">✓ Correcao</h4>
+        <p class="text-neutral-300 text-sm italic">"Voce e um endocrinologista. Paciente feminina, 52 anos, DM2 ha 8 anos, HbA1c 8.2%, uso de metformina 2g/dia. Sugira escalonamento terapeutico em formato tabela com medicamento, dose, mecanismo e efeito na HbA1c."</p>
+        <p class="text-neutral-400 text-xs mt-3">Especifico + contextualizado = resposta clinicamente util.</p>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Checklist Rapido</h3>
+        <p class="text-neutral-300">
+          Antes de enviar: "Meu prompt tem especialidade definida? Tem dados do paciente? Tem tarefa especifica?" Se falta algum, corrija antes de enviar.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📚 Erro 3: Confiar em referencias sem verificar</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        IA frequentemente <strong class="text-blue-400">inventa referencias bibliograficas</strong> extremamente convincentes: autores reais, journals reais, DOIs que parecem validos - mas o paper nao existe. E o equivalente a citar na discussao de caso um artigo que voce nunca leu.
+      </p>
+
+      <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30 mb-6">
+        <h4 class="font-bold text-red-400 mb-4">⚠️ Exemplo real de alucinacao</h4>
+        <p class="text-neutral-300 text-sm">A IA pode gerar: "Smith et al. (2023). Novel approaches to resistant hypertension management. JAMA Internal Medicine, 183(4), 412-420. DOI: 10.1001/jamainternmed.2023.0412"</p>
+        <p class="text-red-400 text-sm mt-3">Parece perfeito. Os autores existem. O journal existe. O DOI segue o padrao. Mas o paper NAO existe.</p>
+      </div>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Como verificar</h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Copie o titulo e busque no PubMed ou Google Scholar</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Verifique o DOI em doi.org</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Confirme que os autores realmente publicaram sobre o tema</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Na duvida, peca a IA: "Essa referencia e real? Voce tem certeza?"</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Regra de Ouro</h3>
+        <p class="text-neutral-300">
+          NUNCA compartilhe uma referencia da IA sem verificar no PubMed primeiro. A perda de credibilidade profissional e irreversivel. Se voce precisa de referencias, busque direto no PubMed e use a IA para interpretar, nao para citar.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🔐 Erro 4: Colar dados identificaveis</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Colar nome completo, CPF, data de nascimento ou numero de prontuario na IA e o <strong class="text-blue-400">equivalente digital de discutir caso no elevador</strong> com nome e sobrenome do paciente. Os dados podem ser usados para treinamento do modelo ou vazarem.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+          <h4 class="font-bold text-red-400 mb-4">✗ NUNCA faca</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>"Paciente Maria da Silva Santos, CPF 123.456.789-00"</li>
+            <li>"Prontuario 2024-00567, DN 15/03/1965"</li>
+            <li>Colar laudo com dados completos</li>
+            <li>Enviar foto de prontuario</li>
+          </ul>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+          <h4 class="font-bold text-blue-400 mb-4">✓ SEMPRE faca</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>"Paciente feminina, 58 anos"</li>
+            <li>"Paciente M.S., sexo feminino"</li>
+            <li>Remover datas exatas (usar "ha 3 meses")</li>
+            <li>Remover numeros de prontuario e documentos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Regra da Anonimizacao</h3>
+        <p class="text-neutral-300">
+          Antes de colar qualquer dado na IA, passe o "filtro do elevador": se voce nao falaria isso em voz alta no elevador do hospital, nao cole na IA. Remova: nome, CPF, endereco, telefone, prontuario, datas exatas de nascimento.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">✅ Erro 5: Aceitar primeira resposta sem questionar</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Aceitar a primeira resposta da IA sem questionar e como <strong class="text-blue-400">aceitar o primeiro diagnostico sem considerar diferenciais</strong>. A IA pode ter vieses, ignorar dados do contexto ou simplesmente errar.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Perguntas para questionar a IA</h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Quais diagnosticos voce descartou e por que?"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Ha alguma alternativa que voce nao considerou?"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Qual o nivel de certeza dessa recomendacao?"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"O que poderia estar errado nessa analise?"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Se esse fosse um paciente diferente (idoso/crianca/gestante), a conduta mudaria?"</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Vies de Automacao</h3>
+        <p class="text-neutral-300">
+          Vies de automacao e a tendencia humana de confiar excessivamente em sistemas automatizados. Quanto mais confiante a IA parece, mais devemos questionar. Uma resposta fluida e bem escrita NAO significa uma resposta correta.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">☢️ Erro 6: Usar para decisoes de alto risco</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Usar IA para tomar decisoes de alto risco sem validacao humana e como <strong class="text-blue-400">deixar o R1 decidir sozinho sobre intubacao no primeiro dia</strong>. A ferramenta tem limites que precisam ser respeitados.
+      </p>
+
+      <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30 mb-6">
+        <h4 class="font-bold text-red-400 mb-4">⚠️ Decisoes que a IA NAO deve tomar sozinha</h4>
+        <ul class="space-y-3 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-3">
+            <span class="text-red-400 mt-1">✗</span>
+            <span>Prescricao de quimioterapicos ou imunossupressores</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-red-400 mt-1">✗</span>
+            <span>Ajuste de anticoagulacao em dose terapeutica</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-red-400 mt-1">✗</span>
+            <span>Indicacao ou contraindicacao cirurgica</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-red-400 mt-1">✗</span>
+            <span>Decisao de nao investigar sintoma de alarme</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-red-400 mt-1">✗</span>
+            <span>Alta de paciente instavel</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30 mb-6">
+        <h4 class="font-bold text-blue-400 mb-4">✓ Onde a IA PODE ajudar (com supervisao)</h4>
+        <ul class="space-y-3 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Brainstorming de diagnosticos diferenciais</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Revisao de interacoes medicamentosas</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Resumo de guidelines e protocolos</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Rascunho de evolucoes e planos de alta</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>Estudo de casos e preparacao para provas</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Regra do Risco</h3>
+        <p class="text-neutral-300">
+          Quanto maior o risco da decisao, menor deve ser a autonomia da IA. Para decisoes de baixo risco (estudo, rascunho, brainstorming), use livremente. Para decisoes de alto risco, use apenas como apoio e SEMPRE valide clinicamente.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🔄 Erro 7: Nao iterar</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Fazer uma pergunta e aceitar a resposta sem refinar e como <strong class="text-blue-400">fazer anamnese com uma unica pergunta e parar</strong>. Os melhores resultados com IA vem de conversas de 3-5 turnos.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Exemplo de iteracao produtiva</h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+            <div>
+              <p class="text-neutral-300 text-sm font-medium">Turno 1 - Prompt inicial (RCCFR completo)</p>
+              <p class="text-neutral-400 text-xs">"Liste diagnosticos diferenciais para este caso..."</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+            <div>
+              <p class="text-neutral-300 text-sm font-medium">Turno 2 - Aprofundar</p>
+              <p class="text-neutral-400 text-xs">"Aprofunde a hipotese de LES. Quais criterios SLICC esse paciente preenche?"</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+            <div>
+              <p class="text-neutral-300 text-sm font-medium">Turno 3 - Questionar</p>
+              <p class="text-neutral-400 text-xs">"Voce nao considerou fibromialgia. Por que descartou? Quais pontos a favor?"</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+            <div>
+              <p class="text-neutral-300 text-sm font-medium">Turno 4 - Refinar conduta</p>
+              <p class="text-neutral-400 text-xs">"Considerando LES como diagnostico mais provavel, sugira plano terapeutico e monitoramento"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Regra dos 3 Turnos</h3>
+        <p class="text-neutral-300">
+          Nunca fique satisfeito com o primeiro turno. Minimo de 3 interacoes: (1) pergunta inicial, (2) aprofundamento ou questionamento, (3) refinamento final. E como a anamnese: a cada pergunta, voce refina a hipotese.
+        </p>
+      </div>
+    </section>
+
+    <!-- Resumo Final -->
+    <section class="mb-12">
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-8">
+        <h2 class="text-2xl font-bold mb-6">📋 Resumo do Modulo 2.4</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-blue-400 mb-4">Os 7 erros e suas correcoes:</h3>
+            <ul class="space-y-2 text-neutral-300">
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Erro 1-2: Seja especifico e forneca contexto</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Erro 3: Sempre verifique referencias no PubMed</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Erro 4: Anonimize TODOS os dados</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Erro 5: Questione sempre, nunca aceite cegamente</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Erro 6: IA apoia, nao decide em alto risco</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Erro 7: Itere pelo menos 3 turnos</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-blue-400 mb-4">Proxima trilha:</h3>
+            <div class="bg-dark-700/50 rounded-xl p-4 border border-dark-600">
+              <span class="text-purple-400 font-bold text-sm">Trilha 3</span>
+              <h4 class="font-bold mt-1">⚖️ Etica e Responsabilidade</h4>
+              <p class="text-neutral-400 text-sm mt-2">
+                Aprofunde-se em LGPD, responsabilidade medico-legal, limites eticos e regulamentacao da IA na pratica clinica.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <a href="modulo-2-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo 2.3
+          </a>
+          <a href="../trilha3/index.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">
+            Proxima: Trilha 3 - Etica →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 2.4: Os 7 erros que todo medico comete com IA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

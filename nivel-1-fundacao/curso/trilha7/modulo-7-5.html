@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 7.5: Reputacao online e gestao de reviews | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">IAMed</span></a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span></a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span></a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span></a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span></a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span></a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span></a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-emerald-400 bg-emerald-500/10"><span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span></a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span></a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span></a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1"><span id="theme-icon" class="text-lg">🌙</span></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a><span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 7</a><span class="text-neutral-600">/</span>
+        <span class="text-emerald-400 font-medium">Modulo 7.5</span>
+      </div>
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MODULO 7.5</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">⭐ Reputacao online e gestao de reviews</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Por que reviews importam, como pedir e responder eticamente, monitoramento e gestao de crise. 92% dos pacientes leem avaliacoes.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-xl font-bold text-emerald-400">~60</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-xl font-bold text-emerald-400">Pratico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-xl font-bold text-emerald-400">Hands-on</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📊 Por que reviews importam (92% leem)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed"><strong class="text-emerald-400">92% dos pacientes leem avaliacoes online</strong> antes de agendar consulta. Reviews funcionam como prova social — a opiniao de outros pacientes pesa mais que qualquer propaganda.</p>
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Numeros que importam</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>92%</strong> leem reviews antes de agendar</li>
+          <li><strong>4.5+</strong> e a nota minima que gera confianca</li>
+          <li><strong>20+</strong> reviews e o volume minimo para credibilidade</li>
+          <li><strong>72%</strong> dos pacientes so agendam apos ler reviews</li>
+          <li><strong>3x</strong> mais agendamentos para medicos com reviews vs sem</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🤝 Como pedir reviews eticamente (pos-consulta)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Pacientes satisfeitos raramente avaliam espontaneamente — mas fazem quando <strong class="text-emerald-400">pedidos educadamente</strong>. Um sistema pos-consulta gera 5-10 reviews por mes.</p>
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📋</span> 4 metodos eticos</h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-emerald-400">1. WhatsApp pos-consulta:</strong> "Ola [nome], espero que esteja bem. Se a consulta foi util, ficaria grato por uma avaliacao no Google: [link]. Obrigado!"</p>
+          <p><strong class="text-emerald-400">2. QR code na recepcao:</strong> Plaquinha discreta com QR code direto para pagina de avaliacao do Google.</p>
+          <p><strong class="text-emerald-400">3. Email de acompanhamento:</strong> Enviar 24-48h apos consulta com link para avaliacao.</p>
+          <p><strong class="text-emerald-400">4. Pedido verbal:</strong> Ao final da consulta: "Se voce ficou satisfeito, uma avaliacao no Google ajuda muito outros pacientes a me encontrarem."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">💬 Como responder reviews negativas (modelo com IA)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Uma resposta bem dada a review negativa gera <strong class="text-emerald-400">mais credibilidade que 10 reviews positivas</strong>. Pacientes observam como voce lida com criticas.</p>
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Framework de resposta</h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1. Agradeca:</strong> "Obrigado pelo seu feedback."</p>
+          <p><strong>2. Nao discuta clinica:</strong> Nunca revele detalhes do atendimento (sigilo medico).</p>
+          <p><strong>3. Ofereca canal privado:</strong> "Gostaria de conversar diretamente para entender melhor. Por favor, entre em contato pelo [telefone/email]."</p>
+          <p><strong>4. Mantenha tom profissional:</strong> Sem ironia, sarcasmo ou defensividade.</p>
+        </div>
+      </div>
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Prompt para IA gerar resposta</h3>
+        <p class="text-neutral-300 text-sm">"Um paciente deixou esta review negativa: [colar review]. Escreva uma resposta profissional que: agradeca o feedback, nao revele detalhes clinicos, ofereca canal privado para resolucao, mantenha tom empático. Maximo 80 palavras."</p>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🔔 Monitoramento: Google Alerts + IA</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Voce nao pode gerenciar o que nao sabe que existe. <strong class="text-emerald-400">Monitoramento automatico</strong> permite agir rapido quando algo relevante acontece.</p>
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📋</span> Setup em 5 minutos</h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1.</strong> Acesse google.com/alerts</p>
+          <p><strong>2.</strong> Crie alerta para: "Dr. [seu nome]", "[nome da clinica]", "[seu nome] + medico"</p>
+          <p><strong>3.</strong> Configure: 1x por dia, todos os resultados, email</p>
+          <p><strong>4.</strong> Quando receber alerta, use IA: "Resuma esta mencao e classifique como positiva, neutra ou negativa"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🚨 Gestao de crise (viral negativo)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Crises digitais acontecem — ate com medicos eticos. Ter um <strong class="text-emerald-400">protocolo pronto</strong> evita que o panico piore a situacao.</p>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">🚨</span> Protocolo de crise</h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1. NAO responda por impulso.</strong> Espere pelo menos 2 horas.</p>
+          <p><strong>2. Consulte assessoria juridica</strong> antes de qualquer posicionamento publico.</p>
+          <p><strong>3. Prepare nota curta e factual.</strong> Nada de emocao ou justificativas longas.</p>
+          <p><strong>4. Mobilize reviews positivos</strong> de pacientes satisfeitos (peça com naturalidade).</p>
+          <p><strong>5. Aguarde o ciclo de atencao</strong> (24-72h). A maioria das crises perde forca rapidamente.</p>
+        </div>
+      </div>
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Prevencao e melhor</h3>
+        <p class="text-neutral-300">A melhor gestao de crise e nao ter crise. Conduta clinica impecavel + presenca digital forte + reviews consistentes criam uma "armadura" de reputacao que resiste a ataques pontuais.</p>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🎯 Exercicio: responder 3 reviews ficticias</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Praticar com reviews ficticias elimina o panico de lidar com <strong class="text-emerald-400">critica real</strong>. Quando a review negativa chegar, voce ja tem o processo internalizado.</p>
+      <div class="space-y-4 mb-6">
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-emerald-400 mb-2">Review 1: Positiva (5 estrelas)</h3>
+          <p class="text-neutral-300 text-sm italic mb-3">"Excelente profissional! Muito atencioso, explicou tudo com clareza. Recomendo demais. Ja agendei retorno."</p>
+          <p class="text-neutral-400 text-xs">Tarefa: escreva uma resposta que agradeca e reforce o compromisso com qualidade.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-amber-400 mb-2">Review 2: Negativa justa (2 estrelas)</h3>
+          <p class="text-neutral-300 text-sm italic mb-3">"Esperei 1 hora alem do horario marcado. O doutor foi bom, mas a organizacao da clinica e pessima. Nao sei se volto."</p>
+          <p class="text-neutral-400 text-xs">Tarefa: escreva uma resposta que reconheca o problema, sem expor detalhes, e ofereca solucao.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-red-400 mb-2">Review 3: Negativa injusta (1 estrela)</h3>
+          <p class="text-neutral-300 text-sm italic mb-3">"Pessimo! Nao resolveu nada. So quer ganhar dinheiro. Nunca mais volto. NAO RECOMENDO."</p>
+          <p class="text-neutral-400 text-xs">Tarefa: escreva uma resposta profissional que nao discuta clinica, ofereca canal privado e mantenha dignidade.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">92% leem reviews</strong><span class="text-neutral-400"> - Prova social e fator decisivo</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Sistema de pedido etico</strong><span class="text-neutral-400"> - 4 metodos que geram 5-10 reviews/mes</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Framework de resposta</strong><span class="text-neutral-400"> - Agradecer, nao discutir clinica, canal privado</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Protocolo de crise</strong><span class="text-neutral-400"> - 5 passos para quando algo viraliza</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">7.6 - Metricas que importam (sem ser guru digital)</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Voltar para Trilha 7</a>
+          <a href="modulo-7-6.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">Proximo: Modulo 7.6 →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4"><span class="text-2xl">🧠</span><span class="font-bold text-neutral-200">IAMed</span><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a></div>
+        <div class="text-neutral-500 text-sm">Modulo 7.5: Reputacao online e gestao de reviews</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() { const html = document.documentElement; const icon = document.getElementById('theme-icon'); if (html.classList.contains('dark')) { html.classList.remove('dark'); icon.textContent = '☀️'; localStorage.setItem('theme', 'light'); } else { html.classList.add('dark'); icon.textContent = '🌙'; localStorage.setItem('theme', 'dark'); } }
+    if (localStorage.getItem('theme') === 'light') { document.documentElement.classList.remove('dark'); document.getElementById('theme-icon').textContent = '☀️'; }
+  </script>
+</body>
+</html>

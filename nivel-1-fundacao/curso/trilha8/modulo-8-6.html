@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 8.6: Dashboard do medico — visao do seu impacto | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha blue) */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37, 99, 235, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span></a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span></a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span></a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span></a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span></a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span></a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span></a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-blue-400 bg-blue-500/10"><span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span></a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span></a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1"><span id="theme-icon" class="text-lg">🌙</span></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 8</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400 font-medium">Modulo 8.6</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULO 8.6</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📊 Dashboard do medico: visao do seu impacto</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Visualize pacientes ativos, aderencia, follow-ups e alertas. Metricas que provam seu impacto. O medico que mede melhora.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Projeto</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">👁️ O que visualizar</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Um dashboard medico precisa de <strong class="text-blue-400">4 areas essenciais</strong>. Nao mais, nao menos. Simplicidade e a chave — se for complexo demais, voce nao vai usar.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="bg-blue-500/10 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">👥 Pacientes ativos</h3>
+          <p class="text-neutral-300 text-sm">Quantos pacientes estao em acompanhamento? Quantos tem follow-up ativo? Quantos estao em grupo? Visao geral da carteira.</p>
+        </div>
+        <div class="bg-blue-500/10 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">📈 Aderencia</h3>
+          <p class="text-neutral-300 text-sm">% de pacientes que responderam o follow-up esta semana. Tendencia: subindo, estavel ou caindo? Quem parou de responder?</p>
+        </div>
+        <div class="bg-blue-500/10 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">📋 Follow-ups pendentes</h3>
+          <p class="text-neutral-300 text-sm">Quem nao respondeu ha 2+ semanas? Lista com nome e ultima resposta. Precisa de contato ativo ou pode esperar?</p>
+        </div>
+        <div class="bg-blue-500/10 rounded-xl border border-blue-500/30 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">🚨 Alertas</h3>
+          <p class="text-neutral-300 text-sm">Pacientes com valores fora do range. Priorizados por gravidade: critico (agir agora), atencao (avaliar), monitorar (acompanhar).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📈 Ferramentas simples: Google Sheets + IA</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Voce nao precisa de software caro. <strong class="text-blue-400">Google Sheets + IA</strong> resolve 90% das necessidades. Custo: zero. Barreira de entrada: zero.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">🏗️</span> Arquitetura do dashboard
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-blue-400">Aba 1 — Pacientes:</strong> Lista com nome, condicao, data ultimo follow-up, status (ativo/inativo). Alimentada automaticamente pelo Google Forms.</p>
+          <p><strong class="text-blue-400">Aba 2 — Follow-ups:</strong> Respostas dos formularios com formatacao condicional (verde/amarelo/vermelho). Historico por paciente.</p>
+          <p><strong class="text-blue-400">Aba 3 — Dashboard:</strong> Metricas calculadas automaticamente: total ativos, % aderencia, alertas pendentes, graficos simples.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> IA como analista
+        </h3>
+        <p class="text-neutral-300">Copie os dados da planilha e cole no Claude/ChatGPT: "Analise estes dados de follow-up dos meus pacientes. Identifique: quem precisa de atencao urgente, tendencias de piora, e pacientes que pararam de responder." A IA vira seu analista de dados gratuito.</p>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🎯 Metricas de impacto</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        3 metricas que contam a historia do seu impacto. Nao precisa de 20 indicadores — <strong class="text-blue-400">3 bem escolhidos</strong> dizem tudo.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">1. Pacientes acompanhados entre consultas</h3>
+          <p class="text-neutral-300 text-sm">% da carteira com follow-up ativo. Se voce tem 200 pacientes cronicos e 80 estao em follow-up, sua taxa e 40%. Meta: chegar a 60-80% em 6 meses. Essa metrica mostra o alcance do seu sistema.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">2. Tempo de resposta a alertas</h3>
+          <p class="text-neutral-300 text-sm">Quanto tempo leva do alerta (valor critico) a acao medica (ligacao, mensagem, antecipacao de consulta). Ideal: < 24h para critico, < 48h para atencao. Essa metrica mostra a agilidade do sistema.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">3. Satisfacao do paciente (NPS simples)</h3>
+          <p class="text-neutral-300 text-sm">1 pergunta pos-consulta: "De 0 a 10, quanto voce recomendaria este medico?" NPS = % promotores (9-10) - % detratores (0-6). Acima de 50 e excelente. Essa metrica mostra a percepcao do paciente.</p>
+        </div>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Por que essas 3 e nao outras
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>Alcance</strong> (quantos voce cuida entre consultas) + <strong>Agilidade</strong> (quao rapido voce age) + <strong>Percepcao</strong> (como o paciente avalia) = visao completa do impacto.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🔄 O medico que mede melhora</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Principio central: <strong class="text-blue-400">o que voce mede, voce melhora</strong>. IA faz a medicao (coleta, compila, analisa). Voce faz a decisao (ajustar, intervir, celebrar).
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">🔄</span> O ciclo virtuoso
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1. Medir:</strong> IA coleta dados automaticamente dos follow-ups e satisfacao.</p>
+          <p><strong>2. Analisar:</strong> IA identifica padroes, tendencias e alertas.</p>
+          <p><strong>3. Agir:</strong> Voce decide: ajustar tratamento, mudar abordagem, escalar o que funciona.</p>
+          <p><strong>4. Medir de novo:</strong> O ciclo recomeça. Cada iteracao melhora o resultado.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dados para IA, decisoes para humano
+        </h3>
+        <p class="text-neutral-300">A divisao e clara e inviolavel. IA nunca decide tratamento. IA coleta, organiza e apresenta. O medico interpreta, decide e age. Esse e o modelo seguro de escala com qualidade.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">⚙️ Automatizando a coleta de dados</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Dashboard manual morre em 2 semanas. Dashboard automatico <strong class="text-blue-400">vive para sempre</strong>. A chave e eliminar qualquer etapa manual na coleta.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">🔗</span> Fontes de dados automaticas
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-blue-400">Follow-ups:</strong> Google Forms → Google Sheets automaticamente (integracao nativa).</p>
+          <p><strong class="text-blue-400">Satisfacao:</strong> Formulario NPS enviado 24h apos consulta → mesma planilha, aba separada.</p>
+          <p><strong class="text-blue-400">Alertas:</strong> Formatacao condicional na planilha marca automaticamente valores fora do range.</p>
+          <p><strong class="text-blue-400">Contadores:</strong> Formulas COUNTIF calculam ativos, inativos, alertas pendentes sem voce fazer nada.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Dashboard sustentavel</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Dados entram sozinhos</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Metricas calculam automatico</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Medico so olha e decide</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Dashboard que morre</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Precisa inserir dados manualmente</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Depende de lembrar de atualizar</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Morre na 2a semana de correria</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🧪 Exercicio: criar dashboard com 3 metricas</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Ao final, voce tera um <strong class="text-blue-400">dashboard funcional</strong> pronto para receber dados reais. O proximo passo e conectar aos formularios dos modulos anteriores.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📝</span> Passo a passo
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1.</strong> Crie uma planilha Google Sheets com 3 abas: "Pacientes", "Follow-ups", "Dashboard".</p>
+          <p><strong>2.</strong> Na aba Pacientes: nome, condicao, data cadastro, status (ativo/inativo), ultimo follow-up.</p>
+          <p><strong>3.</strong> Na aba Follow-ups: data, paciente, respostas, status (verde/amarelo/vermelho).</p>
+          <p><strong>4.</strong> Na aba Dashboard: use IA para criar formulas — COUNTIF para contar ativos, AVERAGEIF para aderencia, graficos simples.</p>
+          <p><strong>5.</strong> Simule dados de 10 pacientes ficticios (3 normais, 4 atencao, 3 criticos).</p>
+          <p><strong>6.</strong> Verifique: o dashboard mostra corretamente quem precisa de atencao?</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Prompt para gerar as formulas
+        </h3>
+        <p class="text-neutral-300">"Crie formulas para Google Sheets que calculem: (1) total de pacientes ativos (status = 'ativo' na aba Pacientes), (2) % de aderencia (pacientes com follow-up na ultima semana / total ativos), (3) alertas pendentes (status = 'vermelho' na aba Follow-ups). Inclua formatacao condicional."</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">4 areas do dashboard</strong>
+              <span class="text-neutral-400"> - Pacientes, aderencia, follow-ups, alertas</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">3 metricas de impacto</strong>
+              <span class="text-neutral-400"> - Alcance, agilidade e percepcao do paciente</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Coleta automatica</strong>
+              <span class="text-neutral-400"> - Zero input manual, dashboard que vive para sempre</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Dashboard criado</strong>
+              <span class="text-neutral-400"> - Planilha funcional com 3 metricas e dados simulados</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-blue-400 mb-2">Proxima Trilha:</h3>
+          <p class="text-neutral-300">Trilha 9 - Etica, Regulamentacao + Desafio 30 Dias</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-8-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo 8.5
+          </a>
+          <a href="../trilha9/index.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">
+            Proxima: Trilha 9 - Etica →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 8.6: Dashboard do medico</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) { html.classList.remove('dark'); icon.textContent = '☀️'; localStorage.setItem('theme', 'light'); }
+      else { html.classList.add('dark'); icon.textContent = '🌙'; localStorage.setItem('theme', 'dark'); }
+    }
+    if (localStorage.getItem('theme') === 'light') { document.documentElement.classList.remove('dark'); document.getElementById('theme-icon').textContent = '☀️'; }
+  </script>
+
+</body>
+</html>

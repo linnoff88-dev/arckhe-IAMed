@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1.3: Os 3 tipos de IA que voce vai usar | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha emerald) */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 1</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-emerald-400 font-medium">Modulo 1.3</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 1.3
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🛠️ Os 3 tipos de IA que voce vai usar</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Generativa, Documentacao e Pesquisa. Conheca cada tipo, as principais ferramentas e monte seu kit basico de medico IA-native. Nos nao fornecemos software — apenas referencias.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🗺️ Visao geral dos 3 tipos</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O medico IA-native usa <strong class="text-emerald-400">tres tipos de IA no dia a dia</strong>, cada uma resolvendo um problema diferente. Saber a diferenca entre elas e o primeiro passo para usar a ferramenta certa na hora certa.
+      </p>
+
+      <!-- 3 Cards de tipo -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6">
+          <div class="text-2xl mb-3">💬</div>
+          <h4 class="font-bold text-emerald-400 mb-2">Tipo 1: Generativa</h4>
+          <p class="text-neutral-300 text-sm">Gera texto, resume, explica. ChatGPT, Claude, Gemini.</p>
+        </div>
+        <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6">
+          <div class="text-2xl mb-3">🎙️</div>
+          <h4 class="font-bold text-emerald-400 mb-2">Tipo 2: Documentacao</h4>
+          <p class="text-neutral-300 text-sm">Escuta e documenta. Abridge, Nabla, DAX Copilot.</p>
+        </div>
+        <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6">
+          <div class="text-2xl mb-3">📚</div>
+          <h4 class="font-bold text-emerald-400 mb-2">Tipo 3: Pesquisa</h4>
+          <p class="text-neutral-300 text-sm">Busca evidencia. Elicit, Consensus, Semantic Scholar.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Escolha um dos 3 tipos. Use por 15 minutos em algo real da sua rotina. Anote: o que funcionou? O que nao funcionou? O que te surpreendeu?</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">💬 IA Generativa — ChatGPT, Claude, Gemini, Perplexity</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        As IAs generativas sao as mais <strong class="text-emerald-400">versateis e acessiveis</strong>. Resumem artigos, rascunham documentos, geram diagnosticos diferenciais como segunda opiniao e explicam conceitos para pacientes.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🔧</span> Comparativo de ferramentas
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>ChatGPT (OpenAI):</strong> o mais popular. Bom em tarefas gerais. Versao gratuita disponivel. Plano Plus ~R$100/mes.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Claude (Anthropic):</strong> excelente em textos longos e instrucoes complexas. Segue restricoes com precisao. Versao gratuita disponivel.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Gemini (Google):</strong> integrado ao Google Workspace. Bom para pesquisa e organizacao. Gratuito na versao basica.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Perplexity:</strong> IA de busca com citacoes verificaveis. Melhor que ChatGPT para pesquisa factual. Versao gratuita generosa.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grid Pros vs Contras -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Pontos fortes</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Versateis — servem para dezenas de tarefas</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Acessiveis — versoes gratuitas funcionais</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Custo: R$0 a R$100/mes</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Limitacoes</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Alucinam (inventam informacoes)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Cutoff de treinamento (dados desatualizados)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Nao substituem fontes primarias</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🎙️ IA de Documentacao — Abridge, Nabla, DAX</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-emerald-400">ambient scribing</strong> e a revolucao silenciosa da medicina. Essas ferramentas escutam a consulta e geram a nota clinica automaticamente. O resultado: medicos economizam 1 a 2 horas por dia em documentacao.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🏥</span> Como funciona o ambient scribing
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">1.</span>
+            <span>Voce ativa a ferramenta antes da consulta (com consentimento do paciente)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">2.</span>
+            <span>A IA escuta e transcreve a conversa em tempo real</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">3.</span>
+            <span>Ao final, gera nota clinica estruturada (SOAP ou formato personalizado)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">4.</span>
+            <span>Voce revisa, ajusta e assina — nunca aceite sem revisar</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Dados de Pesquisa
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>1-2 horas/dia</strong> economizadas em documentacao</li>
+          <li><strong>Abridge:</strong> usado em mais de 100 sistemas de saude nos EUA</li>
+          <li><strong>Nabla:</strong> opcao europeia com forte compliance GDPR</li>
+          <li><strong>DAX Copilot (Nuance/Microsoft):</strong> integrado ao prontuario eletronico</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">📚 IA de Pesquisa — Elicit, Consensus, Semantic Scholar, scite</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Essas ferramentas buscam em <strong class="text-emerald-400">138 milhoes de papers cientificos</strong> e respondem perguntas clinicas com peso de evidencia. A diferenca para o ChatGPT? Aqui as respostas vem de artigos reais, com citacoes verificaveis.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🔬</span> Ferramentas de pesquisa
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Elicit:</strong> revisao de literatura em minutos. Extrai dados de papers automaticamente. Ideal para revisoes rapidas.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Consensus:</strong> responde perguntas com "sim/nao" baseado no peso da evidencia. Perfeito para "este tratamento funciona?"</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Semantic Scholar:</strong> busca semantica em 200M+ papers. Encontra artigos por conceito, nao so por palavras-chave.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>scite:</strong> mostra como artigos se citam entre si (apoiam, contradizem ou mencionam). Essencial para avaliar credibilidade.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Para pesquisa clinica, prefira Elicit ou Consensus ao inves de ChatGPT. As respostas vem de papers reais, com links diretos para as fontes. Zero risco de referencia inventada.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🎒 Kit basico do medico</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Voce nao precisa gastar nada para comecar. As <strong class="text-emerald-400">versoes gratuitas ja transformam a rotina clinica</strong>. Este e o kit minimo recomendado para a primeira semana.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Kit gratuito para comecar
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Produtividade</h4>
+            <ul class="space-y-1 text-neutral-300 text-sm">
+              <li>Claude (gratuito)</li>
+              <li>ou ChatGPT (gratuito)</li>
+            </ul>
+            <p class="text-emerald-400 text-xs mt-2 font-semibold">Custo: R$ 0</p>
+          </div>
+          <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Pesquisa</h4>
+            <ul class="space-y-1 text-neutral-300 text-sm">
+              <li>Perplexity (gratuito)</li>
+              <li>Elicit (gratuito)</li>
+            </ul>
+            <p class="text-emerald-400 text-xs mt-2 font-semibold">Custo: R$ 0</p>
+          </div>
+          <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Documentacao</h4>
+            <ul class="space-y-1 text-neutral-300 text-sm">
+              <li>Google Docs + Gemini</li>
+              <li>Templates de prompt</li>
+            </ul>
+            <p class="text-emerald-400 text-xs mt-2 font-semibold">Custo: R$ 0</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Custo mensal estimado
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>Nivel 1 (gratuito):</strong> R$ 0/mes — versoes free de tudo. Suficiente para 80% das tarefas.</li>
+          <li><strong>Nivel 2 (basico):</strong> ~R$ 50/mes — ChatGPT Plus ou Claude Pro. Melhor performance.</li>
+          <li><strong>Nivel 3 (completo):</strong> ~R$ 100/mes — ChatGPT Plus + Perplexity Pro. Maximo proveito.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🎯 Escolhendo a ferramenta certa para cada tarefa</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Usar a ferramenta errada para a tarefa errada</strong> desperica tempo e gera frustacao. Este guia rapido ajuda voce a escolher em segundos.
+      </p>
+
+      <!-- Tabela de decisao -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden mb-6">
+        <div class="grid grid-cols-3 bg-emerald-500/20 border-b border-dark-600">
+          <div class="p-4 font-bold text-emerald-400 text-sm">TAREFA</div>
+          <div class="p-4 font-bold text-emerald-400 text-sm">FERRAMENTA</div>
+          <div class="p-4 font-bold text-emerald-400 text-sm">POR QUE</div>
+        </div>
+        <div class="divide-y divide-dark-600">
+          <div class="grid grid-cols-3">
+            <div class="p-4 text-neutral-300 text-sm">Resumir artigo</div>
+            <div class="p-4 text-neutral-300 text-sm">Claude / ChatGPT</div>
+            <div class="p-4 text-neutral-300 text-sm">Melhor em texto longo</div>
+          </div>
+          <div class="grid grid-cols-3">
+            <div class="p-4 text-neutral-300 text-sm">Pesquisa clinica</div>
+            <div class="p-4 text-neutral-300 text-sm">Elicit / Consensus</div>
+            <div class="p-4 text-neutral-300 text-sm">Fontes reais verificadas</div>
+          </div>
+          <div class="grid grid-cols-3">
+            <div class="p-4 text-neutral-300 text-sm">Busca com citacoes</div>
+            <div class="p-4 text-neutral-300 text-sm">Perplexity</div>
+            <div class="p-4 text-neutral-300 text-sm">Cita fontes automaticamente</div>
+          </div>
+          <div class="grid grid-cols-3">
+            <div class="p-4 text-neutral-300 text-sm">Nota clinica</div>
+            <div class="p-4 text-neutral-300 text-sm">Abridge / Nabla / DAX</div>
+            <div class="p-4 text-neutral-300 text-sm">Ambient scribing direto</div>
+          </div>
+          <div class="grid grid-cols-3">
+            <div class="p-4 text-neutral-300 text-sm">Explicar ao paciente</div>
+            <div class="p-4 text-neutral-300 text-sm">ChatGPT / Claude</div>
+            <div class="p-4 text-neutral-300 text-sm">Linguagem simples ajustavel</div>
+          </div>
+          <div class="grid grid-cols-3">
+            <div class="p-4 text-neutral-300 text-sm">Contestar convenio</div>
+            <div class="p-4 text-neutral-300 text-sm">Claude / ChatGPT</div>
+            <div class="p-4 text-neutral-300 text-sm">Texto formal e argumentativo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Nos nao fornecemos software — apenas referencias e orientacao. Escolha as ferramentas que fazem sentido para sua rotina. Comece com UMA, domine, depois adicione outras.</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">3 tipos de IA</strong>
+              <span class="text-neutral-400"> - Generativa, Documentacao e Pesquisa</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Kit gratuito disponivel</strong>
+              <span class="text-neutral-400"> - Versoes free suficientes para comecar</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Ferramenta certa para cada tarefa</strong>
+              <span class="text-neutral-400"> - Use o guia de selecao</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Comece com uma</strong>
+              <span class="text-neutral-400"> - Domine antes de adicionar outras</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">1.4 - Zona verde, amarela e vermelha</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Voltar para Trilha 1
+          </a>
+          <a href="modulo-1-4.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+            Proximo: Modulo 1.4 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 1.3: Os 3 tipos de IA que voce vai usar</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

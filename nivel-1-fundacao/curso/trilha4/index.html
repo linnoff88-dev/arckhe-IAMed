@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 4: IA no Consultorio | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha amber) */
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217, 119, 6, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <!-- Linha 1 -->
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-amber-400 bg-amber-500/10">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <!-- Linha 2 -->
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300 text-sm">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-amber-400 text-sm font-medium">Trilha 4</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">
+        TRILHA 4 - IA NO CONSULTORIO
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🏥 IA no Consultorio</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Documentacao, comunicacao e rotina clinica — economize 2 horas por dia. SOAP com IA, contestacoes que funcionam, laudos, explicacoes para pacientes, produtividade e teleconsulta potencializada.
+      </p>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-amber-400">6</div>
+          <div class="text-xs text-neutral-400">Modulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-amber-400">36</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-amber-400">~6h</div>
+          <div class="text-xs text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-amber-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modulos -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Divisor -->
+    <div class="flex items-center space-x-4 mb-8">
+      <div class="h-px flex-1 bg-dark-600"></div>
+      <span class="text-neutral-500 text-sm font-medium">Conteudo Detalhado</span>
+      <div class="h-px flex-1 bg-dark-600"></div>
+    </div>
+
+    <!-- Modulo 4.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-amber-400 font-bold">4.1</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">📋 Nota clinica SOAP com IA</h3>
+        <p class="text-neutral-400 text-sm">Template SOAP completo, transformacao de anotacoes em nota estruturada, CID-10 correto e 5 exemplos por tipo de consulta.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📝</span>
+            <div class="flex-1">
+              <span class="font-medium">Template SOAP completo</span>
+              <span class="text-neutral-500 text-sm ml-2">- Estrutura padrao com IA</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Template SOAP (Subjetivo, Objetivo, Avaliacao, Plano) otimizado para IA gerar notas clinicas completas e padronizadas a partir de informacoes minimas do medico.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Documentacao consome ate 50% do tempo medico. Um template SOAP com IA reduz isso para minutos, mantendo qualidade e padrao.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">SOAP estruturado, prompt para nota clinica, campos obrigatorios, padronizacao, economia de tempo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🔄</span>
+            <div class="flex-1">
+              <span class="font-medium">Transformar anotacoes em nota</span>
+              <span class="text-neutral-500 text-sm ml-2">- De rascunho para SOAP</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Tecnica para pegar anotacoes rapidas feitas durante a consulta (frases soltas, abreviacoes, lembretes) e usar IA para transformar em nota SOAP completa e profissional.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Voce nao precisa digitar a nota perfeita durante a consulta. Anote o essencial, foque no paciente, e a IA estrutura depois.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Anotacoes rapidas, reestruturacao com IA, revisao obrigatoria, fluxo consulta-nota, foco no paciente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">🏷️</span>
+            <div class="flex-1">
+              <span class="font-medium">CID-10 correto com IA</span>
+              <span class="text-neutral-500 text-sm ml-2">- Codificacao precisa</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para sugerir o CID-10 mais adequado com base na descricao clinica. A IA busca o codigo e justifica a escolha, mas o medico SEMPRE valida.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">CID errado causa glosas, negativas de convenio e problemas legais. IA agiliza a busca, mas a conferencia e sua responsabilidade.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">CID-10, codificacao clinica, sugestao por IA, validacao obrigatoria, impacto em faturamento e convenios.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">📂</span>
+            <div class="flex-1">
+              <span class="font-medium">5 exemplos por tipo de consulta</span>
+              <span class="text-neutral-500 text-sm ml-2">- Primeira vez, retorno, urgencia, tele, pre-op</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cinco notas SOAP completas geradas com IA para cenarios reais: primeira consulta, retorno, urgencia, teleconsulta e avaliacao pre-operatoria. Cada uma com prompt e resultado.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exemplos concretos aceleram o aprendizado. Voce adapta o modelo ao seu contexto em vez de comecar do zero.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Consulta inicial, retorno, urgencia, teleconsulta, pre-operatorio, adaptacao de prompts, templates por cenario.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">⚠️</span>
+            <div class="flex-1">
+              <span class="font-medium">Armadilhas: CIDs errados, negativas inventadas</span>
+              <span class="text-neutral-500 text-sm ml-2">- O que a IA erra</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A IA pode sugerir CIDs inexistentes, inventar achados negativos que voce nao mencionou, ou adicionar detalhes que nao estavam na consulta. Saber onde ela erra e essencial.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Um CID errado gera glosa. Uma negativa inventada no prontuario pode ter implicacao medico-legal. Revisar e obrigatorio.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">CIDs alucinados, negativas fabricadas, detalhes inventados, revisao critica, responsabilidade medica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🧪</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio pratico</span>
+              <span class="text-neutral-500 text-sm ml-2">- Crie sua nota SOAP com IA</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio hands-on: pegue anotacoes de uma consulta real (anonimizada), use o template SOAP com IA, gere a nota, revise e compare com o que voce escreveria manualmente.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Pratica e o que transforma conhecimento em habilidade. Apos este exercicio, voce tera confianca para usar no dia a dia.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Pratica com dados reais, anonimizacao, comparacao manual vs IA, calibracao de confianca, workflow pessoal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-4-1.html')" class="px-4 py-2 text-sm bg-amber-600/20 hover:bg-amber-600/30 text-amber-400 border border-amber-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-4-1.html" class="px-4 py-2 text-sm bg-amber-600 hover:bg-amber-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 4.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-amber-400 font-bold">4.2</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⚖️ Contestacao de convenio que funciona</h3>
+        <p class="text-neutral-400 text-sm">Anatomia da carta eficaz, argumentacao clinica com ANS/TUSS, 5 cenarios reais e templates prontos para usar.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📄</span>
+            <div class="flex-1">
+              <span class="font-medium">Anatomia da carta eficaz</span>
+              <span class="text-neutral-500 text-sm ml-2">- Estrutura que convence</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Estrutura completa de uma carta de contestacao que funciona: identificacao, historico clinico, justificativa tecnica, base legal (ANS), solicitacao clara e prazo.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cartas mal escritas sao ignoradas. Uma carta bem estruturada com base legal tem taxa de sucesso muito maior.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Estrutura de contestacao, elementos obrigatorios, tom profissional, base legal, objetivo claro.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">📚</span>
+            <div class="flex-1">
+              <span class="font-medium">Argumentacao clinica + ANS/TUSS</span>
+              <span class="text-neutral-500 text-sm ml-2">- Base legal e tecnica</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Como combinar justificativa clinica (indicacao, guidelines, evidencia) com base regulatoria (resolucoes ANS, codigos TUSS, rol de procedimentos) para uma argumentacao irrefutavel.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Convenios negam com base tecnica. Voce precisa contestar com base tecnica E legal. A IA ajuda a encontrar as referencias certas.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Resolucoes ANS, codigos TUSS, rol de procedimentos, guidelines como evidencia, argumentacao tecnico-legal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📎</span>
+            <div class="flex-1">
+              <span class="font-medium">Template pronto para usar</span>
+              <span class="text-neutral-500 text-sm ml-2">- Copie e adapte</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Prompt completo para gerar carta de contestacao com IA: voce insere dados do paciente, procedimento negado e motivo da negativa, e a IA gera a carta com base legal.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ter um template pronto transforma uma tarefa de 30 minutos em 5 minutos. Voce so revisa e personaliza.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Template de prompt, campos variaveis, personalizacao, revisao antes de enviar, eficiencia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🏥</span>
+            <div class="flex-1">
+              <span class="font-medium">5 cenarios reais</span>
+              <span class="text-neutral-500 text-sm ml-2">- Colonoscopia, RM, cirurgia, medicamento, home care</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cinco contestacoes completas para cenarios frequentes: colonoscopia negada, ressonancia magnetica, cirurgia eletiva, medicamento de alto custo e home care. Cada uma com prompt e resultado.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Estes 5 cenarios cobrem a maioria das negativas que voce vai enfrentar. Adapte o modelo ao seu caso especifico.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Colonoscopia, ressonancia, cirurgia eletiva, alto custo, home care, adaptacao por cenario, base legal especifica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">⚠️</span>
+            <div class="flex-1">
+              <span class="font-medium">Armadilha: IA inventa resolucoes</span>
+              <span class="text-neutral-500 text-sm ml-2">- Leis que nao existem</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A IA pode inventar numeros de resolucoes ANS, artigos de lei e codigos TUSS que nao existem. Uma contestacao com referencia falsa perde toda credibilidade.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Citar uma resolucao inexistente e pior do que nao citar nenhuma. Sempre verifique cada numero, cada artigo, cada codigo no site oficial da ANS.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Alucinacao juridica, resolucoes inventadas, verificacao no site da ANS, credibilidade da contestacao, conferencia obrigatoria.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🧪</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio pratico</span>
+              <span class="text-neutral-500 text-sm ml-2">- Conteste uma negativa real</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio: pegue uma negativa real (ou simule uma), use o template com IA, gere a carta, verifique TODAS as referencias legais e compare com o que voce escreveria.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Praticar com caso real grava o processo. Na proxima negativa, voce resolve em 5 minutos em vez de 30.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Pratica com caso real, verificacao de fontes, workflow contestacao, eficiencia, confianca no processo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-4-2.html')" class="px-4 py-2 text-sm bg-amber-600/20 hover:bg-amber-600/30 text-amber-400 border border-amber-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-4-2.html" class="px-4 py-2 text-sm bg-amber-600 hover:bg-amber-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 4.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-amber-400 font-bold">4.3</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">✉️ Cartas, laudos e encaminhamentos</h3>
+        <p class="text-neutral-400 text-sm">Encaminhamento com pergunta clinica, laudo para pericia/INSS, atestado detalhado, relatorio escolar e parecer tecnico.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🔗</span>
+            <div class="flex-1">
+              <span class="font-medium">Carta de encaminhamento com pergunta</span>
+              <span class="text-neutral-500 text-sm ml-2">- Comunicacao entre colegas</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Carta de encaminhamento que inclui resumo clinico relevante e uma pergunta especifica ao colega. A IA estrutura a carta com as informacoes que voce fornece.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Um encaminhamento com pergunta clara recebe resposta melhor e mais rapida. O colega sabe exatamente o que voce precisa.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Encaminhamento estruturado, pergunta clinica, resumo relevante, comunicacao entre medicos, eficiencia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">📑</span>
+            <div class="flex-1">
+              <span class="font-medium">Laudo para pericia/INSS</span>
+              <span class="text-neutral-500 text-sm ml-2">- Documentacao para beneficios</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Laudo medico detalhado para pericia do INSS com diagnostico, CID, historico, exames, limitacoes funcionais e prognostico. A IA estrutura com linguagem tecnica adequada.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Laudos incompletos sao a principal causa de negativa de beneficio. Um laudo bem estruturado protege seu paciente.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Laudo pericial, INSS, limitacoes funcionais, CID, prognostico, linguagem tecnica, protecao do paciente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📃</span>
+            <div class="flex-1">
+              <span class="font-medium">Atestado detalhado</span>
+              <span class="text-neutral-500 text-sm ml-2">- Alem do basico</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Atestado medico que vai alem de "X dias de repouso": inclui justificativa clinica, restricoes especificas e recomendacoes para o empregador quando necessario.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Atestados genericos geram duvidas. Um atestado detalhado protege o paciente e evita questionamentos do empregador.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Atestado medico, justificativa clinica, restricoes, CID (quando autorizado), protecao do paciente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🎓</span>
+            <div class="flex-1">
+              <span class="font-medium">Relatorio para escola (TDAH/TEA)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Linguagem para educadores</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Relatorio medico para escola com diagnostico, impacto no aprendizado e recomendacoes pedagogicas especificas. A IA traduz linguagem medica para linguagem que educadores entendem.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Relatorios tecnicos demais nao ajudam a escola a adaptar o ensino. Um relatorio com recomendacoes praticas faz diferenca real na vida da crianca.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">TDAH, TEA, relatorio escolar, recomendacoes pedagogicas, linguagem acessivel, impacto no aprendizado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🔬</span>
+            <div class="flex-1">
+              <span class="font-medium">Parecer tecnico</span>
+              <span class="text-neutral-500 text-sm ml-2">- Opiniao especializada formal</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Parecer tecnico formal com analise de caso, fundamentacao cientifica, conclusao e recomendacao. Usado em processos judiciais, auditorias e segunda opiniao.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Pareceres tecnicos exigem estrutura rigida e fundamentacao. A IA ajuda a organizar e referenciar, mas o conteudo clinico e seu.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Parecer tecnico, fundamentacao cientifica, estrutura formal, conclusao fundamentada, responsabilidade medica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">📋</span>
+            <div class="flex-1">
+              <span class="font-medium">Templates prontos</span>
+              <span class="text-neutral-500 text-sm ml-2">- Todos os modelos em um lugar</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Colecao de prompts prontos para cada tipo de documento: encaminhamento, laudo INSS, atestado, relatorio escolar e parecer tecnico. Copie, personalize e use.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Templates eliminam o "pagina em branco". Voce comeca com estrutura pronta e so adapta ao caso.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Biblioteca de templates, prompts copiaveis, personalizacao por caso, eficiencia documental, padronizacao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-4-3.html')" class="px-4 py-2 text-sm bg-amber-600/20 hover:bg-amber-600/30 text-amber-400 border border-amber-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-4-3.html" class="px-4 py-2 text-sm bg-amber-600 hover:bg-amber-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 4.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-amber-400 font-bold">4.4</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">💬 Explicacoes personalizadas para pacientes</h3>
+        <p class="text-neutral-400 text-sm">Adapte explicacoes por idade e escolaridade, use analogias que funcionam e crie kits educativos para suas condicoes mais frequentes.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🎯</span>
+            <div class="flex-1">
+              <span class="font-medium">Adaptar por idade e escolaridade</span>
+              <span class="text-neutral-500 text-sm ml-2">- Linguagem sob medida</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para gerar explicacoes na linguagem certa: simples para idosos com baixa escolaridade, tecnica para profissionais de saude, ludica para criancas, objetiva para adultos.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Paciente que entende adere melhor ao tratamento. A mesma informacao precisa ser comunicada de formas diferentes.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Letramento em saude, adaptacao de linguagem, nivel de escolaridade, faixa etaria, compreensao do paciente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">📖</span>
+            <div class="flex-1">
+              <span class="font-medium">Material educativo com IA</span>
+              <span class="text-neutral-500 text-sm ml-2">- Crie uma vez, use sempre</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Gerar material educativo padronizado com IA: folhetos sobre condicoes cronicas, orientacoes pos-consulta, listas de cuidados e respostas a duvidas frequentes.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Voce explica as mesmas condicoes dezenas de vezes por semana. Material educativo escrito economiza tempo e melhora a retencao do paciente.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Folhetos educativos, orientacoes padronizadas, FAQ do paciente, material reutilizavel, revisao medica obrigatoria.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">💡</span>
+            <div class="flex-1">
+              <span class="font-medium">Analogias que funcionam</span>
+              <span class="text-neutral-500 text-sm ml-2">- Pressao=cano, insulina=chave</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Biblioteca de analogias medicas que facilitam a compreensao: pressao alta = cano com pressao demais, insulina = chave que abre a porta da celula, colesterol = gordura entupindo cano.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Analogias transformam conceitos abstratos em imagens concretas. O paciente lembra da analogia muito tempo depois da consulta.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Analogias medicas, comunicacao visual, retencao de informacao, linguagem acessivel, IA para gerar analogias.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">📦</span>
+            <div class="flex-1">
+              <span class="font-medium">Kit de 5 condicoes frequentes</span>
+              <span class="text-neutral-500 text-sm ml-2">- Materiais prontos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Kit educativo completo para 5 condicoes frequentes (HAS, DM2, hipotireoidismo, ansiedade, lombalgia) com explicacao, cuidados, sinais de alerta e quando voltar ao medico.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ter materiais prontos para as condicoes mais frequentes da sua pratica elimina repetir a mesma explicacao 20 vezes por dia.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">HAS, DM2, hipotireoidismo, ansiedade, lombalgia, kit educativo, sinais de alerta, autocuidado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">📱</span>
+            <div class="flex-1">
+              <span class="font-medium">Formato WhatsApp e PDF</span>
+              <span class="text-neutral-500 text-sm ml-2">- Entrega ao paciente</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Adaptar o material educativo para dois formatos: mensagem curta de WhatsApp (com emojis e linguagem direta) e PDF imprimivel (para entregar na consulta).</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cada paciente consome informacao de um jeito. WhatsApp para quem e digital, PDF para quem prefere papel. Ambos gerados pela IA em segundos.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">WhatsApp medico, PDF imprimivel, formatacao por canal, entrega de informacao, praticidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🧪</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio: crie seu kit proprio</span>
+              <span class="text-neutral-500 text-sm ml-2">- Suas 5 condicoes mais frequentes</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico: identifique as 5 condicoes que voce mais atende, gere material educativo para cada uma com IA (WhatsApp + PDF), revise e salve para usar no dia a dia.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ao final deste exercicio, voce tera 5 materiais prontos e revisados. Na segunda-feira, ja pode entregar ao primeiro paciente.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Kit personalizado, pratica com IA, revisao medica, material pronto para uso, eficiencia na comunicacao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-4-4.html')" class="px-4 py-2 text-sm bg-amber-600/20 hover:bg-amber-600/30 text-amber-400 border border-amber-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-4-4.html" class="px-4 py-2 text-sm bg-amber-600 hover:bg-amber-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 4.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-amber-400 font-bold">4.5</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⚡ Organizacao e produtividade medica</h3>
+        <p class="text-neutral-400 text-sm">IA para organizar agenda, checklists, resumir reunioes, preparar aulas e material de educacao continuada.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📅</span>
+            <div class="flex-1">
+              <span class="font-medium">IA para organizar agenda</span>
+              <span class="text-neutral-500 text-sm ml-2">- Otimize seu tempo</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para analisar sua agenda, sugerir otimizacoes de horario, criar blocos de tempo produtivos e identificar padroes de desperdicio de tempo na rotina clinica.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Medicos perdem tempo com organizacao ineficiente. A IA identifica padroes que voce nao percebe e sugere ajustes praticos.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Gestao de agenda, blocos de tempo, otimizacao, padroes de produtividade, reducao de desperdicio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">✅</span>
+            <div class="flex-1">
+              <span class="font-medium">Checklists de consultorio</span>
+              <span class="text-neutral-500 text-sm ml-2">- Nada passa despercebido</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Gerar checklists personalizados com IA: abertura de consultorio, rotina pre-consulta, fechamento do dia, procedimentos por especialidade e protocolos de seguranca.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Checklists reduzem erros em 30-40% (Gawande, Checklist Manifesto). A IA personaliza para sua realidade em minutos.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Checklists clinicos, reducao de erros, padronizacao, protocolos, personalizacao por especialidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">🎙️</span>
+            <div class="flex-1">
+              <span class="font-medium">Resumir reuniao clinica</span>
+              <span class="text-neutral-500 text-sm ml-2">- De 1h para 5 minutos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Gravar ou anotar pontos-chave de reuniao clinica e usar IA para gerar resumo estruturado com decisoes, responsaveis e prazos. Tambem funciona para sessoes clinicas e discussao de casos.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Reunioes consomem horas. Um resumo automatizado garante que nada se perca e todos saibam o que ficou decidido.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Resumo de reuniao, ata automatica, pontos de acao, decisoes registradas, economia de tempo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🎤</span>
+            <div class="flex-1">
+              <span class="font-medium">Preparar aula ou palestra</span>
+              <span class="text-neutral-500 text-sm ml-2">- De tema a slides</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para gerar estrutura de aula, roteiro de apresentacao, pontos-chave por slide e perguntas para discussao. Do tema ao material pronto em uma fracao do tempo.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Medicos frequentemente precisam dar aulas ou palestras com pouco tempo de preparacao. A IA cria a estrutura, voce adiciona sua experiencia.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Estrutura de aula, roteiro de palestra, pontos-chave, Gamma para slides, preparacao acelerada.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">📚</span>
+            <div class="flex-1">
+              <span class="font-medium">Material de educacao continuada</span>
+              <span class="text-neutral-500 text-sm ml-2">- Atualizar-se com IA</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para resumir artigos recentes, gerar flashcards de estudo, criar questoes de revisao e organizar material de educacao medica continuada da sua especialidade.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Manter-se atualizado e obrigatorio mas consome tempo. A IA comprime horas de leitura em resumos estruturados e material de estudo.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Educacao continuada, resumo de artigos, flashcards, questoes de revisao, atualizacao eficiente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🛠️</span>
+            <div class="flex-1">
+              <span class="font-medium">Ferramentas: NotebookLM, Gamma, Perplexity</span>
+              <span class="text-neutral-500 text-sm ml-2">- Stack de produtividade</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Tres ferramentas essenciais: NotebookLM (Google) para organizar e consultar seus documentos, Gamma para gerar apresentacoes visuais, Perplexity para pesquisa rapida com fontes.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cada ferramenta resolve um problema diferente. Juntas, formam um stack de produtividade que multiplica sua capacidade.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">NotebookLM, Gamma, Perplexity, stack de ferramentas, produtividade medica, ferramenta certa para tarefa certa.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-4-5.html')" class="px-4 py-2 text-sm bg-amber-600/20 hover:bg-amber-600/30 text-amber-400 border border-amber-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-4-5.html" class="px-4 py-2 text-sm bg-amber-600 hover:bg-amber-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 4.6 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-amber-400 font-bold">4.6</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">📹 Teleconsulta potencializada por IA</h3>
+        <p class="text-neutral-400 text-sm">Workflow completo de teleconsulta com IA: preparacao pre-consulta, anotacoes durante e follow-up automatizado pos-consulta.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📋</span>
+            <div class="flex-1">
+              <span class="font-medium">Preparacao pre-consulta</span>
+              <span class="text-neutral-500 text-sm ml-2">- Resumo do paciente com IA</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para gerar resumo do historico do paciente antes da teleconsulta: ultimas consultas, medicacoes, exames pendentes e pontos de atencao. Voce entra na consulta ja preparado.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Na teleconsulta, voce nao tem o prontuario fisico na mao. Um resumo pre-consulta compensa essa limitacao e melhora a qualidade do atendimento.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Resumo pre-consulta, historico condensado, pontos de atencao, preparacao para teleconsulta, eficiencia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">⌨️</span>
+            <div class="flex-1">
+              <span class="font-medium">Durante: anotacoes rapidas</span>
+              <span class="text-neutral-500 text-sm ml-2">- Sem perder contato visual</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Tecnicas para anotar o minimo durante a teleconsulta (palavras-chave, abreviacoes) e usar IA depois para expandir em nota clinica completa. Mantenha contato visual com o paciente.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Na teleconsulta, digitar muito faz o paciente sentir que voce nao esta prestando atencao. Anotacoes minimas + IA depois resolve isso.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Anotacoes rapidas, contato visual, expansao com IA, comunicacao nao-verbal, qualidade da teleconsulta.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📤</span>
+            <div class="flex-1">
+              <span class="font-medium">Pos-consulta: follow-up + material</span>
+              <span class="text-neutral-500 text-sm ml-2">- Cuidado continuado</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Usar IA para gerar material pos-consulta: resumo para o paciente, orientacoes de cuidado, material educativo sobre a condicao discutida e mensagem de follow-up.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">O paciente esquece 50% do que ouviu na consulta em 1 hora. Material escrito pos-consulta melhora drasticamente a adesao ao tratamento.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Follow-up automatizado, material pos-consulta, resumo para paciente, adesao ao tratamento, cuidado continuado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🔄</span>
+            <div class="flex-1">
+              <span class="font-medium">Workflow completo</span>
+              <span class="text-neutral-500 text-sm ml-2">- Pre + durante + pos integrado</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Integracao dos tres momentos em um workflow fluido: resumo pre → anotacoes minimas durante → nota SOAP + material educativo + follow-up pos. Tudo conectado com prompts sequenciais.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cada etapa isolada ajuda. As tres integradas transformam completamente a qualidade e eficiencia da teleconsulta.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Workflow integrado, prompts sequenciais, fluxo pre-durante-pos, teleconsulta completa, eficiencia maxima.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🛠️</span>
+            <div class="flex-1">
+              <span class="font-medium">Ferramentas de apoio</span>
+              <span class="text-neutral-500 text-sm ml-2">- Plataformas e integracao</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ferramentas que complementam a teleconsulta com IA: plataformas de telemedicina com transcricao, apps de anotacao rapida, ferramentas de envio automatico de material ao paciente.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A ferramenta certa no momento certo faz a diferenca. Conhecer as opcoes permite montar o setup ideal para sua realidade.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Plataformas de telemedicina, transcricao automatica, envio de material, integracao de ferramentas, setup personalizado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🧪</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio: crie seu workflow</span>
+              <span class="text-neutral-500 text-sm ml-2">- Teleconsulta completa com IA</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-amber-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio final: simule uma teleconsulta completa usando o workflow. Gere resumo pre, faca anotacoes minimas, expanda com IA, gere material pos-consulta e mensagem de follow-up.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Praticar o workflow completo uma vez garante que na proxima teleconsulta real, voce ja sabe exatamente o que fazer em cada etapa.</p>
+              </div>
+              <div>
+                <span class="text-amber-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Simulacao de teleconsulta, workflow completo, pratica integrada, confianca no processo, pronto para usar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-4-6.html')" class="px-4 py-2 text-sm bg-amber-600/20 hover:bg-amber-600/30 text-amber-400 border border-amber-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-4-6.html" class="px-4 py-2 text-sm bg-amber-600 hover:bg-amber-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Navegacao -->
+    <div class="mt-12 flex flex-col sm:flex-row gap-4">
+      <a href="../trilha3/index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Trilha 3: Pesquisa com IA
+      </a>
+      <a href="../trilha5/index.html" class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors">
+        Proxima: Trilha 5 - Vibe Code →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Trilha 4: IA no Consultorio</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative flex items-start justify-center min-h-screen p-4 pt-8 overflow-y-auto">
+      <div class="relative bg-dark-800 rounded-2xl border border-dark-600 w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl">
+        <div class="sticky top-0 z-10 flex items-center justify-between p-4 bg-dark-800 border-b border-dark-600">
+          <h3 class="font-bold text-lg text-amber-400">Conteudo do Modulo</h3>
+          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors text-neutral-400 hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+          <div class="flex items-center justify-center py-12">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-400"></div>
+            <span class="ml-3 text-neutral-400">Carregando...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) {
+          exp.classList.remove('active');
+        }
+      });
+
+      explanation.classList.toggle('active');
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+
+    function openModal(moduloUrl) {
+      const modal = document.getElementById('modal-overlay');
+      const content = document.getElementById('modal-content');
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      content.innerHTML = `
+        <div class="flex items-center justify-center py-12">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-400"></div>
+          <span class="ml-3 text-neutral-400">Carregando...</span>
+        </div>
+      `;
+
+      fetch(moduloUrl)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const mainContent = doc.querySelector('main');
+
+          if (mainContent) {
+            content.innerHTML = mainContent.innerHTML;
+          } else {
+            content.innerHTML = '<p class="text-neutral-400">Conteudo nao encontrado.</p>';
+          }
+        })
+        .catch(err => {
+          content.innerHTML = '<p class="text-red-400">Erro ao carregar conteudo.</p>';
+        });
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal-overlay');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>

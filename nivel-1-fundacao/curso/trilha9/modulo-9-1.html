@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 9.1: Resolucao CFM 2.454/2026 decodificada | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha purple) */
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 9</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-purple-400 font-medium">Modulo 9.1</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 9.1
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📜 Resolucao CFM 2.454/2026 decodificada</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Artigo por artigo da resolucao que regulamenta o uso de IA na medicina. Obrigacoes, proibicoes, modelo de registro e classificacao de risco para proteger sua pratica.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">Essencial</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-purple-400">Legal</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🏛️ Contexto da resolucao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A <strong class="text-purple-400">Resolucao CFM 2.454/2026</strong> e a primeira regulamentacao brasileira especifica para uso de inteligencia artificial na pratica medica. Publicada em marco de 2026, entra em vigor em agosto do mesmo ano.
+      </p>
+
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Por que regulamentar agora
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-purple-400">Adocao acelerada:</strong> Pesquisas indicam que mais de 40% dos medicos brasileiros ja usam IA generativa no consultorio, a maioria sem nenhum protocolo de seguranca.</p>
+          <p><strong class="text-purple-400">Vacuo normativo:</strong> O Codigo de Etica Medica de 2018 nao menciona inteligencia artificial. O CFM precisou criar regras especificas.</p>
+          <p><strong class="text-purple-400">Casos de dano:</strong> Relatos de diagnosticos errados baseados em IA sem validacao clinica motivaram a urgencia regulatoria.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Marque no calendario: agosto/2026. A partir dessa data, o desconhecimento da resolucao nao sera desculpa. Leia o texto original no site do CFM e mantenha uma copia no seu segundo cerebro.</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">✅ 6 obrigacoes do medico</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A resolucao estabelece <strong class="text-purple-400">6 obrigacoes claras</strong> para todo medico que utilizar ferramentas de IA na pratica clinica. Nao sao sugestoes — sao deveres eticos.
+      </p>
+
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> As 6 obrigacoes
+        </h3>
+        <div class="space-y-4 text-neutral-300">
+          <div class="flex items-start space-x-3">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+            <p><strong class="text-purple-400">Manter autonomia decisoria</strong> — IA sugere, medico decide. A palavra final e sempre humana.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+            <p><strong class="text-purple-400">Registrar uso de IA no prontuario</strong> — qual ferramenta, para que, qual output, qual decisao.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+            <p><strong class="text-purple-400">Informar o paciente</strong> — quando a IA participou diretamente da conduta clinica.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+            <p><strong class="text-purple-400">Validar criticamente toda saida</strong> — nunca aceitar output da IA sem revisao clinica.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+            <p><strong class="text-purple-400">Manter-se atualizado</strong> — conhecer limitacoes das ferramentas que usa.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">6</span>
+            <p><strong class="text-purple-400">Assumir responsabilidade integral</strong> — o ato medico e do medico, independente da IA.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🚫 5 proibicoes explicitas</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Alem das obrigacoes, a resolucao define <strong class="text-purple-400">5 linhas vermelhas</strong> que nenhum medico pode cruzar ao usar IA.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-500/10 rounded-xl border border-red-500/30 p-6">
+          <h3 class="text-lg font-semibold text-red-400 mb-3">🚫 PROIBIDO</h3>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>• Delegar decisao clinica final a IA</li>
+            <li>• Usar IA como substituto do exame clinico</li>
+            <li>• Omitir uso de IA quando paciente perguntar</li>
+            <li>• Usar ferramentas nao validadas para alto risco</li>
+            <li>• Compartilhar dados sem consentimento e anonimizacao</li>
+          </ul>
+        </div>
+        <div class="bg-purple-500/10 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">✅ PERMITIDO</h3>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>• Usar IA como apoio ao diagnostico diferencial</li>
+            <li>• Gerar rascunhos de documentos clinicos</li>
+            <li>• Pesquisar literatura com IA</li>
+            <li>• Criar material educativo para pacientes</li>
+            <li>• Automatizar tarefas administrativas</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">📋 Modelo de registro em prontuario</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O registro e sua <strong class="text-purple-400">principal defesa legal</strong>. Um bom registro mostra que voce usou IA de forma responsavel e que a decisao final foi sua.
+      </p>
+
+      <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-purple-400 mb-4">Template de registro</h3>
+        <div class="bg-dark-800 rounded-lg p-4 text-sm text-neutral-300 font-mono space-y-2">
+          <p><strong class="text-purple-400">[IA utilizada]:</strong> ChatGPT-4o / Claude / [nome]</p>
+          <p><strong class="text-purple-400">[Finalidade]:</strong> Apoio diagnostico diferencial / Rascunho SOAP / [descrever]</p>
+          <p><strong class="text-purple-400">[Output da IA]:</strong> [resumo do que a IA sugeriu]</p>
+          <p><strong class="text-purple-400">[Decisao clinica]:</strong> Concordo com [X] / Discordo de [Y] porque [justificativa]</p>
+          <p><strong class="text-purple-400">[Paciente informado]:</strong> Sim / Nao aplicavel (tarefa administrativa)</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Salve esse template como texto rapido no seu prontuario eletronico. Em 30 segundos voce preenche e esta documentado. A pratica torna automatico.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">❌ O que a resolucao NAO faz</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A resolucao e um marco importante, mas tem <strong class="text-purple-400">lacunas significativas</strong>. Conhece-las evita falsa seguranca.
+      </p>
+
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-purple-400 mb-4">Lacunas da resolucao</h3>
+        <div class="space-y-3 text-neutral-300">
+          <p>• <strong class="text-purple-400">Nao define</strong> quais ferramentas sao "validadas" — criterios ainda vagos</p>
+          <p>• <strong class="text-purple-400">Nao regulamenta</strong> IA em pesquisa clinica — apenas pratica assistencial</p>
+          <p>• <strong class="text-purple-400">Nao aborda</strong> IA em cirurgia robotica — area em crescimento</p>
+          <p>• <strong class="text-purple-400">Nao distingue</strong> IA generativa de IA deterministica — tratamento uniforme</p>
+          <p>• <strong class="text-purple-400">Nao cria</strong> penalidades novas — aplica as ja existentes no CEM</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">⚠️ Classificacao de risco institucional</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Nem todo uso de IA tem o mesmo risco. Classifique sua exposicao para calibrar o nivel de <strong class="text-purple-400">cuidado e documentacao</strong> em cada situacao.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-emerald-500/10 rounded-xl border border-emerald-500/30 p-6">
+          <h3 class="text-lg font-semibold text-emerald-400 mb-2">🟢 Risco Baixo (Verde)</h3>
+          <p class="text-neutral-300 text-sm">Pesquisa, educacao, organizacao, formatacao. Registro simples ou dispensavel.</p>
+          <p class="text-neutral-400 text-xs mt-2">Exemplos: buscar artigos, formatar laudo, gerar material educativo.</p>
+        </div>
+        <div class="bg-yellow-500/10 rounded-xl border border-yellow-500/30 p-6">
+          <h3 class="text-lg font-semibold text-yellow-400 mb-2">🟡 Risco Medio (Amarelo)</h3>
+          <p class="text-neutral-300 text-sm">Apoio diagnostico, documentacao clinica, triagem. Registro obrigatorio.</p>
+          <p class="text-neutral-400 text-xs mt-2">Exemplos: diagnostico diferencial, nota SOAP, contestacao de convenio.</p>
+        </div>
+        <div class="bg-red-500/10 rounded-xl border border-red-500/30 p-6">
+          <h3 class="text-lg font-semibold text-red-400 mb-2">🔴 Risco Alto (Vermelho)</h3>
+          <p class="text-neutral-300 text-sm">Decisao terapeutica, prescricao, laudo pericial. Validacao rigorosa + registro completo.</p>
+          <p class="text-neutral-400 text-xs mt-2">Exemplos: escolha de quimioterapia, ajuste de dose, laudo INSS.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo Final -->
+    <section class="mb-12">
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-8">
+        <h2 class="text-2xl font-bold mb-6 text-purple-400">Resumo do Modulo 9.1</h2>
+
+        <div class="space-y-3 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Resolucao CFM 2.454/2026</strong>
+              <span class="text-neutral-400"> - Primeira regulamentacao brasileira de IA medica, vigente a partir de agosto/2026</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">6 obrigacoes</strong>
+              <span class="text-neutral-400"> - Autonomia, registro, informar paciente, validacao, atualizacao, responsabilidade</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">5 proibicoes</strong>
+              <span class="text-neutral-400"> - Delegar decisao, substituir exame, omitir uso, ferramentas nao validadas, dados sem consentimento</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-purple-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Classificacao verde/amarelo/vermelho</strong>
+              <span class="text-neutral-400"> - Calibre cuidado e documentacao pelo nivel de risco</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-purple-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">9.2 - LGPD + Consentimento na pratica</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Voltar para Trilha 9
+          </a>
+          <a href="modulo-9-2.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">
+            Proximo: Modulo 9.2 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 9.1: Resolucao CFM 2.454/2026</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+</body>
+</html>

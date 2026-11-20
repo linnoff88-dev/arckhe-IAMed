@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1.4: Zona verde, amarela e vermelha | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha emerald) */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 1</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-emerald-400 font-medium">Modulo 1.4</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 1.4
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🚦 Zona verde, amarela e vermelha</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Assim como a triagem de Manchester classifica pacientes por gravidade, voce vai classificar tarefas de IA por nivel de risco. Um sistema simples que garante seguranca no uso diario.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">~50</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-emerald-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🏥 Sistema de triagem aplicado ao uso de IA</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Voce ja usa triagem todos os dias. O <strong class="text-emerald-400">Protocolo de Manchester e o ESI</strong> classificam pacientes por gravidade para definir prioridade de atendimento. A mesma logica se aplica ao uso de IA: classifique a tarefa por risco antes de confiar na resposta.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> A analogia da triagem
+        </h3>
+        <p class="text-neutral-300 mb-4">Assim como voce nao trata um infarto da mesma forma que uma gripe, voce nao deve tratar todas as respostas da IA com o mesmo nivel de confianca.</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Triagem de Manchester:</strong> classifica pacientes por gravidade (vermelho, laranja, amarelo, verde, azul)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Triagem de IA:</strong> classifica tarefas por risco (verde = seguro, amarelo = supervisao, vermelho = verificar)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Principio:</strong> quanto maior o impacto clinico, maior a verificacao necessaria</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🟢 Zona VERDE — uso seguro</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Tarefas de <strong class="text-emerald-400">baixo risco clinico</strong> onde a IA pode ser usada com confianca. Sao tarefas onde voce vai revisar o resultado e onde um pequeno erro nao causa dano ao paciente.
+      </p>
+
+      <!-- Box Verde -->
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🟢</span> Tarefas de zona verde
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Rascunhos de notas clinicas</strong> — voce revisa e ajusta antes de assinar</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Explicacoes para pacientes</strong> — linguagem simples sobre condicoes</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Cartas de encaminhamento</strong> — texto formal que voce revisa</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Contestacoes de convenio</strong> — argumentacao juridico-medica</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Organizacao de informacoes</strong> — resumos, listas, estruturacao</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span><strong>Brainstorming</strong> — segunda opiniao informal para explorar ideias</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Comece pela zona verde. E aqui que voce vai ganhar confianca, economizar tempo e criar o habito de usar IA na rotina. Quando estiver confortavel, avance para a zona amarela.</p>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🟡 Zona AMARELA — supervisao ativa</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Tarefas de <strong class="text-emerald-400">risco medio</strong> que exigem supervisao ativa. A IA pode ajudar, mas voce precisa checar a resposta contra guidelines e seu conhecimento clinico.
+      </p>
+
+      <!-- Box Amarelo -->
+      <div class="bg-dark-800 rounded-xl border border-yellow-500/30 p-6 mb-6" style="background: rgba(161, 98, 7, 0.08);">
+        <h3 class="text-lg font-semibold text-yellow-400 mb-4 flex items-center">
+          <span class="mr-2">🟡</span> Tarefas de zona amarela
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-yellow-400">!</span>
+            <span><strong>Diagnostico diferencial</strong> — bom para brainstorm, mas confira com seu raciocinio clinico</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-yellow-400">!</span>
+            <span><strong>Resumos de artigos</strong> — verifique dados-chave (N, IC, p-valor) no original</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-yellow-400">!</span>
+            <span><strong>Planos de tratamento</strong> — confira com guidelines atualizados</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-yellow-400">!</span>
+            <span><strong>Revisao de literatura</strong> — valide as fontes citadas</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-yellow-400">!</span>
+            <span><strong>Interpretacao de exames</strong> — use como segunda opiniao, nao como laudo</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Dados de Pesquisa
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li>Diagnosticos diferenciais gerados por IA incluem o diagnostico correto em <strong>~80% dos casos</strong></li>
+          <li>Mas a ordem de probabilidade pode estar errada — o medico precisa reordenar</li>
+          <li>Resumos de artigos tem <strong>~90% de acuracia</strong> nos pontos principais, mas erram detalhes numericos</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🔴 Zona VERMELHA — verificar sempre</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Tarefas de <strong class="text-emerald-400">alto risco</strong> onde TODA resposta da IA deve ser verificada em fontes primarias. Um erro aqui pode causar dano real ao paciente. A IA e ponto de partida, NUNCA ponto de chegada.
+      </p>
+
+      <!-- Box Vermelho/Alerta -->
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-4 flex items-center">
+          <span class="mr-2">🔴</span> Tarefas de zona vermelha — NUNCA confie sem verificar
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Doses de medicamentos</strong> — especialmente pediatricos. Confira SEMPRE no bulario.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Interacoes medicamentosas</strong> — IA pode inventar ou omitir. Use bases especializadas.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Referencias bibliograficas</strong> — 40-60% podem ser inventadas. Confira no PubMed.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Guidelines atualizados</strong> — cutoff de treinamento pode gerar versao desatualizada.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Dados epidemiologicos precisos</strong> — numeros especificos sao frequentemente inventados.</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">✗</span>
+            <span><strong>Diagnosticos raros em apresentacoes atipicas</strong> — IA tende ao mais comum, nao ao correto.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Regra de verificacao
+        </h3>
+        <p class="text-neutral-300">Na zona vermelha, trate a resposta da IA como um ponto de partida. Sempre cruze com: PubMed, UpToDate, bularios oficiais, guidelines de sociedades medicas. Se a IA contradiz a fonte primaria, a IA esta errada.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">⭐ Regra de ouro: "Trate como sugestao do R1"</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Se voce lembrar de uma unica coisa deste curso, lembre desta: <strong class="text-emerald-400">trate toda resposta da IA como sugestao de um Residente de Primeiro Ano</strong>. Revise, questione, valide. A decisao final e sempre sua.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> A Regra do R1 na pratica
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">1.</span>
+            <span>A IA apresenta a resposta (como um R1 apresenta o caso)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">2.</span>
+            <span>Voce avalia criticamente (como um preceptor)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">3.</span>
+            <span>Voce corrige o que estiver errado</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">4.</span>
+            <span>Voce toma a decisao final</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">5.</span>
+            <span>Voce assume a responsabilidade</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Mentalidade correta</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>"A IA sugeriu X. Faz sentido clinicamente?"</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>"Preciso verificar esses dados."</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>"Vou usar como ponto de partida."</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Mentalidade perigosa</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>"A IA disse, entao deve estar certo."</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>"Nao preciso conferir."</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>"Vou copiar e colar direto."</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📋 Fluxograma de decisao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Use este fluxograma para <strong class="text-emerald-400">classificar rapidamente cada tarefa</strong> antes de confiar na resposta da IA. Com o tempo, essa classificacao se torna automatica.
+      </p>
+
+      <!-- Fluxograma como Timeline -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">1</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">A tarefa envolve dados clinicos especificos?</h4>
+            <p class="text-sm text-neutral-400">Doses, interacoes, dados numericos, referencias? Se NAO: provavelmente zona verde. Se SIM: proximo passo.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">2</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Um erro pode causar dano direto ao paciente?</h4>
+            <p class="text-sm text-neutral-400">Dose errada, interacao omitida, guideline desatualizado? Se SIM: zona vermelha. Se NAO: proximo passo.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">3</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">A resposta influencia decisao clinica?</h4>
+            <p class="text-sm text-neutral-400">Diagnostico diferencial, plano de tratamento, interpretacao de exame? Se SIM: zona amarela. Se NAO: zona verde.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">4</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Resultado: classifique e aja</h4>
+            <p class="text-sm text-neutral-400 mb-3">Aplique o nivel de verificacao correspondente:</p>
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <div class="bg-emerald-500/20 rounded-lg p-2 text-center">
+                <span class="text-emerald-400 font-bold">VERDE</span>
+                <p class="text-neutral-400 mt-1">Use com confianca</p>
+              </div>
+              <div class="rounded-lg p-2 text-center" style="background: rgba(161, 98, 7, 0.12);">
+                <span class="text-yellow-400 font-bold">AMARELO</span>
+                <p class="text-neutral-400 mt-1">Supervisione</p>
+              </div>
+              <div class="bg-red-500/20 rounded-lg p-2 text-center">
+                <span class="text-red-400 font-bold">VERMELHO</span>
+                <p class="text-neutral-400 mt-1">Verifique tudo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Imprima o fluxograma e cole na parede do consultorio na primeira semana. Depois de alguns dias, a classificacao se torna automatica. Em uma semana voce classifica cada tarefa em menos de 3 segundos.</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Sistema de triagem</strong>
+              <span class="text-neutral-400"> - Verde (seguro), Amarelo (supervisao), Vermelho (verificar)</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Zona verde</strong>
+              <span class="text-neutral-400"> - Rascunhos, explicacoes, cartas, brainstorming</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Zona vermelha</strong>
+              <span class="text-neutral-400"> - Doses, interacoes, referencias, guidelines</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Regra de ouro</strong>
+              <span class="text-neutral-400"> - Trate toda resposta como sugestao do R1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Voce concluiu a Trilha 1!</h3>
+          <p class="text-neutral-300">Parabens! Voce agora entende o que e IA, como detectar alucinacoes, quais ferramentas usar e como classificar o risco de cada tarefa. Continue para a Trilha 2 — Prompt Clinico.</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Voltar para Trilha 1
+          </a>
+          <a href="../trilha2/index.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+            Proxima: Trilha 2 - Prompt Clinico →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 1.4: Zona verde, amarela e vermelha</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 6.4: Ingerindo conhecimento | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha rose) */
+    html:not(.dark) .text-rose-400 { color: #9f1239; }
+    html:not(.dark) .bg-rose-500\/20 { background-color: rgba(225, 29, 72, 0.12); }
+    html:not(.dark) .bg-rose-500\/10 { background-color: rgba(225, 29, 72, 0.08); }
+    html:not(.dark) .border-rose-500\/30 { border-color: rgba(225, 29, 72, 0.25); }
+    html:not(.dark) .hover\:bg-rose-500\/30:hover { background-color: rgba(225, 29, 72, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span></a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span></a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span></a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span></a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span></a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span></a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span></a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span></a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span></a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1"><span id="theme-icon" class="text-lg">🌙</span></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 6</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-rose-400 font-medium">Modulo 6.4</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.4</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📥 Ingerindo conhecimento: de PDF caotico a wiki organizado</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Workflow completo de ingestao: arrastar PDF, compilar com LLM, gerar pagina wiki conectada. Exercicio pratico com seu guideline.</p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-rose-400">Hands-on</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🔄 Workflow de ingestao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O workflow padrao leva <strong class="text-rose-400">10-15 minutos por fonte</strong>. Cinco passos simples que, uma vez internalizados, viram rotina automatica.
+      </p>
+
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">1</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Arrastar PDF para /raw</h4>
+            <p class="text-neutral-300 text-sm">Salve a fonte bruta na pasta /raw do vault. Fonte preservada intacta para auditoria.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">2</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Copiar texto relevante</h4>
+            <p class="text-neutral-300 text-sm">Selecione as secoes que importam (nao precisa ser tudo). Para guidelines longos, faca por capitulo.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">3</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Enviar ao LLM com prompt de compilacao</h4>
+            <p class="text-neutral-300 text-sm">Use o template de prompt: "Compile o texto abaixo em paginas wiki Markdown com [[links]] para conceitos relacionados..."</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">4</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Colar pagina wiki na /wiki</h4>
+            <p class="text-neutral-300 text-sm">Copie o resultado do LLM e crie uma nova nota na pasta /wiki. Uma nota por conceito principal.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">5</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Revisar e ajustar [[links]]</h4>
+            <p class="text-neutral-300 text-sm">Verifique se os links estao corretos, adicione links para paginas existentes que o LLM nao conhecia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📋 Ingerindo guideline da especialidade</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-rose-400">Passo a passo completo</strong> com um guideline real. Ao final, voce tera o guideline inteiro navegavel por [[links]] no Obsidian.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">📄</span> Exemplo: Guideline ESC para FA
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1. Salvar PDF:</strong> ESC-FA-2024.pdf → /raw/guidelines/</p>
+          <p><strong>2. Extrair capitulos:</strong> Classificacao, Diagnostico, Anticoagulacao, Controle de frequencia, Ablacao</p>
+          <p><strong>3. Compilar cada capitulo:</strong> Enviar ao LLM com prompt → gerar paginas wiki separadas</p>
+          <p><strong>4. Resultado:</strong> 5-8 paginas wiki interligadas, com links para [[CHA2DS2-VASc]], [[NOACs]], [[Varfarina]], [[Ablacao]]</p>
+          <p><strong>5. Consultar:</strong> "Como classificar FA?" → navegar direto para a pagina certa</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">📄 Ingerindo artigo cientifico</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Para artigos, o LLM gera uma <strong class="text-rose-400">ficha estruturada padronizada</strong>: objetivo, metodo, populacao, resultados, limitacoes e implicacoes clinicas.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Template de ficha de artigo
+        </h3>
+        <div class="bg-dark-700 rounded-lg p-4 font-mono text-sm text-neutral-300">
+          <p class="text-rose-400"># [Titulo do Artigo]</p>
+          <p class="mt-2"><strong>Fonte:</strong> NEJM/Lancet/JAMA | <strong>Ano:</strong> 2024</p>
+          <p><strong>PICO:</strong> Pacientes com ICC | Empagliflozina vs placebo | Mortalidade</p>
+          <p class="mt-2">## Resultados principais</p>
+          <p>- Reducao de 20% em mortalidade cardiovascular</p>
+          <p>- NNT = 35 em 2 anos</p>
+          <p class="mt-2">## Limitacoes</p>
+          <p>- Populacao predominantemente europeia</p>
+          <p class="mt-2">## Implicacoes para pratica</p>
+          <p>Considerar [[Empagliflozina]] para todos com [[ICC]] e FE reduzida.</p>
+          <p class="mt-2">## Links</p>
+          <p>[[ICC]] | [[SGLT2i]] | [[Empagliflozina]] | [[Mortalidade CV]]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🎤 Ingerindo anotacao de congresso</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Anotacoes rapidas de congressos entram no /raw e o LLM compila em paginas wiki limpas. <strong class="text-rose-400">O rascunho caotico vira conhecimento permanente.</strong>
+      </p>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica de campo
+        </h3>
+        <p class="text-neutral-300">Durante o congresso, nao se preocupe com formato. Anote tudo no celular: texto rapido, foto de slide, audio. Depois, em casa, envie tudo ao LLM com o prompt: "Compile estas anotacoes de congresso em paginas wiki com [[links]]". O LLM organiza o caos.</p>
+      </div>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Antes vs depois
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div>
+            <p class="text-red-400 font-semibold mb-2">Antes (rascunho)</p>
+            <p class="text-neutral-400 italic">"novo estudo empagliflozina ICC, reducao mort 20%, NNT 35, apresentou dr silva, considerar para todos FEr, ver tbm dapagliflozina..."</p>
+          </div>
+          <div>
+            <p class="text-emerald-400 font-semibold mb-2">Depois (wiki compilada)</p>
+            <p class="text-neutral-300">Pagina estruturada com titulo, resultados, implicacoes, [[links]] para ICC, SGLT2i, Empagliflozina, conectada ao guideline que ja esta no vault.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🔗 Conexoes automaticas: [[links]] entre paginas</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Cada nova ingestao <strong class="text-rose-400">fortalece a rede existente</strong>. O LLM identifica conceitos que ja existem no vault e cria [[links]] automaticamente. Valor exponencial.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">🕸️</span> Como as conexoes crescem
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>Ingestao 1 (guideline FA):</strong> Paginas: FA, Anticoagulacao, CHA2DS2-VASc → 3 paginas, 6 links</p>
+          <p><strong>Ingestao 2 (artigo NOACs):</strong> Pagina NOACs linka para FA, Anticoagulacao, Sangramento → +1 pagina, +4 links</p>
+          <p><strong>Ingestao 3 (congresso):</strong> Novo dado sobre dose de rivaroxabana → atualiza NOACs, linka para Dose, Renal → +2 paginas, +6 links</p>
+          <p class="text-rose-400 font-semibold mt-2">3 ingestoes = 6 paginas, 16 links. O grafo se densifica a cada adição.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🏋️ Exercicio: ingerir SEU guideline principal</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Hora de praticar. Pegue o <strong class="text-rose-400">guideline mais importante da sua especialidade</strong> e siga o workflow completo.
+      </p>
+
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4 flex items-center">
+          <span class="mr-2">📝</span> Passo a passo do exercicio
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">1.</span><span>Escolha o guideline que voce mais consulta na pratica</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">2.</span><span>Salve o PDF na pasta /raw do vault</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">3.</span><span>Extraia 2-3 capitulos principais</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">4.</span><span>Envie ao LLM com prompt de compilacao</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">5.</span><span>Cole as paginas wiki no /wiki</span></li>
+          <li class="flex items-start space-x-2"><span class="text-rose-400 mt-1">6.</span><span>Revise os [[links]] e atualize o index.md</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">🎯</span> Meta
+        </h3>
+        <p class="text-neutral-300">Ao final, voce tera o guideline mais importante da sua especialidade navegavel no Obsidian. Isso sozinho ja justifica todo o setup. Voce nunca mais vai abrir um PDF de 200 paginas para encontrar uma informacao.</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div><strong class="text-white">Workflow de ingestao</strong><span class="text-neutral-400"> - 5 passos, 10-15 min por fonte</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div><strong class="text-white">3 tipos de ingestao</strong><span class="text-neutral-400"> - Guideline, artigo, anotacao de congresso</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div><strong class="text-white">Conexoes automaticas</strong><span class="text-neutral-400"> - [[links]] que crescem exponencialmente</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-rose-400 mt-1">✓</span>
+            <div><strong class="text-white">Exercicio feito</strong><span class="text-neutral-400"> - Seu primeiro guideline compilado no vault</span></div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-rose-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">6.5 - Consultando seu cerebro: perguntas em portugues</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-6-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo 6.3</a>
+          <a href="modulo-6-5.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo: Modulo 6.5 →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 6.4: Ingerindo conhecimento</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) { html.classList.remove('dark'); icon.textContent = '☀️'; localStorage.setItem('theme', 'light'); }
+      else { html.classList.add('dark'); icon.textContent = '🌙'; localStorage.setItem('theme', 'dark'); }
+    }
+    if (localStorage.getItem('theme') === 'light') { document.documentElement.classList.remove('dark'); document.getElementById('theme-icon').textContent = '☀️'; }
+  </script>
+
+</body>
+</html>

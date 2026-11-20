@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 4.6: Teleconsulta potencializada por IA | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217, 119, 6, 0.18); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">IAMed</span></a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span></a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span></a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span></a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-amber-400 bg-amber-500/10"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span></a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span></a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span></a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span></a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span></a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span></a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1"><span id="theme-icon" class="text-lg">🌙</span></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a><span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 4</a><span class="text-neutral-600">/</span>
+        <span class="text-amber-400 font-medium">Modulo 4.6</span>
+      </div>
+      <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MODULO 4.6</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📹 Teleconsulta potencializada por IA</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Workflow completo de teleconsulta com IA: preparacao pre-consulta, anotacoes durante a consulta e follow-up automatizado pos-consulta.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-xl font-bold text-amber-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-xl font-bold text-amber-400">~60</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-xl font-bold text-amber-400">Pratico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-xl font-bold text-amber-400">Projeto</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📋 Preparacao pre-consulta</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Antes de ligar a camera, a IA ja preparou tudo: <strong class="text-amber-400">resumo do historico, medicacoes em uso, exames pendentes e pontos de atencao</strong>. Voce entra na consulta ja sabendo o que precisa.
+      </p>
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🎯</span> O que o resumo pre-consulta inclui</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Ultima consulta:</strong> Data, queixa, conduta definida</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Medicacoes atuais:</strong> Lista com doses e posologia</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Exames pendentes:</strong> O que foi solicitado e ainda nao viu</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Pontos de atencao:</strong> Alergias, comorbidades, interacoes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Perguntas sugeridas:</strong> O que perguntar nesta consulta</span></li>
+        </ul>
+      </div>
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Pratica</h3>
+        <p class="text-neutral-300">Cole o historico do paciente na IA com: "Gere briefing pre-teleconsulta com: resumo, medicacoes, pendencias e 3 perguntas que devo fazer." Leva 30 segundos e muda a qualidade da consulta.</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">⌨️ Durante: anotacoes rapidas</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Na teleconsulta, digitar muito faz o paciente sentir que voce nao esta prestando atencao. A solucao: <strong class="text-amber-400">anotacoes minimas durante, expansao com IA depois</strong>.
+      </p>
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">⚡</span> Tecnica de Anotacao Rapida</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Palavras-chave:</strong> "cefaleia 3d, pulsatil, frontal, nausea, foto"</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Abreviacoes padrao:</strong> PA, FC, FR, Rx, US, RM</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Dados numericos:</strong> PA 140x90, FC 88, glicemia 180</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Conduta em bullets:</strong> "manter losartana, + amlo 5, retorno 30d, HbA1c"</span></li>
+        </ul>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Fazer durante</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Manter contato visual com a camera</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Anotar dados clinicos essenciais</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Usar atalhos e abreviacoes</span></li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Evitar durante</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Digitar nota completa durante a consulta</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Olhar para o teclado por longos periodos</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Deixar de anotar dados clinicos criticos</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">📤 Pos-consulta: follow-up + material</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Apos a teleconsulta, a IA gera <strong class="text-amber-400">tudo que o paciente precisa receber</strong>: resumo da consulta, orientacoes, material educativo e mensagem de follow-up.
+      </p>
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">📦</span> Kit Pos-Consulta</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">1.</span><span><strong>Nota SOAP:</strong> Expandida a partir das anotacoes rapidas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">2.</span><span><strong>Resumo para paciente:</strong> Em linguagem simples, o que foi discutido e decidido</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">3.</span><span><strong>Material educativo:</strong> Sobre a condicao discutida (do kit do Modulo 4.4)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">4.</span><span><strong>Mensagem de follow-up:</strong> WhatsApp em 48h para verificar como esta</span></li>
+        </ul>
+      </div>
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Impacto do Follow-up</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>40%</strong> de melhora na adesao ao tratamento com follow-up pos-consulta</li>
+          <li><strong>60%</strong> dos pacientes preferem receber resumo escrito apos teleconsulta</li>
+          <li><strong>3x</strong> mais satisfacao quando o medico envia material pos-consulta</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🔄 Workflow completo integrado</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Os tres momentos conectados em um <strong class="text-amber-400">fluxo continuo com prompts sequenciais</strong>. A saida de uma etapa alimenta a proxima.
+      </p>
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">1</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">5 min antes — Preparacao</h4>
+            <p class="text-neutral-300 text-sm">Cole historico na IA → receba briefing pre-consulta com resumo, medicacoes, pendencias e perguntas sugeridas.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">2</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Durante — Anotacoes minimas</h4>
+            <p class="text-neutral-300 text-sm">Palavras-chave, dados numericos e conduta em bullets. Foco no paciente, nao na tela.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">3</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">2 min depois — Nota SOAP</h4>
+            <p class="text-neutral-300 text-sm">Cole anotacoes no prompt SOAP → IA gera nota completa → revise e assine.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">4</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">5 min depois — Material para paciente</h4>
+            <p class="text-neutral-300 text-sm">A partir da nota SOAP, gere resumo em linguagem simples + material educativo + mensagem de follow-up para enviar em 48h.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🛠️ Ferramentas de apoio</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O workflow funciona com qualquer IA generativa. Mas estas <strong class="text-amber-400">ferramentas complementares</strong> potencializam ainda mais.
+      </p>
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🛠️</span> Stack de Teleconsulta</h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Plataforma de telemedicina:</strong> Doctoralia, iClinic, Conexa — com prontuario integrado</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>IA para notas:</strong> ChatGPT, Claude ou Gemini com template SOAP salvo</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Transcricao (opcional):</strong> Ferramentas de ambient scribing que gravam e transcrevem (com consentimento)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Envio de material:</strong> WhatsApp Business ou email para entregar material pos-consulta</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">🚨</span> LGPD e Consentimento</h3>
+        <p class="text-neutral-300">Se usar transcricao automatica, o paciente DEVE ser informado e consentir ANTES. Dados de saude sao sensiveis pela LGPD. Nunca grave sem consentimento explicito.</p>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🧪 Exercicio: crie seu workflow de teleconsulta</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Exercicio final da trilha: simule uma teleconsulta completa usando o workflow. Ao final, voce tera <strong class="text-amber-400">um processo testado e pronto para usar na proxima teleconsulta real</strong>.
+      </p>
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Passo a Passo</h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1.</strong> Escolha um paciente real (anonimizado) ou simule um caso</p>
+          <p><strong>2.</strong> Gere o briefing pre-consulta com IA</p>
+          <p><strong>3.</strong> Simule a consulta fazendo anotacoes minimas (2-3 min)</p>
+          <p><strong>4.</strong> Expanda as anotacoes em nota SOAP com IA</p>
+          <p><strong>5.</strong> Gere: resumo para paciente + material educativo + mensagem de follow-up</p>
+          <p><strong>6.</strong> Revise tudo e salve como template do SEU workflow</p>
+        </div>
+      </div>
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Resultado Esperado</h3>
+        <p class="text-neutral-300">Ao final, voce tera um workflow completo de teleconsulta com IA — testado, revisado e personalizado para sua pratica. Na proxima teleconsulta real, voce executa o processo com confianca.</p>
+      </div>
+    </section>
+
+    <!-- Resumo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📝</span> Resumo do Modulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Preparacao pre-consulta</strong><span class="text-neutral-400"> - Briefing com historico, medicacoes e perguntas sugeridas</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Anotacoes minimas durante</strong><span class="text-neutral-400"> - Palavras-chave + dados, expansao com IA depois</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Kit pos-consulta</strong><span class="text-neutral-400"> - Nota SOAP + resumo para paciente + material + follow-up</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Workflow integrado</strong><span class="text-neutral-400"> - Pre + durante + pos em fluxo continuo</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-amber-400 mb-2">Parabens! Trilha 4 concluida.</h3>
+          <p class="text-neutral-300">Voce agora domina IA no consultorio: SOAP, contestacoes, laudos, explicacoes para pacientes, produtividade e teleconsulta. Proxima parada: Trilha 5 - Vibe Code para Medicos.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-4-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo 4.5</a>
+          <a href="../trilha5/index.html" class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors">Trilha 5: Vibe Code →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4"><span class="text-2xl">🧠</span><span class="font-bold text-neutral-200">IAMed</span><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a></div>
+        <div class="text-neutral-500 text-sm">Modulo 4.6: Teleconsulta potencializada por IA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement; const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) { html.classList.remove('dark'); icon.textContent = '☀️'; localStorage.setItem('theme', 'light'); }
+      else { html.classList.add('dark'); icon.textContent = '🌙'; localStorage.setItem('theme', 'dark'); }
+    }
+    if (localStorage.getItem('theme') === 'light') { document.documentElement.classList.remove('dark'); document.getElementById('theme-icon').textContent = '☀️'; }
+  </script>
+</body>
+</html>

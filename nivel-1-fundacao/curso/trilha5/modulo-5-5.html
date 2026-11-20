@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 5.5: App para pacientes: educacao e follow-up | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha teal) */
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13, 148, 136, 0.12); }
+    html:not(.dark) .bg-teal-500\/10 { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13, 148, 136, 0.25); }
+    html:not(.dark) .hover\:bg-teal-500\/30:hover { background-color: rgba(13, 148, 136, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-teal-400 bg-teal-500/10">
+            <span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 5</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-teal-400 font-medium">Modulo 5.5</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 5.5
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📱 App para pacientes: educacao e follow-up</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Crie um app no-code com educacao por condicao, follow-up semanal e alertas automaticos. Ferramenta funcional para 1 condicao cronica.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">Projeto</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📲 O que e um app no-code (Glide, Bolt)</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Apps no-code sao criados sem escrever codigo. <strong class="text-teal-400">Glide transforma planilhas em apps</strong>. Bolt.new cria apps completos por descricao. O resultado e um app acessivel por link no celular.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-teal-500/10 rounded-xl border border-teal-500/30 p-6">
+          <h3 class="text-lg font-semibold text-teal-400 mb-3">Glide</h3>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Transforma Google Sheets em app</li>
+            <li>• Interface visual drag-and-drop</li>
+            <li>• Free tier para projetos pequenos</li>
+            <li>• Otimo para listas, formularios, dashboards</li>
+            <li>• Dados ficam na planilha (facil de gerenciar)</li>
+          </ul>
+        </div>
+        <div class="bg-teal-500/10 rounded-xl border border-teal-500/30 p-6">
+          <h3 class="text-lg font-semibold text-teal-400 mb-3">Bolt.new</h3>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Descreva o app em portugues, IA cria</li>
+            <li>• Gera interface + logica completa</li>
+            <li>• Resultado mais customizavel</li>
+            <li>• Curva de aprendizado um pouco maior</li>
+            <li>• Ideal para apps com logica especifica</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🎓 Projeto: app de educacao por condicao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O app recebe uma condicao clinica e retorna: explicacao em linguagem leiga, cuidados diarios, sinais de alerta e quando voltar ao medico. <strong class="text-teal-400">Conteudo gerado por IA e revisado por voce</strong>.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Estrutura do app
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-teal-400">Tela 1 — Selecao:</strong> Paciente escolhe a condicao (HAS, DM2, asma, etc.)</p>
+          <p><strong class="text-teal-400">Tela 2 — Explicacao:</strong> O que e a condicao em linguagem simples</p>
+          <p><strong class="text-teal-400">Tela 3 — Cuidados:</strong> O que fazer no dia a dia (alimentacao, exercicio, medicacao)</p>
+          <p><strong class="text-teal-400">Tela 4 — Sinais de alerta:</strong> Quando procurar emergencia</p>
+          <p><strong class="text-teal-400">Tela 5 — Retorno:</strong> Quando voltar ao medico, exames a trazer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">📝 Adicionando formulario de follow-up semanal</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O paciente preenche semanalmente: sintomas, medicacoes tomadas, parametros clinicos. Os dados ficam <strong class="text-teal-400">organizados para o medico revisar</strong> antes da proxima consulta.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Campos do follow-up (exemplo: HAS)
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>PA matinal:</strong> Campo numerico (sistolica/diastolica)</p>
+          <p><strong>PA vespertina:</strong> Campo numerico</p>
+          <p><strong>Tomou medicacao?</strong> Sim/Nao (para cada dia)</p>
+          <p><strong>Sintomas:</strong> Checklist (cefaleia, tontura, nenhum)</p>
+          <p><strong>Observacoes:</strong> Campo de texto livre</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🚨 Alertas se valores fora do range</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Configure alertas automaticos quando o paciente reporta valores fora do range. O medico recebe <strong class="text-teal-400">notificacao para intervir proativamente</strong>.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Exemplos de alertas
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-red-400">PA > 180/110:</strong> Alerta vermelho — contato imediato</p>
+          <p><strong class="text-primary">PA > 160/100:</strong> Alerta amarelo — revisar medicacao</p>
+          <p><strong class="text-red-400">Glicemia > 300:</strong> Alerta vermelho — orientar procurar emergencia</p>
+          <p><strong class="text-red-400">Nao tomou medicacao 3+ dias:</strong> Alerta de aderencia</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Implementacao simples
+        </h3>
+        <p class="text-neutral-300">No Glide: formula na planilha envia email se valor > limite. No n8n: webhook do formulario → condicional → email/WhatsApp se fora do range. Nao precisa ser sofisticado para ser util.</p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🧪 Testando com caso real</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Teste o app com um caso clinico real (anonimizado). Simule o <strong class="text-teal-400">fluxo completo do paciente</strong>: cadastro, leitura do material, preenchimento do follow-up e teste dos alertas.
+      </p>
+
+      <div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Roteiro de teste
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1.</strong> Finja ser o paciente: abra o app pelo celular</p>
+          <p><strong>2.</strong> Leia o material educativo: esta claro? O leigo entende?</p>
+          <p><strong>3.</strong> Preencha o follow-up semanal: os campos fazem sentido?</p>
+          <p><strong>4.</strong> Coloque valor fora do range: o alerta disparou?</p>
+          <p><strong>5.</strong> Peca para alguem nao-medico testar: identificou confusoes?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🔮 Limitacoes e proximos passos</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O no-code resolve 80% dos problemas — mas tem limites. Saber <strong class="text-teal-400">quando o no-code nao basta</strong> evita frustracao e decisoes ruins.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h3 class="text-lg font-semibold text-red-400 mb-3">Limites do no-code</h3>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Escalabilidade limitada (>100 usuarios)</li>
+            <li>• Personalizacao avancada restrita</li>
+            <li>• Integracao com PEP/hospitalares</li>
+            <li>• Certificacao ANVISA impossivel</li>
+            <li>• Performance em dados volumosos</li>
+          </ul>
+        </div>
+        <div class="bg-teal-500/10 rounded-xl border border-teal-500/30 p-6">
+          <h3 class="text-lg font-semibold text-teal-400 mb-3">Proximos passos</h3>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Adicionar mais condicoes ao app</li>
+            <li>• Integrar com n8n para automacoes</li>
+            <li>• Coletar feedback de pacientes</li>
+            <li>• Se a ideia escalar, buscar desenvolvedor</li>
+            <li>• Nivel 2 do IAMed aprofunda vibe coding</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">No-code entendido</strong>
+              <span class="text-neutral-400"> - Glide e Bolt.new: apps sem programar</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">App educativo criado</strong>
+              <span class="text-neutral-400"> - Explicacao + cuidados + sinais de alerta por condicao</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Follow-up digital funcionando</strong>
+              <span class="text-neutral-400"> - Formulario semanal com alertas automaticos</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-teal-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Limites conhecidos</strong>
+              <span class="text-neutral-400"> - Quando escalar, quando buscar desenvolvedor</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-teal-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">5.6 - Seguranca, limites e ANVISA</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-5-4.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo 5.4
+          </a>
+          <a href="modulo-5-6.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">
+            Proximo: Modulo 5.6 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 5.5: App para pacientes</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

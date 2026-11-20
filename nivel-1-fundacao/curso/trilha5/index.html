@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 5: Vibe Code para Medicos | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha teal) */
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13, 148, 136, 0.12); }
+    html:not(.dark) .bg-teal-500\/10 { background-color: rgba(13, 148, 136, 0.08); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13, 148, 136, 0.25); }
+    html:not(.dark) .hover\:bg-teal-500\/30:hover { background-color: rgba(13, 148, 136, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <!-- Linha 1 -->
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-teal-400 bg-teal-500/10">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <!-- Linha 2 -->
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300 text-sm">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-teal-400 text-sm font-medium">Trilha 5</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">
+        TRILHA 5 - VIBE CODE PARA MEDICOS
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">💻 Vibe Code para Medicos</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Construa suas ferramentas clinicas sem programar — descreva em portugues e a IA constroi. Calculadoras, automacoes, bases de conhecimento e apps para pacientes.
+      </p>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">6</div>
+          <div class="text-xs text-neutral-400">Modulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">36</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">~6h</div>
+          <div class="text-xs text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-teal-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modulos -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Divisor -->
+    <div class="flex items-center space-x-4 mb-8">
+      <div class="h-px flex-1 bg-dark-600"></div>
+      <span class="text-neutral-500 text-sm font-medium">Conteudo Detalhado</span>
+      <div class="h-px flex-1 bg-dark-600"></div>
+    </div>
+
+    <!-- Modulo 5.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-teal-400 font-bold">5.1</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🚀 O que e vibe coding (e por que medicos estao construindo)</h3>
+        <p class="text-neutral-400 text-sm">Cases reais de medicos construindo ferramentas, analogia POCUS do software, ferramentas disponiveis e o que da para construir sem registro.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🧬</span>
+            <div class="flex-1">
+              <span class="font-medium">O que e vibe coding (Karpathy 2025)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Descrever em portugues, IA constroi</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Termo cunhado por Andrej Karpathy (ex-Tesla AI, OpenAI) em 2025: voce descreve o que quer em linguagem natural e a IA gera o codigo funcional. Nao e programar — e conversar com a maquina ate ela entregar o que voce precisa.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Pela primeira vez na historia, quem entende o problema (o medico) pode construir a solucao sem depender de um engenheiro de software. Isso muda tudo.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Vibe coding, Karpathy, linguagem natural para codigo, democratizacao da construcao de software, medico-construtor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🔊</span>
+            <div class="flex-1">
+              <span class="font-medium">Analogia POCUS do software</span>
+              <span class="text-neutral-500 text-sm ml-2">- Nao substitui o engenheiro, complementa</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Assim como o POCUS (Point-of-Care Ultrasound) nao substitui o radiologista mas deu ao clinico uma ferramenta de imagem a beira-leito, o vibe coding nao substitui o engenheiro — mas permite ao medico criar ferramentas simples para o proprio uso.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Entender os limites evita frustracao. Voce nao vai construir um prontuario eletronico — mas pode construir calculadoras, automacoes e ferramentas de apoio que nenhuma empresa vai fazer por voce.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">POCUS como analogia, limites do vibe coding, complementar vs substituir, ferramentas de apoio, expectativa realista.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">🏆</span>
+            <div class="flex-1">
+              <span class="font-medium">Cases reais de medicos construtores</span>
+              <span class="text-neutral-500 text-sm ml-2">- GP britanico, neurocirurgiao turco, Almanac</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Casos documentados: um GP britanico construiu em 4 dias por £175 uma ferramenta que empresas orcaram por £75.000. Um neurocirurgiao turco criou app de triagem. A Almanac (Stanford) nasceu de medicos usando IA para automatizar burocracia clinica.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cases reais provam que nao e teoria. Medicos comuns, sem formacao em programacao, ja estao construindo e usando ferramentas que resolvem problemas reais do dia a dia.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">GP britanico £175 vs £75k, neurocirurgiao turco, Almanac/Stanford, custo vs valor, velocidade de construcao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🛠️</span>
+            <div class="flex-1">
+              <span class="font-medium">Ferramentas: Replit, Bolt.new, Claude, Cursor</span>
+              <span class="text-neutral-500 text-sm ml-2">- O que cada uma faz</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Mapa das ferramentas disponiveis: Replit (ambiente completo no navegador, ideal para comecar), Bolt.new (cria apps completos por descricao), Claude/ChatGPT (geram codigo sob demanda), Cursor (IDE com IA integrada para quem quer ir mais fundo).</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cada ferramenta tem forca em um tipo de projeto. Saber escolher a certa economiza horas e evita frustracoes desnecessarias.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Replit, Bolt.new, Claude, Cursor, ChatGPT, IDE com IA, no-code vs low-code, quando usar cada ferramenta.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">📊</span>
+            <div class="flex-1">
+              <span class="font-medium">O que da para construir (baixo/medio/alto risco)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Classificacao com ANVISA</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Classificacao do que voce pode construir: baixo risco (calculadoras, checklists, material educativo), medio risco (automacoes de documentacao, RAG pessoal), alto risco (diagnostico, dosagem — requer registro ANVISA). Saber onde esta a linha e essencial.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Construir sem entender o limite regulatorio pode gerar problemas legais serios. A maioria das ferramentas uteis esta na zona segura — mas voce precisa saber qual e.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Classificacao de risco, ANVISA, baixo/medio/alto risco, uso interno vs distribuicao, responsabilidade legal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">⏰</span>
+            <div class="flex-1">
+              <span class="font-medium">Por que AGORA e o momento</span>
+              <span class="text-neutral-500 text-sm ml-2">- Convergencia unica de fatores</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Convergencia inedita: IAs que geram codigo estao boas o suficiente, ferramentas no-code amadureceram, e a medicina esta carente de solucoes personalizadas que empresas grandes nao vao construir para nichos pequenos.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A janela de oportunidade e agora. Em 2-3 anos, quem ja domina vibe coding tera vantagem enorme sobre quem ainda depende de empresas para resolver problemas simples.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Janela de oportunidade, convergencia tecnologica, vantagem competitiva, autonomia digital, futuro do medico-construtor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-5-1.html')" class="px-4 py-2 text-sm bg-teal-600/20 hover:bg-teal-600/30 text-teal-400 border border-teal-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-5-1.html" class="px-4 py-2 text-sm bg-teal-600 hover:bg-teal-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 5.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-teal-400 font-bold">5.2</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🧮 Sua primeira ferramenta: calculadora clinica</h3>
+        <p class="text-neutral-400 text-sm">Passo a passo no Replit: descreva em portugues, IA gera, teste, ajuste e publique. Resultado: calculadora funcional em 30 minutos.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🎯</span>
+            <div class="flex-1">
+              <span class="font-medium">Escolhendo sua calculadora</span>
+              <span class="text-neutral-500 text-sm ml-2">- CHA2DS2-VASc, Wells, CURB-65, MELD, APACHE</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Escolha um escore clinico que voce usa com frequencia: CHA2DS2-VASc (FA e anticoagulacao), Wells (TEP), CURB-65 (pneumonia), MELD (hepatico), APACHE (UTI). Quanto mais voce usa no dia a dia, mais valor a ferramenta tera.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Comecar com algo que voce ja conhece clinicamente elimina a incerteza. O foco fica 100% em aprender a construir, nao em entender o escore.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Escores clinicos, CHA2DS2-VASc, Wells, CURB-65, MELD, APACHE, escolha por frequencia de uso, primeiro projeto.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">💻</span>
+            <div class="flex-1">
+              <span class="font-medium">Abrindo o Replit pela primeira vez</span>
+              <span class="text-neutral-500 text-sm ml-2">- Conta gratuita e interface</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Passo a passo para criar conta no Replit, entender a interface basica e iniciar um novo projeto. O Replit roda no navegador — nao precisa instalar nada no computador.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A barreira de entrada precisa ser zero. Se voce consegue abrir o Gmail, consegue usar o Replit. Tudo roda no navegador, de qualquer computador.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Replit, ambiente no navegador, conta gratuita, interface basica, primeiro projeto, sem instalacao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">🗣️</span>
+            <div class="flex-1">
+              <span class="font-medium">Descrevendo em portugues o que quer</span>
+              <span class="text-neutral-500 text-sm ml-2">- O prompt que gera a ferramenta</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Escrever a descricao da calculadora em portugues: quais campos de entrada, como calcular o escore, o que mostrar no resultado, cores e layout desejado. A IA transforma essa descricao em codigo funcional.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A qualidade do prompt determina a qualidade do resultado. Descrever bem o que voce quer (com detalhes clinicos) e a habilidade central do vibe coding.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Descricao em linguagem natural, prompt para codigo, especificacao de campos, logica do escore, resultado esperado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🧪</span>
+            <div class="flex-1">
+              <span class="font-medium">Testando e ajustando</span>
+              <span class="text-neutral-500 text-sm ml-2">- Iteracao ate funcionar</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Testar a calculadora com casos clinicos reais, identificar erros (calculo errado, campo faltando, layout confuso) e pedir ajustes para a IA em linguagem natural: "o campo X nao esta calculando certo" ou "adicione um campo para idade".</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Vibe coding e iterativo — raramente a primeira versao sai perfeita. Saber descrever o que esta errado e tao importante quanto a descricao inicial.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Teste com casos reais, iteracao, feedback para IA, debug por descricao, refinamento progressivo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🎨</span>
+            <div class="flex-1">
+              <span class="font-medium">Personalizando: cores, logo, campos extras</span>
+              <span class="text-neutral-500 text-sm ml-2">- Deixe com a sua cara</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Personalizar a aparencia (cores do consultorio, logo, nome), adicionar campos extras relevantes para sua especialidade e adaptar o resultado para incluir condutas ou referencias que voce usa.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Uma ferramenta personalizada gera confianca e profissionalismo. Alem disso, campos extras transformam uma calculadora generica em algo unico para sua pratica.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Personalizacao visual, branding medico, campos customizados, condutas por resultado, identidade profissional.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🌐</span>
+            <div class="flex-1">
+              <span class="font-medium">Publicando e compartilhando o link</span>
+              <span class="text-neutral-500 text-sm ml-2">- Resultado: calculadora em 30 min</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Publicar a calculadora com um clique no Replit e compartilhar o link com colegas. A ferramenta fica acessivel por qualquer navegador, sem instalacao, com URL propria.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ter uma ferramenta publicada e o resultado tangivel. Voce pode usar no celular durante a consulta, enviar para residentes ou compartilhar com o servico inteiro.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Deploy, URL publica, compartilhamento, acesso por celular, resultado tangivel em 30 minutos, primeiro projeto completo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-5-2.html')" class="px-4 py-2 text-sm bg-teal-600/20 hover:bg-teal-600/30 text-teal-400 border border-teal-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-5-2.html" class="px-4 py-2 text-sm bg-teal-600 hover:bg-teal-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 5.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-teal-400 font-bold">5.3</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⚡ Automacoes que economizam horas</h3>
+        <p class="text-neutral-400 text-sm">Automacao visual com n8n/Make: contestacao automatica, nota SOAP por email e fluxos que trabalham por voce enquanto atende.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🔄</span>
+            <div class="flex-1">
+              <span class="font-medium">O que e automacao visual (n8n/Make)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Arrastar e soltar fluxos</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ferramentas visuais onde voce monta fluxos de automacao arrastando blocos e conectando-os. n8n (open source, gratuito) e Make (visual, plano free) permitem criar automacoes sem escrever codigo.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Tarefas repetitivas consomem horas por semana. Uma automacao criada em 30 minutos pode economizar 5 horas por semana — para sempre.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">n8n, Make, automacao visual, fluxos sem codigo, arrastar e soltar, integracao entre ferramentas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">📄</span>
+            <div class="flex-1">
+              <span class="font-medium">Projeto 1: formulario → IA → contestacao PDF</span>
+              <span class="text-neutral-500 text-sm ml-2">- Contestacao automatica</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Fluxo automatizado: voce preenche um formulario com dados do paciente e motivo da negativa → IA gera a carta de contestacao com argumentacao tecnica → sistema gera PDF formatado pronto para enviar ao convenio.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Contestacoes sao repetitivas e consomem tempo. Automatizar o processo transforma 30 minutos de escrita em 2 minutos de preenchimento de formulario.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Formulario de entrada, IA para gerar texto, geracao de PDF, fluxo automatizado, contestacao de convenio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📋</span>
+            <div class="flex-1">
+              <span class="font-medium">Projeto 2: input consulta → nota SOAP → email</span>
+              <span class="text-neutral-500 text-sm ml-2">- Documentacao automatica</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Fluxo automatizado: voce digita anotacoes rapidas da consulta → IA gera nota SOAP completa e estruturada → sistema envia por email para voce colar no prontuario ou arquivar.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Combina o que voce aprendeu na Trilha 4 (SOAP com IA) com automacao. O resultado: documentacao clinica com esforco minimo e padrao consistente.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Input de texto, geracao SOAP por IA, envio automatico por email, integracao com rotina clinica, padronizacao.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🔗</span>
+            <div class="flex-1">
+              <span class="font-medium">Conectando ferramentas sem codigo</span>
+              <span class="text-neutral-500 text-sm ml-2">- APIs e webhooks simplificados</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Como conectar Google Forms, Google Sheets, Gmail, WhatsApp, APIs de IA e geradores de PDF usando n8n/Make — tudo visual, sem escrever codigo. Cada ferramenta vira um "bloco" que voce conecta.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A maioria das ferramentas que voce ja usa (Google, email, WhatsApp) pode ser conectada automaticamente. O poder esta na combinacao, nao em cada ferramenta isolada.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">APIs, webhooks, conectores, integracoes, Google Forms, Google Sheets, Gmail, automacao entre ferramentas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🔁</span>
+            <div class="flex-1">
+              <span class="font-medium">Triggers e fluxos</span>
+              <span class="text-neutral-500 text-sm ml-2">- O que dispara a automacao</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Triggers sao os eventos que iniciam o fluxo: formulario preenchido, email recebido, horario agendado, webhook externo. Entender triggers e entender quando e como sua automacao roda.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">A automacao so funciona se o gatilho estiver certo. Escolher o trigger errado significa que o fluxo nunca dispara — ou dispara na hora errada.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Triggers, gatilhos, eventos, webhooks, agendamento, fluxo condicional, logica de disparo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🔒</span>
+            <div class="flex-1">
+              <span class="font-medium">Seguranca dos dados no fluxo</span>
+              <span class="text-neutral-500 text-sm ml-2">- LGPD e dados sensiveis</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Cuidados com dados de pacientes em automacoes: anonimizacao antes de enviar para IA, armazenamento seguro, quem tem acesso, LGPD aplicada a fluxos automaticos e riscos de vazamento.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Automacao com dados de saude exige cuidado redobrado. Um fluxo mal configurado pode vazar dados sensiveis e gerar problemas legais graves.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">LGPD, anonimizacao, dados sensiveis, seguranca no fluxo, acesso restrito, responsabilidade com dados de pacientes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-5-3.html')" class="px-4 py-2 text-sm bg-teal-600/20 hover:bg-teal-600/30 text-teal-400 border border-teal-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-5-3.html" class="px-4 py-2 text-sm bg-teal-600 hover:bg-teal-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 5.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-teal-400 font-bold">5.4</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">📚 Base de conhecimento com IA (RAG pessoal)</h3>
+        <p class="text-neutral-400 text-sm">Seu "R1 que leu TODOS seus PDFs". Upload de guidelines, perguntas em portugues e respostas com fonte exata do seu vault.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">🧠</span>
+            <div class="flex-1">
+              <span class="font-medium">O que e RAG em linguagem medica</span>
+              <span class="text-neutral-500 text-sm ml-2">- "R1 que leu TODOS seus PDFs"</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">RAG (Retrieval-Augmented Generation) e como ter um R1 que leu todos os seus PDFs, guidelines e artigos. Voce pergunta em portugues, e a IA busca nos SEUS documentos e responde com a fonte exata — nao inventa.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">ChatGPT generico responde com informacao da internet. RAG pessoal responde com informacao dos SEUS documentos curados. A diferenca e confiabilidade e rastreabilidade.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">RAG, Retrieval-Augmented Generation, base de conhecimento pessoal, resposta com fonte, confiabilidade, rastreabilidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🛠️</span>
+            <div class="flex-1">
+              <span class="font-medium">Ferramentas: NotebookLM e Claude Projects</span>
+              <span class="text-neutral-500 text-sm ml-2">- Gratuitas e prontas para usar</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">NotebookLM (Google, gratuito): faz upload de PDFs e o sistema cria uma IA que so responde baseada neles. Claude Projects (Anthropic): cria projetos com documentos de referencia. Ambos permitem RAG sem instalacao.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ferramentas gratuitas que funcionam hoje. Nao precisa de servidor, banco de dados ou configuracao tecnica. Upload e pergunte.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">NotebookLM, Claude Projects, upload de PDFs, RAG gratuito, sem configuracao tecnica, pronto para usar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📤</span>
+            <div class="flex-1">
+              <span class="font-medium">Upload de guidelines → perguntar em portugues</span>
+              <span class="text-neutral-500 text-sm ml-2">- Passo a passo pratico</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Passo a passo: selecionar guidelines da sua especialidade, fazer upload na ferramenta, e comecar a perguntar em portugues. "Qual a dose de amiodarona em FA aguda segundo a ESC 2024?" — e a IA responde citando a pagina exata.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Buscar informacao em PDFs longos consome tempo. Com RAG, voce pergunta e a IA encontra a resposta nos seus documentos em segundos.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Upload de documentos, perguntas em linguagem natural, busca semantica, resposta com citacao, agilidade clinica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">📌</span>
+            <div class="flex-1">
+              <span class="font-medium">Resposta com fonte exata do SEU vault</span>
+              <span class="text-neutral-500 text-sm ml-2">- Rastreabilidade total</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A resposta do RAG inclui a referencia exata: qual documento, qual pagina, qual trecho fundamenta a resposta. Voce pode verificar a fonte com um clique — diferente do ChatGPT que nao mostra de onde veio a informacao.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Rastreabilidade e crucial na medicina. Saber de onde veio a informacao permite validar, citar em discussoes clinicas e ter seguranca na decisao.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Citacao de fonte, rastreabilidade, verificacao, transparencia da resposta, confianca clinica, auditoria.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">⚖️</span>
+            <div class="flex-1">
+              <span class="font-medium">Diferenca RAG pessoal vs ChatGPT generico</span>
+              <span class="text-neutral-500 text-sm ml-2">- Por que um e confiavel e o outro nao</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">ChatGPT generico responde com base no treinamento geral (pode alucar). RAG pessoal responde APENAS com base nos seus documentos curados. A diferenca: um adivinha, o outro cita a fonte. Um pode inventar, o outro esta ancorado nos seus PDFs.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Entender essa diferenca e fundamental para usar IA com seguranca clinica. RAG nao elimina alucinacao, mas reduz drasticamente e permite verificacao.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">RAG vs LLM generico, alucinacao reduzida, fonte curada, confiabilidade, verificacao, uso clinico seguro.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🧪</span>
+            <div class="flex-1">
+              <span class="font-medium">Exercicio: carregar guideline da especialidade</span>
+              <span class="text-neutral-500 text-sm ml-2">- Seu RAG funcionando em 15 min</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico: escolha o guideline mais importante da sua especialidade, faca upload no NotebookLM ou Claude Projects, faca 5 perguntas clinicas e verifique se as respostas estao corretas e com fonte.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ao final deste exercicio, voce tera seu primeiro RAG pessoal funcionando. Um assistente que conhece os guidelines que VOCE considera referencia.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Exercicio pratico, guideline da especialidade, teste com perguntas reais, verificacao de fontes, RAG personalizado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-5-4.html')" class="px-4 py-2 text-sm bg-teal-600/20 hover:bg-teal-600/30 text-teal-400 border border-teal-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-5-4.html" class="px-4 py-2 text-sm bg-teal-600 hover:bg-teal-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 5.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-teal-400 font-bold">5.5</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">📱 App para pacientes: educacao e follow-up</h3>
+        <p class="text-neutral-400 text-sm">Crie app no-code com Glide/Bolt: educacao por condicao, formulario de follow-up semanal e alertas automaticos.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📲</span>
+            <div class="flex-1">
+              <span class="font-medium">O que e um app no-code (Glide, Bolt)</span>
+              <span class="text-neutral-500 text-sm ml-2">- App sem programar</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ferramentas que permitem criar aplicativos funcionais sem escrever codigo. Glide transforma planilhas em apps. Bolt.new cria apps completos por descricao. Ambos geram apps acessiveis por celular via link.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Criar um app parecia impossivel sem programador. Com no-code, voce constroi, testa e publica em horas — nao meses. Ideal para ferramentas clinicas simples.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">No-code, Glide, Bolt.new, app por descricao, planilha como banco de dados, acesso por link, prototipagem rapida.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🎓</span>
+            <div class="flex-1">
+              <span class="font-medium">Projeto: app de educacao por condicao</span>
+              <span class="text-neutral-500 text-sm ml-2">- Input: condicao → output: explicacao + cuidados</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">App que recebe uma condicao clinica e retorna: explicacao em linguagem leiga, cuidados diarios, sinais de alerta para procurar emergencia e quando retornar ao medico. Conteudo gerado por IA e revisado por voce.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Voce explica as mesmas condicoes dezenas de vezes por semana. Um app com material educativo personalizado economiza tempo e melhora a compreensao do paciente.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">App educativo, conteudo por condicao, linguagem leiga, sinais de alerta, material revisado pelo medico.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">📝</span>
+            <div class="flex-1">
+              <span class="font-medium">Adicionando formulario de follow-up semanal</span>
+              <span class="text-neutral-500 text-sm ml-2">- Acompanhamento entre consultas</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Formulario semanal no app onde o paciente registra sintomas, medicacoes tomadas, pressao arterial, glicemia ou qualquer parametro relevante. Os dados ficam organizados para o medico revisar antes da proxima consulta.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Entre consultas, o medico nao sabe o que acontece. Follow-up digital preenche essa lacuna e melhora a qualidade do acompanhamento cronico.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Follow-up digital, formulario semanal, registro de sintomas, monitoramento entre consultas, dados organizados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">🚨</span>
+            <div class="flex-1">
+              <span class="font-medium">Alertas se valores fora do range</span>
+              <span class="text-neutral-500 text-sm ml-2">- Notificacao automatica</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Configurar alertas automaticos quando o paciente reporta valores fora do range definido por voce (ex: PA > 180/110, glicemia > 300, temperatura > 38.5). O medico recebe notificacao para intervir proativamente.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Alertas transformam acompanhamento passivo em ativo. Voce age antes da emergencia, nao depois — melhorando desfechos e relacao com o paciente.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Alertas automaticos, valores de referencia, notificacao ao medico, intervencao proativa, monitoramento ativo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">🧪</span>
+            <div class="flex-1">
+              <span class="font-medium">Testando com caso real</span>
+              <span class="text-neutral-500 text-sm ml-2">- Validacao pratica</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Testar o app com um caso clinico real (anonimizado): simular o fluxo completo do paciente usando o app — cadastro, educacao, preenchimento do follow-up e teste dos alertas de valores criticos.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Testar com caso real revela problemas que voce nao percebe no papel: campos confusos, alertas que nao disparam, conteudo que o paciente nao entende.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Teste com caso real, simulacao de fluxo, validacao pratica, identificacao de falhas, refinamento.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">🔮</span>
+            <div class="flex-1">
+              <span class="font-medium">Limitacoes e proximos passos</span>
+              <span class="text-neutral-500 text-sm ml-2">- O que o no-code nao faz</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Limites do no-code: escalabilidade, personalizacao avancada, integracao com sistemas hospitalares, certificacao ANVISA. O que fazer quando o no-code nao basta: buscar desenvolvedor, usar low-code ou evoluir para codigo.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Saber os limites evita frustracoes e decisoes ruins. O no-code resolve 80% dos problemas — para os outros 20%, voce precisa saber quando escalar.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Limites do no-code, quando escalar, buscar desenvolvedor, low-code, evolucao gradual, expectativa realista.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-5-5.html')" class="px-4 py-2 text-sm bg-teal-600/20 hover:bg-teal-600/30 text-teal-400 border border-teal-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-5-5.html" class="px-4 py-2 text-sm bg-teal-600 hover:bg-teal-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Modulo 5.6 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 overflow-hidden">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-teal-400 font-bold">5.6</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🛡️ Seguranca, limites e ANVISA</h3>
+        <p class="text-neutral-400 text-sm">O que pode construir sem registro (RDC 657), o que NAO pode, o problema da ultima milha, shadow AI e checklist de seguranca.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg mr-2">📋</span>
+            <div class="flex-1">
+              <span class="font-medium">ANVISA RDC 657 — o que pode sem registro</span>
+              <span class="text-neutral-500 text-sm ml-2">- Classe I/II uso interno</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">A RDC 657 da ANVISA classifica software como dispositivo medico. Classe I e II (baixo risco, uso interno) podem ser desenvolvidos e usados sem registro formal. Isso inclui calculadoras clinicas, checklists, ferramentas de organizacao e apoio a decisao simples.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Saber o que a lei permite da seguranca para construir. A maioria das ferramentas uteis para o dia a dia esta na zona permitida — mas voce precisa saber onde esta a linha.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">RDC 657, ANVISA, Classe I, Classe II, uso interno, isentos de registro, software como dispositivo medico.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg mr-2">🚫</span>
+            <div class="flex-1">
+              <span class="font-medium">O que NAO pode (diagnostico autonomo, dosagem alto risco)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Linha vermelha</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ferramentas que fazem diagnostico autonomo (sem supervisao medica), calculam dosagens de alto risco (quimioterapicos, anticoagulantes) ou tomam decisoes clinicas sem validacao humana precisam de registro ANVISA — e nao devem ser construidas com vibe coding.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ultrapassar essa linha pode ter consequencias graves: responsabilidade legal, dano ao paciente e problemas com CRM. A empolgacao com vibe coding nao pode cegar para os riscos.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Diagnostico autonomo, dosagem alto risco, registro ANVISA obrigatorio, Classe III/IV, responsabilidade legal, limite regulatorio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg mr-2">🏚️</span>
+            <div class="flex-1">
+              <span class="font-medium">O "problema da ultima milha"</span>
+              <span class="text-neutral-500 text-sm ml-2">- Eugene Vestel: 21 repos, $2800, zero usuarios</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Eugene Vestel documentou o problema: criou 21 repositorios com vibe coding, gastou $2800 em tokens e teve zero usuarios. Construir e facil — fazer alguem usar e o desafio real. A "ultima milha" (UX, onboarding, manutencao) e onde projetos morrem.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Evitar a armadilha de construir por construir. Comece com um problema real seu, resolva para voce, e so depois pense em escalar. A maioria das ferramentas uteis nunca precisa ir alem do seu consultorio.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Ultima milha, adocao de software, UX, manutencao, construir vs usar, foco no problema real, escopo minimo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg mr-2">👻</span>
+            <div class="flex-1">
+              <span class="font-medium">Shadow AI em hospitais (riscos)</span>
+              <span class="text-neutral-500 text-sm ml-2">- Ferramentas nao autorizadas</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Shadow AI sao ferramentas de IA usadas por profissionais sem conhecimento ou autorizacao da instituicao. Medicos colando dados de pacientes no ChatGPT, usando apps nao validados para decisao clinica, criando planilhas com logica nao auditada.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Shadow AI ja acontece em todo hospital. Reconhecer o fenomeno e o primeiro passo para mitigar riscos — tanto para o medico quanto para a instituicao.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Shadow AI, ferramentas nao autorizadas, risco institucional, dados de pacientes, governanca de IA, compliance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg mr-2">✅</span>
+            <div class="flex-1">
+              <span class="font-medium">Checklist de seguranca para ferramentas vibe-coded</span>
+              <span class="text-neutral-500 text-sm ml-2">- 10 perguntas antes de usar</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Checklist de 10 perguntas que toda ferramenta vibe-coded deve responder antes de ser usada clinicamente: dados sensiveis? quem tem acesso? logica validada? erro pode causar dano? tem backup? esta documentada?</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Um checklist simples previne 90% dos problemas. Antes de colocar qualquer ferramenta na pratica clinica, passe por essas 10 perguntas.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Checklist de seguranca, validacao pre-uso, dados sensiveis, documentacao, backup, auditoria, governanca pessoal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg mr-2">⚖️</span>
+            <div class="flex-1">
+              <span class="font-medium">Responsabilidade legal do medico-construtor</span>
+              <span class="text-neutral-500 text-sm ml-2">- Voce e responsavel pelo que constroi</span>
+            </div>
+            <span class="text-neutral-500 text-sm">+</span>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3">
+              <div>
+                <span class="text-teal-400 font-semibold">O que e:</span>
+                <p class="text-neutral-300 text-sm mt-1">Se voce constroi uma ferramenta e ela gera dano ao paciente (calculo errado, alerta que nao dispara, informacao desatualizada), a responsabilidade e sua — mesmo que a IA tenha gerado o codigo. O medico-construtor e o medico-responsavel.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Por que aprender:</span>
+                <p class="text-neutral-300 text-sm mt-1">Responsabilidade legal e o contrapeso da autonomia. Com o poder de construir vem a obrigacao de validar, testar e manter. Ignorar isso pode custar sua carreira.</p>
+              </div>
+              <div>
+                <span class="text-teal-400 font-semibold">Conceitos-chave:</span>
+                <p class="text-neutral-300 text-sm mt-1">Responsabilidade legal, medico-construtor, validacao obrigatoria, manutencao, teste com casos reais, documentacao de processo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modulo-5-6.html')" class="px-4 py-2 text-sm bg-teal-600/20 hover:bg-teal-600/30 text-teal-400 border border-teal-500/30 rounded-lg font-medium transition-colors">
+          Ver em Modal
+        </button>
+        <a href="modulo-5-6.html" class="px-4 py-2 text-sm bg-teal-600 hover:bg-teal-500 text-white rounded-lg font-medium transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- Navegacao -->
+    <div class="mt-12 flex flex-col sm:flex-row gap-4">
+      <a href="../trilha4/index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Trilha 4: IA no Consultorio
+      </a>
+      <a href="../trilha6/index.html" class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors">
+        Proxima: Trilha 6 - 2o Cerebro →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Trilha 5: Vibe Code para Medicos</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative flex items-start justify-center min-h-screen p-4 pt-8 overflow-y-auto">
+      <div class="relative bg-dark-800 rounded-2xl border border-dark-600 w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl">
+        <div class="sticky top-0 z-10 flex items-center justify-between p-4 bg-dark-800 border-b border-dark-600">
+          <h3 class="font-bold text-lg text-teal-400">Conteudo do Modulo</h3>
+          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors text-neutral-400 hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+          <div class="flex items-center justify-center py-12">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-400"></div>
+            <span class="ml-3 text-neutral-400">Carregando...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) {
+          exp.classList.remove('active');
+        }
+      });
+
+      explanation.classList.toggle('active');
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+
+    function openModal(moduloUrl) {
+      const modal = document.getElementById('modal-overlay');
+      const content = document.getElementById('modal-content');
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      content.innerHTML = `
+        <div class="flex items-center justify-center py-12">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-400"></div>
+          <span class="ml-3 text-neutral-400">Carregando...</span>
+        </div>
+      `;
+
+      fetch(moduloUrl)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const mainContent = doc.querySelector('main');
+
+          if (mainContent) {
+            content.innerHTML = mainContent.innerHTML;
+          } else {
+            content.innerHTML = '<p class="text-neutral-400">Conteudo nao encontrado.</p>';
+          }
+        })
+        .catch(err => {
+          content.innerHTML = '<p class="text-red-400">Erro ao carregar conteudo.</p>';
+        });
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal-overlay');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>

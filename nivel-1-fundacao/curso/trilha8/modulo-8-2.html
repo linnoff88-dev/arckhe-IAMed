@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 8.2: Triagem inteligente pre-consulta | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha blue) */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37, 99, 235, 0.18); }
+
+    /* Light mode - remove gradientes (fundo uniforme) */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span><span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span><span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span><span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span><span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T8</span><span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span><span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 8</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400 font-medium">Modulo 8.2</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 8.2
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📝 Triagem inteligente pre-consulta</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Colete informacoes antes da consulta, IA organiza em resumo clinico, e a consulta comeca 5 minutos adiantada. Modelos e ferramentas praticas.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">~60</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Projeto</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📥 Coletar informacoes ANTES da consulta</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Os primeiros 5-10 minutos de toda consulta sao gastos coletando <strong class="text-blue-400">informacoes basicas</strong>: queixa, medicacoes, alergias, historico. E se o paciente ja trouxesse isso pronto?
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> O que coletar no formulario
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-blue-400">Dados basicos:</strong> Nome, idade, convenio (se nao tem no sistema).</p>
+          <p><strong class="text-blue-400">Queixa principal:</strong> "Em poucas palavras, o que te traz aqui hoje?"</p>
+          <p><strong class="text-blue-400">Medicacoes em uso:</strong> Lista com doses e horarios.</p>
+          <p><strong class="text-blue-400">Alergias:</strong> Medicamentosas e alimentares.</p>
+          <p><strong class="text-blue-400">Expectativas:</strong> "O que voce espera desta consulta?"</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica Pratica
+        </h3>
+        <p class="text-neutral-300">Envie o formulario 24-48h antes da consulta por WhatsApp. Pacientes preenchem em casa, com calma, sem a pressao do consultorio. A taxa de preenchimento tipica e de 60-80%.</p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🤖 IA organiza e medico recebe resumo pronto</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O paciente preenche texto livre — desorganizado, com erros de escrita, misturando informacoes. A IA transforma isso em um <strong class="text-blue-400">resumo clinico estruturado</strong> que voce le em 30 segundos.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">🔄</span> Antes vs Depois
+        </h3>
+        <div class="space-y-4 text-neutral-300">
+          <div class="bg-red-900/10 rounded-lg p-4 border border-red-500/20">
+            <p class="text-sm"><strong class="text-red-400">Antes (texto bruto do paciente):</strong> "Oi doutor, to com uma dor de cabeca faz umas 2 semanas, as vezes piora de noite, tomo dipirona mas nao resolve, tomo tambem pressao alta o remedio e losartana 50 nao lembro se e de manha ou de noite..."</p>
+          </div>
+          <div class="bg-blue-500/10 rounded-lg p-4 border border-blue-500/20">
+            <p class="text-sm"><strong class="text-blue-400">Depois (resumo da IA):</strong> QP: Cefaleia ha 2 semanas, piora noturna, sem alivio com dipirona. Med: Losartana 50mg (horario incerto). Alergias: nao informado. Alerta: avaliar controle de HAS — cefaleia pode ser secundaria.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">⏱️ Resultado: consulta comeca 5 min adiantada</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        5 minutos por consulta parece pouco. Mas <strong class="text-blue-400">multiplique por 32 pacientes</strong> e o impacto e transformador.
+      </p>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Matematica do impacto
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>5 min/consulta</strong> x 32 pacientes = <strong class="text-blue-400">160 minutos/dia</strong></li>
+          <li><strong>160 min</strong> = <strong class="text-blue-400">2h40 recuperadas por dia</strong></li>
+          <li><strong>2h40</strong> x 5 dias = <strong class="text-blue-400">13h20 por semana</strong></li>
+          <li><strong>13h20</strong> x 4 semanas = <strong class="text-blue-400">53h por mes</strong></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> O que fazer com esse tempo
+        </h3>
+        <p class="text-neutral-300">Atender com mais calma (melhor qualidade), ver mais pacientes (mais receita), sair mais cedo (qualidade de vida), ou investir em projetos pessoais. A escolha e sua — o tempo e real.</p>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">📂 Modelos por tipo de consulta</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Um formulario unico para tudo gera dados inuteis. <strong class="text-blue-400">Formularios especificos</strong> por tipo de consulta capturam exatamente o que voce precisa.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">🆕 Primeira consulta</h3>
+          <p class="text-neutral-300 text-sm">Historico completo, cirurgias previas, antecedentes familiares, habitos, medicacoes detalhadas, expectativas com o tratamento. O formulario mais longo — mas o paciente preenche apenas 1 vez.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">🔄 Retorno</h3>
+          <p class="text-neutral-300 text-sm">Evolucao desde ultima consulta, aderencia a medicacao, efeitos colaterais, novos sintomas, resultados de exames realizados. Curto e objetivo — o historico ja existe.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">✅ Check-up</h3>
+          <p class="text-neutral-300 text-sm">Rastreamento por faixa etaria, habitos de vida (exercicio, alimentacao, sono, estresse), vacinas em dia, exames preventivos pendentes.</p>
+        </div>
+        <div class="bg-dark-700/50 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">🚨 Urgencia</h3>
+          <p class="text-neutral-300 text-sm">Sintomas agudos com cronologia (quando comecou, evoluiu como), gravidade percebida, o que ja tomou, alergias urgentes. Formulario minimo — priorizacao rapida.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🛠️ Ferramentas: Google Forms + IA, Typeform, Glide</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Nao precisa de sistema caro. <strong class="text-blue-400">Google Forms gratuito</strong> ja resolve 80% dos casos. Escale para ferramentas melhores quando necessario.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Mapa de ferramentas
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong class="text-blue-400">Google Forms (gratuito):</strong> Simples, integra com Sheets automaticamente. Paciente recebe link por WhatsApp. Respostas vao para planilha. IA analisa a planilha e gera resumo.</p>
+          <p><strong class="text-blue-400">Typeform (freemium):</strong> Visual bonito, experiencia melhor para o paciente, logica condicional (perguntas mudam baseado em respostas). Plano gratis limitado a 10 respostas/mes.</p>
+          <p><strong class="text-blue-400">Glide (freemium):</strong> Transforma planilha em app. O paciente abre um "app" no celular, nao um formulario. Experiencia premium, custo acessivel.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🧪 Exercicio: criar formulario para sua especialidade</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Ao final deste exercicio, voce tera um <strong class="text-blue-400">formulario funcional</strong> pronto para enviar a pacientes reais amanha.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📝</span> Passo a passo
+        </h3>
+        <div class="space-y-3 text-neutral-300">
+          <p><strong>1.</strong> Abra o Google Forms e crie um formulario em branco.</p>
+          <p><strong>2.</strong> Use IA (Claude/ChatGPT) com este prompt: "Crie um formulario de pre-consulta para [sua especialidade], tipo [primeira consulta/retorno]. Inclua: queixa, medicacoes, alergias, historico relevante e 3 perguntas especificas da especialidade."</p>
+          <p><strong>3.</strong> Copie as perguntas para o Google Forms.</p>
+          <p><strong>4.</strong> Teste preenchendo como se fosse um paciente ficticio.</p>
+          <p><strong>5.</strong> Envie o link para si mesmo por WhatsApp — simule a experiencia do paciente.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Prompt bonus
+        </h3>
+        <p class="text-neutral-300">Depois de receber as respostas, use este prompt para gerar o resumo: "Organize estas respostas de formulario pre-consulta em formato clinico: QP em 1 linha, medicacoes em lista, alergias, alertas relevantes e perguntas para o medico aprofundar."</p>
+      </div>
+    </section>
+
+    <!-- Resumo do Modulo -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📝</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Coleta antecipada</strong>
+              <span class="text-neutral-400"> - Formulario 24-48h antes da consulta</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Resumo por IA</strong>
+              <span class="text-neutral-400"> - Texto bruto vira resumo clinico em 30 segundos</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Impacto mensuravel</strong>
+              <span class="text-neutral-400"> - 5 min/consulta = 53h recuperadas por mes</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Formulario criado</strong>
+              <span class="text-neutral-400"> - Pronto para usar na sua especialidade</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-blue-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">8.3 - Follow-up automatizado entre consultas</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-8-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo 8.1
+          </a>
+          <a href="modulo-8-3.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">
+            Proximo: Modulo 8.3 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 8.2: Triagem inteligente pre-consulta</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>

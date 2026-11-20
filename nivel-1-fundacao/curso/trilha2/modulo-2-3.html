@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.3: Chain-of-thought | IAMed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Light mode overrides - OBRIGATORIO */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores de acento (trilha blue) */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .border-blue-500\/20 { border-color: rgba(37, 99, 235, 0.15); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">IAMed</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%]">
+          <a href="../trilha1/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Entendendo IA</span>
+          </a>
+          <a href="index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Prompt</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Pesquisa</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Consultorio</span>
+          </a>
+          <a href="../trilha5/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Vibe Code</span>
+          </a>
+          <a href="../trilha6/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">2o Cerebro</span>
+          </a>
+          <a href="../trilha7/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T7</span>
+            <span class="hidden sm:inline">Marketing</span>
+          </a>
+          <a href="../trilha8/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T8</span>
+            <span class="hidden sm:inline">Escala</span>
+          </a>
+          <a href="../trilha9/index.html" class="px-2 py-1 rounded-lg text-xs sm:text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T9</span>
+            <span class="hidden sm:inline">Etica</span>
+          </a>
+          <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-dark-700 transition-colors ml-1">
+            <span id="theme-icon" class="text-lg">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex items-center space-x-2 mb-4 text-sm">
+        <a href="../../index.html" class="text-neutral-500 hover:text-neutral-300">Inicio</a>
+        <span class="text-neutral-600">/</span>
+        <a href="index.html" class="text-neutral-500 hover:text-neutral-300">Trilha 2</a>
+        <span class="text-neutral-600">/</span>
+        <span class="text-blue-400 font-medium">Modulo 2.3</span>
+      </div>
+
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 2.3
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🧩 Chain-of-thought: faca a IA pensar como voce</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Tecnicas para fazer a IA mostrar o raciocinio passo a passo, da mesma forma que voce ensina um residente a pensar antes de concluir.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">~50</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600 text-center">
+          <div class="text-xl font-bold text-blue-400">Tecnica</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteudo Principal -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Topico 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">👨‍⚕️ Analogia: ensinar o R1 vs dar ordem ao R1</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Ha duas formas de usar um residente: dar uma ordem direta ("peca ECG e traga o resultado") ou <strong class="text-blue-400">ensinar a raciocinar</strong> ("o que voce suspeita? que exame confirmaria? por que?"). Com IA e exatamente igual.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+          <h4 class="font-bold text-red-400 mb-4">✗ Dar ordem (sem raciocinio)</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>"Qual o diagnostico desse paciente?"</li>
+            <li>"Prescreva antibiotico"</li>
+            <li>"Diga se precisa internar"</li>
+          </ul>
+          <p class="text-neutral-400 text-xs mt-3">Voce recebe resposta, mas nao sabe se o caminho esta correto.</p>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+          <h4 class="font-bold text-blue-400 mb-4">✓ Ensinar a raciocinar</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>"Analise os sintomas, correlacione com exames e conclua"</li>
+            <li>"Pense passo a passo antes de sugerir conduta"</li>
+            <li>"Liste pros e contras de cada opcao"</li>
+          </ul>
+          <p class="text-neutral-400 text-xs mt-3">Voce ve o raciocinio e pode validar cada etapa.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Analogia Clinica</h3>
+        <p class="text-neutral-300">
+          Quando voce le a prova do residente, nao quer so ver a resposta final - quer ver o raciocinio. Se o raciocinio esta errado, a resposta certa foi sorte. O mesmo vale para a IA: ver o caminho e tao importante quanto ver a conclusao.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🔬 Sem chain-of-thought vs com</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A melhor forma de entender o poder do chain-of-thought e ver a <strong class="text-blue-400">diferenca na pratica</strong>. Mesmo caso, duas abordagens, resultados completamente diferentes.
+      </p>
+
+      <div class="bg-dark-800 rounded-xl p-6 border border-dark-600 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-3">Caso Clinico</h3>
+        <p class="text-neutral-300 text-sm">Paciente masculino, 68 anos, DM2, tabagista 40 anos-maco. Apresenta febre 38.5C, tosse produtiva ha 3 dias, crepitacoes em base direita. Leucocitos 14.800, PCR 89.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+          <h4 class="font-bold text-red-400 mb-4">✗ Sem Chain-of-thought</h4>
+          <p class="text-neutral-300 text-sm italic">"Qual o diagnostico e tratamento?"</p>
+          <div class="mt-3 bg-dark-700/50 rounded-lg p-3 text-neutral-400 text-xs">
+            Resposta: "Pneumonia adquirida na comunidade. Prescreva amoxicilina + clavulanato 875/125mg 12/12h por 7 dias."
+          </div>
+          <p class="text-red-400 text-xs mt-2">Resposta direta, sem justificativa, sem alternativas, sem considerar comorbidades.</p>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+          <h4 class="font-bold text-blue-400 mb-4">✓ Com Chain-of-thought</h4>
+          <p class="text-neutral-300 text-sm italic">"Analise passo a passo: 1) sintomas, 2) exames, 3) diferenciais, 4) conduta com justificativa"</p>
+          <div class="mt-3 bg-dark-700/50 rounded-lg p-3 text-neutral-400 text-xs">
+            Resposta: "1) Febre + tosse + crepitacoes = sindrome pneumonica. 2) Leucocitose + PCR elevada = infeccao bacteriana provavel. 3) PAC vs TB (tabagista, 68a). 4) CURB-65 = 1 (idade). Ambulatorial vs internacao: considerar DM2..."
+          </div>
+          <p class="text-blue-400 text-xs mt-2">Raciocinio visivel, diferenciais considerados, score de gravidade, comorbidades incluidas.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Dica Pratica</h3>
+        <p class="text-neutral-300">
+          Com chain-of-thought voce identifica se a IA considerou TB no diferencial, se usou CURB-65, se lembrou do DM2. Sem ele, voce so ve a resposta final e nao sabe se o caminho esta certo.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">1️⃣ Tecnica 1: "Pense passo a passo"</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A tecnica mais simples e eficaz: adicionar <strong class="text-blue-400">"Pense passo a passo"</strong> ao final do prompt. Essa unica frase forca a IA a decompor o problema antes de responder.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Como usar</h3>
+        <div class="bg-dark-700/50 rounded-lg p-4 text-neutral-300 text-sm font-mono">
+          <p>[Seu prompt RCCFR completo]</p>
+          <p class="mt-2 text-blue-400 font-bold">Pense passo a passo antes de concluir.</p>
+        </div>
+        <p class="text-neutral-400 text-sm mt-3">Variacoes: "Raciocine etapa por etapa", "Decomponha o problema antes de responder", "Mostre seu raciocinio".</p>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Quando Funciona Melhor</h3>
+        <p class="text-neutral-300">
+          Diagnostico diferencial, calculo de scores (CURB-65, Wells, CHA2DS2-VASc), ajuste terapeutico em paciente polifarmacia, analise de interacoes medicamentosas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">2️⃣ Tecnica 2: "Primeiro analise X, depois Y, conclua Z"</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Quando voce quer controlar a <strong class="text-blue-400">sequencia exata</strong> do raciocinio, defina as etapas explicitamente. E como montar o raciocinio clinico: anamnese, exame fisico, hipotese, exames, conduta.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Template de raciocinio sequencial</h3>
+        <div class="bg-dark-700/50 rounded-lg p-4 text-neutral-300 text-sm font-mono space-y-1">
+          <p>[Seu prompt RCCFR]</p>
+          <p class="mt-2">Siga esta sequencia:</p>
+          <p>1. Primeiro, analise os sintomas e sinais apresentados</p>
+          <p>2. Depois, correlacione com os exames laboratoriais</p>
+          <p>3. Em seguida, liste diagnosticos diferenciais em ordem de probabilidade</p>
+          <p>4. Para cada diferencial, indique o exame confirmatorio</p>
+          <p>5. Por fim, sugira conduta para o diagnostico mais provavel</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Vantagem</h3>
+        <p class="text-neutral-300">
+          Voce replica o raciocinio clinico estruturado que ja usa no dia a dia. A IA segue exatamente a mesma logica de investigacao que voce aprendeu na faculdade e residencia.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">3️⃣ Tecnica 3: "Considere a favor e contra antes de concluir"</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Esta tecnica forca a IA a <strong class="text-blue-400">deliberar</strong> antes de concluir. Em vez de dar a resposta mais provavel imediatamente, ela pesa argumentos pros e contras. E o equivalente a uma sessao clinica bem conduzida.
+      </p>
+
+      <div class="bg-gradient-to-br from-blue-900/20 to-dark-800 rounded-xl p-6 border border-blue-500/20 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4">Exemplos de aplicacao</h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Para cada opcao terapeutica, liste riscos e beneficios antes de recomendar"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Considere argumentos a favor e contra internar este paciente"</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-blue-400 mt-1">✓</span>
+            <span>"Antes de concluir pelo diagnostico, liste evidencias que apoiam e que refutam cada hipotese"</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+          <h4 class="font-bold text-blue-400 mb-4">✓ Ideal para</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>Decisao de internar vs alta</li>
+            <li>Escolha entre opcoes terapeuticas</li>
+            <li>Indicacao cirurgica vs conservador</li>
+            <li>Iniciar vs postergar tratamento</li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+          <h4 class="font-bold text-red-400 mb-4">✗ Desnecessario para</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>Perguntas com resposta unica</li>
+            <li>Calculos simples (dose por peso)</li>
+            <li>Consulta de valores de referencia</li>
+            <li>Formatacao de documentos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Anti-vies</h3>
+        <p class="text-neutral-300">
+          Esta tecnica e especialmente util para combater o vies de confirmacao da IA. Sem ela, a IA tende a confirmar a primeira hipotese. Com ela, a IA e forcada a considerar alternativas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Topico 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">⚠️ Quando usar e quando NAO usar</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Chain-of-thought e poderoso, mas <strong class="text-blue-400">nao e para tudo</strong>. Usar em tarefas simples e como pedir parecer do staff para verificar pressao arterial: overhead sem valor agregado.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-blue-900/20 rounded-xl p-6 border border-blue-500/30">
+          <h4 class="font-bold text-blue-400 mb-4">✓ USE chain-of-thought</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>Diagnostico diferencial complexo</li>
+            <li>Ajuste terapeutico em polifarmacia</li>
+            <li>Analise de interacoes medicamentosas</li>
+            <li>Decisao de conduta (internar/alta)</li>
+            <li>Calculo de scores compostos</li>
+            <li>Casos com multiplas comorbidades</li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+          <h4 class="font-bold text-red-400 mb-4">✗ NAO USE chain-of-thought</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>Traduzir um texto medico</li>
+            <li>Formatar lista de medicamentos</li>
+            <li>Calcular dose por peso (regra de 3)</li>
+            <li>Consultar CID-10 de um diagnostico</li>
+            <li>Escrever orientacao simples ao paciente</li>
+            <li>Converter unidades de medida</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl p-6 border border-primary/30">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Regra Pratica</h3>
+        <p class="text-neutral-300">
+          Se a tarefa exige raciocinio clinico (pesar opcoes, considerar variaveis, tomar decisao), use chain-of-thought. Se e uma tarefa operacional (formatar, traduzir, consultar), nao use - vai apenas tornar a resposta mais lenta e longa sem agregar valor.
+        </p>
+      </div>
+    </section>
+
+    <!-- Resumo Final -->
+    <section class="mb-12">
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-8">
+        <h2 class="text-2xl font-bold mb-6">📋 Resumo do Modulo 2.3</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-blue-400 mb-4">O que aprendemos:</h3>
+            <ul class="space-y-2 text-neutral-300">
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Chain-of-thought = ensinar a IA a raciocinar</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Com raciocinio visivel, voce valida cada etapa</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Tecnica 1: "Pense passo a passo"</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Tecnica 2: Sequencia definida de analise</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Tecnica 3: Pros e contras antes de concluir</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-blue-400">✓</span>
+                <span>Saber quando usar e quando NAO usar</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-blue-400 mb-4">Proximo modulo:</h3>
+            <div class="bg-dark-700/50 rounded-xl p-4 border border-dark-600">
+              <span class="text-blue-400 font-bold text-sm">2.4</span>
+              <h4 class="font-bold mt-1">🚨 Os 7 erros que todo medico comete com IA</h4>
+              <p class="text-neutral-400 text-sm mt-2">
+                Os erros mais comuns na interacao medico-IA e como evita-los com analogias clinicas que voce ja conhece.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <a href="modulo-2-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo 2.2
+          </a>
+          <a href="modulo-2-4.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">
+            Proximo: Modulo 2.4 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 bg-dark-800/50 mt-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-neutral-200">IAMed</span>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm">INEMA.CLUB</a>
+        </div>
+        <div class="text-neutral-500 text-sm">Modulo 2.3: Chain-of-thought</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+  </script>
+
+</body>
+</html>
