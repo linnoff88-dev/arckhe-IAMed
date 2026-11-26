@@ -1,7 +1,7 @@
-# Aviso de Publicação: c0065-medicos_ia_2026 — 2026-04-12
+# Aviso de Publicaçêo: c0065-medicos_ia_2026 — 2026-04-12
 
-> **Campanha:** Médicos & IA 2026 — "Você virou médico para curar. Não para preencher formulários."
-> **Marca:** INEMA | **Data de geração:** 2026-04-12
+> **Campanha:** Médicos & IA 2026 — "Você virou médico para curar. Nêo para preencher formulários."
+> **Marca:** INEMA | **Data de geraçêo:** 2026-04-12
 
 ---
 
@@ -9,7 +9,7 @@
 
 - [ ] Instagram — Pronto para publicar
 - [ ] YouTube — Pronto para publicar
-- [ ] Threads — Pronto para publicar (publicação manual — sem API disponível)
+- [ ] Threads — Pronto para publicar (publicaçêo manual — sem API disponível)
 
 ---
 
@@ -24,7 +24,7 @@
 | c0065-medicos_ia_2026_carousel_05.png | Instagram (Carrossel / Stories) | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_carousel_05.png |
 | c0065-medicos_ia_2026_pro_01_data_story_20260412_002719.mp4 | YouTube (Vídeo Principal) | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_pro_01_data_story_20260412_002719.mp4 |
 | c0065-medicos_ia_2026_quick_01_20260412_002246.mp4 | Instagram (Reel) / YouTube Shorts | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_quick_01_20260412_002246.mp4 |
-| c0065-medicos_ia_2026_quick_01_20260412_033006.mp4 | Instagram (Reel) / YouTube Shorts — versão revisada | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_quick_01_20260412_033006.mp4 |
+| c0065-medicos_ia_2026_quick_01_20260412_033006.mp4 | Instagram (Reel) / YouTube Shorts — versêo revisada | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_quick_01_20260412_033006.mp4 |
 
 ---
 
@@ -35,17 +35,17 @@
 **Legenda:**
 
 ```
-Você virou médico para curar pessoas. Não para preencher formulários. ⚡
+Você virou médico para curar pessoas. Nêo para preencher formulários. ⚡
 
-52% dos médicos brasileiros têm burnout — e a principal causa não é a complexidade dos casos. É a burocracia. Prontuários, laudos, contestações de convênio. São 2 a 3 horas por dia que não são medicina.
+52% dos médicos brasileiros têm burnout — e a principal causa nêo é a complexidade dos casos. É a burocracia. Prontuários, laudos, contestações de convênio. Sêo 2 a 3 horas por dia que nêo sêo medicina.
 
-A IA não veio para substituir você. Ela veio para fazer o que te impede de ser o médico que você escolheu ser.
+A IA nêo veio para substituir você. Ela veio para fazer o que te impede de ser o médico que você escolheu ser.
 
 ✅ Escreve prontuários enquanto você atende
 ✅ Redige laudos e relatórios automaticamente
-✅ Contesta convênios com argumentação clínica
+✅ Contesta convênios com argumentaçêo clínica
 
-Sem aprender programação. Sem mudar sua prática.
+Sem aprender programaçêo. Sem mudar sua prática.
 
 Desliza para ver como funciona na prática → e depois comece grátis em inema.club
 ```
@@ -53,7 +53,7 @@ Desliza para ver como funciona na prática → e depois comece grátis em inema.
 **Primeiro Comentário (hashtags — postar imediatamente após publicar):**
 `#inema #inemaclub #inemavip #inteligenciaartificial #ia #automacao #profissionaldofuturo #aprendercomia`
 
-**Marcação na legenda:** @inema.tds
+**Marcaçêo na legenda:** @inema.tds
 
 **Slides:**
 | Slide | Arquivo | URL |
@@ -75,9 +75,9 @@ Desliza para ver como funciona na prática → e depois comece grátis em inema.
 
 | # | Imagem | Texto Overlay | CTA | Sticker Interativo |
 |---|---|---|---|---|
-| Story 1 | carousel_01.png | "2h por dia com prontuário. A IA pode devolver esse tempo. 🧠" | Deslize para cima → inema.club | Enquete: "Quanto tempo você gasta com documentação clínica?" A) <1h B) 1-2h C) >2h |
-| Story 2 | carousel_04.png | "52% dos médicos têm burnout. Você não precisa ser um deles. ⚡" | Deslize para cima → inema.club | Emoji slider: "Quanto da sua agenda vai para burocracia?" 📋 |
-| Story 3 | carousel_03.png | "IA não substitui o médico. Ela substitui a papelada. ⚡" | Saiba como → link na bio | Quiz: "O que a IA já faz por médicos hoje?" (3 opções) |
+| Story 1 | carousel_01.png | "2h por dia com prontuário. A IA pode devolver esse tempo. 🧠" | Deslize para cima → inema.club | Enquete: "Quanto tempo você gasta com documentaçêo clínica?" A) <1h B) 1-2h C) >2h |
+| Story 2 | carousel_04.png | "52% dos médicos têm burnout. Você nêo precisa ser um deles. ⚡" | Deslize para cima → inema.club | Emoji slider: "Quanto da sua agenda vai para burocracia?" 📋 |
+| Story 3 | carousel_03.png | "IA nêo substitui o médico. Ela substitui a papelada. ⚡" | Saiba como → link na bio | Quiz: "O que a IA já faz por médicos hoje?" (3 opções) |
 | Story 4 | carousel_05.png | "Mais tempo com o paciente. Menos desgaste mental. Começa grátis em inema.club." | Comece grátis em inema.club | Caixa de perguntas: "Qual tarefa burocrática você mais quer eliminar?" |
 
 ---
@@ -86,18 +86,18 @@ Desliza para ver como funciona na prática → e depois comece grátis em inema.
 
 **⚠️ Duas versões disponíveis — usar a mais recente (033006):**
 
-| Versão | Arquivo | URL |
+| Versêo | Arquivo | URL |
 |---|---|---|
 | v1 (02h22) | quick_01_20260412_002246.mp4 | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_quick_01_20260412_002246.mp4 |
 | v2 revisada (03h30) ✅ | quick_01_20260412_033006.mp4 | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_quick_01_20260412_033006.mp4 |
 
-**Vídeo recomendado:** c0065-medicos_ia_2026_quick_01_20260412_033006.mp4 (versão mais recente)
+**Vídeo recomendado:** c0065-medicos_ia_2026_quick_01_20260412_033006.mp4 (versêo mais recente)
 **URL:** https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_quick_01_20260412_033006.mp4
 
 **Legenda:**
 
 ```
-Você virou médico para curar. Não para preencher formulários. ⚡
+Você virou médico para curar. Nêo para preencher formulários. ⚡
 
 A IA cuida da papelada. Você cuida do paciente.
 
@@ -107,9 +107,9 @@ Comece grátis → inema.club
 **Hashtags (no caption do Reel):**
 `#inema #inemaclub #ia #inteligenciaartificial #automacao #profissionaldofuturo #aprendercomia #tecnologiahumana`
 
-**Áudio:** Manter narração original do vídeo. Não substituir por áudio trending — contexto clínico/emocional exige narração própria para preservar credibilidade com público médico. Ativar legendas automáticas (maioria assiste sem som).
+**Áudio:** Manter narraçêo original do vídeo. Nêo substituir por áudio trending — contexto clínico/emocional exige narraçêo própria para preservar credibilidade com público médico. Ativar legendas automáticas (maioria assiste sem som).
 
-**⚠️ Atenção formato:** Verificar se o vídeo está em 9:16 (1080×1920px) antes de publicar como Reel. Se estiver em landscape 16:9, adaptar no editor do Instagram com fundo escuro.
+**⚠️ Atençêo formato:** Verificar se o vídeo está em 9:16 (1080×1920px) antes de publicar como Reel. Se estiver em landscape 16:9, adaptar no editor do Instagram com fundo escuro.
 
 **Horário recomendado:** Quarta-feira 19h00 (espaçamento mínimo de 12h após o carrossel)
 
@@ -128,44 +128,44 @@ IA para Médicos: Dados Reais de 2026 que Mudam a Prática Clínica
 ```
 *(62 caracteres — dentro da janela ideal de 60–70)*
 
-**Descrição:**
+**Descriçêo:**
 
 ```
 52% dos médicos brasileiros têm burnout. A burocracia consome 38% da jornada. Os dados de 2026 mostram: a IA está devolvendo tempo ao paciente. → inema.club
 
-Médicos que adotam IA eliminam a burocracia de prontuários, laudos e contestações de convênio — sem aprender programação. Os números falam por si:
+Médicos que adotam IA eliminam a burocracia de prontuários, laudos e contestações de convênio — sem aprender programaçêo. Os números falam por si:
 
 • 72% dos médicos com IA relatam ganho real de produtividade
-• Clínicas com automação atendem 45% mais consultas por dia
-• Precisão diagnóstica chega a 91% com suporte de IA em dermatologia
+• Clínicas com automaçêo atendem 45% mais consultas por dia
+• Precisêo diagnóstica chega a 91% com suporte de IA em dermatologia
 • Burocracia cai 38% com prontuários automáticos e triagem inteligente
 • ROI de 230% no primeiro ano em clínicas que adotaram IA
 • Mercado de IA na saúde no Brasil cresce 42% ao ano até 2030
 
-A IA não substitui o médico — ela substitui o que te impede de ser um médico melhor.
+A IA nêo substitui o médico — ela substitui o que te impede de ser um médico melhor.
 
 ──────────────────────────
 ⏱ NESTE VÍDEO
 ──────────────────────────
 0:00 IA na medicina brasileira — panorama 2026
 0:10 72% dos médicos com ganho de produtividade
-0:15 +45% consultas por dia com automação
+0:15 +45% consultas por dia com automaçêo
 0:19 A IA amplifica o que o médico já faz
-0:23 Precisão diagnóstica por especialidade
+0:23 Precisêo diagnóstica por especialidade
 0:29 Burocracia cai 38% com prontuários automáticos
 0:32 Menos erros, mais confiança
 0:37 ROI 230% no primeiro ano
-0:39 Médicos que usam IA não estão sendo substituídos
+0:39 Médicos que usam IA nêo estêo sendo substituídos
 0:44 Crescimento do mercado de IA em saúde
-0:49 Taxa de adoção por especialidade
-0:54 Triagem, prescrição assistida e agenda inteligente
-0:57 Quem começa agora define o padrão
+0:49 Taxa de adoçêo por especialidade
+0:54 Triagem, prescriçêo assistida e agenda inteligente
+0:57 Quem começa agora define o padrêo
 1:00 Acesse inema.club
 
 ──────────────────────────
 🎓 COMECE GRÁTIS
 ──────────────────────────
-Trilha completa de IA para profissionais de saúde — prática, aplicada, sem jargão técnico.
+Trilha completa de IA para profissionais de saúde — prática, aplicada, sem jargêo técnico.
 → https://inema.club
 
 💎 COMUNIDADE INEMA.VIP
@@ -186,10 +186,10 @@ Fontes dos dados:
 
 **Categoria:** Education
 **Texto do Thumbnail:** `52% BURNOUT — IA MUDA ISSO`
-**End Screen:** "Se inscreva no canal para mais conteúdo sobre IA na prática médica. Vídeo sugerido: como médicos estão usando IA no dia a dia sem aprender programação."
+**End Screen:** "Se inscreva no canal para mais conteúdo sobre IA na prática médica. Vídeo sugerido: como médicos estêo usando IA no dia a dia sem aprender programaçêo."
 
 **Horário recomendado:** Segunda-feira 08h00
-*(Fazer upload domingo à noite para garantir indexação)*
+*(Fazer upload domingo à noite para garantir indexaçêo)*
 
 ---
 
@@ -203,10 +203,10 @@ Fontes dos dados:
 IA Faz a Papelada pelo Médico — Você Cuida do Paciente
 ```
 
-**Descrição:**
+**Descriçêo:**
 
 ```
-Você virou médico para curar pessoas — não para preencher formulários. Com IA, prontuários, laudos e contestações de convênio ficam automatizados enquanto você atende. 52% dos médicos têm burnout. Não precisa ser você.
+Você virou médico para curar pessoas — nêo para preencher formulários. Com IA, prontuários, laudos e contestações de convênio ficam automatizados enquanto você atende. 52% dos médicos têm burnout. Nêo precisa ser você.
 
 Comece grátis: https://inema.club
 Comunidade VIP: https://inema.vip
@@ -223,7 +223,7 @@ Comunidade VIP: https://inema.vip
 ## Threads
 
 > **Plataforma:** @nei.e.maldaner
-> **Atenção:** Threads não suporta publicação programática via API. **Posts devem ser publicados manualmente.**
+> **Atençêo:** Threads nêo suporta publicaçêo programática via API. **Posts devem ser publicados manualmente.**
 
 ---
 
@@ -236,11 +236,11 @@ Comunidade VIP: https://inema.vip
 ```
 Você passou anos estudando medicina. Por que passa horas preenchendo formulário?
 
-52% dos médicos brasileiros têm burnout. E a causa mais citada não é a complexidade dos casos — é a burocracia.
+52% dos médicos brasileiros têm burnout. E a causa mais citada nêo é a complexidade dos casos — é a burocracia.
 
-Prontuário. Laudo. Guia de convênio. São 2-3h por dia que não são medicina.
+Prontuário. Laudo. Guia de convênio. Sêo 2-3h por dia que nêo sêo medicina.
 
-A IA já faz esse trabalho por você. Sem precisar aprender programação.
+A IA já faz esse trabalho por você. Sem precisar aprender programaçêo.
 
 Começa grátis → inema.club #ia #medicina
 ```
@@ -255,9 +255,9 @@ Começa grátis → inema.club #ia #medicina
 ```
 Sabe o que mais me surpreende? Médicos que testam IA pela primeira vez ficam chocados com o tempo que recuperam.
 
-Prontuário escrito enquanto você ainda está na consulta. Contestação de convênio redigida em segundos. Resumo da consulta pronto.
+Prontuário escrito enquanto você ainda está na consulta. Contestaçêo de convênio redigida em segundos. Resumo da consulta pronto.
 
-Isso não é tecnologia — é mais tempo para seus pacientes.
+Isso nêo é tecnologia — é mais tempo para seus pacientes.
 
 No INEMA, você aprende de forma prática. Direto na rotina clínica.
 ```
@@ -273,11 +273,11 @@ No INEMA, você aprende de forma prática. Direto na rotina clínica.
 **Post 3 — Standalone (278 caracteres):**
 
 ```
-A IA não vai substituir o médico.
+A IA nêo vai substituir o médico.
 
-Mas o médico que usa IA vai substituir o que não usa.
+Mas o médico que usa IA vai substituir o que nêo usa.
 
-Não porque vai trabalhar mais — mas porque vai ter 2 horas extras por dia para o que importa: o paciente.
+Nêo porque vai trabalhar mais — mas porque vai ter 2 horas extras por dia para o que importa: o paciente.
 
 Alguém aqui já usa IA na rotina clínica? O que mudou? 👇
 
@@ -289,7 +289,7 @@ Alguém aqui já usa IA na rotina clínica? O que mudou? 👇
 
 ---
 
-## Calendário de Publicação Unificado
+## Calendário de Publicaçêo Unificado
 
 | Data | Dia | Horário | Plataforma | Conteúdo |
 |---|---|---|---|---|
@@ -302,44 +302,44 @@ Alguém aqui já usa IA na rotina clínica? O que mudou? 👇
 | 2026-04-16 | Quinta-feira | 07h30 | Threads | Post standalone (pergunta aberta) |
 
 **Notas do calendário:**
-- YouTube: fazer upload na noite de domingo (2026-04-12) para garantir indexação antes das 08h de segunda
-- Instagram carrossel e Reel separados por 12h mínimo para evitar canibalização de alcance
-- Threads main e standalone separados por 24h — angle diferente (burocracia vs. medo de substituição)
+- YouTube: fazer upload na noite de domingo (2026-04-12) para garantir indexaçêo antes das 08h de segunda
+- Instagram carrossel e Reel separados por 12h mínimo para evitar canibalizaçêo de alcance
+- Threads main e standalone separados por 24h — angle diferente (burocracia vs. medo de substituiçêo)
 - Hashtags do Instagram **sempre no primeiro comentário**, nunca na legenda
 
 ---
 
 ## Justificativa de Timing
 
-Os dados de pesquisa confirmam que médicos brasileiros concentram o consumo de redes sociais em três janelas: antes do início das consultas (07h-08h), no intervalo do almoço (12h-13h) e após a jornada clínica (19h-21h). A campanha ancor em terça e quarta-feira — dias com maior engajamento orgânico no nicho de saúde, segundo padrão INEMA validado em campanhas anteriores. O vídeo data_story na segunda-feira aproveita o padrão de "planning mode" de início de semana, quando profissionais têm maior intenção de aprendizado. O post standalone de Threads na quinta explora o debate sobre substituição de IA — tema com alto índice de respostas e compartilhamentos orgânicos nessa plataforma.
+Os dados de pesquisa confirmam que médicos brasileiros concentram o consumo de redes sociais em três janelas: antes do início das consultas (07h-08h), no intervalo do almoço (12h-13h) e após a jornada clínica (19h-21h). A campanha ancor em terça e quarta-feira — dias com maior engajamento orgânico no nicho de saúde, segundo padrêo INEMA validado em campanhas anteriores. O vídeo data_story na segunda-feira aproveita o padrêo de "planning mode" de início de semana, quando profissionais têm maior intençêo de aprendizado. O post standalone de Threads na quinta explora o debate sobre substituiçêo de IA — tema com alto índice de respostas e compartilhamentos orgânicos nessa plataforma.
 
 ---
 
 ## Avisos de Rework
 
-Nenhuma plataforma sinalizou `rework_needed`. Todos os assets estão prontos para publicação.
+Nenhuma plataforma sinalizou `rework_needed`. Todos os assets estêo prontos para publicaçêo.
 
 ---
 
-## Instruções de Execução
+## Instruções de Execuçêo
 
-**Este arquivo é o gate de publicação.**
+**Este arquivo é o gate de publicaçêo.**
 
-Para disparar a publicação em qualquer plataforma, referencie este arquivo **pelo nome exato** na sua mensagem:
+Para disparar a publicaçêo em qualquer plataforma, referencie este arquivo **pelo nome exato** na sua mensagem:
 
 ```
 Execute o Publish c0065-medicos_ia_2026 2026-04-12.md
 ```
 
-A publicação **NÃO ocorre** sem essa referência explícita.
+A publicaçêo **NêO ocorre** sem essa referência explícita.
 
 ---
 
-## Log de Conclusão
+## Log de Conclusêo
 
 - [x] 8 arquivos de mídia enviados ao Supabase (5 imagens + 3 vídeos)
 - [x] URLs públicas verificadas e salvas em `media_urls.json`
 - [x] Metadados montados — Instagram, YouTube, Threads
 - [x] Calendário unificado gerado
 - [x] Publish MD gerado
-- [ ] Posts publicados (aguardando aprovação do usuário)
+- [ ] Posts publicados (aguardando aprovaçêo do usuário)

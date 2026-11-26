@@ -1,4 +1,4 @@
-﻿# IAMed
+ï»¿# IAMed
 
 <div align="center">
   <img src="capa/logo.svg" alt="Arckhé AI" height="48" />
@@ -6,7 +6,7 @@
 </div>
 
 
-QualificaÃ§Ã£o de mÃ©dicos em InteligÃªncia Artificial â€” pelo INEMA.
+QualificaêÂ§êÂ£o de mêÂ©dicos em InteligêÂªncia Artificial ê¢â¬â pelo INEMA.
 
 ---
 

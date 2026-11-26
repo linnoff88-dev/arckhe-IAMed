@@ -88,7 +88,7 @@ exato, diga "valor exato a confirmar no texto original".
 >   - Baixa representacao de pacientes da America Latina (menos de 10% da amostra)
 >
 > ### 5. RELEVANCIA CLINICA PARA O BRASIL
-> - **Implicacao pratica:** A dapagliflozina demonstrou nefroproteção robusta independente da presenca de diabetes, ampliando significativamente sua indicacao na DRC. Isso muda o paradigma de tratamento — SGLT2i deixa de ser apenas "antidiabetico" e passa a ser "nefroprotetor".
+> - **Implicacao pratica:** A dapagliflozina demonstrou nefroproteçêo robusta independente da presenca de diabetes, ampliando significativamente sua indicacao na DRC. Isso muda o paradigma de tratamento — SGLT2i deixa de ser apenas "antidiabetico" e passa a ser "nefroprotetor".
 > - **Disponibilidade no SUS:** A dapagliflozina 10 mg foi incorporada ao SUS pela CONITEC em 2022 para pacientes com DRC (TFGe 25-75) com ou sem diabetes, alinhada aos resultados deste estudo. Disponivel nas UBS via componente especializado da assistencia farmaceutica.
 
 ---

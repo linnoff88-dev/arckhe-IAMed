@@ -2,7 +2,7 @@
 
 ## Quando usar
 
-Use este template quando precisar extrair rapidamente as informações essenciais de um artigo científico e organizá-las no formato PICO (Paciente/População, Intervenção, Comparação, Outcome/Desfecho). Ideal para journal clubs, atualização rápida, preparação de aulas ou para decidir se vale a pena ler o artigo completo.
+Use este template quando precisar extrair rapidamente as informações essenciais de um artigo científico e organizá-las no formato PICO (Paciente/Populaçêo, Intervençêo, Comparaçêo, Outcome/Desfecho). Ideal para journal clubs, atualizaçêo rápida, preparaçêo de aulas ou para decidir se vale a pena ler o artigo completo.
 
 ---
 
@@ -21,35 +21,35 @@ Referência completa: [AUTORES, TÍTULO, REVISTA, ANO, DOI]
 FORMATO DO RESUMO:
 
 1. PICO DO ESTUDO
-   - P (População): Quem foi estudado? Critérios de inclusão/exclusão principais.
-   - I (Intervenção): Qual a intervenção ou exposição avaliada?
-   - C (Comparação): Qual o grupo controle ou comparador?
+   - P (Populaçêo): Quem foi estudado? Critérios de inclusêo/exclusêo principais.
+   - I (Intervençêo): Qual a intervençêo ou exposiçêo avaliada?
+   - C (Comparaçêo): Qual o grupo controle ou comparador?
    - O (Outcome/Desfecho): Qual o desfecho primário? E os secundários?
 
 2. DESENHO DO ESTUDO
-   - Tipo de estudo (ECR, coorte, caso-controle, transversal, revisão sistemática, etc.)
+   - Tipo de estudo (ECR, coorte, caso-controle, transversal, revisêo sistemática, etc.)
    - Nível de evidência (Oxford/GRADE)
    - Tempo de seguimento
    - Tamanho da amostra e poder estatístico (se informado)
 
 3. RESULTADOS PRINCIPAIS
    - Desfecho primário: resultado com IC 95% e valor de p
-   - NNT ou NNH (calcule se não estiver explícito e os dados permitirem)
+   - NNT ou NNH (calcule se nêo estiver explícito e os dados permitirem)
    - Desfechos secundários relevantes
    - Análises de subgrupo importantes
 
 4. PONTOS FORTES E LIMITAÇÕES
    - Liste 3 pontos fortes do estudo
    - Liste 3 limitações
-   - Avalie risco de viés (seleção, aferição, confusão, atrito)
+   - Avalie risco de viés (seleçêo, aferiçêo, confusêo, atrito)
 
 5. APLICABILIDADE NO BRASIL
-   - Esta evidência se aplica à população brasileira? Por quê?
+   - Esta evidência se aplica à populaçêo brasileira? Por quê?
    - Considere acesso pelo SUS e pela rede privada
    - Há alguma diretriz brasileira (SBC, SBD, SBMT, etc.) que já incorporou esta evidência?
 
-6. CONCLUSÃO EM 1 PARÁGRAFO
-   - Resumo objetivo do que o estudo muda (ou não) na prática clínica
+6. CONCLUSêO EM 1 PARÁGRAFO
+   - Resumo objetivo do que o estudo muda (ou nêo) na prática clínica
 
 7. PÉROLA CLÍNICA
    - Uma frase que resuma o achado principal de forma memorável
@@ -75,35 +75,35 @@ Referência completa: Anker SD, Butler J, Filippatos G, et al. Empagliflozin in 
 FORMATO DO RESUMO:
 
 1. PICO DO ESTUDO
-   - P (População): Quem foi estudado? Critérios de inclusão/exclusão principais.
-   - I (Intervenção): Qual a intervenção ou exposição avaliada?
-   - C (Comparação): Qual o grupo controle ou comparador?
+   - P (Populaçêo): Quem foi estudado? Critérios de inclusêo/exclusêo principais.
+   - I (Intervençêo): Qual a intervençêo ou exposiçêo avaliada?
+   - C (Comparaçêo): Qual o grupo controle ou comparador?
    - O (Outcome/Desfecho): Qual o desfecho primário? E os secundários?
 
 2. DESENHO DO ESTUDO
-   - Tipo de estudo (ECR, coorte, caso-controle, transversal, revisão sistemática, etc.)
+   - Tipo de estudo (ECR, coorte, caso-controle, transversal, revisêo sistemática, etc.)
    - Nível de evidência (Oxford/GRADE)
    - Tempo de seguimento
    - Tamanho da amostra e poder estatístico (se informado)
 
 3. RESULTADOS PRINCIPAIS
    - Desfecho primário: resultado com IC 95% e valor de p
-   - NNT ou NNH (calcule se não estiver explícito e os dados permitirem)
+   - NNT ou NNH (calcule se nêo estiver explícito e os dados permitirem)
    - Desfechos secundários relevantes
    - Análises de subgrupo importantes
 
 4. PONTOS FORTES E LIMITAÇÕES
    - Liste 3 pontos fortes do estudo
    - Liste 3 limitações
-   - Avalie risco de viés (seleção, aferição, confusão, atrito)
+   - Avalie risco de viés (seleçêo, aferiçêo, confusêo, atrito)
 
 5. APLICABILIDADE NO BRASIL
-   - Esta evidência se aplica à população brasileira? Por quê?
+   - Esta evidência se aplica à populaçêo brasileira? Por quê?
    - Considere acesso pelo SUS e pela rede privada
    - Há alguma diretriz brasileira (SBC, SBD, SBMT, etc.) que já incorporou esta evidência?
 
-6. CONCLUSÃO EM 1 PARÁGRAFO
-   - Resumo objetivo do que o estudo muda (ou não) na prática clínica
+6. CONCLUSêO EM 1 PARÁGRAFO
+   - Resumo objetivo do que o estudo muda (ou nêo) na prática clínica
 
 7. PÉROLA CLÍNICA
    - Uma frase que resuma o achado principal de forma memorável
@@ -113,20 +113,20 @@ FORMATO DO RESUMO:
 
 ## Dicas de uso
 
-- **Cole o abstract completo**, não apenas o título. Se possível, cole também a seção de métodos e resultados do artigo inteiro para uma análise mais profunda.
-- **Peça para a IA calcular o NNT**: se o artigo não traz o NNT explícito, os dados de redução absoluta de risco geralmente permitem o cálculo. No exemplo acima: RAR = 17,1% - 13,8% = 3,3%, logo NNT = 1/0,033 = ~30.
-- **Use para preparar journal club**: após obter o resumo, peça à IA para gerar 5 perguntas de discussão sobre o artigo.
-- **Compare com diretrizes brasileiras**: a seção de aplicabilidade é essencial. A IA pode não ter informações atualizadas sobre incorporação no SUS via CONITEC, então valide esse ponto.
+- **Cole o abstract completo**, nêo apenas o título. Se possível, cole também a seçêo de métodos e resultados do artigo inteiro para uma análise mais profunda.
+- **Peça para a IA calcular o NNT**: se o artigo nêo traz o NNT explícito, os dados de reduçêo absoluta de risco geralmente permitem o cálculo. No exemplo acima: RAR = 17,1% - 13,8% = 3,3%, logo NNT = 1/0,033 = ~30.
+- **Use para preparar journal club**: após obter o resumo, peça à IA para gerar 5 perguntas de discussêo sobre o artigo.
+- **Compare com diretrizes brasileiras**: a seçêo de aplicabilidade é essencial. A IA pode nêo ter informações atualizadas sobre incorporaçêo no SUS via CONITEC, entêo valide esse ponto.
 - **Artigos em português também funcionam**: se o artigo for de um periódico brasileiro (como Arquivos Brasileiros de Cardiologia), cole o texto em português mesmo.
 
 ---
 
 ## Variações possíveis
 
-| Variação | O que mudar no template |
+| Variaçêo | O que mudar no template |
 |---|---|
-| **Revisão sistemática/meta-análise** | Adicione ao formato: "Avalie heterogeneidade (I2), risco de viés de publicação e qualidade metodológica via AMSTAR-2" |
-| **Artigo de diagnóstico** | Substitua PICO por: "População testada, Teste índice, Padrão-ouro, Sensibilidade/Especificidade/LR+/LR-" |
-| **Comparação de dois artigos** | Cole os dois abstracts e adicione: "Compare os dois estudos lado a lado em uma tabela, destacando diferenças de população, intervenção, resultados e limitações" |
-| **Resumo para pacientes** | Adicione ao final: "Agora reescreva a conclusão em linguagem acessível para um paciente leigo com ensino fundamental" |
-| **Foco em custo-efetividade** | Adicione: "Analise se o artigo traz dados de custo-efetividade. Se não trouxer, estime o impacto econômico considerando o preço do medicamento no Brasil (Tabela CMED)" |
+| **Revisêo sistemática/meta-análise** | Adicione ao formato: "Avalie heterogeneidade (I2), risco de viés de publicaçêo e qualidade metodológica via AMSTAR-2" |
+| **Artigo de diagnóstico** | Substitua PICO por: "Populaçêo testada, Teste índice, Padrêo-ouro, Sensibilidade/Especificidade/LR+/LR-" |
+| **Comparaçêo de dois artigos** | Cole os dois abstracts e adicione: "Compare os dois estudos lado a lado em uma tabela, destacando diferenças de populaçêo, intervençêo, resultados e limitações" |
+| **Resumo para pacientes** | Adicione ao final: "Agora reescreva a conclusêo em linguagem acessível para um paciente leigo com ensino fundamental" |
+| **Foco em custo-efetividade** | Adicione: "Analise se o artigo traz dados de custo-efetividade. Se nêo trouxer, estime o impacto econômico considerando o preço do medicamento no Brasil (Tabela CMED)" |

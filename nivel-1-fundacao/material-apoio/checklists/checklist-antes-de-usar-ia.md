@@ -1,6 +1,6 @@
 # Checklist Rápido: Antes de Usar IA
 
-**5 perguntas que você deve responder ANTES de inserir qualquer informação numa ferramenta de IA.**
+**5 perguntas que você deve responder ANTES de inserir qualquer informaçêo numa ferramenta de IA.**
 
 > Tempo estimado: 30 segundos. Imprima e cole ao lado do monitor.
 
