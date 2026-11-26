@@ -1,4 +1,4 @@
-# Plano de Execuçêo: 4 Formações IAMed / INEMA
+# Plano de Execuçêo: 4 Formações IAMed / ARCKHÉ
 
 **Programa:** Médico IA-Native — De usuário a líder
 **Data:** 2026-04-12 | **Versêo:** 1.0
@@ -58,7 +58,7 @@ Todo conceito de IA é apresentado por **analogia médica**. O médico já tem o
 # "Entenda IA sem jargêo. Use amanhê no consultório."
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━���━━━
 
-**Plataforma:** INEMA.CLUB (100% gratuito)
+**Plataforma:** ARCKHÉ AI (100% gratuito)
 **Duraçêo:** 2 semanas (autoguiado)
 **Carga horária:** ~10 horas
 **Formato:** Vídeos curtos (5–10 min) + exercícios práticos + quiz
@@ -521,8 +521,8 @@ O médico aplica IA em 7 situações reais diferentes:
 └──────────────���────────────────────────────��─────────────────┘
 ```
 
-**Certificado:** "Médico IA-Fundaçêo — INEMA" (digital, compartilhável)
-**CTA:** "Quer construir suas próprias ferramentas? → INEMA.VIP"
+**Certificado:** "Médico IA-Fundaçêo — ARCKHÉ" (digital, compartilhável)
+**CTA:** "Quer construir suas próprias ferramentas? → ARCKHÉ.VIP"
 
 ---
 
@@ -531,7 +531,7 @@ O médico aplica IA em 7 situações reais diferentes:
 # "Construa suas próprias ferramentas. Sem programar."
 # ━━━━━━━━━━━��━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-**Plataforma:** INEMA.VIP (R$ 35/mês)
+**Plataforma:** ARCKHÉ.VIP (R$ 35/mês)
 **Duraçêo:** 12 semanas (1 módulo por semana)
 **Carga horária:** ~48 horas (4h/semana)
 **Formato:** Vídeo-aula + projeto semanal + comunidade + mentoria ao vivo quinzenal
@@ -876,8 +876,8 @@ O médico aplica IA em 7 situações reais diferentes:
 - Cada participante apresenta sua melhor ferramenta (5 min)
 - Feedback de pares e mentores
 - Portfólio digital publicado
-- **Certificado:** "Clínico-Construtor — INEMA" (digital, com portfólio linkado)
-- **CTA:** "Quer governar IA na sua instituiçêo? → Imersêo INEMA Nível 3"
+- **Certificado:** "Clínico-Construtor — ARCKHÉ" (digital, com portfólio linkado)
+- **CTA:** "Quer governar IA na sua instituiçêo? → Imersêo ARCKHÉ Nível 3"
 
 ---
 
@@ -886,7 +886,7 @@ O médico aplica IA em 7 situações reais diferentes:
 # "Avalie, audite e governe IA na sua instituiçêo."
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-**Plataforma:** Imersêo presencial/híbrida INEMA
+**Plataforma:** Imersêo presencial/híbrida ARCKHÉ
 **Duraçêo:** 3 dias intensivos (sexta, sábado, domingo)
 **Carga horária:** 24 horas
 **Formato:** Aulas expositivas + workshops práticos + estudo de caso + simulaçêo
@@ -1159,10 +1159,10 @@ Cada grupo recebe um caso institucional realista:
 ### Bloco 8 (14h–17h): Apresentações + certificaçêo
 
 - Cada grupo apresenta
-- Banca avaliadora (INEMA + convidados: gestor de TI hospitalar + médico referência em IA)
+- Banca avaliadora (ARCKHÉ + convidados: gestor de TI hospitalar + médico referência em IA)
 - Feedback detalhado
-- **Certificado:** "Consultor Algorítmico em IA Clínica �� INEMA" (24h, com relatório de competências)
-- **CTA:** "Quer liderar IA na saúde? → Mentoria INEMA Nível 4"
+- **Certificado:** "Consultor Algorítmico em IA Clínica �� ARCKHÉ" (24h, com relatório de competências)
+- **CTA:** "Quer liderar IA na saúde? → Mentoria ARCKHÉ Nível 4"
 
 ---
 
@@ -1171,7 +1171,7 @@ Cada grupo recebe um caso institucional realista:
 # "Construa sua carreira na fronteira da IA em saúde."
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-**Plataforma:** Programa de Mentoria INEMA (por seleçêo)
+**Plataforma:** Programa de Mentoria ARCKHÉ (por seleçêo)
 **Duraçêo:** 6 meses
 **Carga horária:** ~4h/semana (mentoria + trabalho autônomo)
 **Formato:** Mentoria em grupo (8–12 médicos) + encontros quinzenais + projeto individual + rede de contatos
@@ -1343,9 +1343,9 @@ Cada grupo recebe um caso institucional realista:
 **Atividades:**
 - Pitch de 10 minutos do projeto para banca convidada (inclui: investidores, gestores de healthtech, médicos referência)
 - Feedback profissional e orientaçêo de próximos passos
-- Ingresso na rede de alumni INEMA (Nível 4) — comunidade fechada de médicos-líderes em IA
+- Ingresso na rede de alumni ARCKHÉ (Nível 4) — comunidade fechada de médicos-líderes em IA
 
-**Certificado:** "Médico-Tradutor em IA — INEMA" (144h, com projeto documentado)
+**Certificado:** "Médico-Tradutor em IA — ARCKHÉ" (144h, com projeto documentado)
 
 ---
 
@@ -1471,9 +1471,9 @@ Cada grupo recebe um caso institucional realista:
 ┌───��─────────────────────────────────────────────────────────────┐
 │                                                                 │
 │   SEMANA 1 (Abr 13-19):                                        │
-│   □ Validar plano com stakeholders INEMA                        │
+│   □ Validar plano com stakeholders ARCKHÉ                        │
 │   □ Definir médico-líder de conteúdo                            │
-│   �� Escolher plataforma de curso (INEMA.CLUB existente?)        │
+│   �� Escolher plataforma de curso (ARCKHÉ AI existente?)        │
 │                                                                 │
 │   SEMANA 2 (Abr 20-26):                                        │
 │   □ Roteiro detalhado do Nível 1 (5 módulos, 15 aulas)         │
@@ -1502,4 +1502,4 @@ Cada grupo recebe um caso institucional realista:
 
 *Plano de execuçêo gerado com base em pesquisa profunda do mercado internacional e brasileiro de qualificaçêo médica em IA (2025-2026). Fontes: AMA, Stanford, Harvard, NHS, npj Digital Medicine, The Lancet, CFM, TIC Saúde 2024/CETIC.br, cases de healthtechs e médicos empreendedores.*
 
-*IAMed / INEMA — 2026-04-12*
+*IAMed / ARCKHÉ — 2026-04-12*

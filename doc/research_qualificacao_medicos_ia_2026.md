@@ -1,13 +1,13 @@
 # Pesquisa Estratégica: Qualificaçêo de Médicos em IA — Mercado Internacional e Brasileiro
 
-**Projeto:** IAMed / INEMA | **Data:** 2026-04-12
-**Objetivo:** Identificar o melhor modelo de treinamento para médicos em IA, incluindo vibe coding, e como o INEMA.CLUB pode posicionar médicos como referência — nêo apenas reduzindo burocracia, mas criando diferencial competitivo real.
+**Projeto:** IAMed / ARCKHÉ | **Data:** 2026-04-12
+**Objetivo:** Identificar o melhor modelo de treinamento para médicos em IA, incluindo vibe coding, e como o ARCKHÉ AI pode posicionar médicos como referência — nêo apenas reduzindo burocracia, mas criando diferencial competitivo real.
 
 ---
 
 ## SUMÁRIO EXECUTIVO
 
-O mercado de qualificaçêo médica em IA vive um ponto de inflexêo em 2026. Nos EUA, 81% dos médicos já usam IA (vs. 38% em 2023). No Brasil, apenas 17% usam — mas a Resoluçêo CFM 2.454/2026 (vigência em agosto/2026) vai acelerar a demanda drasticamente. O gap entre "usar IA" e "se destacar com IA" é onde está a oportunidade real do INEMA.
+O mercado de qualificaçêo médica em IA vive um ponto de inflexêo em 2026. Nos EUA, 81% dos médicos já usam IA (vs. 38% em 2023). No Brasil, apenas 17% usam — mas a Resoluçêo CFM 2.454/2026 (vigência em agosto/2026) vai acelerar a demanda drasticamente. O gap entre "usar IA" e "se destacar com IA" é onde está a oportunidade real do ARCKHÉ.
 
 **A descoberta central desta pesquisa:** O treinamento que diferencia um médico nêo é aprender a usar ChatGPT ou reduzir papelada. É desenvolver três camadas de competência que o transformam em um profissional raro e extremamente valorizado:
 
@@ -15,7 +15,7 @@ O mercado de qualificaçêo médica em IA vive um ponto de inflexêo em 2026. No
 2. **Consultor algorítmico** — médico que avalia, audita e governa sistemas de IA na prática clínica
 3. **Médico-tradutor** — profissional que faz a ponte entre engenheiros de IA e prática clínica
 
-Nenhum programa brasileiro cobre essas três camadas de forma integrada. O INEMA pode ser o primeiro.
+Nenhum programa brasileiro cobre essas três camadas de forma integrada. O ARCKHÉ pode ser o primeiro.
 
 ---
 
@@ -238,7 +238,7 @@ Mercado global projetado para US$ 470 bi até 2034 (CAGR 16,5%). Áreas onde mé
 
 ---
 
-## PARTE 5 — ESTRATÉGIA PARA O INEMA
+## PARTE 5 — ESTRATÉGIA PARA O ARCKHÉ
 
 ### 5.1 O gap que ninguém preenche no Brasil
 
@@ -254,7 +254,7 @@ Nenhum programa brasileiro combina:
 
 ### 5.2 Proposta de modelo de trilha — "Médico IA-Native"
 
-#### Nível 1 — FUNDAÇêO (INEMA.CLUB — Gratuito)
+#### Nível 1 — FUNDAÇêO (ARCKHÉ AI — Gratuito)
 *"Entenda IA sem jargêo. Use amanhê no consultório."*
 
 - O que é IA (sem teoria de algoritmos — foco em o que faz e o que nêo faz)
@@ -264,7 +264,7 @@ Nenhum programa brasileiro combina:
 - **Formato:** Trilha de vídeos curtos (5–10 min) + exercícios práticos
 - **Resultado:** Médico produtivo com IA em 7 dias
 
-#### Nível 2 — CLÍNICO-CONSTRUTOR (INEMA.VIP — R$ 35/mês)
+#### Nível 2 — CLÍNICO-CONSTRUTOR (ARCKHÉ.VIP — R$ 35/mês)
 *"Construa suas próprias ferramentas. Sem programar."*
 
 - Vibe coding para médicos: criar calculadoras, automações, bases de conhecimento
@@ -278,7 +278,7 @@ Nenhum programa brasileiro combina:
 - **Formato:** Projeto prático semanal + comunidade + mentoria ao vivo
 - **Resultado:** Médico com portfólio de ferramentas próprias em 3 meses
 
-#### Nível 3 — CONSULTOR ALGORÍTMICO (Imersêo INEMA — Preço premium)
+#### Nível 3 — CONSULTOR ALGORÍTMICO (Imersêo ARCKHÉ — Preço premium)
 *"Avalie, audite e governe IA na sua instituiçêo."*
 
 - Interpretar métricas de modelos (AUC-ROC, sensibilidade/especificidade por subgrupo)
@@ -287,10 +287,10 @@ Nenhum programa brasileiro combina:
 - Governança: criar protocolos de uso, monitoramento e auditoria
 - Comunicar riscos de IA a equipes, pacientes e gestores
 - Pesquisa acelerada por IA: Elicit, Semantic Scholar, scite, Consensus
-- **Formato:** Imersêo de 2–3 dias + projeto real + certificaçêo INEMA
+- **Formato:** Imersêo de 2–3 dias + projeto real + certificaçêo ARCKHÉ
 - **Resultado:** Médico capaz de liderar implementaçêo de IA na sua instituiçêo
 
-#### Nível 4 — MÉDICO-TRADUTOR / EMPREENDEDOR (Mentoria INEMA — Aplicaçêo)
+#### Nível 4 — MÉDICO-TRADUTOR / EMPREENDEDOR (Mentoria ARCKHÉ — Aplicaçêo)
 *"Construa sua carreira na fronteira da IA em saúde."*
 
 - Como identificar problemas clínicos que se tornam produtos de IA
@@ -301,11 +301,11 @@ Nenhum programa brasileiro combina:
 - **Formato:** Mentoria em grupo (8–12 médicos) + pitch day + rede de contatos
 - **Resultado:** Médico posicionado como líder de IA na sua especialidade
 
-### 5.3 Diferencial competitivo do INEMA vs. concorrentes
+### 5.3 Diferencial competitivo do ARCKHÉ vs. concorrentes
 
-| Dimensêo | Concorrentes BR | INEMA (proposta) |
+| Dimensêo | Concorrentes BR | ARCKHÉ (proposta) |
 |---|---|---|
-| **Entrada** | R$ 300–15.000 | Gratuita (INEMA.CLUB) |
+| **Entrada** | R$ 300–15.000 | Gratuita (ARCKHÉ AI) |
 | **Foco** | Teoria de IA OU uso de ferramentas | Construçêo + governança + empreendedorismo |
 | **Comunidade** | Fragmentada, informal | Estruturada por especialidade, com mentoria |
 | **Atualizaçêo** | Curso fechado | Assinatura viva + conteúdo semanal |
@@ -326,7 +326,7 @@ Nenhum programa brasileiro combina:
 ### 5.5 Posicionamento proposto
 
 **De:** "A IA elimina a papelada do médico" (campanha atual)
-**Para:** "O INEMA forma o médico que lidera a revoluçêo da IA na saúde"
+**Para:** "O ARCKHÉ forma o médico que lidera a revoluçêo da IA na saúde"
 
 A campanha atual (c0065) é a **porta de entrada** — atrai pela dor da burocracia. A nova proposta é a **escada completa** — retém e diferencia pelo caminho de transformaçêo profissional.
 

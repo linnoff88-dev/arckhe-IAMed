@@ -1,7 +1,7 @@
 # Aviso de Publicaçêo: c0065-medicos_ia_2026 — 2026-04-12
 
 > **Campanha:** Médicos & IA 2026 — "Você virou médico para curar. Nêo para preencher formulários."
-> **Marca:** INEMA | **Data de geraçêo:** 2026-04-12
+> **Marca:** ARCKHÉ | **Data de geraçêo:** 2026-04-12
 
 ---
 
@@ -47,13 +47,13 @@ A IA nêo veio para substituir você. Ela veio para fazer o que te impede de ser
 
 Sem aprender programaçêo. Sem mudar sua prática.
 
-Desliza para ver como funciona na prática → e depois comece grátis em inema.club
+Desliza para ver como funciona na prática → e depois comece grátis em ARCKHÉ AI
 ```
 
 **Primeiro Comentário (hashtags — postar imediatamente após publicar):**
-`#inema #inemaclub #inemavip #inteligenciaartificial #ia #automacao #profissionaldofuturo #aprendercomia`
+`#ARCKHÉ #ARCKHÉclub #ARCKHÉvip #inteligenciaartificial #ia #automacao #profissionaldofuturo #aprendercomia`
 
-**Marcaçêo na legenda:** @inema.tds
+**Marcaçêo na legenda:** @ARCKHÉ.tds
 
 **Slides:**
 | Slide | Arquivo | URL |
@@ -62,7 +62,7 @@ Desliza para ver como funciona na prática → e depois comece grátis em inema.
 | 2 — Contraste: médico com paciente | carousel_02.png | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_carousel_02.png |
 | 3 — Features: checklist IA clínica | carousel_03.png | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_carousel_03.png |
 | 4 — Prova: dados 52% / 2-3h / ROI | carousel_04.png | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_carousel_04.png |
-| 5 — CTA: COMECE GRÁTIS / INEMA.VIP | carousel_05.png | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_carousel_05.png |
+| 5 — CTA: COMECE GRÁTIS / ARCKHÉ.VIP | carousel_05.png | https://gqjcmirjmdaedrtpatgo.supabase.co/storage/v1/object/public/campaign-uploads/c0065-medicos_ia_2026_2026-04-12_c0065-medicos_ia_2026_carousel_05.png |
 
 **Horário recomendado:** Terça-feira 07h30
 
@@ -71,14 +71,14 @@ Desliza para ver como funciona na prática → e depois comece grátis em inema.
 ### Stories — Sequência de 4
 
 > Publicar na mesma janela do carrossel, ou até 2h depois para manter pico de alcance.
-> Usar slides em formato 1080×1920 com fundo escuro acima/abaixo (identidade dark-first INEMA).
+> Usar slides em formato 1080×1920 com fundo escuro acima/abaixo (identidade dark-first ARCKHÉ).
 
 | # | Imagem | Texto Overlay | CTA | Sticker Interativo |
 |---|---|---|---|---|
-| Story 1 | carousel_01.png | "2h por dia com prontuário. A IA pode devolver esse tempo. 🧠" | Deslize para cima → inema.club | Enquete: "Quanto tempo você gasta com documentaçêo clínica?" A) <1h B) 1-2h C) >2h |
-| Story 2 | carousel_04.png | "52% dos médicos têm burnout. Você nêo precisa ser um deles. ⚡" | Deslize para cima → inema.club | Emoji slider: "Quanto da sua agenda vai para burocracia?" 📋 |
+| Story 1 | carousel_01.png | "2h por dia com prontuário. A IA pode devolver esse tempo. 🧠" | Deslize para cima → ARCKHÉ AI | Enquete: "Quanto tempo você gasta com documentaçêo clínica?" A) <1h B) 1-2h C) >2h |
+| Story 2 | carousel_04.png | "52% dos médicos têm burnout. Você nêo precisa ser um deles. ⚡" | Deslize para cima → ARCKHÉ AI | Emoji slider: "Quanto da sua agenda vai para burocracia?" 📋 |
 | Story 3 | carousel_03.png | "IA nêo substitui o médico. Ela substitui a papelada. ⚡" | Saiba como → link na bio | Quiz: "O que a IA já faz por médicos hoje?" (3 opções) |
-| Story 4 | carousel_05.png | "Mais tempo com o paciente. Menos desgaste mental. Começa grátis em inema.club." | Comece grátis em inema.club | Caixa de perguntas: "Qual tarefa burocrática você mais quer eliminar?" |
+| Story 4 | carousel_05.png | "Mais tempo com o paciente. Menos desgaste mental. Começa grátis em ARCKHÉ AI." | Comece grátis em ARCKHÉ AI | Caixa de perguntas: "Qual tarefa burocrática você mais quer eliminar?" |
 
 ---
 
@@ -101,11 +101,11 @@ Você virou médico para curar. Nêo para preencher formulários. ⚡
 
 A IA cuida da papelada. Você cuida do paciente.
 
-Comece grátis → inema.club
+Comece grátis → ARCKHÉ AI
 ```
 
 **Hashtags (no caption do Reel):**
-`#inema #inemaclub #ia #inteligenciaartificial #automacao #profissionaldofuturo #aprendercomia #tecnologiahumana`
+`#ARCKHÉ #ARCKHÉclub #ia #inteligenciaartificial #automacao #profissionaldofuturo #aprendercomia #tecnologiahumana`
 
 **Áudio:** Manter narraçêo original do vídeo. Nêo substituir por áudio trending — contexto clínico/emocional exige narraçêo própria para preservar credibilidade com público médico. Ativar legendas automáticas (maioria assiste sem som).
 
@@ -131,7 +131,7 @@ IA para Médicos: Dados Reais de 2026 que Mudam a Prática Clínica
 **Descriçêo:**
 
 ```
-52% dos médicos brasileiros têm burnout. A burocracia consome 38% da jornada. Os dados de 2026 mostram: a IA está devolvendo tempo ao paciente. → inema.club
+52% dos médicos brasileiros têm burnout. A burocracia consome 38% da jornada. Os dados de 2026 mostram: a IA está devolvendo tempo ao paciente. → ARCKHÉ AI
 
 Médicos que adotam IA eliminam a burocracia de prontuários, laudos e contestações de convênio — sem aprender programaçêo. Os números falam por si:
 
@@ -160,17 +160,17 @@ A IA nêo substitui o médico — ela substitui o que te impede de ser um médic
 0:49 Taxa de adoçêo por especialidade
 0:54 Triagem, prescriçêo assistida e agenda inteligente
 0:57 Quem começa agora define o padrêo
-1:00 Acesse inema.club
+1:00 Acesse ARCKHÉ AI
 
 ──────────────────────────
 🎓 COMECE GRÁTIS
 ──────────────────────────
 Trilha completa de IA para profissionais de saúde — prática, aplicada, sem jargêo técnico.
-→ https://inema.club
+→ https://ARCKHÉ AI
 
-💎 COMUNIDADE INEMA.VIP
+💎 COMUNIDADE ARCKHÉ.VIP
 Evoluindo com outros profissionais de saúde. R$ 35/mês.
-→ https://inema.vip
+→ https://ARCKHÉ.vip
 
 ──────────────────────────
 Fontes dos dados:
@@ -182,7 +182,7 @@ Fontes dos dados:
 ```
 
 **Tags:**
-`ia para medicos`, `inteligencia artificial saude`, `burnout medico solucao`, `produtividade medica`, `prontuario eletronico ia`, `medicina digital 2026`, `automacao saude`, `medico do futuro`, `saude digital brasil`, `inema`, `ia diagnostico`, `formacao medica ia`
+`ia para medicos`, `inteligencia artificial saude`, `burnout medico solucao`, `produtividade medica`, `prontuario eletronico ia`, `medicina digital 2026`, `automacao saude`, `medico do futuro`, `saude digital brasil`, `ARCKHÉ`, `ia diagnostico`, `formacao medica ia`
 
 **Categoria:** Education
 **Texto do Thumbnail:** `52% BURNOUT — IA MUDA ISSO`
@@ -208,11 +208,11 @@ IA Faz a Papelada pelo Médico — Você Cuida do Paciente
 ```
 Você virou médico para curar pessoas — nêo para preencher formulários. Com IA, prontuários, laudos e contestações de convênio ficam automatizados enquanto você atende. 52% dos médicos têm burnout. Nêo precisa ser você.
 
-Comece grátis: https://inema.club
-Comunidade VIP: https://inema.vip
+Comece grátis: https://ARCKHÉ AI
+Comunidade VIP: https://ARCKHÉ.vip
 ```
 
-**Tags:** `ia para medicos`, `burnout medico`, `medicina digital`, `produtividade medica`, `inema`, `saude digital`, `shorts medicos`, `automacao saude`
+**Tags:** `ia para medicos`, `burnout medico`, `medicina digital`, `produtividade medica`, `ARCKHÉ`, `saude digital`, `shorts medicos`, `automacao saude`
 
 **Horário recomendado:** Terça-feira 12h00 (24h após o vídeo principal, para capturar audiência diferente)
 
@@ -242,7 +242,7 @@ Prontuário. Laudo. Guia de convênio. Sêo 2-3h por dia que nêo sêo medicina.
 
 A IA já faz esse trabalho por você. Sem precisar aprender programaçêo.
 
-Começa grátis → inema.club #ia #medicina
+Começa grátis → ARCKHÉ AI #ia #medicina
 ```
 
 **Imagem do Post 1:** carousel_04.png (dados 52% / 2h/dia)
@@ -259,7 +259,7 @@ Prontuário escrito enquanto você ainda está na consulta. Contestaçêo de con
 
 Isso nêo é tecnologia — é mais tempo para seus pacientes.
 
-No INEMA, você aprende de forma prática. Direto na rotina clínica.
+No ARCKHÉ, você aprende de forma prática. Direto na rotina clínica.
 ```
 
 *(Sem imagem. Sem hashtags — encadeado no post principal.)*
@@ -281,7 +281,7 @@ Nêo porque vai trabalhar mais — mas porque vai ter 2 horas extras por dia par
 
 Alguém aqui já usa IA na rotina clínica? O que mudou? 👇
 
-#ia #medicos #inema
+#ia #medicos #ARCKHÉ
 ```
 
 **Imagem do Post 3:** carousel_01.png (médico exausto com papelada)
@@ -311,7 +311,7 @@ Alguém aqui já usa IA na rotina clínica? O que mudou? 👇
 
 ## Justificativa de Timing
 
-Os dados de pesquisa confirmam que médicos brasileiros concentram o consumo de redes sociais em três janelas: antes do início das consultas (07h-08h), no intervalo do almoço (12h-13h) e após a jornada clínica (19h-21h). A campanha ancor em terça e quarta-feira — dias com maior engajamento orgânico no nicho de saúde, segundo padrêo INEMA validado em campanhas anteriores. O vídeo data_story na segunda-feira aproveita o padrêo de "planning mode" de início de semana, quando profissionais têm maior intençêo de aprendizado. O post standalone de Threads na quinta explora o debate sobre substituiçêo de IA — tema com alto índice de respostas e compartilhamentos orgânicos nessa plataforma.
+Os dados de pesquisa confirmam que médicos brasileiros concentram o consumo de redes sociais em três janelas: antes do início das consultas (07h-08h), no intervalo do almoço (12h-13h) e após a jornada clínica (19h-21h). A campanha ancor em terça e quarta-feira — dias com maior engajamento orgânico no nicho de saúde, segundo padrêo ARCKHÉ validado em campanhas anteriores. O vídeo data_story na segunda-feira aproveita o padrêo de "planning mode" de início de semana, quando profissionais têm maior intençêo de aprendizado. O post standalone de Threads na quinta explora o debate sobre substituiçêo de IA — tema com alto índice de respostas e compartilhamentos orgânicos nessa plataforma.
 
 ---
 

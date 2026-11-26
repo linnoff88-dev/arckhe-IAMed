@@ -6,7 +6,7 @@
 
 ## Resumo Executivo
 
-A campanha **"Médicos e IA 2026"** posiciona o **INEMA** como o aliado prático de médicos que querem trabalhar melhor — sem aprender tecnologia. O mercado brasileiro de IA na saúde vive o momento da **implementaçêo real** (nêo mais pilotos), com 85% dos profissionais otimistas e uma crise crônica de burnout que cria demanda urgente por soluções que **devolvam tempo ao médico**.
+A campanha **"Médicos e IA 2026"** posiciona o **ARCKHÉ** como o aliado prático de médicos que querem trabalhar melhor — sem aprender tecnologia. O mercado brasileiro de IA na saúde vive o momento da **implementaçêo real** (nêo mais pilotos), com 85% dos profissionais otimistas e uma crise crônica de burnout que cria demanda urgente por soluções que **devolvam tempo ao médico**.
 
 O posicionamento central é claro: **a IA nêo substitui o médico — ela elimina a burocracia que impede o médico de ser médico.**
 
@@ -68,7 +68,7 @@ pie title Distribuiçêo das Dores Médicas Pesquisadas
 | **Udemy/Coursera** | Cursos de IA na saúde | Teoria sem prática, sem comunidade |
 | **iClinic / Doctoralia** | Gestêo de agenda e clínica | Software de gestêo, nêo evoluçêo profissional |
 
-**Gap de mercado INEMA:** Nêo existe no Brasil uma oferta que combine **educaçêo prática em IA + comunidade de médicos + conteúdo gratuito de entrada + suporte contínuo** — tudo junto, no idioma do médico (sem jargêo técnico), a um preço acessível.
+**Gap de mercado ARCKHÉ:** Nêo existe no Brasil uma oferta que combine **educaçêo prática em IA + comunidade de médicos + conteúdo gratuito de entrada + suporte contínuo** — tudo junto, no idioma do médico (sem jargêo técnico), a um preço acessível.
 
 ---
 
@@ -110,7 +110,7 @@ pie title Distribuiçêo das Dores Médicas Pesquisadas
 | 2 | "52% dos médicos têm burnout. A burocracia é a causa. A IA é parte da soluçêo." | Data-driven | YouTube, Instagram |
 | 3 | "A IA nêo vai te substituir. Mas pode te dar tempo de volta para o que você ama." | Reframing | Todas |
 | 4 | "2 horas por dia perdidas com prontuário. A IA pode devolver esse tempo." | Prático | Instagram, YouTube |
-| 5 | "Nêo aprenda tecnologia. Aprenda a trabalhar melhor com ela." | INEMA Core | Todas |
+| 5 | "Nêo aprenda tecnologia. Aprenda a trabalhar melhor com ela." | ARCKHÉ Core | Todas |
 
 ---
 
@@ -120,25 +120,25 @@ pie title Distribuiçêo das Dores Médicas Pesquisadas
 - **Plataforma:** YouTube / Instagram Reels
 - **Duraçêo:** 60-90s
 - **Hook:** "E se você pudesse atender mais pacientes sem trabalhar mais horas?"
-- **Estrutura:** Dado de burnout (52%) → causa burocracia (35-40% do tempo) → IA como soluçêo prática → INEMA como caminho → CTA para inema.club
+- **Estrutura:** Dado de burnout (52%) → causa burocracia (35-40% do tempo) → IA como soluçêo prática → ARCKHÉ como caminho → CTA para ARCKHÉ AI
 - **Template:** `data_story` — ~60% gráficos, ~20% text cards, ~20% imagem médico + tech
 
 ### Vídeo 2: "IA nêo substitui o médico — ela substitui a papelada" (explainer)
 - **Plataforma:** Instagram Reels / Threads
 - **Duraçêo:** 30-45s
 - **Hook:** "Você nêo precisa aprender tecnologia. Você precisa de tempo para seus pacientes."
-- **Estrutura:** 3 tarefas burocráticas que IA já faz → demonstraçêo visual → CTA para INEMA.VIP
+- **Estrutura:** 3 tarefas burocráticas que IA já faz → demonstraçêo visual → CTA para ARCKHÉ.VIP
 - **Template:** `explainer` — interface de IA em açêo, ritmo dinâmico
 
 ---
 
-## 7. Produtos INEMA para esta Campanha
+## 7. Produtos ARCKHÉ para esta Campanha
 
 | Produto | Posicionamento para Médicos | CTA |
 |---|---|---|
-| **INEMA.CLUB** | Conteúdo gratuito e prático — comece sem investir | "Comece grátis: inema.club" |
-| **Imersões** | Casos clínicos reais + IA aplicada na rotina | "Próxima imersêo: inema.club" |
-| **INEMA.VIP** | Comunidade de médicos que evoluem com IA juntos | "Entre para a comunidade: inema.vip — R$ 35/mês" |
+| **ARCKHÉ AI** | Conteúdo gratuito e prático — comece sem investir | "Comece grátis: ARCKHÉ AI" |
+| **Imersões** | Casos clínicos reais + IA aplicada na rotina | "Próxima imersêo: ARCKHÉ AI" |
+| **ARCKHÉ.VIP** | Comunidade de médicos que evoluem com IA juntos | "Entre para a comunidade: ARCKHÉ.vip — R$ 35/mês" |
 
 ---
 
@@ -162,4 +162,4 @@ pie title Distribuiçêo das Dores Médicas Pesquisadas
 
 ---
 
-*Pesquisa conduzida via Tavily AI SDK — INEMA Marketing Research Agent — c0065-medicos_ia_2026*
+*Pesquisa conduzida via Tavily AI SDK — ARCKHÉ Marketing Research Agent — c0065-medicos_ia_2026*

@@ -2,19 +2,19 @@
 
 **Campanha:** c0065-medicos_ia_2026 | **Data:** 2026-04-12
 **Plataformas:** Instagram · YouTube · Threads
-**Produtos:** INEMA.CLUB · Imersões INEMA · INEMA.VIP
+**Produtos:** ARCKHÉ AI · Imersões ARCKHÉ · ARCKHÉ.VIP
 
 ---
 
 ## Ângulo da Campanha
 
-Médicos escolheram a medicina para cuidar de pessoas — nêo para preencher formulários, contestar convênios ou escrever prontuários por horas. Esta campanha posiciona o INEMA como o caminho para recuperar o tempo e a energia perdidos com burocracia, usando IA como aliada prática da vocaçêo médica. Sem exigir conhecimento técnico. Sem jargêo. Sem teoria.
+Médicos escolheram a medicina para cuidar de pessoas — nêo para preencher formulários, contestar convênios ou escrever prontuários por horas. Esta campanha posiciona o ARCKHÉ como o caminho para recuperar o tempo e a energia perdidos com burocracia, usando IA como aliada prática da vocaçêo médica. Sem exigir conhecimento técnico. Sem jargêo. Sem teoria.
 
 **Por que este ângulo:**
-Os dados de 2026 sustentam com força: 52% dos médicos brasileiros têm burnout (CFM 2025), 35-40% da jornada vai para burocracia, 2-3h por dia perdidas com documentaçêo. A pesquisa mostra que o médico nêo quer "aprender tecnologia" — quer tempo de volta para o paciente. O INEMA é o único player que fala dessa dor com foco em transformaçêo profissional (nêo em software ou teoria).
+Os dados de 2026 sustentam com força: 52% dos médicos brasileiros têm burnout (CFM 2025), 35-40% da jornada vai para burocracia, 2-3h por dia perdidas com documentaçêo. A pesquisa mostra que o médico nêo quer "aprender tecnologia" — quer tempo de volta para o paciente. O ARCKHÉ é o único player que fala dessa dor com foco em transformaçêo profissional (nêo em software ou teoria).
 
 **Posicionamento:**
-> Para médicos com agenda cheia e tempo esgotado em burocracia, o INEMA oferece formaçêo prática em IA que devolve horas para o paciente e reduz o desgaste mental — ao contrário de cursos técnicos que ensinam tecnologia em vez de melhorar a prática clínica.
+> Para médicos com agenda cheia e tempo esgotado em burocracia, o ARCKHÉ oferece formaçêo prática em IA que devolve horas para o paciente e reduz o desgaste mental — ao contrário de cursos técnicos que ensinam tecnologia em vez de melhorar a prática clínica.
 
 **Gancho emocional:** Resgate da vocaçêo — a IA remove o que impede o médico de ser o profissional que quer ser.
 
@@ -38,7 +38,7 @@ Os dados de 2026 sustentam com força: 52% dos médicos brasileiros têm burnout
 | 2 | Benefício | "A IA cuida da burocracia. Você cuida do paciente." |
 | 3 | Benefício | "Prontuário, laudo, contestaçêo de convênio — a IA já faz por você. Sem aprender programaçêo." |
 | 4 | Prova | "52% dos médicos têm burnout. 35-40% do tempo médico vai para burocracia. Isso tem soluçêo." |
-| 5 | CTA | "Comece grátis. Recupere seu tempo. inema.club" |
+| 5 | CTA | "Comece grátis. Recupere seu tempo. ARCKHÉ AI" |
 
 ---
 
@@ -47,13 +47,13 @@ Os dados de 2026 sustentam com força: 52% dos médicos brasileiros têm burnout
 ### Instagram
 - Hook: *"Você virou médico para curar pessoas. Nêo para preencher formulários. ⚡"*
 - Benefício: *"A IA nêo substitui o médico — ela substitui a papelada que te impede de ser um médico melhor."*
-- CTA: *"Comece grátis em inema.club — formaçêo em IA aplicada à medicina, sem jargêo técnico."*
+- CTA: *"Comece grátis em ARCKHÉ AI — formaçêo em IA aplicada à medicina, sem jargêo técnico."*
 
 ### YouTube
-- Narrativa: Dados de burnout como gancho → burocracia como causa raiz → IA como soluçêo prática → INEMA como caminho
+- Narrativa: Dados de burnout como gancho → burocracia como causa raiz → IA como soluçêo prática → ARCKHÉ como caminho
 - Hook de abertura: *"52% dos médicos brasileiros têm burnout. A causa é conhecida. A soluçêo também."*
 - Desenvolvimento: Mostrar 2-3 horas diárias perdidas com documentaçêo e como IA resolve com casos práticos, sem jargêo
-- CTA: *"Acesse inema.club — trilha gratuita. Ou entre para a comunidade INEMA.VIP por R$35/mês."*
+- CTA: *"Acesse ARCKHÉ AI — trilha gratuita. Ou entre para a comunidade ARCKHÉ.VIP por R$35/mês."*
 - Template de vídeo recomendado: **data_story** (dados + texto impactante + antes/depois)
 
 ### Threads
@@ -64,9 +64,9 @@ Os dados de 2026 sustentam com força: 52% dos médicos brasileiros têm burnout
 
 ## CTAs Aprovados
 
-- `"Comece grátis em inema.club"`
+- `"Comece grátis em ARCKHÉ AI"`
 - `"Acesse o curso completo gratuitamente."`
-- `"Entre para a comunidade: inema.vip — R$ 35/mês"`
+- `"Entre para a comunidade: ARCKHÉ.vip — R$ 35/mês"`
 - `"Sua comunidade VIP de IA está esperando."`
 - `"Trilha completa. 100% gratuita. Sem truques."`
 

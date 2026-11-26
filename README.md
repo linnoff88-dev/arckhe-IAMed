@@ -6,7 +6,7 @@
 </div>
 
 
-QualificaêÂ§êÂ£o de mêÂ©dicos em InteligêÂªncia Artificial ê¢â¬â pelo INEMA.
+QualificaêÂ§êÂ£o de mêÂ©dicos em InteligêÂªncia Artificial ê¢â¬â pelo ARCKHÉ.
 
 ---
 

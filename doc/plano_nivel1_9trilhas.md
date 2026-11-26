@@ -224,7 +224,7 @@
 | Pesquisa acelerada | T3 inteira — stack completo, projeto de revisêo |
 | 30 dias de prática com casos | T9 — 30 casos reais com feedback |
 | Biblioteca de prompts por especialidade | T2.6 — 30+ prompts por especialidade |
-| Tudo gratuito | 100% gratuito no INEMA.CLUB |
+| Tudo gratuito | 100% gratuito no ARCKHÉ AI |
 
 ---
 
@@ -261,7 +261,7 @@ Após completar o Nível 1, o médico já:
 - Tem presença digital profissional
 - Atende em escala com qualidade
 
-**Nível 2 (INEMA.VIP — R$ 35/mês):** Aprofundar vibe coding, criar produto, mentoria por especialidade, projetos avançados.
+**Nível 2 (ARCKHÉ.VIP — R$ 35/mês):** Aprofundar vibe coding, criar produto, mentoria por especialidade, projetos avançados.
 
 ---
 

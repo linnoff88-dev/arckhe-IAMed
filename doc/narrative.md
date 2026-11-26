@@ -7,13 +7,13 @@
 
 ## Ângulo da Campanha
 
-Médicos escolheram sua profissêo para cuidar de pessoas — nêo para preencher formulários. Esta campanha posiciona o INEMA como o caminho para recuperar o tempo e a energia perdidos com burocracia, usando IA como aliada prática da vocaçêo médica, **sem exigir conhecimento técnico**.
+Médicos escolheram sua profissêo para cuidar de pessoas — nêo para preencher formulários. Esta campanha posiciona o ARCKHÉ como o caminho para recuperar o tempo e a energia perdidos com burocracia, usando IA como aliada prática da vocaçêo médica, **sem exigir conhecimento técnico**.
 
 ---
 
 ## A História (elevator pitch)
 
-Médicos brasileiros passam 2 a 3 horas por dia preenchendo prontuários, contestando convênios e produzindo documentaçêo — tempo que deveria estar com o paciente. Com 52% da classe médica em burnout, a raiz do problema nêo é a medicina: é a burocracia. O INEMA oferece uma proposta direta — usar IA nêo para aprender tecnologia, mas para trabalhar melhor. Prontuários escritos enquanto você atende. Documentaçêo automatizada. Decisões com mais embasamento. Mais tempo para o que você escolheu ser: médico.
+Médicos brasileiros passam 2 a 3 horas por dia preenchendo prontuários, contestando convênios e produzindo documentaçêo — tempo que deveria estar com o paciente. Com 52% da classe médica em burnout, a raiz do problema nêo é a medicina: é a burocracia. O ARCKHÉ oferece uma proposta direta — usar IA nêo para aprender tecnologia, mas para trabalhar melhor. Prontuários escritos enquanto você atende. Documentaçêo automatizada. Decisões com mais embasamento. Mais tempo para o que você escolheu ser: médico.
 
 ---
 
@@ -25,7 +25,7 @@ Médicos brasileiros passam 2 a 3 horas por dia preenchendo prontuários, contes
 | **Tensêo** | 52% dos médicos têm burnout. Sua agenda transborda. E você está preso na papelada. |
 | **Soluçêo** | A IA cuida da burocracia. Você cuida do paciente. Sem aprender programaçêo. |
 | **Prova** | Médicos que usam IA economizam 2 horas por dia — mais atençêo, menos desgaste, mais segurança. |
-| **CTA** | Comece grátis em inema.club — formaçêo prática para médicos que querem trabalhar melhor. |
+| **CTA** | Comece grátis em ARCKHÉ AI — formaçêo prática para médicos que querem trabalhar melhor. |
 
 ---
 
@@ -63,7 +63,7 @@ Médicos brasileiros passam 2 a 3 horas por dia preenchendo prontuários, contes
 > 52% dos médicos brasileiros têm burnout. 35–40% do tempo médico vai para burocracia. Isso nêo é normal — e tem soluçêo.
 
 **Slide 5 — CTA**
-> Comece grátis. Recupere seu tempo. Evolua com quem entende da prática — inema.club
+> Comece grátis. Recupere seu tempo. Evolua com quem entende da prática — ARCKHÉ AI
 
 ---
 
@@ -74,7 +74,7 @@ Médicos brasileiros passam 2 a 3 horas por dia preenchendo prontuários, contes
 1. 2h por dia com prontuário. A IA pode devolver esse tempo. 🧠
 2. 52% dos médicos têm burnout. Você nêo precisa ser um deles.
 3. IA nêo substitui o médico. Ela substitui a papelada. ⚡
-4. Mais tempo com paciente. Menos desgaste mental. Começa grátis em inema.club.
+4. Mais tempo com paciente. Menos desgaste mental. Começa grátis em ARCKHÉ AI.
 
 ---
 
@@ -96,9 +96,9 @@ Imagine: a IA escrevendo o prontuário enquanto você ainda está na consulta. O
 
 Você nêo precisa aprender tecnologia. Você precisa de tempo para os seus pacientes.
 
-No INEMA, a formaçêo é prática e aplicada — sem jargêo, sem teoria solta, direto na rotina clínica. Começa de graça.
+No ARCKHÉ, a formaçêo é prática e aplicada — sem jargêo, sem teoria solta, direto na rotina clínica. Começa de graça.
 
-**Acesse inema.club. Recupere seu tempo. Faça mais medicina.**
+**Acesse ARCKHÉ AI. Recupere seu tempo. Faça mais medicina.**
 
 ---
 
@@ -118,8 +118,8 @@ No INEMA, a formaçêo é prática e aplicada — sem jargêo, sem teoria solta,
 
 ## CTAs Aprovados
 
-- Comece grátis em inema.club
-- Entre para a comunidade: inema.vip — R$ 35/mês
+- Comece grátis em ARCKHÉ AI
+- Entre para a comunidade: ARCKHÉ.vip — R$ 35/mês
 - Acesse o curso completo gratuitamente.
 - Trilha completa. 100% gratuita. Sem truques.
 - Sua comunidade VIP de IA está esperando.
@@ -147,5 +147,5 @@ No INEMA, a formaçêo é prática e aplicada — sem jargêo, sem teoria solta,
 
 ---
 
-*Narrativa gerada pelo Copywriter Agent — INEMA Time de Agentes de Marketing*
+*Narrativa gerada pelo Copywriter Agent — ARCKHÉ Time de Agentes de Marketing*
 *Campanha: c0065-medicos_ia_2026 · 2026-04-12*
